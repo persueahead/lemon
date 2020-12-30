@@ -1,0 +1,253 @@
+jquery
+	    轻量级的javascript的库
+	    优化javascript的编写,少些代码多做事情
+	  js框架,提供了封装好的javascript 
+    语法:
+     	<script>
+			/*麻烦*/
+		/*	$(document).ready(
+				function(){
+                    alert(111);					
+				}
+			);*/
+			/*压缩版*/
+			 $(function(){
+                    alert(12312312);					
+				});
+		</script>
+		
+jquery的选择器
+      对Html元素单个或者多个进行操作
+   基本的选择器
+        id ,class ,属性，元素   ，层级选择器.......
+   id选择器:
+     	$(function(){
+			$("#h1").css("color","red");
+		});            		
+	元素选择器
+	  $(function(){
+			$("span").css("color","red");
+		});	
+      类选择器
+      $(function(){
+			$(".h1").css("color","aqua");
+		});		
+	选择所有
+		$(function(){
+			$("*").css("color","black");
+		});	
+	指定选择
+	$(function(){
+	      选择H3标签 class是H的	
+			$("h3.H").css("color","darkblue");
+		});	
+	属性选择器	
+		$(function(){
+			//$("input[type=text]").css("color","darkblue");
+			$("input[type!=text]").css("color","darkblue");
+		});
+		$(function(){
+			//click   相当于 onclick=""
+			//表示选择了 input标签的type是button  和 button标签
+			$(":button").click(function(){
+				  alert(11);
+			});
+		});
+	偶数选择器	
+		$(function(){
+			$("tr:even").css("color","darkblue");
+		});
+	奇数选择器	
+		$(function(){
+			$("tr:odd").css("color","red");
+		});	
+	选择属元素
+	  	$(function(){
+			$("[href]").css("color","red");
+		});	
+	层级选择	
+		$(function(){
+			$("ul li").css("color","red");
+		});
+	选择P标签第一个
+		$(function(){
+			//$("p:first").css("color","red");
+			$("ul li:first-child").css("color","green");
+		});	
+
+Jquery事件
+  	  用来进行调用方法的类似  dom的触发事件on.....
+  	如
+  	  点击事件
+  	    <script>
+			$(function(){
+				//类似  onclick=""
+				$("input").click(function(){
+					//写逻辑
+					alert(111);
+				});
+			});
+		</script>  
+  	双击事件  	
+  	$(function(){
+			$("#h1").dblclick(function(){
+				alert("双击事件");
+			});
+		});
+	鼠标悬浮于移开
+	$(function(){
+			$("h1").mouseenter(function(){
+				$(this).css("color","red");
+			});
+			$("h1").mouseleave(function(){
+				$(this).css("color","gold");
+			});
+		});	
+	鼠标指针悬浮
+	$(function(){
+			$("h2").hover(function(){
+				$(this).css("color","red");
+			},function(){
+				$(this).css("color","green");
+			});
+		});	
+	表单提交
+		$(function(){
+	     	$("form").submit(function(){
+	     		alert("11111111111111");
+	     	})
+	     });
+	 悬浮
+	 $(function(){
+	     	$("input[type=text]").blur(function(){
+	     		alert("11111111111111");
+	     	})
+	     });
+Jquery效果
+   	如隐藏或许显示等等的动态效果
+   	隐藏和显示
+   		 $(function(){
+	     	$("#show").click(function(){
+	     		$("input[type=text]").show();
+	     	})
+	     	$("#hide").click(function(){
+	   			  $("input[type=text]").hide();
+	     	})
+	     });  
+   	淡出
+	      $(function(){
+	     	$("#but").click(function(){
+	     		$("#d1").fadeIn();
+	     		$("#d2").fadeIn(5000);//设置时间毫秒
+	     	})
+	     });
+	   淡入
+	       $(function(){
+	     	$("#but1").click(function(){
+	     		$("#d1").fadeOut();
+	     		$("#d2").fadeOut(5000);//设置时间毫秒
+	     	})
+	     });     
+	        切换  淡入淡出
+	           $(function(){
+	     	$("#but3").click(function(){
+	     		$("#d1").fadeToggle();
+	     		$("#d2").fadeToggle(5000);//设置时间毫秒
+	     	})
+	     }); 
+滑动
+		//滑动
+	     $(function(){
+	     	$("#but3").click(function(){
+	     		$("#d2").slideDown("slow");
+	     	})
+	     	$("#but4").click(function(){
+	     		$("#d2").slideUp();
+	     	})
+	     		$("#but5").click(function(){
+	     		$("#d2").slideToggle();
+	     	})
+	     });     
+对HTML的系列操作
+   	  就是你啊进行操作元素和属性的
+   	  text() 类似 js中innerText
+   	       	返回元素文本
+   	  html() 类似 js中innerhtml
+   	     		元素的内容
+   	  val() 类似 js中value
+   	                字段的值
+   	  	$(function(){
+	     	    $("#but1").click(function(){
+	     	    	alert("text："+$("h1").text());
+	     	    });
+	     	    $("#but2").click(function(){
+	     	    	alert("html："+$("h1").html());
+	     	    });
+	     	        $("#but3").click(function(){
+	     	    	alert("val："+$("input").val());
+	     	    });
+	     });
+	     
+   	     $(function(){
+	     	    $("#but1").click(function(){
+		     	    $("h1").text("SDFLSNDF SDLFJ SDLF SLDF SD");
+	     	    });
+	     	   
+	     	    $("#but2").click(function(){
+	     	    	$("h1").html("ASDASDA<a href='https://www.baidu.com/'>a标签</a>SDASDASD");
+	     	    });
+	     	        $("#but3").click(function(){
+	     	    	$("input").val("ASDASDASDAA撒打算Das阿萨德");
+	     	    });
+	     });	
+   	   
+   	   
+   	获取属性值
+	     	       $("#but4").click(function(){
+	     	    	alert("获取属性值："+$("a").attr("href"));
+	     	    	alert("获取属性值："+$("a").prop("href"));
+	     	       });
+	设置属性值
+	     	     $("#but5").click(function(){
+	     	    		$("a").attr({
+	     	    			"href":"https://www.jd.com/",
+	     	    			"title":"京东"
+	     	    		})
+	     	   			alert("设置属性值："+$("a").attr("href"));
+	     	       });  
+   添加元素
+      jquery可以进行添加和删除元素
+       append()在元素结尾添加
+       prepend()头部添加
+       after  元素之后插入
+       brfore  元素之前插入
+       	<script>
+	     $(function(){
+	     	    $("#but1").click(function(){
+	     	      $("h1").append("<a href='index.html'>a标签</a>");
+	     	    });
+	     	    $("#but2").click(function(){
+	     	        $("ul").prepend("<li>prepend</li>");
+	     	    });
+	     	      $("#but3").click(function(){
+	     	      $("h1").before("<a href='index.html'>before</a>");
+	     	    });
+	     	      $("#but4").click(function(){
+	     	      $("h1").after("<a href='index.html'>after</a>");
+	     	    });
+	     });
+		</script>
+删除元素     
+     remove()  删除被选中的元素(包含该选中的子元素)
+     empty()    被选中元素中的元素删除除了子元素之外    
+   	 <script>
+	     $(function(){
+	     	    $("#but1").click(function(){
+	     	     $("h1").remove();
+	     	      $("h1").remove(".QW");
+	     	    });
+	     	    $("#but2").click(function(){
+	     	        $("ul").empty();
+	     	    });
+	     });
+	</script>    	

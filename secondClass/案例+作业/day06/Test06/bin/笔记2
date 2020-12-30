@@ -1,0 +1,98 @@
+字符流
+   1.可以进行直接的读写字符的IO流
+   2.读字符的时候，哟啊先读取到字节数据然后在进行转换为字符
+   3.写的时候需要把字符转换为字节
+2-1 读
+   				public  static void getVoid() throws IOException {
+					FileReader frd= new FileReader("E:\\IO\\111.txt");
+					  int c;
+					  while((c=frd.read())!=-1) {
+						   System.out.println((char)c);
+					  }
+					frd.close();
+				}
+2-2  写
+   				//写
+				public  static void getVoid01() throws IOException {
+					//参数一地址，参数为时候在后面进行追加
+					FileWriter  fw=new FileWriter("E:\\IO\\111.txt",true);
+					fw.write("柠檬柠檬柠檬柠檬柠檬柠檬柠檬柠檬");
+					fw.close();
+				}
+-----------------------------------------------------------
+1.字符流的拷贝
+	   	public  static void getVoid02() throws IOException {
+			FileReader  fr= new FileReader("E:\\IO\\111.txt");
+			FileWriter  fw=new FileWriter("E:\\IO\\拷贝.txt");
+			int i;
+			while((i=fr.read())!=-1) {
+				fw.write(i);
+			}
+			fr.close();
+			fw.close();
+				}			
+2.使用字符流拷贝图片可以吗？=不能进行拷贝的
+3.字符也是可以使用数组的方式来进行完成
+	如:
+				public  static void getVoid04() throws IOException {
+					FileReader  fr= new FileReader("E:\\IO\\111.txt");
+					FileWriter  fw=new FileWriter("E:\\IO\\拷贝.txt");
+					int i;
+					char[] c=new char[1024];
+					while((i=fr.read(c))!=-1) {
+						fw.write(c,0,i);
+					}
+					fr.close();
+					fw.close();
+				}
+4.待缓冲流的字符流
+     读写的策略和起前面给描述的缓冲流的策略是一样的,只是调用类不一样
+      				public  static void getVoid() throws IOException {
+							BufferedReader   br=	new BufferedReader(new FileReader("E:\\IO\\111.txt"));
+							BufferedWriter  bw=new BufferedWriter(new FileWriter("E:\\IO\\1XXXX.txt"));
+							int c;
+							while((c=br.read())!=-1) {
+								bw.write(c);
+							}
+							br.close();
+							bw.close();
+						}
+
+						//直接进行输出
+						public  static void getVoid01() throws IOException {
+							BufferedReader   br=	new BufferedReader(new FileReader("E:\\IO\\111.txt"));
+							BufferedWriter  bw=new BufferedWriter(new FileWriter("E:\\IO\\ccccc.txt"));
+					             String lin;
+					             while((lin=br.readLine())!=null) {
+					            	 bw.write(lin);
+					             System.out.println(lin);
+					             }
+							br.close();
+							bw.close();
+						}
+扩展:(了解)
+    		跟踪行号的缓冲字符输入流。
+    		此类定义了方法 setLineNumber(int) 和 getLineNumber()
+    		，它们可分别用于设置和获取当前行号。					
+			  如:
+			  	public  static void getVoid02() throws IOException {
+							LineNumberReader   br=	new LineNumberReader(new FileReader("E:\\IO\\111.txt"));
+		                   String lie;
+		                   br.setLineNumber(2);
+		                   while((lie=br.readLine())!=null) {
+		                	   System.out.println(br.getLineNumber()+":"+lie);
+		                	   
+		                   }
+		                   br.close();
+					}
+			
+案列:获取文件出现的字符的次数
+
+
+
+
+
+
+
+						
+				

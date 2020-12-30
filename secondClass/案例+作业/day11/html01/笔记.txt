@@ -1,0 +1,118 @@
+HTML的描述
+	超文件标记性语言
+	  超文本
+	  		功能比普通的文件更加的强大
+	  标记性的语言
+	  		一套标记标签对内容的描述,注意不是语言
+	HTML就是使用标记标签来进行描述网页的
+XHTML 
+ 	  可扩展的标识语言	
+	 XHTML所有的标签都是必须小写的
+	 必须是成双成对
+	 标签的顺序必须要正确
+	 
+语法和规范
+	  HTML的文件都是xxx.html获取是xxx.htm来进行描述后缀的
+	  	建议使用(.html)	
+	  html分为头部分	<head></head>
+	 			       尾部分<body></body>
+	  标签中有开始标签(开发标签)如<head>也有结束标签(闭合标签)如</head>
+	  页可以有空标签(开始标签和结束标签在一起组合)如：<br/>	
+	  HTML中是忽略大小写的,建议使用小写
+常见的标签
+   注意标签是写在	<body></body>中的
+		   标题标签<h1到H6的标题标签>
+		  水平标签 <hr />
+		 段落标签  <p>段落标签段落标签段落标签段落标签</p>
+	  	 字体标签<font size="56" face="微软雅黑" color="aqua"></font>	
+	  	 	字体的大小可以是负数
+			当字体大小的属性设置的时候
+			 +数字:增加字体的大小
+			 -数字:减小字体的大小
+			 如没有+或者-:就是设置字体的大小	
+		 文本标签<textarea rows="50" cols="60"></textarea>
+定义文档(html)的类型
+ HTML4
+ HTML5
+  	就可以通过定义文档(html)的类型来进行决定是HTML4还5
+  	<!DOCTYPE>生明位于文档的最前面,处于在<html></html>之前
+  	    此标签就是告诉浏览器使用那种HTML/xhtml的规范
+  	    注意：<!DOCTYPE>是没有结束标签的
+ 		//html5 
+ 		<!DOCTYPE html>
+		//html4
+		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+			"http://www.w3.org/TR/html4/strict.dtd">
+头部标签<head>...
+		<meta>标签
+		     可以进行提供页面相关的元信息,比如对浏览器的搜索引擎上的关键字,
+		     字符集的的设置如charset="utf-8"
+		content=""就是用于定义属性相关的元i信息
+		<title>标签
+				用于定义文档的标题
+				浏览器会进行特殊的方式来进行使用标题
+				,通常放在浏览器的窗口的标题栏上或者是状态栏上
+				属性dir=""定义元素中的内容文本方向
+				language定义元素中的语言代码
+				 lang="" 规定XHMTL文档中的元素内容的语言代码
+注释::	<!---->  快捷键ctrl+shift+/ 
+			     是用于标签描述信息,浏览器会进行忽略
+		    对某段代码进行的解释,有利于阅读代码
+A标签
+		A标签可以进行定义锚
+ 				还可以通过HREF进行跳转(超链接)	到另外的一个文档或者网站
+ 			<a href="index.html">A标签跳转index.html"</a>
+		    <a href="http://edu.bjlemon.com/">跳转到柠檬</a>	
+		   	<!--锚点-->
+			<a href="#C1">点击</a>   
+			<a name="C1">C1C1C1C1C1C1C1C1</a>  
+				a 标签中的属性
+			 	href =:跳转页面获取进行定义锚点
+			 	charset=""  定义字符集  ,目标URL跳转的地址的字符集
+				name:锚的名称
+				id:别名 唯一
+				class="" :别名非唯一的
+				 	target="" 表示的怎么进行打开目标对象URL这个地址
+				 	   属性："_blank" 表示在新的窗口中进行打开URL这个地址
+				 		   "_top" 在整个窗口中进行打开URL这个地址
+				 		   "_parent" 在父框架中进行打开URL这个地址
+				 		   "_self"  默认  ,在相同的框架中进行打开URL这个地址	
+				 		   案列
+				 		   		<a target="_blank"  href="http://edu.bjlemon.com/"  >_blank</a>
+									<hr />
+								<a target="_top" href="http://edu.bjlemon.com/" >_top</a>
+									<hr />
+								<a target="_parent" href="http://edu.bjlemon.com/" >_parent</a>
+									<hr />
+								<a target="_self" href="http://edu.bjlemon.com/" >_self</a>
+--------------------------
+图像标签
+			就是进行定义一个图片的	
+	 		src表示显示图片的路径相对的地址
+			alt: 如图片没有显示就显示文本
+			 width="" 设置图片的宽 
+			 height=""  设置高
+			 		 注意:宽和高可以加像素和%也可以不加
+			 border="5"   定义图像的周边的边框	
+		  案列：
+		  		<img border="50" src="img/头像.jpg" alt="图片" width="400" height="400" />
+	 
+------------------
+列表
+  无序列表和有序列表
+				  无序列表
+				     无序列表,就一个项目的列表,该列表使用粗体圆点,进行标记的
+				      列表内部可以可以进行使用段落，图片，连接.等标签
+				 属性:type
+				 type="circle"  空闲圆
+				 type="disc"     黑心圆
+				 type="square"    黑正方形型		
+				 		<ul type="circle">
+								  <li>无序列表
+								  		<h1>ASDASDASD </h1>
+								  </li>
+								  <li>无序列表</li>
+								  <li>无序列表</li>
+						</ul>
+				 
+				 有序列表				    

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的-->
+
+	</head>
+	<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton01()">点击</button>
+			<h1 id="h1">xxxx</h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton02()">点击</button><br />
+		<button onclick="myFunciton03()">点击</button>
+	</body>
+	
+		<script type="text/javascript">
+		function  myFunciton01(){
+		//do whlie循环的规则和java一样的
+	
+			  var x=0;
+			 do{
+			 	document.write(x+"<br/>");
+			 	x++;
+			 }while(x <17);
+		  
+			}
+	
+		//While循环的遍历
+		//whlie循环的规则和java一样的
+		function  myFunciton02(){
+			  var x=0;
+			   while(x < 10){
+		    	document.write(x+"<br/>");
+		    	x++;
+		    }
+		  
+			}
+	
+	
+	
+			//增强for循环的遍历
+	function  myFunciton03(){
+		  var person={
+		  		  	  name:"TOM",
+		  		  	  lastName:"jack",
+		  		  	  age:23
+		  		  };
+		    for(x in person){
+		    	document.write(person[x]+"<br/>");
+		    }
+		    for(var I=0;I<10;I++){
+		    	
+		    }
+			}
+	</script>
+</html>

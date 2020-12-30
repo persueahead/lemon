@@ -1,0 +1,24 @@
+1.描述
+	final
+	finally
+	finalize
+	的区别?
+2.键盘上输入一个数字进行判断年龄(小于18未成年,大于等于18或者小于25成年人
+		,大于等于25或者小于60中年人,大于等于60老年人
+	)使用自定义异常完成	
+3.	在异常处理中，如释放资源、关闭文件等由（ ）来完成	
+	A try子句
+	B.	catch子句
+	C. finally子句
+	D. throw子句	
+4.下面选项中有关Java异常处理模型的说法错误的是
+	A 一个try块只能有一条catch语句
+	B. 一个try块中可以不使用catch语句
+	C. catch块不能单独使用，必须始终与try块在一起
+	D.	finally块可以单独使用，不是必须与try块在一起
+5.下面选项中属于运行时异常的是（  BC  ）	
+	A.Exception和SexException
+	B.NullPointerException和InputMismatchException
+	C.ArithmeticException和ArrayIndexOutOfBoundsException
+	D.ClassNotFoundException和ClassCastException
+6.Java异常处理中，关键字try、catch、finally、throw、throws分别代表什么含义？	

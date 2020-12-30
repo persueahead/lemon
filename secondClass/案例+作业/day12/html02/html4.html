@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>  <!--   	
+	  	使用frame的时候不能有
+	  	  		 body标签
+	  	        	cols  表示的是，框架占整个浏览器的%多少对于列
+	  	        	如:cols="15%,35%,25%,25%" 
+	  				rows  表示的是，框架占整个浏览器的%多少对于行
+	  		。-->
+	  		<!--framset：设置框架页-->
+	     <frameset border="10" rows="10%,*,10%" >
+	     	<!--fram：表示每一个框架中显示的页面-->
+	     	  <frame src="index01.html"></frame>
+	     	  <frameset border="10" cols="30%,*,30%">
+			     	  <frame src="index02.html"></frame>
+			     	  <frame src="index01.html"></frame>
+			     	   <frame src="index01.html"></frame>
+	     	  </frameset>
+	     	  <frame src="index01.html"></frame>
+	     </frameset> 
+	    
+	
+</html>

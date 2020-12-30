@@ -1,0 +1,188 @@
+集合
+
+
+什么是集合
+	1.回想数组?
+	   	之前数组是用来装数据的.
+	   	int[] i={};
+		如上int类型的只能存储int类型的数据,你想字符串是不行，
+		     限制
+		有没有一种容器什么样的数据都能存储,并没有限制
+		object类型的数组
+		 		Object[] I={"xx",1122}; 
+		 但是工作中没有谁来搞个Object数组
+		
+		1-1: 后面就出来了集合
+		 		容器：存储数据的,不像数组有限制(类型),但是集合中不放入如 int  float  boolean 。。。。。等基本数据类型
+		 		 如Integer  包装类就可以
+		 		 也可以自己放入创建的对象
+		 		 列如
+		 		 ArrayList<Test02 >  arr2=  new ArrayList<Test02>(); 
+		 		 ArrayList<String>  arr1=  new ArrayList<String>();
+
+collection
+		1-1	Collection 表示一组对象，
+			这些对象也称为 collection 的元素。
+			一些 collection 允许有重复的元素，而另一些则不允许。
+			一些 collection 是有序的，而另一些则是无序的。
+			JDK 不提供此接口的任何直接 实现：它提供更具体的子接口（如 Set 和 List）实现。
+			此接口通常用来传递 collection，并在需要最大普遍性的地方操作这些 collection。 
+		-------------------------
+		1-2	JDK 不提供此接口的任何直接 实现：它提供更具体的子接口（如 Set 和 List）实现		
+			1-2-1	Set
+				一个不包含重复元素的 collection
+			1-2-1	list
+				有序的 collection（也称为序列）。
+				此接口的用户可以对列表中每个元素的插入位置进行精确地控制。
+				用户可以根据元素的整数索引（在列表中的位置）访问元素，并搜索列表中的元素。
+				与 set 不同，列表通常允许重复的元素
+		Set	和 list ?
+		
+		1-3	list接口(不能直接new  需要实现类)
+				创建list集合怎么创建
+				List 接口的大小可变数组的实现
+		   实现类有ArrayList, LinkedList,Vector常用
+		   	1-3-1 ArrayList：
+		   			每个 ArrayList 实例都有一个容量。
+		   			该容量是指用来存储列表元素的<数组的大小>。
+		   					ArrayList底层就是一个数组		源码: transient Object[] elementData;
+		   			它总是至少等于列表的大小。
+		   			随着向 ArrayList 中不断添加元素，其容量也<自动增长>。
+		   			  				源码:
+		   						  	    public boolean add(E e) {
+									        ensureCapacityInternal(size + 1);  // Increments modCount!!
+									        elementData[size++] = e;
+									        return true;
+										    }
+		   		 ArrayList怎么创建语法：
+		   		 		ArrayList  arr= new ArrayList();
+		   		 1)添加数据
+		   		 		ArrayList  arr= new ArrayList();
+						arr.add(123);//添加数据
+						arr.add("0000000");//添加数据 
+						
+						arr.add(1,"陈不要脸,你帅");
+						
+						arr.addAll(arr1);
+		   		 2)取值
+		   		 		arr.get(0)	
+		   
+				 3)遍历
+				 		public  static void test03() throws Exception {
+							ArrayList  arr= new ArrayList();
+							arr.add(123);//添加数据
+							arr.add("0000000");//添加数据
+							arr.add(new Date());
+							for (int i = 0; i < arr.size(); i++) {
+								System.out.println(arr.get(i));
+							}
+						}	
+					方式二:
+								public  static void test04() throws Exception {
+										ArrayList  arr= new ArrayList();
+										arr.add(123);//添加数据
+										arr.add("0000000");//添加数据
+										arr.add(new Date());
+										System.out.println(arr.size());//返回此列表中的元素数
+									  for (Object object : arr) {
+										  System.out.println(object);
+									}
+									}
+		
+					方法:
+										//arr.clear();//清除
+										System.out.println("arr.get(2)"+arr.get(2));
+										arr.set(2, "好爽");
+										System.out.println("arr.get(2)"+arr.get(2)); **** 
+										System.out.println("arr.remove(0)"+arr.remove(0));//删除  ****
+										System.out.println("arr.get(0)"+arr.get(0));
+										System.out.println(arr.isEmpty());//果此列表中没有元素，则返回 true
+										System.out.println(arr.indexOf("QWEQWEQW"));  ****
+										System.out.println(arr.size());//返回此列表中的元素数   ****
+		          数组与ArryList的区别
+		          		数组能包含基本的类型和对象类型,
+		          		数组大小时固定的，ARRAYLIST是可变
+		         数组转换成集合
+		         			    //数组转换成集合
+							public  static void test06_1() throws Exception {
+								  Integer [] i= {1,2,3,4,5};
+								 List<Integer>  list= Arrays.asList(i);
+								   System.out.println(list);
+								     list.toArray();
+							}
+		
+			   	1-3-2 LinkedList：(创建的方式和遍历方式与ArrayList一样),调用的方法大同小异
+			   	     
+								所有操作都是按照双重链接列表的需要执行的。
+								在列表中编索引的操作将从开头或结尾遍历列表（从靠近指定索引的一端）。
+
+							
+				1-3-2-1 ArryList与LinkedList区别
+									数据存储的方式不一样的
+									ArryList对于删除与插入的操作的效率没有LinkedList块
+									LinkedList查询效率没有ArryList块
+								
+		
+				1-3-3 Vector(创建的方式和遍历方式与ArrayList一样) ：	
+							Vector 类可以实现可增长的对象数组。与数组一样
+							和ArryList类似
+							
+						1-3-3-1	 Vector与ArryList区别
+						     都是数组  不过Vector是老集合没有ArryList用的多,但是面试容易问
+						      	不过的是线程安全的问题
+						   		Vector是线程安全的而 ArryList不是线程安全的.
+						      	只是考虑速度不考虑线程安全没有ArryList效率块
+						      			
+				1-3-4 <E>泛型
+				     表示限制集合传入的数据必须是E类型的数据，注意E类型不能是基本数据类型
+				   	 列如
+		 		 		ArrayList<Test02 >  arr2=  new ArrayList<Test02>(); 
+		 			 	ArrayList<String>  arr1=  new ArrayList<String>();  
+				    		
+					
+				1-3-5  Iterator
+							对 collection 进行迭代的迭代器
+							//使用方法
+									public static void test01()  {
+												ArrayList  arr=  new ArrayList();
+												arr.add(123);
+												arr.add("1212312");
+												arr.add(new Date());
+												Iterator  it=  	arr.iterator();
+												   it.next();
+												   it.remove();//少，除业务逻需要的
+												while(it.hasNext()) {//it.hasNext()有没有元素
+													System.out.println(it.next());
+													System.out.println("------------");
+												}
+												System.out.println("-------------------it.remove();----");
+												
+											}
+											
+						
+				
+				1-3-5  ListIterator
+				        是Iterator的子接口
+				        		系列表迭代器，允许程序员按任一方向遍历列表、
+				        		迭代期间修改列表，并获得迭代器在列表中的当前位置
+								 		//ListIterator 遍历 
+							public static void test02()  {
+								ArrayList  arr=  new ArrayList();
+								arr.add(1231231231);
+								arr.add("123123123123123123");
+								arr.add(new Date());
+								ListIterator  lsit=	arr.listIterator();
+								while(lsit.hasNext()) {//it.hasNext()有没有元素
+									System.out.println(lsit.next());
+									System.out.println("------------");
+								}
+							}
+						
+		
+		
+		1-4 Set接口
+		
+		
+
+
+map

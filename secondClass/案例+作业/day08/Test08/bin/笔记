@@ -1,0 +1,305 @@
+1、生命周期
+	1-1、什么是生命周期
+			java中只要有线程有个有个完整的生命周期
+			   就相当于人的生老病死
+	1-2、五种状态
+		1)新建
+			当一个类的对象本声明创建时，新生线程对象处于新建的状态
+		2)就绪
+			处于新建的状态的时候，线程被start()后，将进入线程的队列等待CPU的时间片
+			,此时它已经具备了运行的条件
+		3)运行
+		   当就绪的线程被调度并获得处理资源的时候,变进入 了运行的状态
+		4)阻塞
+		   在某种的情况的下，被人为的方式进行挂起或者找执行的时候,让CPU并临时的进行中止
+		   ,就是阻塞的状态
+		5）死亡
+		   	线程执行完成了，它的全部工作，或者线程被提前强制的终止
+		   
+2、线程常用的方法
+		设置线程的名称
+				public static void testname() {
+							//设置名称  
+							new Thread(){
+								  public void run() {
+									  //设置线程对象名称的方法
+									  this.setName("小王");
+									   System.out.println("获取的名称:"+this.getName()+"");
+								  }
+							  }.start();
+						}		      
+		      ---------------------------------
+		      			//可以通过构造函数
+					public static void testname01() {
+						//设置名称    //设置线程对象名称的方法
+						new Thread("小张"){
+							  public void run() {
+								   System.out.println("获取的名称:"+this.getName()+"");
+							  }
+						  }.start();
+					}
+		   	获取正在执行的线程-----------------------------------	
+		   			//获取正在执行的线程
+					public static void testname02() {
+						//设置名称  
+						new Thread(){
+							  public void run() {
+								  System.out.println("获取正在执行的线程");
+								  System.out.println(Thread.currentThread().getName());
+							  }
+						  }.start();
+					}
+			线程休眠----------------------------------------------------
+							//线程休眠(按照毫秒进行计算的)
+					public static void testname03() {
+						//设置名称  
+						new Thread(){
+							  public void run() {
+								   for (int i = 0; i < 20; i++) {
+									   try {
+										   //色休眠的时间.毫秒计算的
+										Thread.sleep(5000);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									   System.out.println("线程:"+i+"号");
+								}
+							  }
+						  }.start();
+					}	   
+			 守护线程--------------------------------------------
+			 	设置某个线程为守护的线程
+			 	该线程不会进行单独的执行，单其他的非守护线程都执行结束，会进行自动的退出
+			 			//守护线程
+						public static void testname04() {
+							//设置名称  
+							new Thread(){
+								  public void run() {
+									   for (int i = 0; i < 6; i++) {
+										   System.out.println(getName()+"..........");
+									   }
+								  }
+							  }.start();
+							  System.out.println("--------------------");
+							  Thread  t2=	new Thread(){
+									  public void run() {
+										   for (int i = 0; i < 20; i++) {
+											   System.out.println(getName()+"====");
+										   }
+									  }
+								  }; 
+								  //设置为守护线程
+								  t2.setDaemon(true);
+								  t2.start();
+								}
+			 		加入线程--------------------------------------------------
+			 		   join()
+			 		      当某个程序执行中，调用其他的线程的join的时候，
+			 		   调用的线程将被进行阻塞，等待指定的线程,join线程执行完毕之后
+			 		   当前的线程才再次的进行执行
+			 		   当然也可以在等待的时候进行指定毫秒之后再执行
+			 		   		//加入线程
+									public static void testname05() {
+											//设置名称  
+										Thread t1=new Thread(){
+												  public void run() {
+													   for (int i = 0; i < 6; i++) {
+														   System.out.println(getName()+"..........");
+													   }
+												  }
+											  };
+											  System.out.println("--------------------");
+											  Thread  t2=	new Thread(){
+													  public void run() {
+														   for (int i = 0; i < 20; i++) {
+															   
+															     if(i==4){
+															    	 //插队的指定的时候,交替的执行
+															    	try {
+																		t1.join();
+																	} catch (InterruptedException e) {
+																		// TODO Auto-generated catch block
+																		e.printStackTrace();
+																	}   
+															     }
+															     System.out.println(getName()+"=====");
+															   
+														   }
+													  }
+												  }; 
+												  t1.start();
+												  t2.start();
+										}
+			 		    礼让线程-------------------------------
+			 		    		在线程的执行的过程中,让出CPU这房间
+			 		    			public class MyThread  extends Thread{
+											@Override
+											public void run() {
+												 for (int i = 0; i < 20; i++) {
+													 if(i%5==0) {
+														   Thread.yield();
+														   System.out.println("礼让线程"+getName()+":"+i);
+													 }
+													 System.out.println(getName()+":"+i);
+												}
+											}
+										}
+			 		   设置线程的优先级别	---VIP----------------------
+			 		   					//线程的优先设置
+										public static void testname07() {
+											Thread t=new Thread(){
+												  public void run() {
+													   for (int i = 0; i < 6; i++) {
+														   System.out.println(getName()+"..........");
+													   }
+												  }
+											  };
+											  
+												Thread t1=new Thread(){
+													  public void run() {
+														   for (int i = 0; i < 6; i++) {
+															   System.out.println(getName()+"=========");
+														   }
+													  }
+												  };
+											/*
+											 * t.setPriority(1); 
+											 * t1.setPriority(10); //设置的权限级别最大
+											 */		  
+												  t.setPriority(Thread.MIN_PRIORITY);
+												  t1.setPriority(Thread.MAX_PRIORITY);//设置的权限级别最大
+											t.start();
+											t1.start();
+										}
+			 		   			源码:
+			 		   				 /**
+											     * The minimum priority that a thread can have.
+											     */
+											    public final static int MIN_PRIORITY = 1;
+											
+											   /**
+											     * The default priority that is assigned to a thread.
+											     */
+											    public final static int NORM_PRIORITY = 5;
+											
+											    /**
+											     * The maximum priority that a thread can have.
+											     */
+											    public final static int MAX_PRIORITY = 10;
+3、线程安全问题和死锁
+	3-1 线程安全问题
+			在多线程的情况下,并发操作同一种数据的时候，就有可能会出现线程安全的问题
+			,使用同步技术就可进行处理这种问题,把操作的数据代码进行同步
+			不要多个线程一起操作
+								@Override
+							public void run() {
+							  while(true) {
+								 synchronized (obj) {
+									 if(number<=0) {
+										 break;
+									 }
+									 try {
+										 	Thread.sleep(2000);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									 System.out.println(getName()+":第"+number--+"号票"); 
+								}
+							  }	
+							}
+	3-2 死锁
+		多线程同步的时候，如果同步代码嵌套,使用相同的锁,就会出现死锁
+		不同的线程分别占用了对方需要的同步资源不进行放弃,都在等待对方进行放弃自己需要的资源
+		,就形成了死锁
+					private static String s1="左筷子";
+					private static String s2="右筷子";
+					public static void main(String[] args) {
+						 new Thread() {
+							 public void run() {
+								 while(true) {
+									synchronized (s1) {
+										System.out.println(getName()+"获取"+s1+"等待"+s2);
+												synchronized (s2) {
+													System.out.println(getName()+"获取"+s2+"开干");
+												} 
+									}
+								 }
+							 }
+						 }.start();
+						 new Thread() {
+							 public void run() {
+								 while(true) {
+									synchronized (s2) {
+										System.out.println(getName()+"获取"+s2+"等待"+s1);
+												synchronized (s1) {
+													System.out.println(getName()+"获取"+s1+"开干");
+												}
+									}
+								 }
+							 }
+						 }.start();
+					}
+				
+4、设计的模式(****)
+	单列模式
+			1.保证类在内存中只有一个对象
+			2.写法两种/饿汉和懒汉
+		  				//懒汉
+					class Singleton1{
+						  //私有的构造方法,
+						private Singleton1() {
+						}
+						//生明一个对象
+						private  static Singleton1 s;
+						//对外提供公开的访问方式
+						  public static Singleton1  getInstance() {
+							  if(s==null) {
+								  s=new Singleton1();
+							  }
+							  return s;
+						  }
+					}
+					//饿汉
+					class Singleton{
+						  //私有的构造方法,
+						private Singleton() {
+						}
+						//创建本类对象
+						private  static Singleton s=new Singleton();
+						//对外提供公开的访问方式
+						  public static Singleton  getInstance() {
+							  return s;
+						  }
+					}				
+				
+4、定时器
+				public class JavaTest6 {
+						public static void main(String[] args) throws IOException, InterruptedException {
+							Timer  timer=	new Timer();
+							timer.schedule(new MyTime(),new Date(),300);
+							while(true) {
+								Thread.sleep(1000);
+								System.out.println(new Date());
+								
+							}
+						}
+					}
+					
+					class  MyTime extends TimerTask{
+						public void run() {
+							 System.out.println("不能乱来...................");
+							//
+						}
+					}
+5.					
+				
+				
+				
+																				 	
+			 	
+			 	
+			 	
+			 	    
+

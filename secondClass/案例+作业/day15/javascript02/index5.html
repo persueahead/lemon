@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+<style>
+	.mYDIV{
+		color: red;
+	}
+	.div01class{
+		color: green;
+	}
+	
+</style>
+
+	</head>
+	<body>
+		<!--onclick=""点击事件-->
+		<button id="aID" >aid</button>
+		<p id="p"></p>
+		<hr />
+		<button onclick="function01()">添加子元素</button>
+		<p id="p1">
+			 添加一个LI的节点
+		</p>
+			<hr />
+		<button onclick="function02()">function02</button>
+			<hr />
+		<button onclick="function03()">function03</button>
+			<hr />
+		<button onclick="function05()">function05</button>
+			<hr />
+		<button onclick="function06()">function06</button>
+				<hr />
+		<button onclick="function07()">function07</button>
+		<a href="index.html" target="_parent">ndex.html</a>
+		<a href="index.html" target="_search">ndex.html</a>
+				<hr />
+		<button onclick="function08()">function08</button>
+		
+		
+		
+		
+		
+		<div id="div" class="div01class">
+			  我的DIV
+		</div>
+		<div class="div01class">
+			  我的DIV
+		</div>
+	</body>
+	<script>
+		/*给元素添加点击事件*/
+		 document.getElementById("aID")
+			 .addEventListener("click",function(){
+			 	document.getElementById("p").innerHTML="我点击了的";  
+			 })
+	   /*添加子元素*/
+		function function01(){
+		var node=	document.createElement("li");
+		var textNode=	document.createTextNode("中国");
+			node.appendChild(textNode);
+			document.getElementById("p1").appendChild(node);
+		}
+		/*打印子节点数组*/
+			function function02(){
+                var c=document.body.childNodes;
+			   for(i=0;i<c.length;i++){
+			   	  document.writeln(c[i].tagName);
+			   }
+			}
+		/*集合返回某个元素的子元素的*/
+			function function03(){
+                var c=document.body.children;
+                document.writeln(c.length);
+                document.write("<br />")
+			   for(i=0;i<c.length;i++){
+			   
+			   	  document.writeln(c[i].nodeName);
+			   }
+			}
+		/*设置某个元素的class的样式*/
+			function function05(){
+				/**/
+             document.getElementById("div").classList.add("mYDIV");
+			}
+		/*返回calss的属性*/
+		  	function function06(){
+				/**/
+				document.writeln(
+					//一个集合
+             document.getElementsByTagName("div")[0].className);
+             
+			} 
+		/*返回某个元素指定的属性*/
+		  	function function07(){
+           var a=  document.getElementsByTagName("a")[0];
+            var xx= a.getAttribute("target");
+             document.writeln(xx);
+			} 
+		/*返回指定属性的节点*/
+		function function08(){
+           var a=  document.getElementsByTagName("a")[0];
+            var xx= a.getAttributeNode("target").value;
+             document.writeln(xx);
+			} 
+		/*改变某个元素中属性的值*/
+		
+	 </script>
+</html>

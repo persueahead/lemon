@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的-->
+
+	</head>
+	<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton()">点击</button>
+			<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton01()">点击</button>
+	</body>
+	
+		<script type="text/javascript">
+				//IF...else  ...IF ...else
+		function  myFunciton01(){
+					/*方法	
+					*getDate()	从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+					* getDay()	从 Date 对象返回一周中的某一天 (0 ~ 6)。
+					* */
+		   var v=   new Date().getDay();
+
+		   switch(v){
+		   	      case 6:
+		   	       x="星期六";
+		   	         break;//这里的break和java中switch里面语法一样
+		   		 case 0:
+		   	       x="星期天";
+		   	         break;
+		   	     default:
+		   	       x="上班时间";
+		   	       break;
+		   	}
+		    document.write(x);
+			}
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+		<input type="button" onclick="goBack()"  value="goBack"/>
+		<input type="button" onclick="goForword()"  value="goForword"  />
+	<!---->
+	<hr />
+			<input type="button" onclick="go1()"  value="go1"  />
+			<input type="button" onclick="go2()"  value="go2"  />
+	
+	</body>
+	<script>/*history对象*/
+	 	
+	 	/*注意IE Opera浏览器  从0开始，  火狐谷歌 1 */
+	 	 document.write("获取历史列表中的URL的数量:"+history.length);
+	 	function  goBack(){
+	 		//历史列表中的前一个地址
+	 		window.history.back();
+	 	}
+	 	function  goForword(){
+	 		//历史列表中的下一个地址
+	 		window.history.forward();
+	 	}
+	 	
+	 	function  go1(){
+	 		//历史列表中的前进一页
+	 		window.history.go(1);
+	 	}
+	 	function  go2(){
+	 		//历史列表中的上一个页
+	 		window.history.go(-1);
+	 	}
+	 </script>
+</html>

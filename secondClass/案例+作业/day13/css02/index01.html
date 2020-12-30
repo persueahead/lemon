@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			span{
+				border:10px  solid  gray;
+				width: 200px;
+				height: 200px;
+				/*行转块*/
+				display: block;
+				color: red;
+				
+			}
+				div{
+				border:10px  solid red;
+				width: 100px;
+				height: 100px;
+				/*块转行*/
+				display: inline;
+			}
+				a{
+				border:10px  solid red;
+				width: 100px;
+				height: 100px;
+				/*隐藏*/
+				display: none;
+			}
+				em{
+				border:10px  solid red;
+				width: 100px;
+				height: 100px;
+				/*呈递为内联对象,但是对象的内容是块元素呈现的*/
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<!--行内标签和块级标签之间的转换-->
+		<span>spanspanspanspanspan</span>
+		<a>aaaaa</a>
+		<div style="background-color: #808080;color: red;font-size: 26;">divdivdiv</div>
+		<em>1212312312312312312</em>
+	</body>
+</html>

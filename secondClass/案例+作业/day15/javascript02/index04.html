@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+		<input type="button" onclick="goBack()"  value="goBack"/>
+		<input type="button" onclick="goForword()"  value="goForword"  />
+	<!---->
+		<input type="button" onclick="goResoure()"  value="goResoure"  />
+	<br/>
+		<input type="button" onclick="replace()"  value="replace"  />
+	
+	</body>
+	<script>/*location 对象*/
+	 	/*获取主机名端口*/
+	document.write("<br/>取主机名端口:"+window.location.host);
+	document.write("<br/>url的主机名:"+location.hostname);
+	document.write("<br/>取当前页面的完整的路径:"+location.href);
+
+			/*页面的跳转*/
+      function goBack(){
+      	window.location.href="https://www.baidu.com/";
+      }
+      /*加载新文档*/
+      function goForword(){
+      	window.location.assign("https://www.baidu.com/");
+      }
+      /*重新加载刷新*/
+         function goResoure(){
+      	window.location.reload();
+      }
+         /*重新的加并取代当前的文档*/
+             function replace(){
+      	window.location.replace("https://www.baidu.com/");
+      }
+	 </script>
+</html>

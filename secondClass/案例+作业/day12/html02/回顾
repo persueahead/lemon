@@ -1,0 +1,51 @@
+注解
+   自定义注解
+ 
+HTML  
+XHTML
+
+HTML5和HTML4之间的区别
+标题标签
+水平标签
+段落标签
+字体标签
+文本标签
+meta标签
+title标签
+HTML注释
+A标签
+  href  可进行跳转页可进行定义锚点
+  charset
+  name
+  id
+  class
+  target  
+  			-blank
+  			_self
+  			_top
+  			_parent
+  图像标签
+  		  img
+  		     alt
+  		     src
+  		     border
+  		     width
+  		     height
+列表
+  	   无序列表
+  	    <ul><li>
+  	     type
+  	        disc
+  	        circle
+  	        square
+  	        
+  	   
+  	  有序列表
+  	
+  	
+  	
+  	
+  	
+  	
+  		     	
+      

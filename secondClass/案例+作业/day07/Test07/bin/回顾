@@ -1,0 +1,16 @@
+字符流
+	FileReader
+	FileWriter
+	字符流之间的拷贝(一个输入和一个输出)
+	注意的:
+	  	字符流不进行拷贝非文本文件的数据(如图片
+	带缓冲流的字符流
+		 BufferedReader
+		 BufferedWriter
+		    		子类LineNumberReader 
+转换流
+	InputStreamReader和OutputStreamWriter
+数据流
+	DataInputStream和DataOutputStream
+	   字符串是xxx.writerUTF(),
+	   			

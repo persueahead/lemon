@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+
+<p>文档添加 onmousemove 事件句柄，当在文档中移动鼠标时会显示随机数。</p>
+<p>点击按钮移除事件句柄。</p>
+<button onclick="removeHandler()">点我</button>
+<p id="demo"></p>
+<script>
+document.addEventListener("mousemove", myFunction);
+function myFunction() {
+    document.getElementById("demo").innerHTML = Math.random();
+}
+function removeHandler() {
+    document.removeEventListener("mousemove", myFunction);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的-->
+
+	</head>
+	<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton01()">点击</button>
+			<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton02()">点击</button><br />
+		<button onclick="myFunciton03()">点击</button>
+	</body>
+	
+		<script type="text/javascript">
+			
+			//不等于！
+			function  myFunciton01(){
+  		  var  I=55;
+  		   if(!(I>0)){
+  		   	  alert("ok");
+  		   }else{
+  		   	alert("no");
+  		   }
+  		       
+		}	
+			
+			
+			//逻辑或  or
+			function  myFunciton02(){
+  		  var  I=55;
+  		   if(I<100 || I<0){
+  		   	  alert("ok");
+  		   }else{
+  		   	alert("no");
+  		   }
+  		       
+		}	
+			
+			//逻辑与  and
+		function  myFunciton03(){
+  		  var  I=55;
+  		   if(I<100 && I<0){
+  		   	  alert("ok");
+  		   }else{
+  		   	alert("no");
+  		   }
+  		       
+		}
+	</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--进行外联-->
+	<!--	<script type="text/javascript" src="js/new_file.js"></script>
+		--><!--内联-->
+	null
+	</head>
+	<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton()">点击</button>
+		<button onclick="myFunciton01('小张',123)">参数</button>
+	</body>
+	<!--javascript一般都是放在body后面的-->
+	<script type="text/javascript">
+		var lastName;//全局的
+		var lastage;
+   		function  myFunction(name,age){
+   			  var faName;//局部,就限制访问
+   	          this.lastName=name;
+   	          this.lastage=age;
+  		 }
+   		var c=new myFunction("小张",123);
+       alert(c.lastName);
+	</script>
+</html>

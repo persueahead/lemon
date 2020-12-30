@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			  //数组的定义方式之前讲过?
+			var arr=  new Array();
+			/*元素的数量与索引*/
+			arr[0]="tom";
+			arr[1]="jack";
+			document.write("长度"+arr.length);
+			document.write("<br/>");
+			document.write("是否存在元素"+arr.indexOf("jack"));
+			document.write("<br/>");
+			/*合并多个数组*/
+			var x=["array","list"];
+			var x1=["tom","jack"];
+			var x2=["ben","dyaln"];
+			var y1=x.concat(x1,x2);
+			document.write("<br/>");
+			document.write("合并"+y1);
+			/*将数组组成字符串
+			 */
+			document.write("<br/>");
+			var yy=["ben","dyaln"];
+			//结果ben,dyaln
+			document.write("yy数组"+ yy);
+			document.write("<br />");
+			var str= yy.join();//转换为字符串
+			document.write("将数组组成字符串"+ str);
+			document.write("类型"+ typeof str);
+			document.write("<hr/>");
+			var xxx=["array","list","ben","dyaln"];
+			xxx.pop();//删除最后一个元素
+			document.write("删除最后一个元素"+xxx);
+				document.write("<hr/>");
+			var xxx1=["array1","list","ben1","dyaln1"];
+			xxx1.push(111);//最后添加一个元素
+			document.write("最后添加一个元素"+xxx1);
+			document.write("<hr/>");
+			var xxx2=["array2","list2","ben2","dyaln2"];
+			xxx2.unshift("小张");//头部添加一个元素
+			document.write("头部添加一个元素"+xxx2);
+			document.write("<hr/>");
+			var xxx3=["array3","list3","ben3","dyaln3"];
+			xxx3.shift();//头部删除一个元素
+			document.write("头部删除一个元素"+xxx3);
+			document.write("<hr/>");
+			var xxx5=["array1","list2","ben3","dyaln4"];
+			document.write("原来的顺序"+xxx5);
+			xxx5.reverse();//反转
+			document.write("反转后的顺序"+xxx5);
+	</script>
+	</head>
+	<body>
+	</body>
+	
+</html>

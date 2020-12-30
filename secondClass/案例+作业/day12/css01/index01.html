@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+		<!--写CSS样式的
+			 写的地址3个
+			   行内样式
+			      通常是写标签上的
+			     如：<div style="background-color: green;height:30; width:30; border: dashed 1;" >
+			     		aaaaa</div>
+			     		
+			     		dashed:虚线
+			  内部样式
+			     通常是写在head中的
+			 外联样式(嵌入样式)
+							<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+			
+		-->
+		<!--内部样式
+        		<head>		     
+							<style type="text/css">  
+							xxxx{
+								
+							}
+							
+						</style>
+					</head>
+        -->
+		<style type="text/css">
+			/*
+			 * 标签选择器，选择某个标签
+			 * body 就是选择器
+			 
+			 * */
+			body{
+				background-color: wheat;
+			}
+			
+			div{
+				background-color:gray;
+				width: 30;
+				height: 30;
+				border: 1;
+			}
+
+			/*id选择器*/
+			#H1id{
+				background-color: gold;
+			}
+			/*类选择器*/
+			.H1class{
+				background-color: #0000FF;
+			}
+			div.div{
+				background-color: #0000FF;
+			}
+			/*属性选择器*/
+			input[type="text"]{
+				background-color: aqua;
+			}
+			/*层级选择器*/
+		body #div form input[type="password"]{
+				background-color:yellow;
+			}
+			/*伪类选择器*/
+			/*表示
+			    未访问连接的地址
+			 * */
+			#a1:link {
+				 color: #FF0000;
+				background-color:yellow;
+				 font-family: "微软雅黑";	
+			}
+			/*以及访问过的样式*/
+			#a1:visited{
+				 color:yellow;
+				 background-color: aqua;	
+				 font-family:"arial black";	
+				 font-size:50;
+				 font-style: red	
+			}
+			/*鼠标的指针移到到上面的时候*/
+			#a2:hover{
+				background-color: blueviolet;
+				font-family: "微软雅黑";
+				text-decoration: none;/*//去掉下划线*/
+			}
+			/*正在点击伪类选择器的样式*/
+			#a4:active{
+				background-color: blueviolet;
+			}
+		</style>
+	</head>
+	<body>
+		<a id="a1" href="#a111s">点击</a>
+		<a id="a2" href="http://edu.bjlemon.com/">点击1</a>
+		<a id="a3" href="http://edu.bjlemon.com/">点击</a>
+		<a id="a4" href="http://edu.bjlemon.com/">点击</a>
+		
+		
+		
+		<hr />
+		
+        	<!--行内样式 -->    
+		<div style="background-color: white;height:30; width:30; border: dashed 1;" >aaaaa</div>
+		<div >CCCCCCC</div>
+		<h1 id="H1id">好好好好好好好</h1>
+			<h1 class="H1class">好好好好好好好</h1>
+			<div>
+				didididid
+			</div>
+			<div class="div">
+				didididid
+				didididid
+			</div>
+			<div id="div">
+				<form>
+					<input type="text" />
+					<input type="password" />
+					<input type="submit" />
+					<input type="file" />
+					<input type="button" />
+				</form>
+			</div>
+			<h1>A</h1>
+			<h1>B</h1>
+			<h1>C</h1>
+			<h1>D</h1>
+			<h1>E</h1>
+			<h1>F</h1>
+			<h1>G</h1>
+			<h1>H</h1>
+			<h1 id="a111s">I</h1>
+	</body>
+</html>

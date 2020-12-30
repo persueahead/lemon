@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 <!--
+	    	 常用的
+	         form表单
+	    			action表示这个表单跳转的地址
+	    			method  提交的方式
+	    				get方式为：直接在action地址后面加参数， 由action页面获取，
+	    				但是提交数据一般比较小时选择这种方式，记忆中，大小一般在255字节以下吧。
+						POST方式为：游览器发送POST包到action页面，
+						 由action页面获取，数据较大， 大小一般由服务器设定。
+	    	 input标签是输入框
+	    	        属性	
+	    	    type
+	    	    		值text输入文本框
+	    	    		radio 单选注意多个要结合name使用	
+	    	    		reset  重置
+	    	    		submit  提交
+	    	    		image  图片
+	    	    		checkbox 多选
+	    	    		file  文件上传
+	    	    		hidden  隐藏的用户是看到不到，数据存在
+	    	    		password  密码
+	    	    size 大小
+	    	    value  设置input标签的默认值
+	    	    readonly 只读
+	    		password 密码输入的值是不可见的
+	    		disabled:禁用按钮
+	    	button   按钮标签
+	    	select  列表标签
+	    	
+	    -->
+	    	 <form action="framexcel.html" method="post">
+	    	 	<!--maxlength number 定义文本域中所允许的字符最大数目-->
+	    	 	<input value="ssss" type="hidden"  maxlength="111" />
+	    	 	<!--单行的文本框-->
+	    	 	姓名:<input type="text" 
+	    	 		 		 
+	    	 		 size="20"
+	    	 		 placeholder="请求输入你的名称" /><br />
+	    	 	密码<input type="password" /><br />
+	    	 		<!--name值必须相同才是单选
+	    	 			用label包装起来，点击文本内容也可以进行选择
+	    	 		-->
+	    	 	单选:<label><input  name="x" type="radio" />男</label>
+	    	 		<label><input name="x" type="radio" />女</label><br />
+	    		多选:
+	    		<!--
+                	lable可以整个包裹起来使用，也可以通过设定id，用for针对id进行lable包裹
+                -->
+	    			<input type="checkbox" />打飞机游戏
+			    	 <input type="checkbox" id="in" /> <label for="in">LOL</label>
+			    	  <label><input type="checkbox" />吃鸡</label><br />
+			    	头像:
+			    	<input type="file" /><br />
+			    	可选列表:
+			    	<!--
+                    	<select>：可选列表
+                    			option：列表选项
+                    			 multiple：该属性为 true 时，规定可一次选定多个项目。
+                    			 size：一次显示多少个项目
+                    -->
+			    	
+			    	<select>
+			    		 <option >四川</option>
+			    		 <option>北京</option>
+			    		  <option>上海</option>
+			    	</select>
+			    	    	列表:
+			    	<select size="4"  multiple="true">
+			    		 <option >四川</option>
+			    		 <option>北京</option>
+			    		  <option>京山</option>
+			    		  <option>上海</option><br />
+			    	</select>
+			    	
+			    	文本标签	：	
+			    	 <textarea cols="20" rows="20"></textarea><br />
+			    	 <!--
+                     	submit:提交按钮
+                     -->
+			    	<input type="submit" value="提交" /><br />
+			    	<input type="image" height="50" width="50" src="img/头像.jpg" value="提交" /><br />
+			    	
+			    	<input type="reset"   value="重置" /><br />
+			    	<button type="reset" value="重置1">重置1</button><br />
+	    	 </form> 
+	</body>
+</html>

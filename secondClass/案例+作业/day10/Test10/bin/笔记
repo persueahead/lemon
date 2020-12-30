@@ -1,0 +1,250 @@
+反射的常用的方法
+   1.通过反射获取某个对象中的方法
+			1）注意的使用传入的类型必须是和该方法参数的类型相同
+				//获取一个参数的方法
+				public  static void test01() throws Exception {
+					Users  users= new Users();
+					 Class cu=users.getClass();
+					   System.out.println("----------------");  
+					   Method  me=   cu.getMethod("testname",new Class[]{String.class});
+					   Users  obj=  (Users)me.invoke(users, "陈不要脸");
+					System.out.println(obj);
+				}	
+				
+					//获取多个参数的方法
+				public  static void test02() throws Exception {
+					Users  users= new Users();
+					 Class cu=users.getClass();
+					   System.out.println("----------------");  
+					   //注意的使用传入的类型必须是和该方法参数的类型相同
+					   Method  me=   cu.getMethod("testname",String.class,int.class);
+					   //Method  me=   cu.getMethod("testname",new Class[]{String.class,int.class});
+					   Users  obj=  (Users)me.invoke(users, "陈不要脸",200003);
+					System.out.println(obj);
+				}
+				
+-----------------
+获取类中属性
+    1/获取公共的属性
+    				public static void test01() throws Exception {
+							Users  users= new Users();
+							 Class cu=users.getClass();
+							 Field[] f=	cu.getFields();
+							 for (Field field : f) {
+								 System.out.println("field+"+field);
+							}
+						}
+						
+	2、所有所用的属性包括私有的
+					public static void test02() throws Exception {
+						Users  users= new Users();
+						 Class cu=users.getClass();
+						 Field[] f=	cu.getDeclaredFields();
+						 for (Field field : f) {
+							 System.out.println("field+"+field);
+							 System.out.println("field+"+field.getName());
+						}
+					}					
+					
+	3/设置public属性的值
+				public static void test03() throws Exception {
+						Users us=	new Users("小张","陈二狗",12,21);
+						Users  users= new Users();
+						 Class cu=users.getClass();
+						 Field fe= 	cu.getField("lastName");
+						  System.out.println(fe.get(us));
+						System.out.println("-------------------------------");
+						  fe.set(us, "陈不要脸");
+						  System.out.println(fe.get(us));
+					}	
+	4。设置私有的属性值
+					public static void test04() throws Exception {
+						Users us=	new Users("小张","陈二狗",12,21);
+						Users  users= new Users();
+						 Class cu=users.getClass();
+						 Field fe= cu.getDeclaredField("name");
+						 //开启私有可用
+						 fe.setAccessible(true);
+				        System.out.println(fe.get(us));
+				        System.err.println("-----------------------");
+				        fe.set(us,"董小姐");
+				        System.out.println(fe.get(us));
+					}
+					
+==========================================================
+动态代理(Spring会提到)
+		1。动态代理是什么
+			1）客户通过能来进行调用其他的对象，
+					并且是在程序运行的时候根据需要动态创建目标类的代理对象	
+		2。设计模式原理
+				1>使用一个代理将对象包装起来,然后用该代理对象取代原始对象
+				2>任何对着原始对象的调用都要通过代理
+				3>代理对象决定是否将方法调用转到原始对象上			
+		Proxy 
+		     	专门来进行完成代理的操作类,是所有的动态代理的父类
+		     	此类,为一个或者多个接口动态的生成实现类
+		  代理:
+		  	public class MyUsersHandler implements InvocationHandler {
+				private Object object;
+				public MyUsersHandler(Object object) {
+					this.object = object;
+				}
+				@Override
+				public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+						System.out.println("开启事务...............................................");
+						method.invoke(object, args);//就是需要进行完成的代理的具体的方法
+						System.out.println("......关闭事务.........................................");
+					return null;
+				}
+			}   			
+				
+						===============
+				public static void main(String[] args) {
+						IUsersImpl  impl=	new IUsersImpl();
+						impl.add();
+						System.out.println("---------------------");
+						MyUsersHandler  mu=	 new MyUsersHandler(impl);
+						
+						IUsers  iu=(IUsers)	Proxy.newProxyInstance(impl.getClass().getClassLoader(),
+								impl.getClass().getInterfaces(),mu);
+						iu.del();
+						System.out.println("=================");
+						System.out.println(impl.getClass().getName());
+						System.out.println(impl.getClass().getName());
+					}				
+					
+
+
+==========================================================
+xml
+   什么是xml
+   	 1)可扩展的标记语言
+   	 2)xml的语法和HTML的语法类似,但是HTML中的元素是固定，,xml的标签是可以进行自定义的
+  XML语法
+     1- 文档声明
+		    1）文档声明必须是<?xml xxxx  ?>结束的 	
+		  		    如<?xml version="1.0" encoding="UTF-8"?>
+		  	2)文档声明必须是从0行0列开始的	
+		  	3)文档声明有2个属性
+		  		  version:指定版本1.0
+		  		  encoding :编码 utf-8  
+	2-元素
+		  1)元素(标签)是XML文件中重要部分
+		  2)普通元素的结构是开始标签  标签(元素)体 结束标签组成
+		   如:<hello>大家好</hello>
+		   <hello><A>大家好</A></hello>
+		 3)空标签(元素)
+			    只有一个  开始标签没有结束的标签M单标签必须进行自我关闭
+			   如：<C/>
+		 4)标签(元素)命名规则
+		   A）区分大小写
+		   B）不能使用空格,不能使用特殊符号如:
+		   C）不建议使用XML xml 这来进行命名为标签名称	
+		 5)使用好的xml文档,必须要有有一个根元素    
+		   如:<A>就是跟元素标签
+		   <?xml  version="1.0" encoding="UTF-8"   ?>
+		   	<A>
+		 		 	<B>
+					 	 <C>
+						  </C>
+			  		</B>
+				</A>
+	3属性:
+	   1)属性就是标签上的一部分,必须出现在标签的开始标签中
+		     如:<Service name="Catalina">那么name就是属性
+	   2)属性定义的格式 
+	  	   <属性名=属性值> 如name="Catalina".中间属性的值使用单引号和双引号进行包裹起来
+	   3)一个标签(开始标签中)可以有0-N属性,但是一个标签中不能出现同名属性	   
+	   4)属性名不使用空格,特殊符号如: ,并且字母开头	   
+			   
+	4)注释:
+	   XML	文档和HTML中的类似，有开始就有结束,用于描述xml文档中标签的含义
+	     xml在解析会进行忽略
+		     如<!-- 我是大蒜哥 -->		
+------------------------
+转义字符
+       ·字符   十进制      预定义的实体引用      
+		>  &#60;   &lt;
+		<  &#62;   &gt;
+		"	&#34;  &quot;
+		'	&#39;  &apos;
+				        
+CDATA 区:
+	1.由于大量的转义字符在xml文件中出现，会让XML文档,可读性差,不便于二次开发， 不便于维护.....
+	2.使用CDATA那么CDATA中出现的< > " ' ....都是不需要进行转义的，都是默认为文本
+	  就提高了可读性.....
+	3.语法
+	 <![CDATA[
+	 		   这里写上你的内容.......
+	 ]]>  
+	  
+XML案列:
+		<?xml  version="1.0" encoding="UTF-8"   ?>
+			<web-app version="3.1">
+					<servlet>
+					   <servlet-name>hello</servlet-name>
+					   <servlet-class>XXXXX</servlet-class>
+					</servlet>
+			</web-app>
+			
+---------------------------			
+解析xml文件
+		3种
+		   1)DOM
+		       	 解析器把整个XML文档,转载到内存中,并进行解析成一个Document对象
+		       	  优点:
+		       	    	元素与元素之间保留了结构的关系,可以进行增删改查
+		       	 缺点:
+		       	 		xml文件多大,可能会出现内存溢出
+		       	 	   
+		   2)SAX(了解)
+		    		1.速度快，
+		    		2.逐行的进行扫描文件，一边扫描一边解析
+		    		3。执行没一行的时候都会进行触发一个事件
+		    		优点
+		    		   速度快
+		    		缺点
+		    		  只能读,逐行释放资源
+		   3)PULL(了解)  			  			        
+			   Android解析的时候用到
+			   
+			   
+解析器
+ 		   就是根据不同的解析方式来进行提供的具体实现
+ 		  有解析器操作频繁，不便于开发使用,也有简单易用操作的解析开发包
+ 	常见的解析开发包
+ 			1。JDom
+ 			 	dom4j 兄弟
+ 			2。jsoup
+ 			  处理HTML特定的解析开发包
+ 			3。dom4j
+ 				比较常用的解析开发包,Hibernate底层采用  
+ 			  
+ 			    	  
+ 		  
+ 		  
+ 		  
+ 		  
+    			   
+			   
+		    
+		   
+		   
+		   	       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+					
+														

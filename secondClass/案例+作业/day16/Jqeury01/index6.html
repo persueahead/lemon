@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+		<input id="h0" type="button" />
+		<hr />
+		<input id="h1" type="button"  value="双击事件"/>
+		<hr />
+		<h1>悬浮</h1>
+			<h2>鼠标指针悬浮</h2>
+	</body>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script>
+	/*	$(function(){
+			//类似  onclick=""
+			$("input").click(function(){
+				//写逻辑
+				alert(111);
+			});
+		});*/
+		//双击事件
+		$(function(){
+			$("#h1").dblclick(function(){
+				alert("双击事件");
+			});
+		});
+		$(function(){
+			$("h1").mouseenter(function(){
+				$(this).css("color","red");
+			});
+			$("h1").mouseleave(function(){
+				$(this).css("color","gold");
+			});
+		});
+		//鼠标指针悬浮
+			$(function(){
+			$("h2").hover(function(){
+				$(this).css("color","red");
+			},function(){
+				$(this).css("color","green");
+			});
+		});
+		</script>
+</html>

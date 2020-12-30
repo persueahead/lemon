@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+	</head>
+	<!--外三行-->
+	<frameset frameborder="1" bordercolor="blue" rows="20%,*,20%" framespacing="10">
+		<!--外第一行-->
+		<frame src="a.html"  />
+		<!--内三列-->
+			<frameset  frameborder="1"  bordercolor="black" framespacing="10" cols="15%,*,15%">
+				<!--一列-->
+				<frame  src="b.html"  />
+				<!--内三行-->			
+				<frameset border="10" frameborder="1" bordercolor="yellow" rows="15%,*" framespacing="10">
+					<frame src="c.html" />
+					<frame src="d.html"  />
+				</frameset>
+				<!--内第三列-->
+					<frame src="e.html" />
+			</frameset>
+			<frame src="f.html" bordercolor="purple" />
+	</frameset>
+</html>

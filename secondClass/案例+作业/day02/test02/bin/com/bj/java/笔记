@@ -1,0 +1,144 @@
+回想上一节课
+1.日期类
+	1-1:System
+		获取的毫秒:1970 1月1号 00:00:00
+			System.currentTimeMillis();
+	1-2:Date
+		sql和util包下
+			 new Date();注意是util包下的
+		常用的方法new Date().getTime();获取的时间:注意是东八区的标准时间
+		比便于国际化,在加上有废弃的方法
+	1-3:SimpleDateFormat
+		 用于格式时间和解析日期,说白了就是日期与字符串时间的转换
+		 用到的方法	
+		 	new SimpleDateFormat().parse("");
+		 	new SimpleDateFormat().format(date)	
+		 格式化得使用传入yyyy MM  dd  HH:mm:ss注意传入
+	1-4:Calendar 是一抽象的类
+	 	通过Calendar.getInstance();方法获取
+	 	常用的方法get(),set()
+	 	获取到年月日....
+	 	注意的是get()传入的参数是Calendar.静态的成员变量(可查询API)
+		特别注意的是通过	 Calendar获取星期几时从星期日开始的和中国的不一样
+2.异常
+  	2-1.什么是异常
+  	 		程序中发生不正常的情况就是异常
+  	2-2、异常类型(大体的) 		
+			2-2-1.Error 
+					系统级别的异常,如资源耗尽,内存溢出...
+			2-2-2.Exception
+					编程的时候导致的错误，可以进行针对性的处理这个问题
+					如:空指针...
+						public  void testGet02() {
+						  int[] I= {1,3,4};
+						  I=null;
+						  System.out.println(I[2]);
+						}
+	2-3.Exception
+				2-3-1.运行时的异常
+						说白了就是代码编写的时候是ok,但是程序只要运行就报错
+							如：空指针.下标越界。。
+								public  void testGet04() {
+									 int  q=2/0;
+									 //除数不能为0
+									  System.out.println(q);
+								}
+						如出现了如上的异常,一般都是,逻辑上的问题		
+				2-3-1.编译时的异常	
+							就得编译器要求必须进行处理的 异常
+							 如下: IOException  SQLException  ClassNotFoundException
+							 	NoSuchFieldException  NoSuchMethodException
+							 	........
+							 	//编译异常
+							public  void testGet05() {
+								SimpleDateFormat  sim
+								=new SimpleDateFormat();
+							String st=	sim.format(new Date());
+							Date  dat=	sim.parse(st);
+							}
+						   如出现了以上的异常,编译器必须要求进行捕获或者抛出
+						   
+3.异常的处理机制
+		3-1.抛出
+				
+					public  void testGet05() throws ParseException {
+						SimpleDateFormat  sim
+						=new SimpleDateFormat();
+					String st=	sim.format(new Date());
+					Date  dat=	sim.parse(st);
+					}
+		3-2.捕获						   
+					public  void testGet05() {
+							SimpleDateFormat  sim
+							=new SimpleDateFormat();
+							String st=	sim.format(new Date());
+							try {
+								Date  dat=	sim.parse(st);
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							}		   
+						   
+4.获取异常的语法
+		4-1、一种 try catch
+		  		try{。。。。}表示的是某块代码需要进行的把容易出现问题(异常)的代码进行包裹起来
+				catch  (异常类型  对象名) 表示的是对某个异常需要处理的异常类型
+				catch  (异常类型  对象名){。。。。}:{}括号里面进行需要对异常的处理
+				       对象名.getMessage();获取异常的信息
+					   对象名.printStackTrace(); 输出异常的信息在控制台显示   
+					   对象名.toStirng()
+					语法：
+					try {
+						Date  dat=	sim.parse(st);
+							} catch (ParseException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+		4-2、二种try finally
+				try{}：描述如上
+				finally{}:无异常是否存都会进行执行这个{}括号里面的代码
+				语法：
+				public void getTest() {
+						try {
+						} finally {
+						}
+						
+					}
+	
+				
+		4-3、三种	try catch.....  finally
+		    try catch finally解析如上
+					注意的catch中的层级关系
+							第一层的catch的异常处理的类型必须是第二层的异常处理类型的子类
+							小到大
+		
+					语法:
+					public void getTest01() {
+							try {
+							}catch ( ) {
+								// TODO: handle exception
+							}catch ( ) {
+								// TODO: handle exception
+							}catch ( ) {
+								// TODO: handle exception
+							} finally {
+							}
+						}						   
+5.抛出异常的层级关系(调用者和被调用者之间的关系)
+			  被调用者抛出的异常在调用者哪里,必须进行抛出或者获捕获异常
+			  并且是抛出或者捕获的类型必须是被调用异常的类型的同类型或者是父级		
+			  如:   
+					public void getTest003()throws IOException {
+						}
+						
+						public void getTest002()throws Exception {
+							getTest003();
+						}
+									   
+						   
+						   
+						   
+						   
+						   
+				

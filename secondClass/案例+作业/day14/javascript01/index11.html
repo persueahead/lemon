@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的
+			javascript出错不提示
+		-->
+		<script type="text/javascript">
+			function  studnet(name,age,lastName){
+				this.name=name;
+				this.age=age;
+				this.lastName=lastName;
+				this.minStudnet=minStudnet;
+				function   minStudnet(lastAge){
+					this.lastAge=lastAge;
+				}
+				
+			}
+			myStudnet=new studnet("tom",12,"jack");
+			//myStudnet.minStudnet("1212"); 
+		document.write(myStudnet.name+":"+myStudnet.age+":");
+			s=myStudnet.minStudnet;//获取对象
+			s.lastAge=125555;
+		document.write(s.lastAge);
+	</script>
+	</head>
+	<body>
+	</body>
+	
+</html>

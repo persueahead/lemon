@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的-->
+
+	</head>
+	<body>
+
+			<h1>这老师脑壳有屎</h1>
+		<button onclick="myFunciton01()">点击</button>
+		<button onclick="this.innerHTML='xxx'">点击</button>
+	</body>
+	
+		<script type="text/javascript">
+			function  myFunciton01(){
+				/*//一个对象
+				var  person=  new  Object();
+					person.lastName="John";
+					person.name="tom";
+					person.age="tom";
+					
+					document.write(person.lastName+":"+person.age+"<br/>");
+					}*/
+			//优化 ajax 会出现
+				student={
+					lastName:"John",
+					name:"tom",
+					age:12
+				}
+				document.write(student.lastName+":"+student.age);
+			}
+			
+	</script>
+</html>

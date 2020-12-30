@@ -1,0 +1,154 @@
+1-0  HashMap 获取值
+			1-0-1 遍历方式
+				public static void tets01() {
+					  HashMap<String,String> has= new HashMap();
+					  	has.put("姓名", "小张");
+						has.put("姓名1", "小张2");
+						has.put("姓名2", "小张3");
+						has.put("姓名3", "小张4");
+						//获取所以的键
+				     Set<String> st=has.keySet();
+				     Iterator<String> i=   st.iterator();
+						while (i.hasNext()) {//判断当前是否有元素
+							//获取对应的key 
+							String key=i.next();
+							 //根据Key获取Value
+							 String va=  has.get(key);
+							System.out.println(key+"："+va);
+						}
+					}
+			
+			1-0-2 遍历方式
+						Set<Map.Entry<String,String>> enset=has.entrySet();
+								Iterator<Map.Entry<String,String>> it=	enset.iterator();
+								  //获取每一个entry
+								    while(it.hasNext()) {
+								    	  //获取entry对象
+								    Map.Entry<String,String> ms=	it.next();
+								      //获取K 与V
+								      String key=ms.getKey();
+								      String va=ms.getValue();
+								      System.out.println(key+":"+va);
+								    }
+			1-0-3 遍历方式
+							for (String iterable_element : has.keySet()) {
+									  System.out.println(has.get(iterable_element));
+								}
+			1-0-4 遍历方式
+								for (Entry<String,String> iterable_element : has.entrySet()) {
+										  System.out.println(iterable_element.getKey());
+										  System.out.println(iterable_element.getValue());
+									}
+						案列:
+							使用Hashmap统计字母出现次数
+								String s="ASDASDDDDDDDDASDASDASDAAAAAA"; 
+								  char[]  c=	s.toCharArray();
+								      HashMap<Character, Integer>  hs=
+								      new HashMap<>();
+										for (char d : c) {
+											hs.put(d,!hs.containsKey(d)?1:hs.get(d)+1);
+											}
+										      
+										 for (Character d :hs.keySet()) {
+											System.out.println(d+":"+hs.get(d));
+										}
+											
+
+1-1 LinkedHashMap(了解)
+			哈希表和链接列表实现
+			    LinkedHashMap是HashMap的子类
+			    LinkedHashMap遍历的顺序怎么存就怎么出遍历的顺序和插入的顺序是一致的
+			     如:
+			     LinkedHashMap<String,Integer>  list=   new LinkedHashMap<>();
+						list.put("A",123);
+						list.put("C",34);
+						list.put("G",345);
+						list.put("B",346);
+						list.put("F",23);
+						list.put("D",456);
+						System.out.println(list);
+						System.out.println("---------------------------");
+								HashMap<String,Integer>  MA=   new HashMap<>();
+								MA.put("A",123);
+								MA.put("C",34);
+								MA.put("G",345);
+								MA.put("B",346);
+								MA.put("F",23);
+								MA.put("D",456);
+						System.out.println(MA);
+							
+				
+
+
+1-2 TreeMap
+				基于红黑树（Red-Black tree）的 NavigableMap 实现。
+				该映射根据其键的自然顺序进行排序
+						public static void tets037() {
+							TreeMap<Integer,Integer>  list=   new TreeMap<>();
+							list.put(1,123);
+							list.put(3,34);
+							list.put(4,345);
+							list.put(5,346);
+							list.put(6,23);
+							list.put(0,456);
+							System.out.println(list);
+						}
+				1-2-1 自定义排序
+						public class Student implements Comparable<Student> {
+							private String name;
+							private Integer age;
+							public Student(String name, Integer age) {
+								super();
+								this.name = name;
+								this.age = age;
+							}
+								------------
+									public static void tets037() {
+											TreeMap<Student,Integer>  list=   new TreeMap<>();
+											list.put(new Student("B",125),345);
+											list.put(new Student("B",126),346);
+											list.put(new Student("C",127),23);
+											list.put(new Student("C",128),456);
+											System.out.println(list);
+										}	
+	
+  								
+  			
+  
+  
+
+
+1-3 Hashtable	
+    1-3-1:线程安全的 ，不能传入null
+    1-3-2：输出的顺序是不能保证的
+    1-3-4:key也是唯一的
+							案例:
+						public static void tets037() {
+						//Hashtable  与HashMap 容易问的
+						Hashtable<String,String>  list=   new Hashtable<>();
+						list.put("ASAS","三生三世");
+						list.put("1212","1212");
+						list.put("1212","1212");
+						list.put("1212","1212");
+						list.put("1212","1212");
+						System.out.println(list);
+				
+						System.out.println("------------------");
+						HashMap<String,String>  HashtMap=   new HashMap<>();
+						HashtMap.put(null,null);
+						HashtMap.put("1212","1212");
+						HashtMap.put("1212","1212");
+						HashtMap.put("1212","1212");
+						HashtMap.put("1212","1212");
+						System.out.println(HashtMap);
+					}	
+	
+
+扩展Properties
+					public static void tets0387() {
+						//Properties  
+						Properties list=   new Properties();
+						list.setProperty("username", "root");
+						list.setProperty("password", "password");
+						System.out.println(list.getProperty("username"));
+					}	

@@ -1,0 +1,36 @@
+选择器
+    id选择器
+    元素选择器
+    类选择器
+    指定选择
+    属性选择器
+    奇偶数选择器
+    层级选择器
+  
+Jquery事件
+   点击事件  .click
+  双击事件
+  鼠标事件
+  表单提交
+效果
+  隐藏和显示
+  淡出淡入
+  滑动  上下
+对HTML的操作
+   text
+   html
+   val
+   都可获取和设置
+ 
+ 获取和设置属性
+   prop  /attr
+     
+添加元素
+  append
+  prepend
+  after
+  brfore
+删除元素
+  remove
+   empty 
+       

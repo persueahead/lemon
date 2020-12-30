@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			//添加事件
+			
+			document.addEventListener("click",function(){
+				document.getElementsByTagName("a")[0].innerHTML="添加成功";
+			});
+			
+			
+			document.addEventListener("mousemove",change);
+			
+			function change(){
+				document.getElementById("demo").innerHTML= Math.random();
+			}
+			
+			function deletElent(){
+			document.removeEventListener("mousemove",change);
+			}
+			function delet(){
+				 var c= document.getElementById("ul");
+				  c.removeChild(c.childNodes[0]);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>aaa</li><li>bbb</li><li>ccc</li>
+		</ul>
+		删除列表元素<input type="button" onclick="delet()" value="delet"/><br />
+		<a>添加事件</a>
+		<div id="demo">abc</div>
+		<button id="but" onclick="deletElent()" >点我</button>
+	</body>
+</html>

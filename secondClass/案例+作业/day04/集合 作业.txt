@@ -1,0 +1,14 @@
+1、描述HashSet、LinkedHashSet、TreeSet的区别用自己的话语描述
+
+2、编写一个程序，获取10个1至20的随机数，要求随机数不能重复，并进行升序的方式进行
+
+3、一个集合中存储了无序并且重复的字符串,定义一个方法,让其有序，而且还不能去除重复
+     如下集合:输出的结果为:aa, aa, aaa, aaaa, bbbb, ddd, ddd
+	ArrayList<String> list = new ArrayList<>();
+        list.add("aaaa");
+        list.add("aaa");
+        list.add("ddd");
+        list.add("ddd");
+        list.add("bbbb");
+        list.add("aa");
+        list.add("aa");

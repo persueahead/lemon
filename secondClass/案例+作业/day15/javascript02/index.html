@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+<style>
+	.mYDIV{
+		color: red;
+	}
+	.div01class{
+		color: green;
+	}
+	
+</style>
+
+	</head>
+	<body onkeydown="function7()">
+		<button onclick="function1()">function1</button>
+		<hr/>
+		<button onclick="this.innerHTML='同学们'">XXXX</button>
+		<hr/>
+		用户:<input type="text" id="div" value="" onchange="function2()" />
+		<span id="as"></span>
+		<hr/>
+		密码:<input type="text" id="div" value="" onblur="function3()" />
+		<span id="as1">adad</span>
+		<hr/>
+		<p onmouseover="mover(this)" onmouseout="mout(this)">PPPPPPPPP</p>
+		<hr/>
+		<p onmousedown="mover(this)" onmouseup="mout(this)">PfggPPP</p>
+		<hr/>
+		密码:<input type="text" id="div" value="少时诵诗书" onselect="function4()" />
+		<span id="as1"></span>
+		鼠标:<button    onmousedown="function5(event)" >function5</button>
+		<span id="as1"></span>
+		<hr/>
+	   <form action="https://www.baidu.com/" onsubmit="function6()" >
+	   		<input type="submit" value="提交" />
+	   </form>
+	</body>
+	<script>
+		function function1(){
+    		alert(11);
+			} 
+			/*onchange事件*/
+		function function2(){
+			  var va=document.getElementById("div");
+			  va.value= va.value.toUpperCase();
+			 document.getElementById("as").innerHTML="大写的数据";
+			} 	
+		/*onblur失去焦点*/
+				function function3(){
+			 document.getElementById("as1").innerHTML="失去焦点";
+			} 
+		/*s鼠标悬浮和移开事件*/
+			function mover(obj){
+				obj.innerHTML="在上面";
+			} 
+			function mout(obj){
+				obj.innerHTML="移开";
+			}
+		/*选中事件*/
+			function function4(){
+			  alert("选中了");
+			} 
+		/*鼠标事件*/	
+			function function5(event){
+				  var bt=event.button;
+			  if(bt==2){
+			  	 alert("右击");
+			  }else if(bt==0){
+			  	 alert("左击");
+			  }else if(bt==1){
+			  	  alert("中击");
+			  }else{
+			  	 alert("不是鼠标");
+			  }
+			}
+			/*表单提交提交*/
+			function function6(){
+			  alert("提交了");
+			} 
+		/*回车事件*/
+		 	function function7(){
+		 		  if(event.keyCode==13){
+		 		  	  alert("你按下回车");
+		 		  }else{
+		 		  	 alert(event.keyCode);
+		 		  }
+			} 
+	 </script>
+</html>

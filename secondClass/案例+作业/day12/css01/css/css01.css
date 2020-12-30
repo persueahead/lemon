@@ -1,0 +1,43 @@
+/*标签选择器*/
+div{
+	background-color: #FF0000;
+}
+
+ /*    id选择器*/
+#second{
+	background-color: chartreuse;
+}
+/*类选择器*/
+.san{
+	background-color: brown;
+	font-style: italic;
+}
+/*属性选择器*/
+input[type="text"]{
+	background-color: #00FFFF;
+}
+/*层级选择器*/
+body #div form input[type="password"]{
+	background-color: cadetblue;
+}
+/*伪类选择器*/
+/*未访问过的*/
+#a2:link{
+	color: red;
+	background-color:orange;
+	 font-family: "arial narrow";
+}
+/*访问过的*/
+#a2:visited{
+				 color:#00FFFF;
+				 background-color:black;	
+				 font-family:"微软雅黑";	
+				 font-size:50;
+				 font-style: red	
+			}
+/*指针移到上面*/
+#a1:hover{
+				background-color: blueviolet;
+				font-family: "微软雅黑";
+				text-decoration: none;/*//去掉下划线*/
+			}

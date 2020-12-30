@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.h{
+				color: blue;
+				background-color: aqua;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1 id="hh">h1h1h1h1</h1>
+			
+		<h2 id="h2" class="h">h1h1h1h1</h2>
+		<hr />
+		<button id="bu">but</button>
+		<h3>333333333333</h3>
+	</body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		//JS可进行设置样式
+		//document.getElementById("hh).style
+		$(function(){
+			// $("#hh").css("","")
+			$("#hh").addClass("h");
+			//删除样式
+			$("#h2").removeClass("h")
+			
+			$("#bu").click(function(){
+				$("h3").toggleClass("h");
+			});
+			
+		});
+		
+		
+	</script>
+</html>

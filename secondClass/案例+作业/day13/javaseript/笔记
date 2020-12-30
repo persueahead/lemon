@@ -1,0 +1,184 @@
+javascript
+   1.javascript就是web上一种功能强大的编程语言，用于开发中的交互式(页面后后台之间的数据的交互)
+      也可以使用javascript来完成页面上的动画
+   2.是不需要进行编译的，而是直接进行嵌套在html页面中的,浏览器执行
+   3。javascript也可以与HTML之间的数据进行交互
+   4。javascript也是一种解释性的语言(不用进行编译的)
+   作用
+   1。后台与页面之间的交互可以使用javascript来进行完成
+   2，浏览器事件做出相应.读取HMTL
+   3.验证或者提前数据...
+   
+   
+javascript引入的方式外联与内联
+  2种：
+    		<!--进行外联-->
+		<script type="text/javascript" src="js/new_file.js"></script>
+		<!--内联-->
+		<script type="text/javascript">
+			/*写上javascript的语法*/
+			  //提示窗
+			  alert(121)
+		</script>   
+   使用的时候语法规则
+   		必须字母和下划线开头,中间可以使用数字，字符，下划线
+   		也可以用$和_开头不建议这样使用
+   		不能包含空格，区分大小写
+  javascript关键参考课件
+  		大部分和java的关键字一样的使用 		
+ -------------------------
+ 变量的声明
+    	使用关键字var来进行生明类似java的声明成员变量
+    	var  name=12
+    	 /*可以一次性生产多个变量*/
+		var name="tom",age=30,derivcer="";
+		 var name;
+		 如上重新声明了变量值不进行丢失.一但赋值了就是新值
+ 运算和输出
+ 	    
+ 			 /*运算并进输出*/
+			  var x=3;
+			  var y=2;
+			  var z=x+y;
+		0. write输出 
+			  document.write(z+"<br/>");
+			  document.write(x+"<br/>");
+			  //window可不写
+		window.document.write(y+"<br/>");  
+		1。警告框 	
+    			alert("<div>SSSS</div>");//警告框
+    			  //window可不写
+ 			window.alert("<div>SSSS</div>");//警告框
+ 	   2.使用innerHtml
+ 	   	<body>
+		<h1 id="h1"></h1>
+		</body>
+		<!--javascript一般都是放在body后面的-->
+		<script type="text/javascript">
+			  document.getElementById("h1").innerHTML="输出的值1";
+		</script>
+  	   3.输出在控制台中
+ 			  console.log(11111111);
+ 			  浏览器上可以查询到数据
+ 标识符
+ 	不作为变量名称.和java一样
+注解
+  // 单行
+  /*  */多行
+  
+javascript的数据变量
+  基本数据类型
+  		字符串String  数字Number  布尔Boolean  空null  
+  		未定义的数据类型Undefined
+  引用数据类型  
+         对象Object  数组Arrahy   函数Function
+ 		数组的定义
+ 		   方式一
+ 				 var arr=new Array();
+				 arr[0]=1;
+				  arr[1]=3;
+				 arr[2]=4;
+        	 方式二
+        	 var arr=new Array("tom","jack");
+   	 		方式三
+   					var arr1=["tom","jack"];
+   					
+   				遍历		
+			for(i=0;i < arr1.length;i++){
+			          document.write(arr1[i]);
+			}
+	  对象和字符串的声明变量
+	 		 var  str=new String;
+			  var x=new Number;
+			  var  b=new Boolean;
+			  var arr =new Array;
+			  var obj=new Object;	
+	null和Undefined
+	  		var person;
+		   var  ca="JAVA";
+		   document.write(person+"<br/>");
+		    document.write(ca+"<br/>");
+		      var  ca=null;
+		   document.write(ca+"<br/>");
+函数
+   1.函数就是由事件驱动的或者当他被调用的时候 进行执行的代码块(可以重复的使用)
+   2.函数就是包裹在花括号这两个的代码块,前面使用了关键字function
+   3.注意大小写，function是小写，当调用函数的时候，调用的函数名称必须一致，
+   		如下:
+   		<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton()">点击</button>
+			</body>
+			<!--javascript一般都是放在body后面的-->
+			<script type="text/javascript">
+				//函数的使用
+				  function  myFunciton(){
+				  	 alert(1111);
+				  }
+			</script>
+     带有参数的函数
+       	<button onclick="myFunciton01('小张',123)">参数</button>	
+          function  myFunciton01(name,age){
+		  	 alert(name);
+		  	  alert(age);
+		  }
+		function  myFunciton02(va1,va2){
+		  	 alert(va1);
+		  	  alert(va2);
+		  }
+			 myFunciton02(va1,va2);
+带返回值的函数			  	
+	  	 function  myFunciton(){
+		  var v=453;
+		  return v;
+		  }
+		  var v1=myFunciton();
+	     document.write(v1);
+
+
+函数的调用
+  方式一
+  	 function  myFunciton(){
+		  alert(1111);
+		  }
+		myFunciton();
+  方式二
+  	function  myFunciton(){
+		  alert(1111);
+		  }
+  	 window.myFunciton();
+  方式三
+      函数作为方法来进行调用(类似ajax)
+		      var myObj={
+		      	   name:"tom",
+		      	   lastName:"Jack",
+		      	   fuName:function(){
+		      	   	  return this.name+":"+this.lastName;
+		      	   }
+		      }
+		    alert(myObj.fuName());
+  方式四
+	     	var lastName;
+			var lastage;
+	   		function  myFunction(name,age){
+	   	          this.lastName=name;
+	   	          this.lastage=age;
+	  		 }
+	   		var c=new myFunction("小张",123);
+	       alert(c.lastName);
+全局变量
+	1.在函数外面声明，整个脚本或者是函数都能进行访问
+
+局部变量
+	1.在函数内部声明的就是局部变量,它只能在函数内部访问
+	2.可以在每个函数中使用名称相同的局部变量,
+	3.只要函数运行完毕,变量就不存在
+
+变量的周期
+	1。生明周期是从声明的时间开始
+	2.局部变量函数运行完毕就删除
+	3.全局变量整个页面关闭就删除
+
+			
+   

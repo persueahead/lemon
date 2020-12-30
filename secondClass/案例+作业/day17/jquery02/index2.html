@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.h{
+				color: blue;
+				background-color: aqua;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<button id="bu">but</button>
+	<hr />
+	   <div style="width: 200PX;">(曾祖父元素)
+	      <ul>祖父元素
+	      	  <li>父元素<br/>
+	      	  	<span>span</span>
+	      	  </li>
+	      </ul>
+	   
+	   
+	   </div>
+	
+	
+	</body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			//父级
+           $("span").parent().css({
+           	"color":"red",
+           	"border":"3px solid red"
+           });
+           //所有的父级如(曾祖父  ,曾曾祖父.....  )
+           //可以进行指定到那个父级
+		    $("span").parents("ul").css({
+           	"color":"blue",
+           	"border":"3px solid blue"
+           });
+		});
+		
+		
+	</script>
+</html>

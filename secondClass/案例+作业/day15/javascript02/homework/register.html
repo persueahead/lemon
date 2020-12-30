@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>user register</title>
+		<script type="text/javascript">
+			function one(){
+				var x=document.getElementById("uesrname").value;
+				 var reg = /^\d+$/;
+				if(reg.test(x)!=true){
+					alert("请输入数字");
+				}else if(x.length!=11){
+					alert("长度有误");
+				}else{
+					alert("输入正确");
+				}
+				}
+				function tow(){
+						var y=document.getElementById("password").value;
+						if(y.length<6){
+							alert("位数不够");
+							}else if(!isNaN(y)){
+								alert("不能纯数字");
+							}else{
+								alert("输入正确");
+							}
+				}
+		</script>
+	</head>
+	<body>
+		账号：<input type="text"  placeholder="手机号" id="uesrname" onblur="one()"><br />
+		密码：<input type="password" placeholder="字母数字下划线组合" id="password" onblur="tow()">
+		<span id="span"></span>
+	</body>
+</html>

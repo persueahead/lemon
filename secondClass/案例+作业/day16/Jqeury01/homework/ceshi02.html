@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+		账号：<input id="one" type="text" placeholder="手机号" border="1px" /><br />
+		密码：<input id="tow" placeholder="字母数字组合" border="1px"/>
+		<button type="submit" >注册</button>
+		</form>
+		<script src="../js/jquery-1.9.1.min.js"></script>
+		<script>
+			var a="false";
+			var b="false";
+			$(function(){
+			$("#one").blur(function(){
+				var x=document.getElementById("one").value;
+				 var reg = /^\d+$/;
+				if(reg.test(x)!=true){
+					//限定手机号为数字
+					alert("请输入数字");
+				}else if(x.length!=11){
+					//限定长度为11
+					alert("长度有误");
+				}else{
+					a="true";
+					alert("输入正确");
+				}
+			});	
+			});
+			
+			$(function(){
+				$("#tow").blur(function(){
+					var y=document.getElementById("tow").value;
+						if(y.length<6){
+							alert("位数不够");
+							}else if(!isNaN(y)){
+								alert("不能纯数字");
+							}else{
+								b="true";
+								alert("输入正确");
+							}
+				});
+			});
+			
+			 $(function(){
+	     		$("form").submit(function(){
+	     			if("true".equals(a)&"true".equals(b)){
+	     		alert("注册成功");
+	     			}else{
+	     				alert("重新注册");
+	     			}
+	     		});
+	     });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+回想上节课
+1。自定义异常
+     		自定义的异常要有构造函数.并且该该函数中要有的super();如果没
+     		有那么也不好出现异常信息.
+     		要想给用户展示提示的信息(函数中的参数)，该参数传入到如super(message);
+     	好处:	（断言的案例）
+     			代码重复性的使用,二次开发，维护....
+     	throws  throw之间的区别
+		public class TestJava01 extends RuntimeException {
+		
+			public TestJava01() {
+				super();
+				// TODO Auto-generated constructor stub
+			}
+			public TestJava01(String message, Throwable cause) {
+				super(message, cause);
+				// TODO Auto-generated constructor stub
+			}
+			public TestJava01(String message) {
+				super(message);
+				// TODO Auto-generated constructor stub
+			}
+		}
+		
+		

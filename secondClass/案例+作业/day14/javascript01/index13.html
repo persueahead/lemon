@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的
+			javascript出错不提示
+		-->
+		<script type="text/javascript">
+			/*非数值
+			 * */
+			//这里是除值不是类型
+			/*只看数值不看类型*/
+			var  x=100/"10";
+//			与非数值相除为NAN
+			var y=100/"tom";
+//			无限大
+			var  x1=100 / 0;
+			document.write(x);
+			document.write("<br/>");
+			document.write(y);
+			document.write("<br/>");
+			//无穷大是一个数子
+			document.write(x1);
+			document.write("<hr/>");
+			//普通的数字
+			//typeof 判断是什么类型的数据
+			var y1=123;
+			document.write(y1+":");
+			/*typeof查看数据类型*/
+				document.write(typeof y1);
+			document.write("<br/>");
+			//一个数字的对象
+		 	 var num=	new Number(1231245);
+		 	document.write(num+":");
+		 	 document.write(typeof num);
+			document.write("<br/>");
+	</script>
+	</head>
+	<body>
+	</body>
+	
+</html>

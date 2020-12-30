@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+  <hr />
+  		<h1>
+  			 QEQWEQWE
+  			<b>阿达阿萨德</b>
+  			案卷手动<BR/>
+  		</h1>
+  		<input type="text" value="1121212" />
+	     <button id="but1">text</button>
+	     <button id="but2">html</button>
+	     <button id="but3">val</button>
+	       <button id="but4">获取属性值</button>
+	     <hr />
+	     <a href="https://www.baidu.com/">a标签</a>
+	       <button id="but5">设置属性值</button>
+	     <hr />
+	</body>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script>
+	     $(function(){
+	     	    $("#but1").click(function(){
+		     	     if($("h1").text().length>0){
+		     	    	alert("text：if"+$("h1").text());//单纯获取h1标签里面的文本
+		     	 	   }
+	     	    });
+	     	   
+	     	    $("#but2").click(function(){
+	     	    	alert("html："+$("h1").html());//h1标签中的所有，包括html标签
+	     	    });
+	     	        $("#but3").click(function(){
+	     	    	alert("val："+$("input").val());//input标签中的value值
+	     	    });
+	     	    //获取属性值
+	     	       $("#but4").click(function(){
+	     	    	alert("获取属性值："+$("a").attr("href"));//获取属性的值
+	     	    	alert("获取属性值："+$("a").prop("href"));//同上，但有的浏览器不支持
+	     	       });
+	     	       //设置属性值
+	     	     $("#but5").click(function(){
+	     	    		$("a").attr({
+	     	    			//设置属性的值，"属性"："值",....
+	     	    			"href":"https://www.jd.com/",
+	     	    			"title":"京东"
+	     	    		})
+	     	   			alert("设置属性值："+$("a").attr("href"));
+	     	       });
+	     });
+		</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+		<form>
+			用户:<input type="text"  />
+				<hr />
+			邮件:<input type="email"  />
+					<hr />
+			密码:<input type="password"  />
+			密码:<input type="button"  />
+			密码:<input type="button"  />
+			    <button>111</button>
+				<button >111</button>
+				<button>111</button>
+		</form>
+		<table>
+			<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+				<tr>
+				<td>11</td>
+				<td>11</td>
+			</tr>
+		</table>
+	</body>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script>
+			//属性选择器
+		$(function(){
+			//$("input[type=text]").css("color","darkblue");
+			//$("input[type!=text]").css("color","darkblue");
+		});
+		$(function(){
+			//click   相当于 onclick=""
+			//表示选择了 input标签的type是button  和 button标签
+			$(":button").click(function(){
+				  alert(11);
+			});
+		});
+		//偶数
+		$(function(){
+			$("tr:even").css("color","darkblue");
+		});
+		//奇数
+		$(function(){
+			$("tr:odd").css("color","red");
+		});
+		</script>
+</html>

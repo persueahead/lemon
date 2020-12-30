@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的-->
+
+	</head>
+	<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton01()">点击</button>
+			<h1 id="h1">标题</h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton02()">点击</button><br />
+		<button onclick="myFunciton03()">点击</button><br />
+		<button onclick="myFunciton04()">点击</button>
+	</body>
+	
+		<script type="text/javascript">
+			
+		function  myFunciton01(){
+  		        	  var  I=55;
+  		       		var j="55555";
+			 	    alert(I!==j);
+		}
+		
+		function  myFunciton02(){
+  		     	 var  I=55;
+  		       	var j="55";
+  		       	/*
+  		       	 !=比对两值是否一致,不考虑类型
+  		       	 * */
+			 	alert(I!=j);
+		}
+		
+		
+				function  myFunciton03(){
+  		      var  I=55;
+  		       var j="55";
+  		       /*
+  		        ===进行必须值又要进行比较类型
+  		        * */
+			alert(I===j);
+		}
+			
+		function  myFunciton04(){
+  		      var  I=55;
+  		       var j="5";
+  		     
+   		/*
+   		     ==比较的值，不考虑到类型
+   		 * */
+			alert(I==j);
+		}
+	</script>
+</html>

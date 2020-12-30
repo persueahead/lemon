@@ -1,0 +1,312 @@
+Navigator对象 
+      获取浏览器相关的信息
+      1、浏览器的代号
+	 <script>
+	 	 		 document.write("浏览器的代号:"+navigator.appCodeName);
+	 		 	  document.write("<br/>版本信息:"+navigator.appVersion);
+	 		 	  document.write("<br/>cookie值:"+navigator.cookieEnabled);
+	 		 	  document.write("<br/>硬件平台:"+navigator.platform);
+	 </script>
+Screen对象
+   包含了客户端显示屏幕的信息
+   	 	 <script>
+	 	 		 document.write("可用的高度:"+screen.availHeight);
+	 		 	  document.write("<br/>可用的宽度:"+screen.availWidth);
+	 		 	  document.write("<br/>屏幕的总高度:"+screen.height);
+	 		 	  document.write("<br/>屏幕的总宽度:"+screen.width);
+	 		 	    document.write("<br/>屏幕的分辨率:"+screen.pixelDepth);
+		 </script>
+history对象
+      访问过了的URL地址
+     	<script>/*history对象*/
+	 	
+	 	/*注意IE Opera浏览器  从0开始，  火狐谷歌 1 */
+	 	 document.write("获取历史列表中的URL的数量:"+history.length);
+	 	function  goBack(){
+	 		//历史列表中的前一个地址
+	 		window.history.back();
+	 	}
+	 	function  goForword(){
+	 		//历史列表中的下一个地址
+	 		window.history.forward();
+	 	}
+	 	
+	 	function  go1(){
+	 		//历史列表中的前进一页
+	 		window.history.go(1);
+	 	}
+	 	function  go2(){
+	 		//历史列表中的上一个页
+	 		window.history.go(-1);
+	 	}
+	 </script>
+	 
+location 对象
+  	<script>/*location 对象*/
+	 	/*获取主机名端口*/
+	document.write("<br/>取主机名端口:"+window.location.host);
+	document.write("<br/>url的主机名:"+location.hostname);
+	document.write("<br/>取当前页面的完整的路径:"+location.href);
+
+			/*页面的跳转*/
+      function goBack(){
+      	window.location.href="https://www.baidu.com/";
+      }
+      /*加载新文档*/
+      function goForword(){
+      	window.location.assign("https://www.baidu.com/");
+      }
+      /*重新加载刷新*/
+         function goResoure(){
+      	window.location.reload();
+      }
+         /*重新的加并取代当前的文档*/
+             function replace(){
+      	window.location.replace("https://www.baidu.com/");
+      }
+	 </script>  
+
+===============================\
+dom对象
+   HTML  Document  Object  Model  就是没元素上的节点
+   HTML元素  属性  文本  注释..都是节点
+   
+Document 对象
+   HTML加载的时候，就会生成Document对象是HTML的根元素.也是Window对象的部分
+      window.document进访问
+     属性 和方法
+    		    document.write()
+				document.activeElement  返回当前获取焦点元素
+				document.createAttribute()  创建一个属性节点
+				document.createElement() 创建元素节点
+				document.createTextNode() 创建文本节点
+				document.forms  返回对文档中所有 Form 对象引用
+				document.getElementsByClassName() 返回文档中所有指定类名的元素集合，作为
+					NodeList 对象
+				 document.getElementById()  返回对拥有指定 id 的第一个对象的引用
+				document.getElementsByTagName()  返回带有指定标签名的对象集合
+	    案列
+		      document.body 返回文档的body元素
+						<script>/*location 对象*/
+			/*
+			    创建节点和设置文件节点的*/
+			    function myFuunction(){
+			    	//创建一个按钮的节点
+			    	var button=  document.createElement("button");
+			    	var b= document.createTextNode("同学们");//文本
+			    	button.appendChild(b);//追加值节点(元素)
+			    	//设置显示的位置
+			    	document.body.appendChild(button);
+			    }
+			    /*
+			     返回文档的根节点
+			     * */
+			       function myFuunction1(){
+			       var c= document.documentElement.nodeName;
+			        document.writeln(c);
+			       }
+			       /*获取class名称的元素集合
+			        class名可以多个 id是唯一的
+			        * */
+			       function myFuunction2(){
+			       	//返回一个集合
+			       var c= document.getElementsByClassName("a");
+			       //innerHTML  获取某个元素对应的文本信息
+			          //document.writeln(c[0].innerHTML);
+			       //也可以进行设置
+			       c[0].innerHTML="同学们你好呀";
+			       }  
+			       /*通过id*/
+			        function myFuunction3(){
+			       	//返回一个对象
+			       var c= document.getElementById("aID");
+			       //innerHTML  获取某个元素对应的文本信息
+			       //也可以进行设置
+			       	c.innerHTML="同学们你好呀";
+			       }  
+			       /*没有id也么有calss 就name*/
+			         function myFuunction4(){
+			       	//返回一个集合
+			       var c= document.getElementsByName("names");
+			        document.writeln(c.length);
+			       }  
+			      /*通过标签名来进行获取*/
+			         function myFuunction5(){
+			       	//返回一个集合
+			       var c= document.getElementsByTagName("p");
+			       //注意innerHTML 要对象是集合还是一个对象
+			       document.getElementsByTagName("p")[0].innerHTML="ssdfadfasdfasdf";
+			         }
+			 </script>
+
+DOM 元素对象
+			element.appendChild() 为元素添加一个新的子元素
+			element.addEventListener() 向指定元素添加事件句柄
+			element.childNodes 返回元素的一个子节点的数组
+			element.children 返回元素的子元素的集合
+			element.classList 返回元素的类名，作为 DOMTokenList 对象
+			element.className 设置或返回元素的class属性
+			element.getAttribute() 返回指定元素的属性值
+			element.getAttributeNode() 返回指定属性节点
+			element.setAttribute()
+			element.setAttributeNode()
+			//删除的
+			removeAttribute
+			removeChild
+	案列：
+				<script>
+					/*给元素添加点击事件*/
+					 document.getElementById("aID")
+						 .addEventListener("click",function(){
+						 	document.getElementById("p").innerHTML="我点击了的";  
+						 })
+				   /*添加子元素*/
+					function function01(){
+					var node=	document.createElement("li");
+					var textNode=	document.createTextNode("中国");
+						node.appendChild(textNode);
+						document.getElementById("p1").appendChild(node);
+					}
+					/*打印子节点数组*/
+						function function02(){
+			                var c=document.body.childNodes;
+						   for(i=0;i<c.length;i++){
+						   	  document.writeln(c[i].nodeName);
+						   }
+						}
+					/*返回某个元素的子元素的集合*/
+						function function03(){
+			                var c=document.body.children;
+						   for(i=0;i<c.length;i++){
+						   	  document.writeln(c[i].tagName);
+						   }
+						}
+					/*设置某个元素的class的样式*/
+						function function05(){
+							/**/
+			             document.getElementById("div").classList.add("mYDIV");
+						}
+					/*返回calss的属性*/
+					  	function function06(){
+							/**/
+							document.writeln(
+								//一个集合
+			             document.getElementsByTagName("div")[0].className);
+			             
+						} 
+					/*返回某个元素指定的属性*/
+					  	function function07(){
+			           var a=  document.getElementsByTagName("a")[0];
+			            var xx= a.getAttribute("target");
+			             document.writeln(xx);
+						} 
+					/*返回指定属性的节点*/
+					function function08(){
+			           var a=  document.getElementsByTagName("a")[0];
+			            var xx= a.getAttributeNode("target").value;
+			             document.writeln(xx);
+						} 
+					/*改变某个元素中属性的值*/
+					
+				 </script>		
+				<script>
+					/*改变某个元素中属性的值*/
+					function function09(){
+			           var a=  document.getElementsByTagName("input")[0]
+			           .setAttribute("value","button");
+			              var a=  document.getElementsByTagName("input")[0]
+			           .setAttribute("type","button");
+						} 
+					/*设置或者改变指定的属性节点
+					  类似js事件添加样式
+					 * */
+						function function10(){
+			           var aclass=  document.createAttribute("class");
+			         		 aclass.nodeValue="div01class";
+			          document.getElementsByTagName("h1")[0].setAttributeNode(aclass);
+						} 
+					/*删除某个属性*/
+					function function11(){
+			    		  document.getElementsByTagName("p")[0].removeAttribute("style");
+						} 
+					/*删除子元素*/
+					function function12(){
+			    		 var c= document.getElementById("ul");
+			    		 		c.removeChild(c.childNodes[0]);
+						} 
+				 </script>
+
+DOM 事件
+	  如之前使用的onclick(点击)就是Dom事件
+	事件是通常和函数进行结合使用的,用于触发函数的
+		onchange 用户改变域的内容
+		onblur 元素失去焦点
+		onclick 鼠标点击某个对象
+		onfocus 元素获得焦点
+		onsubmit 提交按钮被点击
+		onunload 用户退出页面	  
+   案例：
+   		<body>
+		<button onclick="function1()">function1</button>
+		<hr/>
+		<button onclick="this.innerHTML='同学们'">XXXX</button>
+		<hr/>
+		</body>
+		<script>
+			function function1(){
+	    		alert(11);
+				} 
+		 </script>
+	 		<script>
+		function function1(){
+    		alert(11);
+			} 
+			/*onchange事件*/
+		function function2(){
+			  var va=document.getElementById("div");
+			  va.value= va.value.toUpperCase();
+			 document.getElementById("as").innerHTML="大写的数据";
+			} 	
+		/*onblur失去焦点*/
+				function function3(){
+			 document.getElementById("as1").innerHTML="失去焦点";
+			} 
+		/*s鼠标悬浮和移开事件*/
+			function mover(obj){
+				obj.innerHTML="在上面";
+			} 
+			function mout(obj){
+				obj.innerHTML="移开";
+			}
+		/*选中事件*/
+			function function4(){
+			  alert("选中了");
+			} 
+		/*鼠标事件*/	
+			function function5(event){
+				  var bt=event.button;
+			  if(bt==2){
+			  	 alert("右击");
+			  }else if(bt==0){
+			  	 alert("左击");
+			  }else if(bt==1){
+			  	  alert("中击");
+			  }else{
+			  	 alert("不是鼠标");
+			  }
+			}
+			/*表单提交提交*/
+			function function6(){
+			  alert("提交了");
+			} 
+		/*回车事件*/
+		 	function function7(){
+		 		  if(event.keyCode==13){
+		 		  	  alert("你按下回车");
+		 		  }else{
+		 		  	 alert(event.keyCode);
+		 		  }
+			} 
+	 	</script>
+	 	
+定时事件	 	

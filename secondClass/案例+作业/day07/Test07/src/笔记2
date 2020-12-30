@@ -1,0 +1,189 @@
+1、线程是什么
+   提前进行铺垫
+    1-1.程序
+            	就是为完成一种特定的任务，某种编程语言来进行编写一组集合指令      
+ 	1-2.进程
+ 		1）是程序的一次的执行过程或者是正在运行的一个小程序
+ 		2）动态的过程中，它自身会的产生,存在和消亡的多程
+ 		  如Eclipse ....程序是静态,进程是动态的
+ 	1-2.线程
+ 		1）进程可跟一步的进行细化为线程,
+ 		2）一个程序可以同时执行多个线程，就是多线程	  
+ 	    3)  多线程并发,执行可以提高程序的效率,也可以同时完成多个工作项目
+ 	1-3多线程使用的场景
+ 		百度网盘可以开启多个线程一起下载(下载多个文件)
+ 		微信多个开视频
+ 		服务器可以处理多个客户的请求
+ 	1-4)多线程并行和并发的区别(****)
+ 			1）并行
+ 			   	就是两个任务同时运行,如A任务进行的同时,B任务也在进行执行
+ 			   	  多核CPU
+ 			2)并发
+ 	  			是两个任务,都是请求运行而处理器只能接受一个任务，就是需要两个任务进行安排轮流执行
+ 	  			由于时间短使用者感受不到，
+ 	1-5)请问JVM中是多线程的吗?(****)
+ 	    JVM启动的时候至少启动了垃圾回收线程和主线程所以是多线程
+ 	      	  public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
+							  for (int i = 0; i <8; i++) {
+								  		  new Finalize();
+							  }
+							  for (int i = 0; i <8; i++) {
+						  		 System.out.println("----主程序..............");
+						  		 System.gc();
+							  	}
+						}
+					}
+				class  Finalize{
+					@Override
+					protected void finalize() throws Throwable {
+				      System.out.println("我清理了..............");
+					}
+				}
+2、线程的创建于启动
+   	两种方式
+   	     2-1;继承 //注意:子类需要进行重写run方法
+   	     		线程 是程序中的执行线程。Java 虚拟机允许应用程序并发地运行多个执行线程。 
+				public class Student  extends  Thread{
+						@Override
+							public void run() {
+								System.out.println("我执行了Student2 ");
+								
+						}
+				}
+   	     		
+   	     2-1-1、使用方式
+   	     			public static void main(String[] args) {
+								//创建对象
+								Student2  stu=   new Student2();
+									stu.start();//开启线程
+							}
+   	     
+   	     2-2:实现
+   	       		  注意:实现了Runnable的接口就需要要有run方法
+					public class Student  implements Runnable{
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+										//写上你业务逻辑
+									System.out.println("public class Student  implements Runnable");
+						}
+					}
+ 			2-2-1、使用方式
+ 						public static void main(String[] args) {
+								Student stu= new Student();
+								//参数传递给Thread的构造函数
+								Thread  t=new Thread(stu);
+								t.start();//开启线程
+							}
+			Runnable启动原理
+					    public Thread(Runnable target) {
+						        init(null, target, "Thread-" + nextThreadNum(), 0);
+						    }
+					
+						    @Override
+						    public void run() {
+						        if (target != null) {
+						            target.run();
+						        }
+						    }
+	
+        2-3：线程的生命周期
+        	开启
+        	就绪
+        	运行
+        	休眠
+        	死亡
+
+3、创建线程的类和创建线程的接口之间的区别(******)
+  3-1: 源码的区别
+  			1)	Thread
+  			      由于继承了该类,那么子必须要有run方法
+  			  	 当调用start的时候,是直接找子类的run方法(JVM完成)
+  			
+  			2)	Runnable
+  			       构造函数进行传入的引用,
+  			     而调用Start的时候,run方法在内进行判断成员变量Runnable引用的变量是否为空
+  			    不为空的时候就调用 Runnable中的run方法,运行时候实现类的run方法
+   3-2：好处与弊端
+   		1)	Thread
+   			好处
+   				可以直接的使用该类中的方法,代码简单	
+      		弊端	    
+      			如果某个有了父类，就不能使用这种继承的方法，java单继承的
+  		2)	Runnable(多,,某个线程在多个类上执行)	    
+			好处	
+				可以自己定义线程类,有了父类也没有关系的，不影响的实现,因为有个父类也是实现
+				可以进行实现,java可以进行多实现接口
+      		弊端	 
+			  不能自己使用Thread中的方法需要进行获取到线程对象后，
+			  才能得到Thread的方法，代码多
+4、匿名内部类的使用创建线程(了解)
+			  public class Test5 {
+						//Thread
+						public  static void getVoid() {
+							   new Thread(){
+								     public void run() {
+								    	 for (int i = 0; i < 8; i++) {
+								    		 //业务逻辑写上
+											System.out.println("+++"+i);
+										}
+								     }
+							   }.start();
+						}
+	
+						//接口
+						public static void getVoid01() {
+							  new Thread(new Runnable() {
+								@Override
+								public void run() {
+									//写上业务逻辑
+									for (int i = 0; i <5; i++) {
+										System.out.println("======="+i);
+									}
+								}
+							}).start();
+						}
+					  
+5、线程的同步
+			1、使用synchronized关键字相当于加上一把锁.
+					  对于对象来进行定义的段代码块,就是叫做同步的代码块		
+			2、多个同步的代码块如使用相同的锁对象，那么就是同步的
+	使用的场景
+	        1.线程并发，,有多段代码同时执行的时候。希望某段代码块执行的过程中
+	       	   CUP不要进行切换到其他的线程中进行工作，这个就是叫做同步
+	使用多线程的优势
+			提高了cpu的利用率
+			改善了程序的结构钢
+			将复杂的进程分成了多个线程，独立运行，利于理解和改善对应的代码     
+	同步的代码块
+				public   void getVoid() {
+					synchronized(this) {
+						  System.out.print("一号:");
+						  System.out.print("同");
+						  System.out.print("步");
+						  System.out.print("代");
+						  System.out.print("码");
+						  System.out.print("\r\n");
+					}
+				}    	
+	方法上使用synchronized
+			public  synchronized  void getVoid() {
+					  System.out.print("一号:");
+					  System.out.print("同");
+					  System.out.print("步");
+					  System.out.print("代");
+					  System.out.print("码");
+					  System.out.print("\r\n");
+				}       	
+
+6、生明周期		
+				  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  

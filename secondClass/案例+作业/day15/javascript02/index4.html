@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+		<button onclick="myFuunction()">myFuunction</button>
+			<hr />
+	<button onclick="myFuunction1()">myFuunction1</button>
+				<hr />
+	<button onclick="myFuunction2()">myFuunction2</button>
+				<hr />
+	<button onclick="myFuunction3()">myFuunction3</button>
+					<hr />
+	<button onclick="myFuunction4()">myFuunction4</button>
+						<hr />
+	<button onclick="myFuunction5()">myFuunction5</button>
+		<hr />
+		<a class="a">a1</a>
+		<a class="a">a2</a>
+		<a class="a">a3</a>
+		<a class="a">a4</a>
+				<hr />
+		<a id="aID">aIDaIDaIDaIDaID</a>
+				<hr />
+				<input name="names" type="radio" value="男" />
+				<input name="names" type="radio" value="女" />
+				<hr />
+				<p>p111111</p>
+				<p>p222222</p>
+				<p>p33333333</p>
+				<p>p4444444</p>
+				<p>p5555555555</p>
+	</body>
+	<script>/*location 对象*/
+	/*
+	    创建节点和设置文件节点的*/
+	    function myFuunction(){
+	    	//创建一个按钮的节点
+	    	var button=  document.createElement("button");
+	    	var b= document.createTextNode("同学们");//文本
+	    	button.appendChild(b);//追加值节点(元素)
+	    	//设置显示的位置
+	    	document.body.appendChild(button);
+	    }
+	    /*
+	     返回文档的根节点
+	     * */
+	       function myFuunction1(){
+	       	//documentElement 属性以一个元素对象返回一个文档的文档元素
+	       var c= document.documentElement.nodeName;
+	        document.writeln(c);
+	       }
+	       /*获取class名称的元素集合
+	        class名可以多个 id是唯一的
+	        * */
+	       function myFuunction2(){
+	       	//返回一个集合
+	       var c= document.getElementsByClassName("a");
+	         //也可以进行设置
+	       c[0].innerHTML="同学们你好呀";
+	       //innerHTML  获取某个元素对应的文本信息
+	          document.writeln(c[0].innerHTML);
+	     
+	       
+	       }  
+	       /*通过id*/
+	        function myFuunction3(){
+	       	//返回一个对象
+	       var c= document.getElementById("aID");
+	       //innerHTML  获取某个元素对应的文本信息
+	      2 //也可以进行设置
+	       	c.innerHTML="同学们你好呀";
+	       }  
+	       /*没有id也么有calss 就name*/
+	         function myFuunction4(){
+	       	//返回一个集合
+	       var c= document.getElementsByName("names");
+	        document.writeln(c.length);
+	       }  
+	      /*通过标签名来进行获取*/
+	         function myFuunction5(){
+	       	//返回一个集合
+	       var c= document.getElementsByTagName("p");
+	       //注意innerHTML 要对象是集合还是一个对象
+	       document.getElementsByTagName("p")[0].innerHTML="ssdfadfasdfasdf";
+	         }
+	 </script>
+</html>

@@ -1,0 +1,73 @@
+1.描述
+	final
+	finally
+	finalize
+	的区别?
+			1、final 
+				 可以修饰类,不能被继承 
+				 修饰方法,不能被重写 
+					  修饰变量,只能赋值一次
+
+			2、finally 
+				 try语句中的一个语句体,不能单独使用,用来释放资源
+
+			3、finalize 
+				 是在垃圾收集器删除对象之前对这个对象进行调用 
+				 从内存中清除出去前，做必要的清理工作
+
+
+2.键盘上输入一个数字进行判断年龄(小于18未成年,大于等于18或者小于25成年人
+		,大于等于25或者小于60中年人,大于等于60老年人
+	)使用自定义异常完成	
+	
+					class MyException extends RuntimeException {
+
+						public MyException () {
+						}
+
+						public MyException (String message) {
+							super(message);
+						}
+					}
+	
+	-------------------------------------------------
+						public static void getTest(int age) {
+						if (age<0) {
+							throw new MyException ("年龄不正确");
+						} else if (age >=0 && age <18) {
+							throw new MyException ("未成年");
+						} else if (age >=18 && age <25 ) {
+							throw new MyException ("成年人");
+						} else if (age >=25 && age < 60) {
+							throw new MyException ("中年人");
+						} else if (age >=60 ) {
+							throw new MyException ("老年人");
+								} 
+						}
+	
+	
+3.	在异常处理中，如释放资源、关闭文件等由（C ）来完成	
+				A try子句
+				B.	catch子句
+				C. finally子句
+				D. throw子句	
+4.下面选项中有关Java异常处理模型的说法错误的是  AD 
+			A 一个try块只能有一条catch语句
+			B. 一个try块中可以不使用catch语句
+			C. catch块不能单独使用，必须始终与try块在一起
+			D.	finally块可以单独使用，不是必须与try块在一起
+5.下面选项中属于运行时异常的是（  BC  ）	
+				A.Exception和SexException
+				B.NullPointerException和InputMismatchException
+				C.ArithmeticException和ArrayIndexOutOfBoundsException
+				D.ClassNotFoundException和ClassCastException
+6.Java异常处理中，关键字try、catch、finally、throw、throws分别代表什么含义？	
+					　　　try 用来指定一块预防所有“异常”的程序；
+				　　　　
+				catch 子句紧跟在 try 块后面，用来指定你想要捕捉的“异常”的类型；
+				　　　
+				　throw 语句用来明确地抛出一个“异常”（方法体）；
+				　　　　
+				throws 用来标明一个成员 方法可能抛出的各种“异常”（方法声明）；
+				　　　　
+				Finally 为确保一段代码不管发生什么“异常”都被执行一段代码；

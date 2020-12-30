@@ -1,0 +1,57 @@
+1、转换流
+       1-1 什么是转换流
+          		 提供了字节和字符流之间的转换
+          InputStreamReader
+          OutputStreamWriter
+      			//转换流
+				public  static void getVoid() throws IOException {
+					//转换流
+					InputStreamReader  isr=  new InputStreamReader(new FileInputStream("E:\\IO\\111.txt"));
+					
+					OutputStreamWriter  osw=new OutputStreamWriter(new FileOutputStream("E:\\\\IO\\\\papapapa.txt"));
+					int c;
+					while((c=isr.read())!=-1) {
+						osw.write(c);
+					}
+					isr.close();
+					osw.close();
+		1-2 也是可以使用缓冲流的
+					//缓冲流进行的嵌套
+						public  static void getVoid01() throws IOException {
+						//缓冲流进行的嵌套
+						BufferedReader  br=	new BufferedReader(
+						new InputStreamReader(
+								new FileInputStream("E:\\IO\\111.txt")));
+						
+						BufferedWriter  bw=	new BufferedWriter(
+					  new OutputStreamWriter(
+							  new FileOutputStream("E:\\\\IO\\\\papapapa.txt")));
+						int c;
+						while((c=br.read())!=-1) {
+							bw.write(c);
+						}
+						br.close();
+						bw.close();
+					}	          
+ ---------------------------------------------------------
+ 数据流
+ 	什么是数据流
+ 		为了更加方便操作java语言的基本数据类型的,可以使用数据流
+ 		分成读/写基本数据类型
+ 		DataInputStream
+ 		DataOutputStream
+ 					// 数据流
+					public  static void getVoid02() throws IOException {
+						// 数据流
+						DataOutputStream  DOS=  new DataOutputStream(new FileOutputStream("E:\\IO\\SSSSSS.txt"));
+						DOS.writeUTF("同学们里面好要的阿达阿道夫af");//放入字符串
+						DOS.writeInt(12);//数字
+						DOS.close();
+						DataInputStream  dis=	new DataInputStream(new FileInputStream("E:\\IO\\SSSSSS.txt"));
+						 System.out.println(dis.readUTF());//获取字符串
+						 System.out.println(dis.readInt());
+					}
+ 			
+ 	         
+          
+             		 

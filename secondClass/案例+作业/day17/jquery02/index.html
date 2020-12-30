@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.h{
+				color: blue;
+				background-color: aqua;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<button id="bu">but</button>
+	<hr />
+	   <div style="width: 200PX;">当前父元素
+	   	  <ul>
+	   	  	<li>1</li>
+	   	  	<li>2</li>
+	   	  	<li>13</li>
+	   	  	<li>14</li>
+	   	  	<li>15</li>
+	   	  	<li>16</li>
+	   	  	<li>17</li>
+	   	  </ul>
+	   </div>
+	
+	
+	</body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+           $("#bu").click(function(){
+           	  $("li").each(function(){
+           	  	  alert($(this).text());
+           	  	
+           	  })
+           })
+		});
+		  
+		
+	</script>
+</html>

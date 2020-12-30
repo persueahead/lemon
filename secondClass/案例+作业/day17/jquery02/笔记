@@ -1,0 +1,88 @@
+Jquery对CCS操作
+    说白就对css样式的操作
+    
+    添加class样式
+     $(function(){
+			// $("#hh").css("","")
+			$("#hh").addClass("h");
+			
+		});
+ 删除class样式
+    	//删除样式
+			$("#h2").removeClass("h")	
+随意切换添加和删除class样式
+   			$("#bu").click(function(){
+				$("h3").toggleClass("h");
+			});		
+Jqeury 遍历
+     js  for  while  .....
+      也可以进行使用这些循环和遍历的方式
+    但是jquery 有自己的遍历方法
+       
+遍历  父级元素
+     		$(function(){
+			//父级
+           $("span").parent().css({
+           	"color":"red",
+           	"border":"3px solid red"
+           });
+           //所有的父级如(曾祖父  ,曾曾祖父.....  )
+		    $("span").parents().css({
+           	"color":"blue",
+           	"border":"3px solid blue"
+           });
+           //可以进行指定到那个父级
+		    $("span").parents("ul").css({
+           	"color":"blue",
+           	"border":"3px solid blue"
+           });
+		});
+   
+遍历后代
+     $("div").children().css({
+          	"color":"red",
+          	"border":"3px solid red"
+          });   
+             //明确的指定后代 
+           $("div").children("li.h").css({
+          	"color":"red",
+          	"border":"3px solid red"
+          });
+   最后的子元素
+   	    $("div").find("span").css({
+          	"color":"red",
+          	"border":"3px solid red"
+          });
+  同胞元素
+                //同胞
+			$("h1").siblings().css({
+				"color": "blue",
+				"background-color": "aqua"
+			})
+       		$("h1").siblings("h3").css({
+				"color": "red",
+				"background-color": "aqua"
+			})
+        	下一个同胞元素
+          	$("h1").next().css({
+				"color": "green",
+				"background-color": "aqua"
+			})
+        		  跟随之后的所有的同胞元素
+  			$("h1").nextAll().css({
+				"color": "green",
+				"background-color": "aqua"
+			})		
+扩展下Jquey的循环
+//for  
+    	$(function(){
+           $("#bu").click(function(){
+           //集合数组一样可遍历
+           	  $("li").each(function(){
+           	  	  alert($(this).text());
+           	  	
+           	  })
+           })
+		});
+		  
+							

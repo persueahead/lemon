@@ -1,0 +1,90 @@
+有序列表
+  	  有序标签使用OL和li
+  	  列表项目使用的数字来进行标记
+  	  			 type设置标识
+					    1 阿拉伯数字
+					    a  小写的字母
+					    A  大写的字母
+						i  小写罗马字母
+						I	大写罗马字母
+		<ol type="I">
+			<li>tom</li>
+			<li>jack</li>
+			<li>cat</li>
+		</ol>
+自定义列表
+  <dl><dt>
+
+表格
+			tr 表示定义行
+	      	td 来进行定义单元格
+	      	  thead表示表格的头部
+	      	  tbody 身躯
+	      	  tfoot  尾部
+	      	  th头部的单元格    
+iframe标签
+	     	   就进行创建一个包含另外一个文档的内联框架  		
+				   <iframe src="img/头像.jpg" >
+	    			</iframe>
+  	
+ frameset  
+ 				可定义一个框架集的标签
+	   	 		 可以进行创建多个框架
+	   	 		每个框架是独立的文档 	
+  
+使用frameset的时候不能有body标签
+	  	        	cols  表示的是，框架占整个浏览器的%多少对于列
+	  	        	如:cols="15%,35%,25%,25%" 
+	  				rows  表示的是，框架占整个浏览器的%多少对于行
+  如：
+  <frameset border="10" rows="10%,*,10%" >
+	     	  <frame src="index01.html"></frame>
+	     	  <frameset border="10" cols="30%,*,30%">
+			     	  <frame src="index02.html"></frame>
+			     	  <frame src="index01.html"></frame>
+			     	   <frame src="index01.html"></frame>
+	     	  </frameset>
+	     	  <frame src="index01.html"></frame>
+	     </frameset> 
+	    
+  	
+ form表单
+ 			form标签的属性
+	             1.action表示这个表单跳转的地址
+	    	     2.method  提交的方式
+	    	 input标签是可以进行输入框
+	    	        属性	
+	    	    1.type
+	    	    		值text输入文本框
+	    	    		radio 单选注意多个要结合name使用	
+	    	    		reset  重置
+	    	    		submit  提交
+	    	    		image  图片
+	    	    		checkbox 多选
+	    	    		file  文件上传
+	    	    		hidden  隐藏的用户是看到不到，数据存在
+	    	    		password 密码输入的值是不可见的
+	    	    2.size 大小
+	    	    3.value  设置input标签的默认值
+	    	    4.readonly 只读
+	    		
+	    	3.button   按钮标签
+	    	4.select  列表标签  	
+ 
+ 
+ ----------------------------------------------------------
+ CSS样式(层叠样式)
+	      主要是设置HTML页面中的文本内容的样式(字体，大小,背景颜色,。。。。)
+		使用了CSS样式就是更加的让网页好看，
+		CSS+DIV布局更加的灵活，绘制出结构
+		
+	
+	
+ 		
+ 
+ 
+ 
+ 
+ 
+  		     	
+      

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+  <hr />
+  		<h1>h1h1
+	  		<a href="index.html">AAA</a>
+	  		<a href="index.html">BBB</a>
+	  		<a href="index.html">CCC</a>
+	  		<a href="index.html">DDD</a>
+	  		h1h1
+  		</h1>
+  		<h1 class="QW">adnaidka
+	  		<a href="index.html">www</a>
+	  		<a href="index.html">eee</a>
+	  		<a href="index.html">rrr</a>
+	  		<a href="index.html">ffff</a>
+	  		h1h1
+  		</h1>
+  		<ul>
+  			<li>111</li>
+  		</ul>
+	     <button id="but1">remove</button>
+	     <button id="but2">empty</button>
+	     <hr />
+	</body>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script>
+	     $(function(){
+	     	    $("#but1").click(function(){
+	     	     $("h1").remove();//删除h1标签
+	     	      $("h1").remove(".QW");//删除指定的某个h1标签     	      
+	     	    });
+	     	    $("#but2").click(function(){
+	     	    	//清空该标签
+	     	        $("ul").empty();
+	     	    });
+	     });
+		</script>
+</html>

@@ -1,0 +1,109 @@
+字节流
+可以读取计算机上的任何数据
+	1、读数据
+	 	  使用FileInputStream
+	 	  如:
+	 	  		public  static void getVoid() throws IOException {
+					FileInputStream  fis=	new FileInputStream("E:\\IO\\新建文本文档.txt");
+							int i;
+							//fis.read() 二进制
+							while((i=fis.read())!=-1) {
+								 System.out.println(i);//码表对应的值
+							}
+							//流记得进行关闭
+							fis.close();
+						}
+	2、写数据
+			使用的FileOutputStream来进行完成
+				//写数据
+				public  static void getVoid01() throws IOException {
+					//参数一:地址.参数二:如想在后面进行追加，设置为true
+					FileOutputStream  fis=	new FileOutputStream("E:\\IO\\111.txt",true);
+					fis.write(98);//是一个数字，但是在文件上是 一个字节
+					fis.write(95);
+					fis.close();
+				}
+	
+	     案列:读写
+			     		public  static void getVoid03() throws IOException {
+							FileInputStream  fis=  new FileInputStream("E:\\IO\\授课桌面背景.jpg");
+						 //由于要要展示效果，那么有读就有写
+							FileOutputStream  fos=	new FileOutputStream("E:\\IO\\优化授课桌面背景.jpg");
+							int v=fis.available();//读文件的大小 20g
+							//-1
+							//-1
+							byte[] arr1=new byte[v];
+							byte[] arr2=new byte[1204 * 1024];
+							int i;
+							while((i=fis.read(arr2))!=-1) {
+								fos.write(arr2,0,i);
+							}
+							fos.close();
+							fis.close();
+						}
+			
+	3、缓冲流
+			3-1 缓冲流是什么？
+				特别大数据(300G)使用字节流读写一个数组的速度是比一个一个读要快
+				但是这种效果还是不理想
+				就可以进行加入向数组这样的缓冲区,就是所谓的缓冲流
+				public  static void getVoid() throws IOException {
+						//使用了BufferedInputStream  缓冲流,对输入的流进行包装
+						BufferedInputStream  bis=	new BufferedInputStream(new FileInputStream("E:\\IO\\授课桌面背景.jpg"));		
+					   //使用缓冲流进行包装输出
+						BufferedOutputStream  bos=	new BufferedOutputStream(new FileOutputStream("E:\\\\IO\\\\BUFF授课桌面背景.jpg"));
+						int b;
+						while((b=bis.read())!=-1) {
+							 bos.write(b);
+						}
+						bis.close();
+						bos.close();
+					}
+			源码:
+				 private static int DEFAULT_BUFFER_SIZE = 8192;
+			     public BufferedInputStream(InputStream in, int size) {
+				        super(in);
+				        if (size <= 0) {
+				            throw new IllegalArgumentException("Buffer size <= 0");
+				        }
+				        buf = new byte[size];
+				    }
+	4.读写中文
+		使用字节流
+					//写
+					public  static void getVoid02() throws IOException {
+						FileOutputStream  fos=	 new FileOutputStream("E:\\IO\\111.txt",true);
+						fos.write("同学们你们好呀".getBytes());
+						fos.write("\r\n".getBytes());//换行
+						fos.write("同学们你们好呀".getBytes());
+						fos.close();
+					}
+					//读中文
+					public  static void getVoid01() throws IOException {
+						FileInputStream  fis=new FileInputStream("E:\\IO\\111.txt");
+						  byte[] arr=new byte[1024];
+						   int i;
+						    while((i=fis.read(arr))!=-1) {
+						    	//转换为字符串
+						    	  System.out.println(new String(arr, 0, i));
+						    }
+						    fis.close();
+					}				 
+		案例加密图片:
+					//案列,加密图片
+					public  static void getVoid04() throws IOException {
+						BufferedInputStream bis=  new BufferedInputStream(new FileInputStream("E:\\IO\\加密授课桌面背景.jpg"));
+						BufferedOutputStream bos= new BufferedOutputStream(new FileOutputStream("E:\\IO\\加密11授课桌面背景.jpg"));
+						int i;
+						while((i=bis.read())!=-1) {
+							bos.write(i^1);
+						}
+						bis.close();
+						bos.close();
+					}	
+			
+			
+			
+			
+			
+			

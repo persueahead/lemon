@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+<style>
+	.mYDIV{
+		color: red;
+	}
+	.div01class{
+		color: green;
+	}
+	
+</style>
+
+	</head>
+	<body>
+		<input value="ok" type="text" />
+		<input value="no" />
+		<button onclick="function09()">function09</button>
+		<hr/>
+		<h1 >h1 </h1>
+		<h1 >h1 h1 </h1>
+		<button onclick="function10()">function10</button>
+		<hr/>
+		<p style="color: red;" >ppp </p>
+		<p style="color: blue;" >h1 h1h1 h1h1 h1h1 h1h1 h1h1 h1 </p>
+		<button onclick="function11()">function11</button>
+		<hr/>
+		<button onclick="function12()">function12</button>
+		<ul id="ul">
+			<li>111</li>
+			<li>222</li>
+			<li>333</li>
+			<li>444</li>
+		</ul>
+	</body>
+	<script>
+		/*改变某个元素中属性的值*/
+		function function09(){
+           var a=  document.getElementsByTagName("input")[0]
+           .setAttribute("value","button");
+              var a=  document.getElementsByTagName("input")[0]
+           .setAttribute("type","button");
+			} 
+		/*设置或者改变指定的属性节点
+		  类似js事件添加样式
+		 * */
+			function function10(){
+           var aclass=  document.createAttribute("class");
+         		 aclass.nodeValue="div01class";
+          document.getElementsByTagName("h1")[0].setAttributeNode(aclass);
+			} 
+		/*删除某个属性*/
+		function function11(){
+    		  document.getElementsByTagName("p")[0].removeAttribute("style");
+			} 
+		/*删除子元素*/
+		function function12(){
+    		 var c= document.getElementById("ul");
+    		 /*document.writeln(c.childNodes.length);
+    		 for( i=0;i<c.childNodes.length;i++){
+    		 document.write(c.childNodes[i]+"<br />");
+    		 }*/
+    		 c.removeChild(c.childNodes[0]);
+			} 
+			
+	 </script>
+</html>

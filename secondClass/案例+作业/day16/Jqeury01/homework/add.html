@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>aaa</li><li>bbb</li><li>ccc</li>
+		</ul>
+		删除li:<input type="button" border="3px" id="div" value="删除"/><br />
+		添加事件<input type="button" border="3px"id="add" value="添加" /><br />
+		删除事件<input type="button" border="3px" id="delet" value="删除" />
+		<div id="a">ak1997</div>
+		<script src="../js/jquery-1.9.1.min.js"></script>
+		<script>
+			$(function(){
+				$("#div").click(function(){
+					var c= document.getElementById("ul");
+				  c.removeChild(c.childNodes[0]);
+				});
+			});
+			
+			$(function(){
+				$("#add").click(function(){
+					document.addEventListener("mouseenter",function change(){
+						$("#a").css("color","red");
+					});
+				});
+			});
+			
+			$(function(){
+				$("#delet").click(function(){
+					$("#a").css("color","block");
+				});
+			});
+		</script>
+	</body>
+</html>

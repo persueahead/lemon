@@ -1,0 +1,110 @@
+ ----------------------------------------------------------
+ CSS样式(层叠样式)
+	      主要是设置HTML页面中的文本内容的样式(字体，大小,背景颜色,。。。。)
+		使用了CSS样式就是更加的让网页好看，
+		CSS+DIV布局更加的灵活，绘制出结构
+-----
+  使用的方式:选择器{属性1:属性值；属性2:属性值2;....}		
+ 样式的引入方式
+ 	3种
+ 		  行内样式
+			      通常是写标签上的
+			     如：<div style="background-color: green;height:30; width:30; border: dashed 1;" >aaaaa</div>
+		 内部样式
+			     通常是写在head中的
+			     如:
+				<head>		     
+							<style type="text/css">
+							/*
+							 * body 就是选择器
+							 
+							 * */
+							body{
+								background-color: red;
+							}
+							
+						</style>
+					</head>
+		外联样式(嵌入样式)
+						<link rel="stylesheet" type="text/css" href="css/new_file.css" />
+ 	 	优先级别
+ 	 	   同一个选择器或者是同一个标签都使用这三种方式
+ 	 	     行内>内部>外联(嵌入)(常用)
+-----------
+选择器的
+  标签选择器 
+   	 选择某个标签	  
+   	 如   
+ 	 	  	body{
+				background-color: red;
+			}   
+id选择器
+    就是选择标签属性id的值
+      如 #是语法	
+      #H1id{
+				background-color: gold;
+			} 	     	
+类选择器
+   就是选择标签属性class的值
+   .XXX语法
+    如
+    	 	/*类选择器*/
+			.H1class{
+				background-color: #0000FF;
+			}
+			div.div{
+				background-color: #0000FF;
+			}		     
+属性选择器
+		 就是选择某个标签的属性名和属性值
+		   标签名['属性名=属性值']{样式} 	 
+		  如：
+		 input[type="text"]{
+				background-color: aqua;
+			} 
+层级选择器
+     指定某个标签的后代标签的样式		   
+   两个选择之间使用空格相隔		    
+	如:	   
+	body div form input[type="password"]{
+				background-color:yellow;
+			}
+伪类选择器
+     设置某个标签的处于状态
+      		1、未访问连接的地址		   
+		   	#a1:link {
+				 color: #FF0000;
+				background-color:yellow;
+				 font-family: "微软雅黑";	
+			}
+		   	 2、已访问的样式  
+		   	  #a1:visited{
+				 color:yellow;
+				 background-color: aqua;	
+				 font-family:"arial black";	
+				 font-size:50;
+					 font-style: red	
+				} 
+			3、鼠标的指针移到到上面的时候
+			#a2:hover{
+				background-color: blueviolet;
+				font-family: "微软雅黑";
+			}	
+			4、正在点击伪类选择器的样式
+			#a4:active{
+				background-color: blueviolet;
+			}	
+布局
+		浮动	
+			#a1{
+				border: 1px solid #0000FF;
+				width: 50px;
+				height: 10px;
+				/*浮动*/
+				float: right;
+			
+			}
+			div{
+				/*清除浮动*/
+				clear: right;
+			}			

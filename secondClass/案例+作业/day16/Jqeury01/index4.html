@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+		<a href="">111</a>
+		<a href="">111</a>
+		<a href="">111</a>
+		<a href="">111</a>
+		<a href="">111</a><a href="">111</a>
+		
+		<ul>
+			<li>1111</li>
+			<li>1111</li>
+			<li>1111</li>
+			<li>1111</li>
+			<li>1111</li>
+		</ul>
+		<p>PPPPPPPPP
+			<ul>
+				<li>1111</li>
+				<li>1111</li>
+				<li>1111</li>
+				<li>1111</li>
+				<li>1111</li>
+			</ul>	
+		</p>
+		<p>PPPPPPPPP</p>
+		<p>PPPPPPPPP</p>
+		<p>PPPPPPPPP</p>
+		<p>PPPPPPPPP</p>
+	</body>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script>
+		
+		$(function(){
+			$("[href]").css("color","red");
+		});
+		//层级选择
+		$(function(){
+			$("ul li").css("color","red");
+		});
+		/*选择P标签第一个*/
+		$(function(){
+			//$("p:first").css("color","red");
+			$("ul li:first-child").css("color","green");
+		});
+		</script>
+</html>

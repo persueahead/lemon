@@ -1,0 +1,204 @@
+1/Iterator的案例
+		1-1/使用ListIterator接口来进行逆向遍历
+					public static void main(String[] args) {
+						ArrayList list=new ArrayList();
+						list.add("1");
+						list.add("2");
+						list.add("3");
+						list.add("4");
+						ListIterator  aa=list.listIterator();
+						while(aa.hasNext()) {
+							System.out.println(aa.next());
+						}
+						System.out.println("-------------------------------");
+							aa.add("5");
+						while(aa.hasPrevious()) {
+								System.out.println(aa.previous());
+						}
+					}	
+			1-2/取出重复的使用ArrayList
+			     		public static void main(String[] args) {
+								ArrayList list=new ArrayList();
+								list.add("1");
+								list.add("2");
+								list.add("3");
+								list.add("4");
+								list.add("1");
+								list.add("2");
+								list.add("3");
+								list.add("4");
+								System.out.println(list);
+								System.out.println("---------------");
+								System.out.println("---------------");
+								System.out.println("---------------");
+								ArrayList newlist=new ArrayList();
+								Iterator  i=list.iterator();//
+								while(i.hasNext()) {//判断是否有元素
+									 String s=(String)i.next();//获取到旧集合中的元素
+									 if(!newlist.contains(s)){//如不包含该元素
+										 newlist.add(s);//进行添加到新的集合中
+									 }
+								}
+								System.out.println(newlist);
+							}
+							----------------------------------------
+2/SET
+		一个不包含重复元素的 collection
+		2-1:HashSet
+				由哈希表（实际上是一个 HashMap 实例）支持。 HashMap（后面会进行讲解）
+						如上可以看出,由hash算法来进行存储集合中的元素
+				它不保证 set 的迭代顺序；
+				特别是它不保证该顺序恒久不变。
+				此类允许使用 null 元素
+					public static void main(String[] args) {
+						HashSet  hst=    new HashSet();
+						hst.add("1");
+						hst.add("2");
+						hst.add("3");
+						hst.add("3");
+						hst.add(null);
+						hst.add("不要脸");
+						System.err.println(hst);
+					}
+				2-2-1。注意不能调用ListIterator因为是系列表迭代器
+						//注意不能调用ListIterator因为是系列表迭代器
+						Iterator it= hst.iterator();	
+			   2-2-1.特点:
+			   		不能保证元素的排列的顺序
+			   		hashset不是线程安全的
+			   		可用使用元素null
+			   		
+			   2-2-2:如Test5.java与Users.java案例得知
+			          如是自定义的数据,要想除掉重复的数据就必须写上hashCode和equals
+			           如 案列Student.java和Test6.java需要进行重写
+			           		@Override
+							public int hashCode() {
+								return name.hashCode();
+							}
+							@Override
+							public boolean equals(Object obj) {
+									if(this==obj)
+											return true;
+									if(!(obj instanceof Student )){//进行判断是不是当前类的一个实挒
+										 throw new  ClassCastException("类型错误");
+									}	
+									Student s=(Student)obj;
+								return this.name==s.name;
+							}
+						           		
+			          						
+		
+		
+		2-2：LinkedHashSet
+		   			是HashSet的子类
+		   					具有可预知迭代顺序的 Set 接口的哈希表和链接列表实现
+								public static void testName03(){
+										LinkedHashSet<String>  list= new LinkedHashSet();
+										list.add("bbbb");
+										list.add("aaaa");
+										list.add("cccc");
+										list.add("dddd");
+										System.out.println(list);
+									}
+					2-2-1/描述
+							不能有重复的元素，和hashSet存入数据的原理大同小异
+					      	获取数据的时候,由于有链表是Set中的一个怎么存入的数据就怎么取出的数据
+					      	LinkedHashSet插入元素的性能,低于HashSet,但是迭代访问全部元素的时候,性能很好
+					      
+						
+		
+		2-3: TreeSet 
+					使用元素的自然顺序对元素进行排序(默认)
+					自定义的排序(或者根据创建 set 时提供的 Comparator 进行排序)
+					当然TreeSet也是可以进行保证元素的唯一
+				案例
+					public static void testName03(){
+						TreeSet<Integer>  list= new TreeSet();
+						list.add(1);
+						list.add(3);
+						list.add(2);
+						list.add(2);
+						list.add(2);
+						list.add(1);
+						list.add(4);
+						list.add(4);
+						list.add(4);
+						System.out.println(list);
+					}
+					
+			2-3-1:需要进行自定义排序
+					//自定义的
+						class Compareby  implements Comparator<String>{
+							//o1大于o2 返回正确 ，相等 返回 0  负整数  表示 o1小于o2
+							@Override
+							public int compare(String o1, String o2) {
+								
+								int i=	 o1.length()-o2.length();//主要的按照长度来进行判断条件
+								
+								return i==0 ? o1.compareTo(o2):i;//通过内容来进行对比次要的条件
+							}
+						}		
+					
+					 //通过对象的方式
+					 	public class Users  implements Comparable<Users>{
+								private  String name;
+								private  Integer  age;
+								@Override
+								public int compareTo(Users o) {
+										int le=this.name.length()-o.name.length();
+									  int i= le == 0?this.name.compareTo(o.name):le;
+									return i==0 ?this.age-o.age:i;
+								}
+				
+				2-3-4 TreeSet与HashSet
+						HashSet  数据结构是哈希表存储的结构
+						     优: 添加,查询删除速度快		
+						     缺点:无序   
+						 TreeSet
+						 		数据结构二叉树结构
+						 	优点:有序,查询的元素的速度要比list快  	
+							缺点:查询的速度没有HashSet快
+3/MAP
+   map和Collection是并列存在
+		   	类型参数：
+				K - 此映射所维护的键的类型
+				V - 映射值的类型
+						如：
+								public static void testName04(){
+										Map  nap= new HashMap();
+										nap.put("学号1-k","风车车-v");
+									}
+									
+									//进行约束k-V的类型
+									public static void testName05(){
+										//<String ,String>类型不能是基本数据类型
+										Map<String ,String>  nap= new HashMap<String ,String>();
+										nap.put("学号1-k","123123");
+									}	
+					将键映射到值的对象
+					。一个映射不能包含重复的键；(k唯一)
+					每个键最多只能映射到一个值
+								public static void testName06(){
+										//<String ,String>类型不能是基本数据类型
+										Map<String ,String>  nap= new HashMap<String ,String>();
+										nap.put("学号1-k","11111111");
+										nap.put("学号1-k","222222");
+										nap.put("学号2-k","同学们");
+										nap.put("学号3-k","同学们");
+										System.out.println(nap);
+									}
+				  如果:k或者v需要进行传入null HashMap是可以的
+   	
+	  		
+	
+
+3-1 HashMap
+			
+
+
+3-2 LinkedHashMap(了解)
+
+3-3 TreeMap
+
+
+3-4 Hashtable	

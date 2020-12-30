@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<body>
+  <hr />
+  		<h1>h1h1h1
+  		</h1>
+  		<ul>
+  			<li>111</li>
+  		</ul>
+	     <button id="but1">append</button>
+	     <button id="but2">prepend</button>
+	     <button id="but3">after</button>
+	     <button id="but4">brfore</button>
+	     <hr />
+	</body>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script>
+	     $(function(){
+	     	    $("#but1").click(function(){
+	     	    	//在元素结尾添加
+	     	      $("h1").append("<a href='index.html'>a标签</a>");
+	     	    });
+	     	    $("#but2").click(function(){
+	     	    	//头部添加
+	     	        $("ul").prepend("<li>prepend</li>");
+	     	    });
+	     	      $("#but3").click(function(){
+	     	      	//在h1前面添加，元素之前插入
+	     	      $("h1").before("<a href='index.html'>before</a>");
+	     	    });
+	     	      $("#but4").click(function(){
+	     	      	//元素之后插入
+	     	      $("h1").after("<a href='index.html'>after</a>");
+	     	    });
+	     });
+		</script>
+</html>

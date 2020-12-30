@@ -1,0 +1,36 @@
+javascript的字符串和运算符
+
+   算术运算符
+     + - * / % ++ --
+  赋值运算符
+     = += -= *= /= %=
+ 比较运算符
+     要不是true  要不false
+    ==   === != !== > < <= >=
+    ==与===之间的区别     
+ 逻辑运算符
+   &&  ||
+三目运算符
+   表达式1?表达式2:表达式3  
+流程控制
+  if  else
+  switch
+  for
+  while
+  do while
+  break
+  continue
+集合
+ map  set
+javascript的对象 
+ 对象的构造函数
+ 在方法中进行添加对象
+ number对象
+ 数组对象
+
+非数值对象NaN
+Math对象
+window对象 
+ 
+   
+            

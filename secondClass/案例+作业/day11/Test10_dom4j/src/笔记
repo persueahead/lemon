@@ -1,0 +1,89 @@
+dom4j的解析
+     1。导入jar包  dom4j-1.6.1.jar
+  	2。编写对应xml文件内容
+  	3。进行获取对象在解析
+  	 如下
+			  	public static void main(String[] args) throws DocumentException {
+			      //获取解析器
+					SAXReader  sax=	new SAXReader();
+					//获取doument文档对象
+					Document doc=  sax.read("src/com/java/dom4j/xml/web.xml");
+					//获取根元素
+					Element  rootel=doc.getRootElement();
+					System.out.println("根元素名称"+rootel.getName());
+					System.out.println("根属性名称"+rootel.attributeValue("version"));
+					//获取对应的子元素
+				List<Element > list=	rootel.elements();
+					for (Element element : list) {
+						System.out.println(element.getName());
+						
+						if("servlet".equals(element.getName())) {
+							//
+						 Element  serEl=	element.element("servlet-name");
+							System.out.println(serEl.getText());
+							 Element  serclass=	element.element("servlet-class");
+								System.out.println(serclass.getText());
+						}
+						//通过java代码获取数据连接 需要密码和账号
+						//
+					}
+				   --------------------------------------
+注解
+     	1.JDK中内置的基本注解
+    	2·自定义注解
+     	3.注解就是利用了反射的方式来进行获取对应的信息	
+     	4.1.5之后,增强 了元数据(MetaData)的支持,
+     	5.注解其实就是,代码里的特殊标记，这些标记可以在编译,类加载.运行时进行读取
+     	  并可以进行执行相应的处理信息
+     	6.使用注解 开发者可以在不改变原来的业务逻辑下,在源(文件)代,进行补充业务逻辑
+     	7.注解可以修饰在包，类,构造，方法,成员变量,参数，局部变量在这些地方进行声明
+     	   设置业务逻辑的数据信息
+     	8.使用注解的使用要加上@注解的标识符号如(@Override),  并把注解的标识符号当成了一个修饰符来进行使用
+     	  @Override  用于重写父类的方法  
+     	  @Test  用于测试的
+常见的注解
+			@Deprecated//表示的过时,了但是可以进行使用的
+				//压制警告的
+			@SuppressWarnings({"unused","rawtypes"})     	  
+ 			@Override  重写
+JDK中的元注解
+	@Documented
+			 表示指定该注解修饰的注解类,将会被javadoc工具提取成文档
+			 定义为该注解的时候，必须设置@Retention值为RUNTIME如(@Retention(RetentionPolicy.RUNTIME))
+    @Retention
+        	用于修饰一个注解如(public @interface Deprecated {)定义,来进行指定保留的时间长
+        	  包含了变量(里面的值如:@Retention(RetentionPolicy.RUNTIME))
+        	  		RetentionPolicy.RUNTIME：编译器 把注解记录找class文件中，当运行java程序的时候
+        	  		             JVM会进行保留该注解程序,可以通过反射的方式，进行获取该注解
+        	  		RetentionPolicy.CLASS :表示  编译器 把注解记录找class文件中，当运行java程序的时候
+        	  							 JVM不会进行保留注解(默认的值)         
+        			RetentionPolicy.SOURCE:表示编译器直接进行丢弃,这种策略的注解(废了)
+    @Target
+          		用于修饰注解类进行指定 被修饰的注解类能用于修饰在那些的程序元素上(那些地方,如类，方法,属性........)	
+          		如:
+          		@Target(value={CONSTRUCTOR, FIELD, LOCAL_VARIABLE, METHOD, PACKAGE, PARAMETER, TYPE})
+     	
+    @Inherited(实际应用中，使用较少)了解 
+    		被它修饰的 Annotation 将具有继承性.如果某个类使用了被 
+    		@Inherited 修饰的 Annotation 则其子类将自动具有该注解 	
+    		
+
+进行自定义注解
+		  1。使用自定义注解的使用说需要一个 @interface关键字
+		  2.自定义注解的成员变量在定义中参数的方式来进行生明，
+		   		 其他的方法名,和返回值定义了该成员变量的名称和类型
+		  3.也进行自定义个初始值，需要一个关键字 default  		 
+		    public  @interface  Myann {
+					 String value() default "学习java在柠檬学院";
+					 //  String[] value() ;
+					}
+		    
+		    @Myann("柠檬学院")
+				public class TestMyadd {
+		  
+		  	
+     	
+     	
+     				   
+     
+     

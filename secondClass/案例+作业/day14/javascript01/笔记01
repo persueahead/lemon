@@ -1,0 +1,458 @@
+javascriot的字符串和运行符
+
+字符串
+   用于存储和处理文本的
+     	字符串中的方法大部分和java中字符串相同
+  算术运行符
+  		+ - * / % ++  --  
+  			 		function  myFunciton(){
+				   			//var  v="a,s,d,a,d,s";
+				  		      var  I=5;
+				  		      var j=2;
+				  		     // alert(I-j);
+				   			//	alert(I+j);
+				   			//	alert(I%j);
+				   			alert(j++);
+				   		}
+  赋值运行符
+	   = += -=  *= /+ %=
+	   		function  myFunciton01(){
+	  		      var  I=5;
+	  		      var j=2;
+	  		     	 I+=5; //i+5 //
+	   			//alert(I);
+	   				 I*=5; //i*5 // 
+	   				 /*
+	   				  I-= 5  相当I=I-5 
+	   				 I /= 5  相当I=I/5
+	   				 I%= 5  相当I=I%5
+	   				  * */
+				alert(I);
+			}
+比较运行符
+   就是进行比运行符在逻辑语句中的使用，来进行检测变量和值是否相同
+      结果就是false true
+  ==   ===  !=  !==   >   <  <=  >=    
+    	  function  myFunciton01(){
+  		        	  var  I=55;
+  		       		var j="55555";
+			 	    alert(I!==j);
+		}
+		
+		function  myFunciton01122(){
+  		     	 var  I=55;
+  		       	var j="55";
+  		       	/*
+  		       	 !=比对两值是否一致,不考虑类型
+  		       	 * */
+			 	alert(I!=j);
+		}
+		
+		
+				function  myFunciton0111(){
+  		      var  I=55;
+  		       var j="55";
+  		       /*
+  		        ===进行必须值又要进行比较类型
+  		        * */
+			alert(I===j);
+		}
+			
+		function  myFunciton011(){
+  		      var  I=55;
+  		       var j="5";
+  		     
+   		/*
+   		     ==比较的值，不考虑到类型
+   		 * */
+			alert(I==j);
+		}
+  
+逻辑运算符
+	 &&  表示and    ||表是or  ！Not  
+		 <script type="text/javascript">
+				//不等于！
+				function  myFunciton01(){
+	  		  var  I=55;
+	  		   if(!(I>0)){
+	  		   	  alert("ok");
+	  		   }else{
+	  		   	alert("no");
+	  		   }
+	  		       
+			}	
+				
+				
+				//逻辑或  or
+				function  myFunciton01111(){
+	  		  var  I=55;
+	  		   if(I<100 || I<0){
+	  		   	  alert("ok");
+	  		   }else{
+	  		   	alert("no");
+	  		   }
+	  		       
+			}	
+				
+				//逻辑与  and
+			function  myFunciton011(){
+	  		  var  I=55;
+	  		   if(I<100 && I<0){
+	  		   	  alert("ok");
+	  		   }else{
+	  		   	alert("no");
+	  		   }
+	  		       
+			}
+		</script>
+三目运算符	 	
+	 	function  myFunciton01(){
+			//三目运行符合java中一样的规则
+  		  alert(1==2?"满足":"不满足");
+		}	
+流程控制语句
+		  也是和java中逻辑一样
+		 IF家族的语句
+		 		<script type="text/javascript">
+			
+				//IF...else  ...IF ...else
+		function  myFunciton01(){
+			var I=0;
+			var J=2;
+			var k=3;
+ 			if(I>J){
+ 				alert("执行I>2");
+ 			}else if(J>k){
+ 				alert("J>k");
+ 			}else if(I>k){
+ 				alert("I>k");
+ 			}else{
+ 				alert("else");
+ 			}
+			}
+				//IF...else
+			function  myFunciton0112(){
+ 			if(1>23){
+ 				alert("执行");
+ 			}else{
+ 				alert("不满足");
+ 			}
+			}
+			//IF
+			function  myFunciton011(){
+ 			if(1<23){
+ 				alert("执行");
+ 			}
+			}
+			</script> 
+switch		  	 
+	 		<script type="text/javascript">
+				//IF...else  ...IF ...else
+		function  myFunciton01(){
+		   var v=   new Date().getDay();
+		   switch(v){
+		   	      case 6:
+		   	       x="星期六";
+		   	         break;//这里的break和java中switch里面语法一样
+		   		 case 0:
+		   	       x="星期天";
+		   	         break;
+		   	     default:
+		   	       x="上班时间";
+		   	       break;
+		   	}
+		    document.write(x);
+			}
+			</script>
+循环遍历
+		  for  for in
+		  		<script type="text/javascript">
+					function  myFunciton01(){
+					  var person={
+					  		  	  name:"TOM",
+					  		  	  lastName:"jack",
+					  		  	  age:23
+					  		  };
+					    for(x in person){
+					    	document.write(person[x]+"<br/>");
+					    }
+					    for(var I=0;I<10;I++){
+					    	
+					    }
+						}
+				</script>
+		while
+				//While循环的遍历
+				//whlie循环的规则和java一样的
+				function  myFunciton01(){
+					  var x=0;
+					   while(x < 10){
+				    	document.write(x+"<br/>");
+				    	x++;
+				    }
+				  
+					}
+				
+		do while
+		  	 	function  myFunciton01(){
+		//do whlie循环的规则和java一样的
+			  var x=0;
+			 do{
+			 	document.write(x+"<br/>");
+			 	x++;
+			 }while(x <17);
+		  
+			}
+break
+		function  myFunciton01(){
+		   for(i=0;i<10;i++){
+		   	  if(i==3){
+		   	  	 document.write("if(i==3)的break");
+		   	  	 //JAVA中一样退出循环 (条件满足) 
+		   	  	 break;
+		   	  }
+		   	   document.write("i："+i+"<br/>");
+		   }
+			}	 
+
+continue
+			function  myFunciton01(){
+		   for(i=0;i<10;i++){
+		   	  if(i==3){
+		   	  	 document.write("if(i==3)continue");
+		   	  	 //JAVA中一样退出本次循环 (条件满足) 
+		   	  	continue;
+		   	  }
+		   	   document.write("i："+i+"<br/>");
+		   }
+			}	
+			
+-----------------------
+Map和set集合
+		<script type="text/javascript">
+			function  myFunciton01(){
+				//map
+				 var c=  new Map([["name","TOM"],["age",12]]);
+						 c.set("name1","TOMTOM");
+				document.write(c.get("name1")+"<BR/>");
+				
+				
+				//set
+				 var s=  new Set(["a","b","C"]);
+				 s.add("d");
+				 var  v= s.keys();
+					document.write(v);
+			}
+-----------------------			
+javascipt对象
+    	所有的事物都是对象,字符串  数值  数组  函数
+   		javascriot中提供了多个构建对象如:String  Date  Array...
+   		对象都带有属性的方法的特殊数据类型
+        如:
+        <script type="text/javascript">
+			function  myFunciton01(){
+				//一个对象
+			/*	var  person=  new  Object();
+					person.lastName="John";
+					person.name="tom";
+					person.age="tom";
+					document.write(person.lastName+":"+person.age+"<br/>");
+					}*/
+			//优化 ajax 会出现
+				student={
+					lastName:"John",
+					name:"tom",
+					age:12
+				}
+				document.write(student.lastName+":"+student.age);
+				
+			}
+		</script>
+  对象的构造器
+  		<script type="text/javascript">
+			function  studnet(name,age,lastName){
+				this.name=name;
+				this.age=age;
+				this.lastName=lastName;
+			}
+			myStudnet=new studnet("tom",12,"jack");
+			document.write(myStudnet.name+":"+myStudnet.age);    
+把方法添加到对象中
+		<script type="text/javascript">
+			function  studnet(name,age,lastName){
+				this.name=name;
+				this.age=age;
+				this.lastName=lastName;
+				this.minStudnet=minStudnet;
+				function   minStudnet(lastAge){
+					this.lastAge=lastAge;
+				}
+				
+			}
+			myStudnet=new studnet("tom",12,"jack");
+			//myStudnet.minStudnet("1212");  
+			document.write(myStudnet.name+":"+myStudnet.age+":");
+			minStudnets=myStudnet.minStudnet;//获取方法，就是相当于对象
+			minStudnets.lastAge=125555;//赋值
+			document.write(minStudnets.lastAge);
+
+Number对象
+		javascript中数字十进制的显示的可以使用toString方法输出二进制  ....
+		/*10进制转2 8 16 进制*/
+			var  nu=123;
+			document.write("10进制"+nu);
+		document.write("<br/>8进制"+nu.toString(8));
+		document.write("<br/>2进制"+nu.toString(2));
+		document.write("<br/>16进制"+nu.toString(16));
+			document.write("<hr/>");		
+整数
+			var x=999999999999999;//15
+			var y=9999999999999999;//16
+			document.write( x+"::"+y);
+			document.write("<hr/>");
+小数的精确度
+		var x1=0.2+0.1;
+			document.write(x1+"<br/>");
+			x1=(0.2*10 +0.1*10)/10;
+			document.write(x1);
+			document.write("<hr/>");
+如前缀是0(零)为八进制
+			x2=0456;
+			document.write(x2+"<br/>");
+前缀是0(零)和X  就是16进制
+			x3=0xFF;
+			document.write(x3);	
+非数值NAN
+  	1.NaN属性代码非数值的特殊值、
+  	2.指定某个值不是数字
+    3.可以吧number对象设置为该值,表示不是数字
+    4.使用isNaN()来进行判断一个值是不是NaN值
+    		<script type="text/javascript">
+			/*非数值
+			 * */
+			//这里是除值不是类型
+			var  x=100/"10";
+			var y=100/"tom";
+			var  x1=100 / 0;
+			document.write(x);
+			document.write("<br/>");
+			document.write(y);
+			document.write("<br/>");
+			//无穷大是一个数子
+			document.write(x1);
+			document.write("<hr/>");
+			//普通的数字
+			//typeof 判断是什么类型的数据
+			var y1=123;
+			document.write(y1+":");
+				document.write(typeof y1);
+			document.write("<br/>");
+			//一个数字的对象
+		 	 var num=	new Number(1231245);
+		 	document.write(num+":");
+		 	 document.write(typeof num);
+			document.write("<br/>");
+			</script>
+数组array对象
+      常用的方法如:
+	 	<script type="text/javascript">
+			  //数组的定义方式之前讲过?
+			var arr=  new Array();
+			/*元素的数量与索引*/
+			arr[0]="tom";
+			arr[1]="jack";
+			document.write("长度"+arr.length);
+			document.write("<br/>");
+			document.write("是否存在元素"+arr.indexOf("jack"));
+			document.write("<br/>");
+			/*合并多个数组*/
+			var x=["array","list"];
+			var x1=["tom","jack"];
+			var x2=["ben","dyaln"];
+			var y1=x.concat(x1,x2);
+			document.write("<br/>");
+			document.write("合并"+y1);
+			/*将数组组成字符串
+			 */
+			document.write("<br/>");
+			var yy=["ben","dyaln"];
+			var str= yy.join();//转换为字符串
+			document.write("将数组组成字符串"+typeof str);
+			document.write("<hr/>");
+			var xxx=["array","list","ben","dyaln"];
+			xxx.pop();//删除最后一个元素
+			document.write("删除最后一个元素"+xxx);
+				document.write("<hr/>");
+			var xxx1=["array1","list","ben1","dyaln1"];
+			xxx1.push("小张");//最后添加一个元素
+			document.write("最后添加一个元素"+xxx1);
+			document.write("<hr/>");
+			var xxx2=["array2","list2","ben2","dyaln2"];
+			xxx2.unshift("小张");//头部添加一个元素
+			document.write("头部添加一个元素"+xxx2);
+			document.write("<hr/>");
+			var xxx3=["array3","list3","ben3","dyaln3"];
+			xxx3.shift();//头部删除一个元素
+			document.write("头部删除一个元素"+xxx3);
+			document.write("<hr/>");
+			var xxx5=["array1","list2","ben3","dyaln4"];
+			document.write("原来的顺序"+xxx5);
+			xxx5.reverse();//反转
+			document.write("反转后的顺序"+xxx5);
+		</script>
+    
+算术(Math)对象
+     执行普通的算术的任务
+    提供了多种算术值的类型和函数,
+    常用的方法
+    	<script type="text/javascript">
+			/*四舍五入*/
+			   document.write(Math.round(6.7));
+			     document.write("<hr/>");
+			/*随机数
+			   介于0~1之间的随机数
+			 * */
+			 document.write(Math.random());
+			 /*
+			  定义`0~30的随机数
+			  * */
+			   document.write("<hr/>");
+			  document.write(Math.floor(Math.random()*30));
+			  	   /*最大和最小*/
+			  	   document.write("<hr/>");
+			  document.write(Math.max(4,8));
+			 document.write("<hr/>");
+			  document.write(Math.min(4,8));
+	</script>
+ window对象
+ 		  表示的浏览器的窗口
+ 		  所有的全局对象，函数以及变量都自动的window对象的成员
+ 		 全局变量就是window对象的属性
+ 		 全局函数就是window对象的方法
+ 		 windowk可写可不写
+ 		 	 window.document.write(" window.document.write<BR/>");
+			document.write(" document.writee");    
+         获取窗口的宽和高
+         	 function myFunction(){
+			   	  var w=window.innerWidth;
+			   	   var h=window.innerWidth;
+			   	   document.write(w+"=="+h);
+			   }
+			  myFunction();
+Navigator对象 
+      获取浏览器相关的信息
+       
+		
+
+			
+
+
+
+
+
+
+
+
+
+
+			 				

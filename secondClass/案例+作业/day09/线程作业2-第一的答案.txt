@@ -1,0 +1,20 @@
+1.概述饿汉和懒汉之间的区别
+懒汉模式:在类加载的时候不被初始化
+饿汉模式:在类加载时就完成了初始化，但是加载比较慢，获取对象比较快
+饿汉模式是线程安全的
+懒汉模式在创建对象时不加上synchronized，会导致对象的访问不是线程安全的
+//懒汉 线程安全写法
+class Singleton1{
+	  //私有的构造方法,
+	private Singleton1() {
+	}
+	//生明一个对象
+	private  static Singleton1 s;
+	//对外提供公开的访问方式
+	  public static synchronized  Singleton1  getInstance() {
+		  if(s==null) {
+			  s=new Singleton1();
+		  }
+		  return s;
+	  }
+}

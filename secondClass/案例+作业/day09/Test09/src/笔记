@@ -1,0 +1,277 @@
+端口
+	1.就是每个程序在设备上的一个唯一标识
+	如,mysql 3306  TOMCAT 8080
+	2.每个网络程序都需要进行绑定一个端口
+	3.在传输数据的时候除了确定发到那台计算机上(IP)，还明确的指出是个程序(端口)
+	端口的有个范围(0-65535)
+	4.也就是在编写网络应用的是就需要绑定一个端口,使用1024以上的,以下的端口基本上都是被程序占用
+	5.常见的端口
+	mysql 3306
+	tomcat 8080
+	http 80
+	Sqlserver 1433
+	
+-------------------------
+网络通信协议
+	1.计算在网络中进行通信的一种约束,规则,如传输的步骤,通信的协议都有制定标准	
+	2.就是为就是计算机在网络中进行数据交换建立的规则，和标准或者是约定的集合
+通信协议分层的思想
+	1。在制定的协议，把复杂的成分分解成一些简单的成分,然后在进行组合起来
+	2.同一层可以进行通信，上一层调用下一层，不和下层发生关系
+	3。每个层次间是不受到影响的
+
+
+传输层有两个重要的协议
+UDP/TCP
+UDP
+	1、面向无连接,数据不安全,速度快，不区分客户和服务端
+	2、将数据源进行封装成数据包，不需要进行连接
+	3、传输数据结束的时候,不用进行释放资源，从而速度快
+TCP
+	1.面向连接（3次握手） ,数据安全，速度低
+	2。区分客户端和服务端
+	3。	3次握手
+		客户端向服务端发起请求，服务端回应,传输数据
+	4。在连接的时候,需要进行大量的数据传输，当传输完毕，释放建立好的连接,效率低
+		
+---------------------------
+获取Ip地址
+				public static void name() throws UnknownHostException {
+						InetAddress  iner=    InetAddress.getByName("www.baidu.com");
+						System.out.println("名称"+iner);
+						System.out.println("域名"+iner.getHostName());
+						System.out.println("Ip"+iner.getHostAddress());
+						//System.out.println("本机IP地址"+InetAddress.getLocalHost());
+					}
+----------------
+Socket 
+  Socket 是什么
+		1.就是网络上的IP地址和端口组合在一起,进行构造出一唯一能识别的标识符集合
+		2.通信的两端都需要有Socket 网络通信就是Socket与Socket 之间的通信.两台机器间通信的端点
+		3。数组在Socket 之间通信就离不开IO流的传输
+		4.Socket 在通信只是需要IP和端口
+		5.一般情况下，在通信两端都是客户端发生请求。,在是等待服务端进行响应
+	常用的方法
+			InetAddress getLocalAddress() 返回对方Socket中的IP的InetAddress对象
+			int getLocalPort() 返回本地Socket中的端口号
+			InetAddress getInetAddress() 返回对方Socket中IP地址
+			int getPort() 返回对方Socket中的端口号
+			void close() throws IOException 关闭Socket，不可在以后的网络连接中使用，除非创建新的套接字
+			InputStream getInputStream()throwsIOException    获取与Socket相关联的字节输入流，用于从Socket中读数据	
+			InetAddress getLocalAddress() 返回对方Socket中的IP的InetAddress对象
+ ServerSocket类的常用方法
+			Socket accept() throws IOException等待客户端的连接请求，返回与该客户端进行通信用的Socket对象
+			void setSoTimeout(int timeout)throwsSocketException设置accept()方法等待连接的时间为timeout毫秒若timeout值为0，则表示accept()永远等待该方法必须在倾听Socket创建后，在accept()之前调用才有效
+			void close()throws IOException 关闭监听Socket
+			InetAddress getInetAddress() 返回此服务器套接字的本地地址
+			int getLocalPort() 返回此套接字在其上监听的端口号
+			SocketAddress  getLocalSocketAddress()返回此套接字绑定的端点的地址
+ 	
+UDP传输 	
+			//接收方
+ 	   	public static void main(String[] args) throws IOException {
+		DatagramSocket  socket=new DatagramSocket(5555);//指定端口
+		DatagramPacket packet=new DatagramPacket(new byte[1024], 1024);
+		while(true) {
+			//接受数据
+			socket.receive(packet);
+			byte[] arr= packet.getData();//获取数据
+			System.out.println(arr.length);
+			System.out.println("字节数"+packet.getLength());
+			System.out.println("IP"+packet.getAddress().getHostAddress());
+			System.out.println("端口"+packet.getPort())
+			);
+		}
+	-------------------
+			//发送方
+			public static void main(String[] args) throws IOException {
+				  //创建输入的对象
+				Scanner scanner= new Scanner(System.in);
+				//创建Sockect
+				DatagramSocket  socket=	new DatagramSocket();
+				while (true) {
+					//获取控制台的数据
+				String str=	scanner.nextLine();
+					if("esc".equals(str)){
+						break;
+					}
+					//创建一个集装箱
+					//参数1。发送的数据转换数组，参数2长度 参数3 IP   参数4端口 
+					DatagramPacket packet=new DatagramPacket(str.getBytes(),
+							str.getBytes().length,
+							InetAddress.getByName("127.0.0.1"),
+							5555);
+					socket.send(packet);//发送数据
+				}
+				socket.close();
+				
+=================================
+TCP
+  4	步骤创建客户端Socket
+  	 1）创建客户端Socket
+  	    1-指定服务端的ip地址或者端口号,进行构造Socket类的对象
+  	    2-如服务端响应,就进行建立客户端到服务端,的通信路线
+  	    3-如失败就异常
+  	2）连接到Socket的输入输出
+  	 1-使用的getInputStream  和getOutPutStream    来进行传输数据
+  	3）在一定协议进行Socket读写操作
+  	 1-通过输入流读服务器放入的线路信息,(但是是不能进行读取自己放入的信息)同输出流写入到线程中
+  	4）关闭 
+  	  1-断开客户端和服务端的连接
+    如代码	：
+    	//客户端
+				public class TcpSckect {
+				     Socket socket=null;
+				     BufferedReader  bufferedReader=null;
+				     BufferedReader  bufferedReader1=null;
+				     PrintWriter  printWriter=null;
+				     public void name() throws IOException {
+				    	 try  {
+				    			System.out.println("等待发送信息.........................");
+				    			 //客户端的ip 和端口
+				    			socket= new Socket("127.0.0.1",6666);
+				    			//捕获发送给服务端的信息
+				    			bufferedReader=new BufferedReader(
+				    					new InputStreamReader(System.in));
+				    			
+				    		   String str=bufferedReader.readLine();
+				    			//将信息进行打包发送给服务
+				    		   printWriter =new PrintWriter(socket.getOutputStream());
+				    		   //接受服务端的信息
+				    		   bufferedReader1=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				    		   while(true
+				    				   ) {
+				    			   printWriter.print(str);
+				    			   printWriter.flush();
+				    			   //服务端发送的信息
+				    			   str=bufferedReader1.readLine();
+				    			   System.out.println("客户端收到"+str);
+				    			   //捕获信息发送给服务端
+				    			   str=bufferedReader.readLine();
+				    		   }
+				    		} catch (Exception e) {
+				    			// TODO: handle exception
+				    		  e.printStackTrace();
+				    		}finally {
+				    			bufferedReader1.close();
+				    			bufferedReader.close();
+				    			printWriter.close();
+				    			socket.close();
+							}
+					}
+      
+  4	步骤创建服务端ServerSocket
+    1)调用ServerScoket()传入端口(客户端的一致)
+    			1-创建一个服务端的连接,并进行绑定在指定的端口上
+    			2-主要是用于监听客户端的请求
+    2)调用Accept()
+        1-监听请求的连接,如客户端请求连接，这进行连接,返回信息
+    3)调用Socket对象
+    	使用的getInputStream  和getOutPutStream    来进行传输数据   			
+	4)关闭
+	    ServerSocket和Socket
+	   代码如下：
+				   	ServerSocket  serverSocket=null;
+			     Socket socket=null;
+			     BufferedReader  bufferedReader=null;
+			     BufferedReader  bufferedReader1=null;
+			     PrintWriter  printWriter=null;
+			     public void name() throws IOException {
+			    	 try {
+			    	 //设置端口
+			    	 serverSocket=new ServerSocket(6666);
+			    	 System.out.println("等待请求.........");
+			    	 //设置监听客户端的请求
+			    	 socket=serverSocket.accept();
+			    	 //接受客户端的信息
+			    	 String str;
+			    	 bufferedReader =new BufferedReader(
+			    			 new InputStreamReader(
+			    					 socket.getInputStream()));
+			    	 //服务器返回给客户端的信息
+			    	 bufferedReader1=new BufferedReader(
+			    			 new InputStreamReader(
+			    					 System.in));
+			    	 //打包发送给客户端
+			    	 printWriter=new PrintWriter(socket.getOutputStream());
+			    	 while(true) {
+			    		 //接受客户端信息
+			    		 str=bufferedReader.readLine();
+			    		 System.out.println("服务端收到:"+str);
+			    		 //返回信息给客户端
+			    		 str=bufferedReader1.readLine();
+			    		 printWriter.println(str);
+			    		 printWriter.flush();
+			    	 }
+			    	 
+			    		} catch (Exception e) {
+			    			// TODO: handle exception
+			    		e.printStackTrace();
+			    		}finally {
+			    			bufferedReader1.close();
+			    			bufferedReader.close();
+			    			printWriter.close();
+			    			socket.close();	
+			    			serverSocket.close();	
+						}
+			     } 
+	  ==============================
+	  
+	  
+	  ==================================
+反射
+1.什么是反射
+ 	  	反射机制就绪允许程序,在执行期间借助API的方法来进行获取任何类中的内部信息,
+ 		  并且能进行直接的操作任意对象内部的数据以及方法
+	 		如,一个密封的盒子,里面电路信息,通过X光来进行获取到该电路的所有的电阻的型号 
+
+反射提供的功能
+		判断一个对象的所属类
+		构造任意一个类的对象
+		判断任意一个类所有的成员变量和方法
+		调用任意的一个对象的成员变量和方法
+		生成动态代理
+主要的API
+		Class  表示一个类
+		Method  表示类的方法
+		Field		成员变量
+		Constructor		 构造函数
+		
+
+2.Class类
+	public final class  Class
+	
+	1。如刚演示的返回值额类型是Class类,比类就是Java反射的源头
+	
+	2。创建Class类对象3种
+	  1）知道那个类,通过类的class属性获取该方法
+	      安全可靠,性能高
+	     		public static void name() {
+					 Class czz=	String.class;
+					} 
+	2)知道某个类的实例,调用该类实例的getClass方法获取Class对象
+					public static void name1() {
+					Student  stu=	  new Student();
+					Class  czz=stu.getClass();
+					}	
+	3)知道一个类的全类名,该类在类路径下可以通过Class类的静态方法
+	  forName()获取
+	  				public void name2() throws ClassNotFoundException {
+						 Class czz=	Class.forName("java.lang.String");
+						}
+---------------------
+反射的常用的方法
+		1）通过反射获取该类中的构造函数	
+	  						//通过反射获取该类中的构造函数
+					public static void main(String[] args) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+						       //获取Student实例
+							Class stu=	Student.class;
+							Constructor  constructor=	stu.getConstructor(String.class,int.class);
+							Student    student =(Student)constructor.newInstance("陈二狗",3);
+							System.out.println(student);
+							System.out.println("=======================");
+							Constructor  constructor1=	stu.getConstructor();
+							Student    student1 =(Student)constructor1.newInstance();
+							System.out.println(student1);
+					}
+	    

@@ -1,0 +1,42 @@
+回想
+ 	1-集合是什么?
+ 	   	和数组进行对比集合和数组之间的区别
+ 	2.collection接口
+ 			set接口
+ 			list接口
+ 			他们之间的区别是一个无序一个有序,重复和不可重复
+ 		  2-1.ArrayList
+ 		  			底层就是一个数组	
+ 		  			遍历的3这种方式
+ 		  				Iterator  it=	arr.iterator();
+							while(it.hasNext()) {
+								System.out.println(it.next());
+							}
+							
+							for (Object object : arr) {
+								System.out.println(object);
+							}
+							
+							
+							for (int i = 0; i < arr.size(); i++) {
+								System.out.println(arr.get(i));
+							}
+		
+ 		  2-2.LinkedLlist
+ 		           	 双链表的方式	 			
+ 		  2-3. ArrayList 与LinkedLlist之间的区别
+ 		  		     插入和删除的效率   LinkedLlist比ArrayList要高
+ 		  		   ArrayList查询的效率要高于   LinkedLlist	 
+ 		  2-4.Vector
+ 		  		与ArrayList对比，Vector是线程安全，由于是线程安全,频繁的插入删除要比ArrayList要慢
+ 		  2-5.ListIterator
+ 		       	遍历数据的
+ 		  	  Iterator与ListIterator的区别
+ 		  	 	对于系列表迭代器，允许程序员按任一方向遍历列表、迭代期间修改列表 				
+ 		   		对 collection 进行迭代的迭代器
+ 		  		
+ 		  2-6.使用LinkedList模拟栈结构
+ 		  		
+ 		  
+ 		   		
+ 		  				   

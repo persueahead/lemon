@@ -1,0 +1,87 @@
+CSS样式
+	回想HTML是不是
+	块级标签
+	    h1
+	    div...
+	行内标签
+	    a  
+	    
+行内标签和块级标签之间的转换
+		/*行转块*/
+		display: block;	
+		/*块转行*/
+		display: inline; 
+		/*隐藏*/
+		display: none; 
+		/*呈递为内联对象,但是对象的内容是块元素呈现的*/
+		display: inline-block;	
+设置字体的样式
+		style="color: red;font-size: 26;">	
+背景颜色		
+		background-color: #808080;	
+		
+		
+盒子模型
+  CSS框架模型规定了元素框处理的元素信息，内边框,外边框，外边距....
+  如图片盒子模型.Png
+  注意:
+     总高度=上外边框+下外边框+上边框+下边框+上内边框—+下内边框+内容的高
+     总宽度=左外边框+右外边框+左边框+右边框+左内边框—+右内边框+内容的宽
+   设置边距
+     无论是外边距还是内边距用法都是一样
+     只是单词padding和margin,负数也可以的
+     如内边框
+     			/*表示每个边都设置
+				padding: 80px;*/
+				/*设置上下左右都不一样
+				   上 90px    右 0.34em   下7em     左60%
+				padding: 90px 0.34em 7em 60%;	 */
+				/*单独的设置*/
+			      padding-bottom: 12px;
+			      padding-left: 12px;
+			      padding-right: 12px;
+			      padding-right: 12px;
+  设置上边距
+  				border-top-style: solid;
+			  	border-right-color: red;
+				border-bottom-color: green;
+				border-bottom-color: yellow;
+				border-bottom-style: double;
+				border-right-style: double;
+				border-left-style: solid;
+ 定位
+   CSS为定位和浮动提供了以些的属性，
+     利用这些属性可以建立布局
+          如：广告。。。
+ 		1。相对定位
+ 		  元素框偏移某个距离,原有占用的空间位置是保留的
+ 		  		#DIV2{
+						position: relative;
+						left: -400px;
+					}
+				#DIV3{
+					position: relative;
+					left: 400px;
+				}
+ 		  
+ 		2。绝对定位
+ 		    元素框中年文档中删除，并相对于块定位
+ 		    源来的占有的空间会进关闭,
+ 		    定位之后生成一个块级框,无浏览器怎么变化大小对于绝对定位不影响
+ 		   	#DIV2{
+					position: absolute;
+					left: 200px;
+					top: 100px;
+				}
+ 		
+ 		3。 固定定位
+ 		   如广告
+ 		   	#DIV2{
+					position: fixed;
+					left: 200px;
+					top: 100px;
+				}
+  
+  
+		
+			  

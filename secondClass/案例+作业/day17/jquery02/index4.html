@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.h{
+				color: blue;
+				background-color: aqua;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<button id="bu">but</button>
+	<hr />
+	   <div style="width: 200PX;">当前元素
+	      <ul>儿子元素
+	      	  <li class="h">孙女元素<br/>
+	      	  	<span>重孙女子元素</span>
+	      	  </li>
+	      </ul>
+	      <ul>女子元素
+	      	  <li>孙女元素<br/>
+	      	  	<span>重孙女元素</span>
+	      	  </li>
+	      </ul>
+	   </div>
+	
+	
+	</body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		$(function(){
+			//后代
+     /*     $("div").children().css({
+          	"color":"red",
+          	"border":"3px solid red"
+          });*/
+          //明确的指定 
+     /*      $("div").children("li.h").css({
+          	"color":"red",
+          	"border":"3px solid red"
+          });
+          */
+         //最后的子元素
+            $("div").find("span").css({
+          	"color":"red",
+          	"border":"3px solid red"
+          });
+          
+          //同胞
+          
+          
+		});
+		
+		
+	</script>
+</html>

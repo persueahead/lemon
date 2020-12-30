@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--javascript一般都是放在body后面的-->
+
+	</head>
+	<body>
+		<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton011()">点击</button>
+			<h1 id="h1"></h1>
+		<!--onclick用于点击调用函数的-->
+		<button onclick="myFunciton01()">点击</button>
+	</body>
+	
+		<script type="text/javascript">
+			function  myFunciton01(){
+		   for(i=0;i<10;i++){
+		   	  if(i==3){
+		   	  	 document.write("if(i==3)continue");
+		   	  	 //JAVA中一样退出本次循环 (条件满足) 
+		   	  	continue;
+		   	  }
+		   	   if(i==4|i==8){
+		   	  	 document.write("|也可以");
+		   	  	 //JAVA中一样退出本次循环 (条件满足) 
+		   	  	continue;
+		   	  }
+		   	   document.write("i："+i+"<br/>");
+		   }
+			}
+			
+		function  myFunciton011(){
+		   for(i=0;i<10;i++){
+		   	  if(i==3){
+		   	  	 document.write("if(i==3)的break");
+		   	  	 //JAVA中一样退出循环 (条件满足) 
+		   	  	 break;
+		   	  }
+		   	   document.write("i："+i+"<br/>");
+		   }
+		
+		
+			}
+	
+		
+	</script>
+</html>
