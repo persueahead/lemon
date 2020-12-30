@@ -1,0 +1,4 @@
+Java中的数据类型分几类?基本数据类型有哪些?
+答：基本数据类型和引用数据类型
+     基本数据类型：数值型（整形byte、short、int、long；浮点型float,double),字符型（char），布尔型（boolean）
+   引用数据类型：类（class）；接口（interface）；数组（array）

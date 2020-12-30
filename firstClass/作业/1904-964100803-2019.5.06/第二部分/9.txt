@@ -1,0 +1,14 @@
+switch(){
+case A:
+case B:
+...
+default
+}
+可判断的变量类型：
+byte
+short
+int
+char
+String(JDK6+)
+Enum
+没有long和浮点型，没有布尔型

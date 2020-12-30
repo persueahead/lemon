@@ -1,0 +1,23 @@
+1、
+byte a=13;   final byte a1=13;
+byte b=23;  final byte b1=23;
+short s=1;  final short s1=1;
+short t=2;  final short t1=2;
+int n=1;  final int n1=1;
+long a=1; final long a1=1;
+float a=3.0;final float a1=3.0;
+double a=3.0;final double a1=3.0;
+char a=97; final char a1=97;
+boolean s=true;  final boolean t=false;
+
+2、
+String name=”张三";
+int age=22;
+String gender="男";
+int qq="1314520";
+String mobilePhone="5111654165165";
+String wx="月舞";
+String emile=“154689266@163.com";
+String studyExperience="本科";
+String mainClass="信号";
+String projectedExperience="暂无";

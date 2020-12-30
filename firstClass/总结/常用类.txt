@@ -1,0 +1,60 @@
+1.Object类
+	在java.lang中，是所有的类的父类，不作为接口的父类
+	常用的方法：
+		finalize();
+			* finalize 是一个受保护的，在进行垃圾回收的时候由JVM调用
+			 *     该方法在JVM回收前调用
+			 *     不能显示的调用，如果显示的调用相当于调用了2次，在第一次的时候就以及释放掉资源了，第2次调用就会报错
+		equals();
+			默认情况下判断2个对象的引用地址是否相等.
+			如果需要判断类的成员变量是否相同，可以重写equals()方法
+		getClass();
+			是一个Object钟一个公开的方法
+			作用：返回对象的实际类型
+		toString();
+			返回类所在的地址信息
+2.Random类
+	获取随机数的值
+	属于java.util包中
+	成员方法：
+		nextInt() 返回int范围内的随机数
+3.String类:字符串  不可变
+	不是基本数据类型，是一个引用数据类型,String类不能被继承，因为加类修饰符final
+4.StringBuilder 、StringBuffer ：可变的字符串
+   	字符串变量
+   	处理字符串的时候，不会生成新的对象，内存结构优化
+5.String和StringBuilder
+	  String 一个常量   	 StringBuilder 一个变量
+	  String对象一旦创建不可以修改，如果需要修改，相当于重新赋值，就是2个对象了
+	  StringBuilder 处理字符串的时候，不会生成新的对象，优化String
+	     如果需要对字符串修改 删除 插入 建议使用StringBuilder
+	  String 可以看做是一个共享的数据
+	
+6.StringBuilder 、StringBuffer
+	StringBuilder效率高，线程不安全	
+	StringBuffer效率低，线程安全		
+	
+7.包装类
+	包装类就是为了把基本数据类型包装成引用数据类型
+	让Object类可以进行统一管理
+	Java中包装类
+	基本数据类      包装类
+	int       Integer
+	short     Short
+	long      Long
+	double    Double
+	float     Float
+	boolean   Boolean
+	char      Character     
+8.System类
+	代表系统，属于Java.lang中
+	由于构造函数是私有的，不能被实例化
+	所有的方法和属性都是static 修饰的，可以方便调用
+	属性：
+		out :标准输出流
+		in：标准的输入流
+		err	：标准的错误输出流
+	
+	
+	
+			

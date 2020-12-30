@@ -1,0 +1,13 @@
+class Monster{
+    int vitality;
+    int grade=1000*vitality;
+}
+class Zero{
+    float empirical;
+    int grade;
+    int attack;
+    public int beat(int a) {
+    	a-=this.attack;
+	return a;
+    }
+}

@@ -1,0 +1,4 @@
+动态和静态两种方式
+动态:     int[] arr=null;//int arr[]=null也行
+            arr=new int[长度];
+静态   int[] arr={初始值0，初始值1，....};

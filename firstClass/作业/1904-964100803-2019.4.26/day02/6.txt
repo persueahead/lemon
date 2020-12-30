@@ -1,0 +1,14 @@
+、（Java 程序的编译与运行）假设有如下：
+package com.corejava.chp1;
+pub lic class HelloWorld{
+   public static void main(String args[]){
+       System.out.println("Hello World");
+    }
+}
+问：
+1）假设这个代码存在 hello.java 文件中，那这个程序能够编译通过？为什 么？如果编译不通过，应该何改进
+2）如果放置在桌面上，怎么编译执行
+  答：文件名和public类名不一致，不能通过编译。将hello.java改成HelloWorld.java
+       放在桌面
+                    javac -d . HelloWorld.java
+                    java com.corejava.chp1.HelloWorld

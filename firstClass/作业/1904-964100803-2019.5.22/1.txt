@@ -1,0 +1,38 @@
+1、把一切看作对象来处理，通过抽象类对相似的行为和属性进行封装，有封装，继承、多态三大特性，封装保证了信息安全，同时使代码模块化，提高复用性；继承，子类继承父类，扩展了功能的同时进一步提高代码的复用性；多态，允许出现重名现象，代码抽象度和简洁度提高，有利于分组协同开发，降低代码耦合度。
+   class Student{
+    String name;
+    private String sex;
+    private int age;
+    public  void setSex(String sex2){
+    if("男".equals(sex2)||"女".equals(sex2)){
+	sex=sex2;
+	}else{
+	 System.out.println("请输入男或女");
+	}
+     }
+ public void setAge(int age2){
+         if(age2>0&&age2<120){
+         age=age2;
+    }else{
+	System.out.println("年龄输入有误");
+     }
+ }
+ public String getSex() {
+	 return  sex;
+ }
+ public int getAge() {
+	 return age;
+ }
+}
+public class Person {
+	public static void main(String[] args) {
+		Student student=new Student();
+		student.name="小明";
+		student.setAge(22);
+		student.setSex("男");
+		System.out.println("姓名："+student.name+"\t年龄："+student.getAge()+"性别："+student.getSex());
+				
+	}
+}
+封装好处：起到信心屏蔽的作用，将不需要公开得信息隐藏起来，提高代码安全性，使得代码不能被随意修改，提高代码可维护性
+
