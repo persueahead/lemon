@@ -1,0 +1,233 @@
+回顾，
+   数据库的安装
+    sql什么是sql
+	
+	sql语句的分类
+	    DDL
+		   数据定义语言
+		DML
+		   数据操作语言
+		DQL
+		    数据查询语言
+		DCL
+			数据控制语言
+	
+	
+	=======================================================
+	DQL
+		数据查询的语言
+	 
+1、基本的语法格式
+   select  [表字段名称|列名]|[*] from  数据表的名称  [where] [查询的条件]  [and]  [条件1]
+   [group by  分组条件]    [having  过滤]  [order by 排序]
+	 
+	查询emp所有的数据信息
+		SELECT * FROM EMP
+	 指定查询emp表中的某个字段的名称
+		SELECT ename,job,sal FROM EMP
+	取别名称	
+		SELECT ename  员工名称,job as 职位,sal empSal FROM EMP
+	注意：
+		SELECT 1+1   在mysql中是可以进行执行的，但是在Orcale中不能进行执行的(了解：SELECT 1+1  FROM  dual )
+	去重DISTINCT
+      SELECT   DISTINCT job  from  EMP	
+	查询员工的年薪
+				SELECT   ename,sal*12+comm from  EMP//出现空值
+				SELECT   ename,sal*12+ifnull(comm,0) from  EMP 		
+				nvl()//oracle中的语法
+	拼接字符串
+        SELECT   CONCAT('姓名:',ename)   eanme from  EMP 	
+
+		
+2、条件查询
+    在某一条sql语句中，需要进行多个条件的查询
+		如小张的爸爸是隔壁老陈或者小张的爸爸是隔壁老王或者是老张
+	 这个时候就需要多个条件了来进行查询
+	   这个就条件就需要写在，where语句后面的
+	
+	
+3、where 后面可以写什么   
+		3-1、关系运算符
+                   =  >  <  >=  <=  <>   !=  
+                     如select * from  EMP  where  sal > 2000  
+					 
+					 !=null  is  not null 
+		3-2、逻辑运算符
+				  and  逻辑并（和的意思,同时都有进行满足）,  or 逻辑或(或者)    not 逻辑否 (非也非也)  
+				如：
+				  select * from  EMP  where   comm  is  not  null
+				
+				  select * from  EMP  where  ename  ='KING'  AND  sal >3000
+				
+				  select * from  EMP  where  ename  ='KING' or  ename  ='TURNER'
+		3-3、其他的运算符
+			     like  :模糊查询
+				 in(set)  :在某个集合中
+				 is  null   判断为空
+				 is  not  null  判断不为空
+				 between....and.....   在某个区间内
+				如 :
+				  查询工资是1600,800,1250
+				select * from  EMP  where sal IN(1600,800,1250)
+				 查询工资在2450到3000之间(包含2450/3000)
+				select * from  EMP  where sal between 2450 and 3000
+				查询有员工获取到奖金的信息
+				select * from  EMP  where   comm  is  not  null
+				 查询员工名字中有A的员工信息
+				select * from  EMP  where  ename like '%A%'
+				查询员工名字中第二个字母为A的员工信息
+				select * from  EMP  where  ename like '_A%'
+				查询员工名字中第三个字母为A的员工信息
+				select * from  EMP  where  ename like '__A%'
+				   注意的: 
+				     如like查询的条件中带有%标识0个或者多个
+				              _一个下划线表一个字符
+4、案列查询
+	使用逻辑运算符和关系运算符完成如下查询
+				   
+	4-1、查询工资在1500-3000之间的工资的员工信息
+		SELECT * FROM EMP  WHERE  SAL >=1500 AND  SAL  <=3000   
+	4-2、查询工资大于1500并且有奖金的员工信息
+		SELECT * FROM EMP WHERE  comm IS  not null  and  sal >1500
+	4-3 、查询工资大于1500或者有奖金的员工信息
+		SELECT * FROM EMP WHERE  comm IS  not null  or  sal >1500
+	4-4、查询工资大于1500和没有领取奖金的员工信息
+       	SELECT * FROM EMP WHERE  comm IS   null and   sal >1500
+	4-5、差员工编号为7698，7788，7902的员工信息
+		SELECT * FROM EMP WHERE empno  =7698 or empno =7788 or empno  =7902
+5、案列查询		
+	  使用关系运算符和逻辑运算符与其他的运算符来进行完成
+	 5-1、查询工资在1500-3000之间的工资的员工信息
+		SELECT * FROM EMP  WHERE  SAL  BETWEEN   1500 and 3000
+	 5-2、查询1981-1-1号 到 1981-12-03号入职的员工信息
+		SELECT * FROM EMP  WHERE  hiredate  BETWEEN  '1981-1-1' and  '1981-12-03'
+	 5-3 、查询员工名字是ALLEN JONES KING的信息
+		SELECT * FROM EMP  WHERE  ename  IN('ALLEN','JONES','KING')	
+		SELECT * FROM EMP  WHERE  ename ='ALLEN' OR   ename ='JONES' or ename ='KING'	
+ 6、[order by 排序]		
+	 在sql语句中，使用order by  进行对结果的排序查询
+	 语法:
+	  select  [表字段名称|列名]|[*] from  数据表的名称  [where] [查询的条件]  [and]  [条件1]
+	[order by   列名1  ASC|DESC  ,列名2 ASC|DESC .... ]  
+	  
+	  注意默认排序使用升序的方式进行排序的 ASC (ASC可写可不写)
+	  
+	 
+	6-1、查询员工的薪资从低到高的进行排序 
+	   SELECT * FROM EMP ORDER BY sal asc
+	6-2、查询员工的薪资从高到低的进行排序   
+	   SELECT * FROM EMP ORDER BY sal desc
+	6-3、查询员工奖金以降序的方式进行排序(注意奖金有空值的)   
+	   SELECT * FROM EMP ORDER BY comm desc 
+	6-4、查询部门编号和工资，部门编号升序排序，工资安装降序排序
+		SELECT * FROM EMP ORDER BY  deptno,sal desc
+	6-5、查询部门编号和奖金，部门编号降序排序，奖金降序排序
+		SELECT * FROM EMP ORDER BY  comm desc,deptno desc	
+ 7、函数
+      函数就是可以进行接受0或者多个输入的参数，并返回一输出的结果
+		多个函数
+			max()  最大值
+					如:计算工资最大数据 ：SELECT MAX(sal) FROM EMP 
+			min()  最小值
+					如:计算工资最小数据 ：SELECT min(sal) FROM EMP 
+			sum()  求和
+				   如：计算员工的总工资  :SELECT sum(sal) FROM EMP 
+			count()  计算个数
+					如:计算员工人数 :  SELECT COUNT(*) FROM EMP 
+			avg()  计算平均值的  
+				如:统计所有员工奖金的平均奖金
+				SELECT   SUM(comm)/COUNT(*) FROM EMP 
+			  注意：sql    
+				SELECT   avg(comm) FROM EMP 是计算的有奖金的员工的平均奖金
+			
+		单行函数(了解)
+			字符串的截取
+			    SUBSTR(参数1,参数2,参数3)
+			参数1就是数据源  ,参数2起始索引，参数3就截取的长度
+			SELECT    SUBSTR('asdfgh',1,3) 
+		    
+			获取长度
+				SELECT    LENGTH('asdfgh')
+			去除左右的空格
+			SELECT    TRIM('    asdfgh     ')
+		  
+			*拼接字符串
+				SELECT   CONCAT('姓名:',ename)   eanme from  EMP 	
+			*四舍五入
+			   ROUND(参数1,参数2)
+			    参数1源数据,参数2[可写可不写]  
+				如写了就从参数2(小数点开始计算)开始四舍五入,
+				如不写就从小数点之后开始四舍五入
+				参数2:也写上负数和0
+				    0标识从小数点
+					整数(1,2,3...)表示小数点之后的..
+					负数(-1，-2,-3。。。。)表示小数点之前的开始
+			SELECT  ROUND(5343.465,2)
+			
+			
+			*求余数
+			SELECT  MOD(1600,300)
+			
+			返回较大的最小整数
+			 SELECT  CEIL(3423.786)
+			
+			返回较小的最大整数
+			SELECT  FLOOR(3423.186)
+			
+			*日期函数
+			SELECT  SYSDATE()
+			  
+			*  SELECT  NOW()
+			
+			天数的函数
+			SELECT TO_DAYS(NOW())
+			
+			通用函数	
+			IFNULL	
+			SELECT  IFNULL(COMM,0)   FROM  EMP
+8、函数案列
+     查询员工入职的天数
+	   Orcale中
+     	   SELECT  SYSDATE()-hiredate FROM EMP
+	  mysql
+	     SELECT  DATEDIFF(NOW(),hiredate)  FROM EMP
+	 查询员工入职的周数
+		SELECT FLOOR(DATEDIFF(NOW(),hiredate)/7)  FROM EMP
+		
+9、[group by  分组条件] 
+	   就在查询的时候进行对数据的分组
+	    select  [表字段名称|列名]|[*] from  数据表的名称  [where] [查询的条件]  [and]  [条件1]
+   [group by  分组条件]    [having  过滤] 
+	9-1、统计所有的部门的平均工资
+        SELECT DEPTNO,ROUND(AVG(sal)) FROM EMP  GROUP BY  DEPTNO
+
+
+10、 [having  过滤] 	
+         在查询的时候，需要对数据进行分组，分组了之后还需要进行过滤操作
+		 如:求和.....    
+	    select  [表字段名称|列名]|[*] from  数据表的名称  [where] [查询的条件]  [and]  [条件1]
+   [group by  分组条件]    [having  过滤] 
+     
+	 10-1、分组统计所有部门的平均工资，然后在进行找出工资大于2500的部门
+	 分析：
+	   1、分组统计所有部门的平均工资
+			SELECT DEPTNO,ROUND(AVG(sal)) FROM EMP  GROUP BY  DEPTNO
+	   2、找出工资大于2500的部门
+		  SELECT DEPTNO,ROUND(AVG(sal))  a FROM EMP  GROUP BY  DEPTNO  HAVING  ROUND(AVG(sal))>2500
+      扩展:Oracle中 HAVING不带上别名
+   
+11、where  和  having之间的区别
+          
+	where 是写在group by之前	
+	having是在having之后的
+	
+	没有分组用where  分组了用户Having  
+12、多个函数和单函数的区别
+     单行函数  
+			对个一个函数的应用在表的记录中只能输入一行结果返回一行结束
+	多个函数
+			可以接受0个或者多个输入的参数，并返回一个输出的结果
+			   组函数或者多行函数||聚合函数
+
+	 
+	

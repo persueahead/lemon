@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>15 表分区</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="rm53" id="15-表分区">15 表分区</h1><p data-anchor-id="0v41"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="wpcv" id="1-表分区简介">1 表分区简介</h2><p data-anchor-id="0wj9">允许用户将一个表分成多个分区 <br>
+用户可以执行查询，只访问表中的特定分区 <br>
+将不同的分区存储在不同的磁盘，提高访问性能和安全性 <br>
+可以独立地备份和恢复每个分区 <br>
+<img src="http://static.zybuluo.com/l363130002/e91eo8ele3hzab7j5v5sp4r3/image_1c0gf2b3v1d71184r15isdh512q3m.png" alt="image_1c0gf2b3v1d71184r15isdh512q3m.png-53.3kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="cntx" id="2-表分区的类型">2 表分区的类型</h2><p data-anchor-id="tjrn"><img src="http://static.zybuluo.com/l363130002/xno671rkvk1kib7l21wj4aj5/image_1c0gf5khe5ahsr6vtgoud4pn1j.png" alt="image_1c0gf5khe5ahsr6vtgoud4pn1j.png-17.4kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="nydm" id="21-范围分区">2.1  范围分区</h3><p data-anchor-id="f43z">以表中的一个列或一组列的值的范围分区 <br>
+范围分区的语法：</p><pre data-anchor-id="rqju"><code>PARTITION BY RANGE (column_name)
+(
+  PARTITION part1 VALUE LESS THAN(range1),
+  PARTITION part2 VALUE LESS THAN(range2),
+  ...
+  [PARTITION partN VALUE LESS THAN(MAXVALUE)]
+);
+</code></pre><p data-anchor-id="wd1y">范围分区示例</p><pre data-anchor-id="zedh"><code>    --示例1
+    CREATE TABLE Sales
+    (
+        Product_ID varchar2 (5),
+        Sales_Cost number (10)
+    )
+    PARTITION BY RANGE (Sales_Cost)  -- 根据 Sales_Cost 创建分区
+    (
+        PARTITION P1 VALUES LESS THAN (1000),  --包含销售成本低于1000的所有产品的值 
+        PARTITION P2 VALUES LESS THAN (2000),
+        PARTITION P3 VALUES LESS THAN (3000)
+    );
+
+
+--示例2
+CREATE TABLE SALES2 (
+PRODUCT_ID VARCHAR2(5),
+SALES_DATE DATE NOT NULL,
+SALES_COST NUMBER(10))
+PARTITION BY RANGE (SALES_DATE)
+(
+  PARTITION P1 VALUES LESS THAN (DATE ‘2003-01-01’),
+  PARTITION P2 VALUES LESS THAN (DATE ‘2004-01-01’), 
+  PARTITION P3 VALUES LESS THAN (MAXVALUE)
+);
+</code></pre><p data-anchor-id="xsw7">实例：</p><pre data-anchor-id="felc"><code>create table sales
+(
+product_id varchar2(20),
+sales_date date not null,
+sales_cost number(10)
+)
+partition by range (sales_cost)
+(
+ partition p1 values less than (1000),
+ partition p2 values less than (2000),
+ partition p3 values less than (maxvalue)
+)
+---添加数据
+insert into sales values('test001',sysdate,800);
+insert into sales values('test001',sysdate,1200);
+insert into sales values('test001',sysdate,1800);
+insert into sales values('test001',sysdate,122000);
+insert into sales values('test001',to_date('2004-04-12','yyyy-mm-dd'),122000);
+--查询分区数据
+select * from sales;
+select * from sales partition(p2);
+select * from sales partition(p3);
+--修改数据
+update sales set sales_date=to_date('2004-04-12','yyyy-mm-dd') where product_id='test001';
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="age9" id="22-散列分区">2.2 散列分区</h3><blockquote data-anchor-id="9qan" class="white-blockquote">
+  <p>允许用户对不具有逻辑范围的数据进行分区 </p>
+  
+  <p>通过在分区键上执行HASH函数决定存储的分区</p>
+  
+  <p>将数据平均地分布到不同的分区</p>
+</blockquote><p data-anchor-id="rdo2"><strong>语法</strong></p><pre data-anchor-id="jvw1"><code>PARTITION BY HASH (column_name)
+PARTITIONS number_of_partitions;
+或
+PARTITION BY HASH (column_name)
+( PARTITION part1 [TABLESPACE tbs1],
+  PARTITION part2 [TABLESPACE tbs2],
+  ...
+  PARTITION partN [TABLESPACE tbsN]);
+</code></pre><p data-anchor-id="pkbw">示例1：</p><pre data-anchor-id="erhu"><code>CREATE TABLE Employee
+(
+    Employee_ID varchar2 (5),
+    Employee_Name varchar2(20),
+    Department varchar2 (10)
+)
+PARTITION BY HASH (Department) -- 创建 3 个分区
+(
+    Partition D1, --分区的名称
+    Partition D2,
+    Partition D3
+);&nbsp;
+</code></pre><p data-anchor-id="mg40">示例2：</p><pre data-anchor-id="yu8h"><code>CREATE TABLE EMPLOYEE
+(
+    EMP_ID NUMBER(4),
+    EMP_NAME VARCHAR2(14),
+    EMP_ADDRESS VARCHAR2(15),
+    DEPARTMENT VARCHAR2(10)
+)
+PARTITION BY HASH (DEPARTMENT)
+PARTITIONS 4;&nbsp;
+</code></pre><p data-anchor-id="ldzz">实例：</p><pre data-anchor-id="5ok9"><code> --创建表并创建分区
+    create table employee(
+    emp_id number(4),
+    emp_name varchar2(14),
+    descp varchar2(20)
+    )
+    partition by hash(emp_id) partitions 4;
+
+    create table employee(
+    emp_id number(4),
+    emp_name varchar2(14),
+    descp varchar2(20)
+    )
+    partition by hash(emp_id)(
+    partition p1,
+    partition p2
+    );
+
+    --添加数据
+    insert into employee values('001','test1','haha');
+    insert into employee values('002','test1','haha1');
+
+    --查询分区数据
+    select * from employee partition(p1)
+    select * from employee partition(p2)
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="0ikp" id="23-列表分区">2.3 列表分区</h3><p data-anchor-id="p1o9">允许用户将不相关的数据组织在一起 <br>
+列表分区的语法：</p><pre data-anchor-id="fbp8"><code>PARTITION BY LIST (column_name)
+(
+  PARTITION part1 VALUES (values_list1),
+  PARTITION part2 VALUES (values_list2),
+  ...
+  PARTITION partN VALUES (DEFAULT)
+);
+</code></pre><p data-anchor-id="go05">示例：</p><pre data-anchor-id="t7vp"><code> CREATE TABLE Employee
+(
+    Emp_ID number (4),
+    Emp_Name varchar2 (14),
+    Emp_Address varchar2 (15) --根据职员住址在表上创建的列表分区
+)
+PARTITION BY LIST (Emp_Address)
+(
+    Partition north values (‘芝加哥'),
+    Partition west values (‘旧金山’, ‘洛杉矶'),
+    Partition south values (‘亚特兰大’, ‘达拉斯’, ‘休斯顿'),
+    Partition east values (‘纽约’, ‘波斯顿')
+);
+</code></pre><p data-anchor-id="v7t0">实例：</p><pre data-anchor-id="x4c6"><code>--列表分区：
+ create table testlist
+ (
+ userid number(4),
+ username varchar2(20)
+ )
+ partition by list(username)
+ (
+ partition p1 values('wyg','wyg1'),
+ partition p2 values('wyg2','wyg3')
+ );
+
+
+insert into testlist values (1001,'wyg');
+insert into testlist values (1002,'wyg1');
+insert into testlist values (1003,'wyg2');
+insert into testlist values (1004,'wyg3');
+insert into testlist values (1004,'wyg4');
+
+select *  from testlist partition(p2)
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="htxj" id="24-复合分区">2.4 复合分区</h3><p data-anchor-id="99vb">范围分区与散列分区或列表分区的组合 <br>
+复合分区的语法：</p><pre data-anchor-id="vs96"><code>PARTITION BY RANGE (column_name1)
+SUBPARTITION BY HASH (column_name2)
+SUBPARTITIONS number_of_partitions
+(
+  PARTITION part1 VALUE LESS THAN(range1),
+  PARTITION part2 VALUE LESS THAN(range2),
+  ...
+  PARTITION partN VALUE LESS THAN(MAXVALUE)
+);
+</code></pre><p data-anchor-id="pno6">示例1：</p><pre data-anchor-id="0hil"><code> CREATE TABLE SALES 
+
+(
+    PRODUCT_ID VARCHAR2 (5),
+    SALES_DATE DATE NOT NULL,
+    SALES_COST NUMBER (10)
+)
+PARTITION BY RANGE (SALES_DATE)  -- 在表的 Sales_Date 列中创建范围分区
+SUBPARTITION BY HASH (PRODUCT_ID)  -- 在表的 Product_ID 列创建散列子分区
+SUBPARTITIONS 5  -- 在每个范围分区中创建 5 个散列子分区
+
+(
+    PARTITION S1 VALUES LESS THAN (TO_DATE(‘01/4月/2001',
+    'DD/MON/YYYY')),
+    PARTITION S2 VALUES LESS THAN (TO_DATE(‘01/7月/2001',
+    'DD/MON/YYYY')),
+    PARTITION S3 VALUES LESS THAN (TO_DATE(‘01/9月/2001',
+    'DD/MON/YYYY')),
+    PARTITION S4 VALUES LESS THAN (MAXVALUE)
+);
+</code></pre><p data-anchor-id="ftdb">示例2：</p><pre data-anchor-id="2mlm"><code> create table sales
+ (
+ product_id varchar2(20),
+ sales_cost number(5)
+ )
+ partition by range(sales_cost)
+ subpartition by hash(product_id)
+ subpartitions 5
+ (
+   partition p1 values less than (1000),
+  partition p2 values less than (maxvalue)
+ );
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="l2fo" id="3-操纵已分区的表">3 操纵已分区的表</h2><p data-anchor-id="1ras">在已分区的表中插入数据与操作普通表完全相同，Oracle会自动将数据保存到对应的分区 <br>
+查询、修改和删除分区表时可以显式指定要操作的分区  <br>
+<img src="http://static.zybuluo.com/l363130002/5qjt08wv28p829irmppezls0/image_1c0ggfkkpmbvdoaunb8gu1vlk5e.png" alt="image_1c0ggfkkpmbvdoaunb8gu1vlk5e.png-28.3kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="cnip" id="4-分区维护操作有">4 分区维护操作有</h2><p data-anchor-id="hoqe">添加分区 – 在最后一个分区之后添加新分区</p><pre data-anchor-id="ns5g"><code>ALTER TABLE SALES
+     ADD PARTITION P4 VALUES LESS THAN (4000);
+</code></pre><p data-anchor-id="ittg">删除分区 – 删除一个指定的分区，分区的数据也随之删除</p><pre data-anchor-id="dkpz"><code>ALTER TABLE SALES DROP PARTITION P4;
+</code></pre><p data-anchor-id="g6hz">截断分区 – 删除指定分区中的所有记录 </p><pre data-anchor-id="my3l"><code>ALTER TABLE SALES TRUNCATE PARTITION P3;
+</code></pre><p data-anchor-id="2p3t">合并分区 - 将范围分区或复合分区的两个相邻分区连接起来</p><pre data-anchor-id="lcm5"><code>ALTER TABLE SALES 
+MERGE PARTITIONS S1, S2 INTO PARTITION S2;
+</code></pre><p data-anchor-id="bc7u">拆分分区 - 将一个大分区中的记录拆分到两个分区中</p><pre data-anchor-id="lzld"><code>ALTER TABLE SALES SPLIT PARTITION P2 AT (1500)
+INTO (PARTITION P21, PARTITION P22);
+</code></pre></div>
+</body>
+</html>

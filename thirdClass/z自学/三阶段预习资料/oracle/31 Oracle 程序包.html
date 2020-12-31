@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>31 Oracle 程序包</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="pm8t" id="31-oracle-程序包">31 Oracle 程序包</h1><p data-anchor-id="s2b5"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="27a0" id="1-介绍">1 介绍</h2><p data-anchor-id="2dic">程序包是对相关过程、函数、变量、游标和异常等对象的封装 <br>
+程序包由规范和主体两部分组成 <br>
+<img src="http://static.zybuluo.com/l363130002/jtjzbnhjryvhxbm7q7ny7p3d/image_1c1cji89619qpre31aej3qa1v449.png" alt="image_1c1cji89619qpre31aej3qa1v449.png-46.3kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="gns2" id="2-规范和主题">2 规范和主题</h2><p data-anchor-id="7jcp"><img src="http://static.zybuluo.com/l363130002/35t6uigwx6srhpqzm6e9aayc/image_1c1cjj3vr1nk51136irq1rmo301m.png" alt="image_1c1cjj3vr1nk51136irq1rmo301m.png-47.3kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="e7iq" id="3-示例代码">3 示例代码</h2><p data-anchor-id="o8gd">声明规范</p><pre data-anchor-id="qw70"><code>create or replace package liuyingjie --包名
+is
+function  fun1(f1 number) return varchar2;  --函数
+procedure p1(b1 number); --过程
+procedure p2;
+procedure p3(b2 number);
+end liuyingjie; -- 结束
+</code></pre><p data-anchor-id="e3pk">声明主题部分</p><pre data-anchor-id="jptv"><code>CREATE OR REPLACE PACKAGE BODY liuyingjie
+as 
+--------------函数
+function  fun1(f1 number) return varchar2 is
+str varchar2(40):='123456';
+begin
+ DBMS_output.put_line(f1);
+ return str;
+end fun1;
+--------------函数结束
+ ----过程1开始
+ procedure p1(b1 number)
+ as
+ num1 number:=10;
+ begin
+  if num1 = b1 then
+   DBMS_output.put_line('--我是p1存储过程--  相等 ');
+
+ else
+   DBMS_output.put_line('--我是p1存储过程--  不相等 ');
+    end if;
+ end p1;
+  ----过程1结束
+ -------------
+ procedure p2 as
+ begin
+  DBMS_output.put_line('-----我是p2存储过程------');
+ end p2;
+ -------------
+ procedure p3(b2 number) as
+ begin
+  DBMS_output.put_line('---我是p3存储过程--'||b2);
+ end p3;
+ ---------
+ end liuyingjie;
+</code></pre><p data-anchor-id="c8nm">使用</p><pre data-anchor-id="rugu"><code> declare 
+ str varchar2(40);
+ begin
+ str := liuyingjie.fun1(9527);
+  DBMS_output.put_line(str);
+  liuyingjie.p1(11);
+ end;
+</code></pre></div>
+</body>
+</html>

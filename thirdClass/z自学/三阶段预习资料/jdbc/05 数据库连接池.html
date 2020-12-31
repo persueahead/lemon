@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>05 数据库连接池</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="hczh" id="05-数据库连接池">05 数据库连接池</h1><p data-anchor-id="ce7n"><code>jdbc</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="rqlt" id="1-为什么要用连接池">1 为什么要用连接池</h2><pre data-anchor-id="n4xk"><code>传统JDBC的操作，对象的连接销毁不是特别好。
+每次创建和销毁都是需要花费时间。
+连接池：
+在程序开始的时候，可以创建几个连接，将连接放入到连接池中
+用户使用连接时，可以从连接池中进行获取，用完后可以将连接归还连接池.
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="jdck" id="2-c3p0连接池">2 c3p0连接池</h2><pre data-anchor-id="43dq"><code>c3p0是一个开源JDBC连接池,实现了数据源和JDNI帮定，支持JDBC3规范和JDBC2的标准扩展。
+目前开源框架使用才c3p0的有：
+hibernate 
+spring 
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="8f4p" id="3-具体实现">3 具体实现</h2><p data-anchor-id="ffh5">配置文件：c3p0-config.xml</p><pre data-anchor-id="ov9f"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;c3p0-config&gt;
+
+  &lt;default-config &gt; 
+    &lt;property name="driverClass"&gt;oracle.jdbc.driver.OracleDriver&lt;/property&gt;
+    &lt;property name="jdbcUrl"&gt;jdbc:oracle:thin:@localhost:1521:orcl&lt;/property&gt;
+    &lt;property name="user"&gt;liu&lt;/property&gt;
+    &lt;property name="password"&gt;admin&lt;/property&gt;
+
+    &lt;!--连接池中保留的最小连接数。--&gt;
+    &lt;property name="minPoolSize" value="10" /&gt;
+    &lt;!--连接池中保留的最大连接数。Default: 15 --&gt;
+    &lt;property name="maxPoolSize" value="100" /&gt;
+    &lt;!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 --&gt;
+    &lt;property name="maxIdleTime" value="1800" /&gt;
+    &lt;!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 --&gt;
+    &lt;property name="acquireIncrement" value="3" /&gt;
+    &lt;property name="maxStatements" value="1000" /&gt;
+    &lt;property name="initialPoolSize" value="10" /&gt;
+    &lt;!--每60秒检查所有连接池中的空闲连接。Default: 0 --&gt;
+    &lt;property name="idleConnectionTestPeriod" value="60" /&gt;
+    &lt;!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 --&gt;
+    &lt;property name="acquireRetryAttempts" value="30" /&gt;
+    &lt;property name="breakAfterAcquireFailure" value="true" /&gt;
+    &lt;property name="testConnectionOnCheckout" value="false" /&gt;
+  &lt;/default-config&gt;
+
+&lt;/c3p0-config&gt;
+</code></pre><p data-anchor-id="h9rp">代码：</p><pre data-anchor-id="rpuh"><code>Connection conn = null;
+PreparedStatement pre = null;
+ResultSet res = null;
+try {
+    //数据库连接池  默认加载【c3p0-config.xml】
+    ComboPooledDataSource dataSource = new ComboPooledDataSource();
+    conn = dataSource.getConnection();
+    String sql = "select * from book";
+    pre = conn.prepareStatement(sql);
+    //执行SQL
+    res = pre.executeQuery();
+
+    while(res.next()) {
+        System.out.println(res.getInt("book_id") +"  "+res.getString("book_name"));
+    }
+
+} catch (Exception e) {
+    e.printStackTrace();
+}finally {
+    try {
+        //关闭资源
+        res.close();
+        pre.close();
+        conn.close();
+    } catch (Exception e2) {
+        // TODO: handle exception
+    }
+
+}
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="hu67" id="4-dbutils">4 DBUtils</h2><div class="md-section-divider"></div><h3 data-anchor-id="y7bd" id="41-commons-dbutils简介">4.1 commons-dbutils简介</h3><pre data-anchor-id="6ujj"><code>commons-dbutils 是Apache组织提供的一个开源的JDBC工具类库，对JDBC的简单封装，简化jdbc编码的工作量，同时也不会影响程序性能。
+QueryRunner类
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="dahe" id="42-queryrunner类">4.2 QueryRunner类</h3><pre data-anchor-id="oen8"><code>QueryRunner中提供对sql语句操作API
+query() 用于执行select 
+    BeanListHandler 将结果集中每一行数据都封装到一个对应的JavaBean实例中，存放到List中
+    BeanHandler 将结果集中第一行数据封装到一个对应的JavaBena中
+update() 用于执行insert/update/delete
+batch() 批处理
+</code></pre><p data-anchor-id="voky">注意： <br>
+    如果需要使用QueryRunner类来编写JDBC代码，数据库字段名称必须和实体类的属性名称一致 <br>
+    数据库字段 book_id   实体类的书姓名  book_id</p><div class="md-section-divider"></div><h3 data-anchor-id="0leu" id="43-queryrunner类里面的query方法">4.3 QueryRunner类里面的query()方法</h3><p data-anchor-id="cz56">查询多条记录:new BeanListHandler(Book.class)</p><pre data-anchor-id="1azw"><code>public List&lt;Book&gt; list() throws SQLException{
+    //创建QueryRunner
+    QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+    String sql = "select * from book ";
+    return qr.query(sql, new BeanListHandler&lt;Book&gt;(Book.class));    
+}
+</code></pre><p data-anchor-id="y9jq">根据编号查询一条记录：</p><pre data-anchor-id="a5ph"><code>public Book getBook(Integer bookId)throws SQLException {
+    //创建QueryRunner
+    QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+    String sql = "select * from book where book_id=?  ";
+ return qr.query(sql, new BeanHandler&lt;Book&gt;(Book.class),bookId);
+}
+</code></pre><p data-anchor-id="07vu">根据条件查询信息：</p><pre data-anchor-id="bqh6"><code>/**
+ * 根据条件查询信息
+ * 
+ * @param sql
+ * @param arrs
+ * @return
+ */
+public List&lt;Book&gt; list(String sql, Object[] arrs) throws SQLException{
+    // 创建QueryRunner
+    QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+    return qr.query(sql, new BeanListHandler&lt;Book&gt;(Book.class), arrs);
+}
+
+----测试
+    @Test
+public void list2() {
+    try {
+        //sql
+        String sql ="select * from book where book_name like ?";
+        //查询条件
+        List&lt;Object&gt; list = new ArrayList&lt;&gt;();
+        list.add("%计算机%");
+        List&lt;Book&gt; blist = dao.list(sql,list.toArray());
+        for (Book b : blist) {
+            System.out.println(b);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="xrvn" id="44-queryrunner类的update方法">4.4 QueryRunner类的update()方法</h3><p data-anchor-id="72t9">添加信息：</p><pre data-anchor-id="kp5z"><code>public int add(Book book) throws SQLException {
+    // 创建QueryRunner
+    QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+    String sql = "insert into book (book_id,sort,book_name,writer,output,price)" + " values(?,?,?,?,?,?)";
+    return qr.update(sql, book.getBook_id(), book.getSort(), book.getBook_name(), book.getWriter(), book.getOutPut(),book.getPrice());
+}
+</code></pre><p data-anchor-id="kf2l">修改：</p><pre data-anchor-id="xo6f"><code>public int update(Book book) throws SQLException {
+    // 创建QueryRunner
+    QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+    String sql = "update book set sort=?,book_name=?,writer=?,output=?,price=? where book_id = ?";
+    return qr.update(sql, book.getSort(), book.getBook_name(), book.getWriter(),
+            book.getOutPut(), book.getPrice(),book.getBook_id());
+}
+</code></pre><p data-anchor-id="ldtb">删除:</p><pre data-anchor-id="ip72"><code>public int delete(Integer bookId) throws SQLException {
+    // 创建QueryRunner
+    QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+    String sql = "delete from book where book_id = ?";
+    return qr.update(sql,bookId);
+}
+</code></pre></div>
+</body>
+</html>

@@ -1,0 +1,310 @@
+回顾
+    SQL的基本的查询
+	单表查询
+    条件查询
+			关系运算符
+			逻辑运算符
+			其他的运算符
+	排序
+	函数
+	分组
+	过滤
+================================
+多表
+========================
+1、迪卡尔乘机
+	就是把两张表进行组合查询
+	语法:
+		select * from   表名1,表名2
+     如查询emp 和dept 使用迪卡尔乘机不带上条件会出现多个条没有用的数据
+		SELECT  * FROM  EMP  ,DEPT	
+	  加上条件能查询出我能使用上的数，那么那些没有用户的数据就会进行过滤掉
+	    如sql
+	SELECT  * FROM  EMP  e,DEPT d  WHERE e.deptno=d.deptno
+       也可以加上条件查询出没有用的数据信息
+		如sql:
+	SELECT  * FROM  EMP  e,DEPT d  WHERE e.deptno !=d.deptno	
+
+2、内连接
+	-内连接分为隐式内连接和显示内连接
+	
+	2-1	隐式内内连接
+		又分为
+		等值内连接
+		不等值内连接
+		自连接
+				
+			2-1-1、等值内连接
+				   就是某个两个字相等作为条件连接进行查询的得到的结果就是等值内连接
+				如：查询出员工对应的部门信息
+						SELECT * FROM  EMP  e  ,DEPT d where  e.deptno=d.deptno
+				
+			2-1-2、不等值内连接(查询结果基本上是没有意义的)
+				如.查询出员工与部门信息不匹配的数据
+					SELECT * FROM  EMP  e  ,DEPT d where  e.deptno !=d.deptno
+					SELECT * FROM  EMP  e  ,DEPT d where  e.deptno <> d.deptno
+				
+			2-1-3、	自连接
+			    就是自己连接自己
+				如：
+				  查询出员工的编号.员工的姓名,经理的姓名,经理的编号
+				  SELECT e1.empno 经理的编号,e1.ename  经理的姓名,e2.empno 员工的编号,e2.ename  员工的姓名 FROM  EMP  e1,EMP e2 where  e1.empno=e2.mgr
+				 查询员工的姓名，员工的部门，经理的姓名
+					SELECT e1.deptno 员工部门编号 ,e1.ename  员工名称,d.dname 员工部门名称,e2.ename  经理名称 FROM  EMP e1,EMP e2,DEPT d  where  e1.mgr=e2.empno and   e1.deptno=d.deptno 
+				 查询员工的姓名，员工的部门，经理的姓名，经理的部门
+					SELECT e1.ename 员工名,d1.dname 员工部门名,d1.deptno 员工部门编号 ,e2.ename 经理名 ,d2.dname 经理部门名,d2.deptno 经理部门编号 from  EMP e1,EMP e2 ,DEPT d1,DEPT d2  where e1.mgr=e2.empno and  e1.deptno=d1.deptno and e2.deptno=d2.deptno 
+				 查询员工的姓名，员工的部门，员工薪资等级 ,经理的姓名，经理的部门，经理薪资等级
+					SELECT 
+					e1.ename 员工名,d1.dname 员工部门名,d1.deptno 员工部门编号 ,
+					s1.grade  等级 ,e2.ename 经理名 ,d2.dname 经理部门名,d2.deptno 经理部门编号 ,s2.grade  薪资等级
+					from  
+					EMP e1,EMP e2 ,DEPT d1,DEPT d2,SALGRADE s1,SALGRADE s2  
+					where 
+					e1.mgr=e2.empno 
+					and  
+					e1.deptno=d1.deptno 
+					and
+					e2.deptno=d2.deptno 
+					AND 
+					e1.sal  BETWEEN  s1.losal AND s1.hisal
+					AND
+					e2.sal BETWEEN  s2.losal AND s2.hisal
+				 
+				 
+				 
+		
+		
+	2-2、显示内连接
+	     语法：
+		   select  * from  表1  inner join  表2  on  条件  
+		    inner  可以不写
+			注意没有where
+		  使用内连查询员工的编号，员工的姓名，经理的编号，经理的姓名
+			SELECT 
+			E1.empno,E1.ename,E2.deptno,E2.ename 
+			FROM  
+			EMP E1 
+			INNER JOIN  
+			EMP E2 
+			on 
+			E1.mgr=E2.empno
+	
+3、外连接	
+      1.左外连接
+	    select  * from    表1  left  outer  join  表2  on  条件  
+		   表识:
+             显示表1中的所有记录,表2中没有对应的记录则显示为空		   
+	  
+	  2.右外连接
+		select  * from    表1  right  outer  join  表2  on  条件  
+	   		 表识:
+             显示表2中的所有记录,表1中没有对应的记录则显示为空
+		outer 可进行不写
+	3-1 左外连接
+			SELECT 
+			E1.empno,E1.ename,E2.deptno,E2.ename 
+			FROM  
+			EMP E1 
+			LEFT JOIN
+			EMP E2 
+			on 
+			E1.mgr=E2.empno
+	
+	
+	3-2 右外连接
+			SELECT 
+			E1.empno,E1.ename,E2.deptno,E2.ename 
+			FROM  
+			EMP E1 
+			RIGHT JOIN
+			EMP E2 
+			on 
+			E1.mgr=E2.empno
+
+4、子查询
+			1、查询语句中，进行嵌套查询语句就是子查询
+			   用来处理复杂的语句查询
+				常见的语法,还其他的,就查询语句中使用()放入查询语句如下:
+				  select * from  表1  where  条件=( select * from  表1  where  条件)		
+					 
+			 2、查询员工中工资最高的员工信息
+				SELECT * FROM  EMP  WHERE  sal =(SELECT MAX(sal) FROM  EMP)
+				子查询可以分为
+				  单行子查询
+					 可以使用 > >=  =  <  <=  <>  !=进行连接
+				  
+				  
+				  多行子查询
+					  可以使用 in   not   .....not  null  
+	4-1、单行子查询
+			查询出比员工7521的工资高，同时和7788员工从事相同工作的员工信息
+			SELECT sal from EMP  where  empno=7521
+			SELECT job from EMP  where  empno=7788	
+			
+			
+			SELECT * from 
+			EMP  
+			where
+			sal > 
+			(SELECT sal from EMP  where  empno=7521)
+			AND
+			job =
+			(SELECT job from EMP  where  empno=7788	)
+	4-1-2、查询每个部门最低工资的员工信息和所有部门的信息
+	       分析
+		      ---1.查询每个部门的最低工资，进行分组统计
+			  
+				select 
+				deptno,
+				MIN(sal) minsal
+				FROM
+				EMP
+				GROUP BY
+				deptno
+			  ---2.员工工资等于所处部门最低工资
+			      SELECT
+					*
+					FROM
+					EMP e,
+					(
+					select 
+					deptno,
+					MIN(sal) minsal
+					FROM
+					EMP
+					GROUP BY
+					deptno
+					) d
+					WHERE
+					e.deptno=d.deptno
+					AND
+					e.sal =d.minsal
+			  
+			  
+			  --3.使用子查询出数据
+					  SELECT
+						*
+						FROM
+						EMP e,
+						(
+						select 
+						deptno,
+						MIN(sal) minsal
+						FROM
+						EMP
+						GROUP BY
+						deptno
+						) d ,
+						DEPT de 
+						WHERE
+						e.deptno=d.deptno
+						AND
+						e.sal =d.minsal
+						AND
+						d.deptno=de.deptno
+	4-2、多行子查询
+	       子查询的条件语句是多个
+	      可以使用  in  not  .....
+		 4-2-1、查询领导的信息
+					SELECT  * from  EMP  
+					WHERE
+					empno in
+					(
+					SELECT  DISTINCT mgr  FROM  EMP  
+					)
+		4-2-2、查询不是领导的信息
+                	SELECT  * from  EMP  
+					WHERE
+					empno in
+					(
+					SELECT  DISTINCT mgr  FROM  EMP  where  mgr is  not  null
+					)	
+5、分页查询
+        语法  xxxxx    wehre  xxx=XXX  LIMIT  页码,每页显示的条件
+       SELECT  * FROM  EMP where  comm is  null  LIMIT  0,3
+
+6、集合运算
+     交集  并集  差集
+	  
+	并集
+	     将查询的两个结果进行合并
+		 
+		 union 
+		  1.查询工资大于1500  和部门编号是20号部门 的并集
+		  （去除重复）
+			SELECT  * from  EMP  where sal > 1500
+			UNION
+			SELECT  * from  EMP  where deptno  =20
+			(不去除重复)
+			SELECT  * from  EMP  where sal > 1500
+			UNION  ALL
+			SELECT  * from  EMP  where deptno  =20
+	交集
+		查询的两表结果集相交的部分
+		查询工资大于1500  和部门编号是20号部门的交集
+			SELECT  * from  EMP e1  where  EXISTS (SELECT  * from  EMP  e where  e1.deptno=e.deptno and e.deptno=20 )
+
+	差集
+	    将表1查询的结果-表2查询的结果,得到的部分就是两个结果的相减  
+			SELECT  * from  EMP e1  where not  EXISTS (SELECT  * from  EMP  e where  e1.deptno=e.deptno and e.deptno=20 )	
+			
+7、DDL 语句
+    数据定义语言
+	7-1.创建表
+		create  table 表名（
+		  列名  列的类型  [相关的约束]，
+		  列名  列的类型  [相关的约束]，
+		）
+	 如：
+			CREATE  TABLE  student(
+			id  int ,
+			names  VARCHAR(1)
+			)
+		
+
+			常见的列的类型
+			   如		
+					int   integer   bigint   一整数的类型
+					double  float  小数  一般金额的类型
+					char  字节
+					varchar   字符串  
+					date  time  datetime  时间
+					text  文本
+	7-2、添加字段(列)
+	  单个
+         alter  TABLE  student  add  phone VARCHAR(11);	
+	  多个 
+			alter  TABLE  student  add (
+				 phone1 VARCHAR(11),
+				 phone2 VARCHAR(11)
+				)
+	7-3、修改字段(列/类型)
+			修改类型
+			  ALTER  TABLE  student  MODIFY  phone  int;u
+			修改列名
+					
+				
+			
+			
+			
+			
+			
+			
+		 
+
+
+
+
+
+
+
+
+
+
+   
+		
+      
+
+	
+	
+	

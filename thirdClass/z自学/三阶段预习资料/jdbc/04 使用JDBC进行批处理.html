@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>04 使用JDBC进行批处理</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="5fsv" id="04-使用jdbc进行批处理">04 使用JDBC进行批处理</h1><p data-anchor-id="lrvj"><code>jdbc</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="2wiq" id="1-简介">1 简介</h2><p data-anchor-id="3y2q">在实际的项目开发中，有时候需要向数据库发送一批SQL语句执行，这时应避免向数据库一条条的发送执行，而应采用JDBC的批处理机制，以提升执行效率。 <br>
+JDBC实现批处理有两种方式：statement和preparedstatement</p><div class="md-section-divider"></div><h2 data-anchor-id="fsf8" id="2-使用statement完成批处理">2 使用Statement完成批处理</h2><p data-anchor-id="f2im">1、使用Statement对象添加要批量执行SQL语句，如下：</p><pre data-anchor-id="naef"><code> Statement.addBatch(sql1);
+ Statement.addBatch(sql2);
+ Statement.addBatch(sql3);
+</code></pre><p data-anchor-id="hejz">2、执行批处理SQL语句：Statement.executeBatch(); <br>
+3、清除批处理命令：Statement.clearBatch();</p><div class="md-section-divider"></div><h3 data-anchor-id="jna6" id="21使用statement完成批处理范例">2.1、使用Statement完成批处理范例</h3><p data-anchor-id="tjvp">1、编写测试的SQL脚本创建表 </p><pre data-anchor-id="nj4v"><code>create table testbatch
+(
+     id int primary key,
+     name varchar(20)
+);
+</code></pre><p data-anchor-id="s5f2">2、编写测试代码</p><pre data-anchor-id="9ffv"><code>port java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import me.gacl.utils.JdbcUtils;
+import org.junit.Test;
+
+public class JdbcBatchHandleByStatement {
+
+    @Test
+    public void testJdbcBatchHandleByStatement(){
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql1 = "insert into testbatch(id,name) values(1,'aaa')";
+            String sql2 = "insert into testbatch(id,name) values(2,'bbb')";
+            String sql3 = "insert into testbatch(id,name) values(3,'CCC')";
+            String sql4 = "insert into testbatch(id,name) values(4,'DDD')";
+            String sql5 = "update testbatch set name='gacl' where id=1";
+            String sql6 = "insert into testbatch(id,name) values(5,'FFF')";
+            String sql7 = "delete from testbatch where id=2";
+            st = conn.createStatement();
+            //添加要批量执行的SQL
+            st.addBatch(sql1);
+            st.addBatch(sql2);
+            st.addBatch(sql3);
+            st.addBatch(sql4);
+            st.addBatch(sql5);
+            st.addBatch(sql6);
+            st.addBatch(sql7);
+            //执行批处理SQL语句
+            st.executeBatch();
+            //清除批处理命令
+            st.clearBatch();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+    }
+}
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="6fha" id="22采用statementaddbatchsql方式实现批处理的优缺点">2.2、采用Statement.addBatch(sql)方式实现批处理的优缺点</h3><p data-anchor-id="xazs">采用Statement.addBatch(sql)方式实现批处理： <br>
+　　　　优点：可以向数据库发送多条不同的ＳＱＬ语句。 <br>
+　　　　缺点：SQL语句没有预编译。 <br>
+　　　　当向数据库发送多条语句相同，但仅参数不同的SQL语句时，需重复写上很多条SQL语句。</p><div class="md-section-divider"></div><h2 data-anchor-id="hdeb" id="3-使用preparedstatement完成批处理">3 使用PreparedStatement完成批处理</h2><pre data-anchor-id="syrv"><code>import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import me.gacl.utils.JdbcUtils;
+import org.junit.Test;
+
+public class JdbcBatchHandleByPrepareStatement {
+
+    @Test
+    public void testJdbcBatchHandleByPrepareStatement(){
+        long starttime = System.currentTimeMillis();
+        Connection conn = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try{
+            conn = JdbcUtils.getConnection();
+            String sql = "insert into testbatch(id,name) values(?,?)";
+            st = conn.prepareStatement(sql);
+            for(int i=1;i&lt;1000008;i++){  //i=1000  2000
+                st.setInt(1, i);
+                st.setString(2, "aa" + i);
+                st.addBatch();
+                if(i%1000==0){
+                    st.executeBatch();
+                    st.clearBatch();
+                }
+            }
+            st.executeBatch();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            JdbcUtils.release(conn, st, rs);
+        }
+        long endtime = System.currentTimeMillis();
+        System.out.println("程序花费时间：" + (endtime-starttime)/1000 + "秒！！");
+    }
+}
+</code></pre><p data-anchor-id="1eff">采用PreparedStatement.addBatch()实现批处理 <br>
+　　　　优点：发送的是预编译后的SQL语句，执行效率高。 <br>
+　　　　缺点：只能应用在SQL语句相同，但参数不同的批处理中。因此此种形式的批处理经常用于在同一个表中批量插入数据，或批量更新表的数据。</p></div>
+</body>
+</html>

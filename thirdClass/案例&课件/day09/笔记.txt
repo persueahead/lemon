@@ -1,0 +1,198 @@
+回顾
+   笛卡尔乘机
+       
+	内连接
+        隐式内连接
+			等值内连接
+			不等值内连接
+			自连接
+		显示内连接
+	外连接
+		左外连接
+		右外连接
+	子查询
+		单行子查询
+		多行子查询
+	分页查询
+	集合运算
+	   交集
+	   并集
+	   差集
+DDL语句
+   创建表
+   修改表
+		添加列(单列/多列)
+		修改字段类型
+=================================
+===================================================
+0、修改表
+	修改列名
+		ALTER TABLE student  CHANGE  COLUMN  sname  lastName  varchar(13)
+	删除列名
+		ALTER  TABLE  student  drop  COLUMN   age
+	重命名表的名称
+		ALTER  TABLE  student  RENAME  stu
+	删除表
+		DROP  TABLE  stu	
+1、DDL  数据语言
+    ---约束
+		约束如下:
+			非空约束
+			唯一约束
+			外键约束
+			检查约束
+			主键约束
+		*  主键约束  PRIMARY KEY
+		    在某一张上有一个为主键,(数字/字符串)
+			不能为空，并且是唯一(在同一张表中不能出现相同的数据(主键))
+        *  非空约束  not  null
+            表示指定的某个字段中的数据不能为空  		
+		*  唯一约束 UNIQUE
+		    表示,指定的某个字段,该字段中数据必须是唯一比能出现相同的数据
+		 检查约束  check
+			 表示.指定的某个字段，可以来进行约束字段中的值，是不是符合要求的
+        综合案列:
+		    创建一张,进行添加对应的约束
+				CREATE  TABLE  studnet (
+				   stuid  int  PRIMARY KEY,-- 主键
+				   sname  VARCHAR(12) UNIQUE, -- 唯一
+						age  int  not  null, --  非空
+						gender  VARCHAR(4) CHECK(gender in ('男','女'))  -- 检查
+				);	
+				default  ....默认的值，一般很少使用， 
+	  			 
+	----*  外键约束			 
+			 1.外键约束  就是两张表之间的一种约束,可以进行保证表与表之间的关联
+				的数据的完整性
+			2.  约束，从表中的记录，比主表中有存在数据
+		 案列:
+              订单和明细表
+			create  table  prodct(
+			   pid  int  PRIMARY KEY,
+				pname VARCHAR(12),
+			  cno  int  
+			)
+	
+			create  table  orders(
+			   oid  int  PRIMARY KEY,
+				oname VARCHAR(12),
+			  ono  int  
+			)
+	     进行添加数据
+				insert  into  prodct VALUES(1,'小米',12)
+				insert  into  orders VALUES(1,'1号订单',12)
+		  3.由于没有进行添加外键的约束，那么中订单表中的ono 就没有限制
+		     随便的进行添加数据，会导致查询某个订单中的商品明细无法查询
+			 就会出现脏数据信息
+			 可以外键约束来进行处理差值脏数据信息
+			 
+		4.添加外键约束
+			ALTER  TABLE orders  add  CONSTRAINT  FK   FOREIGN  key(ono) REFERENCES    prodct (pid)	
+		   注意:
+				1.发生关系的两个字段(主表/从表) 的类型必须相同，外键添加的数据也相同的
+				2.发生关系了之后的数据主键是不能进行删除,
+				3.外键部分的数据是可进行删除的
+DML  语句
+		1. 插入语句
+		   添加某张表中的数据的数据
+         insert into  表名  VALUES  (对应的列中的数据)
+		 INSERT  into  prodct VALUES(4,'苹果',11)
+		    指定添加某张表中的某些列的值
+		 insert  into  表名  (列名1,列名2) VALUES  (对应的列中的数据)	
+			INSERT  into  prodct(pid,pname) VALUES(5,'苹果')
+		2.修改数据
+		  update  表名  set  列名1=值，列名2=值......  [where  条件  and  条件]
+		   如没有条件那就修改整表的数据
+		   一般要带上条件的
+			UPDATE  prodct   set  pname ='小米手机',cno =32 where  pid=1
+		3.删除数据
+			语法
+			 delete  from  表名  [where  条件  and  条件]
+			如没有条件那就删除表的数据
+		   一般要带上条件的
+			 delete  from  prodct where pid=2
+
+		注意:
+		   外键
+         ALTER  TABLE orders[从表]  add  CONSTRAINT  FK[名称]   FOREIGN  key(ono)[从表的外键字段] REFERENCES    prodct[主表] (pid[主表的字段])	
+		   
+JDBC 连接数据库
+    1.创建工程
+	2.导入jar包到lib文件中(mysql-connector-java-5.1.38.jar)
+	3.创建类和方法
+	4.加载驱动
+	5.获取数据连接的对象，输入url和用户 密码
+	如:
+			@Test
+				public void testName() throws Exception {
+		//加载驱动
+		 Class.forName("com.mysql.jdbc.Driver");
+		 //获取连接的对象
+		 Connection  conn= DriverManager.getConnection("jdbc:mysql://192.168.0.101:3306/testMysql","root","root");
+		 System.out.println(conn);
+			}
+1、什么是jdbc?
+    1-1、java  DataBase  Connectivity  ,java连接数据库
+           是一种用于执行sql语句的Java api  ，就是java访问数据库的一种标准规范	
+	1-2、可以进行为多种关系型数据库(如 myslq  orcale...)提供统一的访问,
+		由java语言编写的类和接口组成，真正的操作数据库是需要具体的实现类的，
+		 就是数据库的驱动(每个数据库的厂商提供的)
+		
+	1-3、jdbc  提供了以中标准，可以构建工具和接口,使用数据库开发人员能够编写数据库的应用程序
+			  注意:JDBC也是商标
+	1-4、没有不同的数据库的厂商，都根据自己的数据库的通信格式进行编写出自己数据库的驱动
+			（JAR） 
+			所以让我只需要调用Jdbc的接口中的方法就可以进行访问数据库了.
+		
+2、使用jdbc好处	
+     1.程序员开发速度快并方便，不用去关心数据库中的访问程序，直接进行调用JDBC的接口
+	     就可以了
+	 2.使用同一套的java代码，进行少量的修改部分的代码，就可直接的访问其他JDBC支持的数据库了
+	 
+4、JDBC API的核心类
+        4-1、DriverManager类 
+				1、管理和注册驱动的
+				2、创建数据库的连接
+			主要的方法：   就是连接数据库的输入参数(连接得地址,用户,密码)
+				getConnection(String url, String user, String password) 
+					如 DriverManager.getConnection("jdbc:mysql://192.168.0.101:3306/testMysql","root","root");
+				url====/  jdbc:mysql://192.168.0.101:3306/testMysql
+					协议名:子协议://服务器名(IP地址):端口号/数据库名?参数=值
+					   一般情况下，?参数=值是处理乱码的
+						 如 jdbc:mysql://192.168.0.101:3306/testMysql?characterEncoding=utf-8
+							
+		4-2、Connection接口		
+				具体的实现类由数据库的厂商来进行实现
+			createStatement() 
+				创建一个 Statement 对象来将 SQL 语句发送到数据库。
+		4-3 、Statement接口
+			Statement对象执行SQL语句的		 
+				用于执行静态 SQL 语句并返回它所生成结果的对象。 
+			executeQuery(String sql) 
+					执行给定的 SQL 语句，该语句返回单个 ResultSet 对象。
+					说白了就是，执行查询语句的
+			executeUpdate(String sql) 
+					执行给定 SQL 语句，
+					该语句可能为 INSERT、UPDATE 或 DELETE 语句，
+					说白就是执行添加，删除，修改的sql语句的
+			如案例添加数据
+					@Test
+	public void testName01() throws Exception {
+		//加载驱动
+		 Class.forName("com.mysql.jdbc.Driver");
+		 //获取连接的对象
+		 Connection  conn= DriverManager.getConnection("jdbc:mysql://192.168.0.101:3306/testMysql?characterEncoding=utf-8","root","root");
+		 Statement  st=conn.createStatement();
+		int i= st.executeUpdate(" INSERT  into  prodct VALUES(8,'苹果',11)");
+		 System.out.println(i);		 
+		 st.close();
+		 conn.close();	 
+		 System.out.println(conn);
+	}
+				
+				
+			
+
+
+		
+		

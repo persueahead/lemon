@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>27  PL/SQL错误处理</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="vom1" id="27-plsql错误处理">27  PL/SQL错误处理</h1><p data-anchor-id="v7hp"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="tylp" id="1-错误处理">1 错误处理</h2><p data-anchor-id="yvcr">在运行程序时出现的错误叫做异常 <br>
+发生异常后，语句将停止执行，控制权转移到 PL/SQL 块的异常处理部分 <br>
+异常有两种类型：</p><blockquote data-anchor-id="cm9g" class="white-blockquote">
+  <p>预定义异常 -  当 PL/SQL 程序违反 Oracle 规则或超越系统限制时隐式引发</p>
+  
+  <p>用户定义异常  -  用户可以在 PL/SQL 块的声明部分定义异常，自定义的异常通过 RAISE 语句显式引发</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="uzvs" id="2-处理异常">2 处理异常</h2><p data-anchor-id="w9az">预定义异常</p><pre data-anchor-id="7g0o"><code>declare 
+userName user_info.user_name%type;
+begin
+select user_name into userName  from user_info;
+Dbms_Output.put_line(userName);
+exception 
+when TOO_MANY_ROWS then 
+Dbms_Output.put_line('实际返回的行数超出请求的行数');
+end;
+
+declare 
+userName user_info.user_name%type;
+begin
+select user_name into userName  from user_info where user_id=3;
+Dbms_Output.put_line(userName);
+exception 
+when others  then 
+Dbms_Output.put_line('没有查询到数据');
+end;
+</code></pre><p data-anchor-id="3bum">用户自定义异常</p><pre data-anchor-id="qii2"><code>declare 
+ age number ;
+ ageerror exception;
+begin
+    age :=&amp;age;
+    if age&lt;0 then 
+    RAISE ageerror;--抛出
+    elsif age &gt;150 then 
+    RAISE ageerror;
+    else
+    Dbms_Output.put_line('年龄：'||age);
+    end if;
+exception --捕获
+    when ageerror then 
+    Dbms_Output.put_line('年龄输入错误');
+end;
+
+DECLARE 
+  invalidCATEGORY EXCEPTION;
+  category VARCHAR2(10);
+BEGIN
+  category := '&amp;Category';
+  IF category NOT IN ('附件','顶盖','备件') THEN
+    RAISE invalidCATEGORY;
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('您输入的类别是'|| category);
+  END IF;
+EXCEPTION
+  WHEN invalidCATEGORY THEN
+    DBMS_OUTPUT.PUT_LINE('无法识别该类别');
+END;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="sq2k" id="3-引发应用程序错误">3 引发应用程序错误</h2><p data-anchor-id="tj5a">RAISE_APPLICATION_ERROR 过程 <br>
+用于创建用户定义的错误信息 <br>
+可以在可执行部分和异常处理部分使用 <br>
+错误编号必须介于 –20000 和 –20999 之间 <br>
+错误消息的长度可长达 2048 个字节 <br>
+引发应用程序错误的语法：</p><blockquote data-anchor-id="oju5" class="white-blockquote">
+  <p>RAISE_APPLICATION_ERROR(error_number,error_message);</p>
+</blockquote><pre data-anchor-id="gn7z"><code>DECLARE
+  rate itemfile.itemrate%TYPE;
+  rate_exception EXCEPTION;
+BEGIN
+  SELECT NVL(itemrate,0) INTO rate FROM itemfile 
+  WHERE  itemcode = 'i207';
+  IF rate = 0 THEN
+    RAISE rate_exception;
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('项费率为：' || rate);
+  END IF;
+EXCEPTION
+  WHEN rate_exception THEN
+    RAISE_APPLICATION_ERROR(-20001, '未指定项费率');
+END;
+</code></pre></div>
+</body>
+</html>

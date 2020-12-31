@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>08  SQL之过滤和排序数据</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="0zv9" id="08-sql之过滤和排序数据">08  SQL之过滤和排序数据</h1><hr><p data-anchor-id="z5n2"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="1g3b" id="1-过滤">1 过滤</h2><p data-anchor-id="bm4x">使用WHERE子句，将不满足条件的行过滤掉。WHERE子句紧随FROM子句</p><blockquote data-anchor-id="265k" class="white-blockquote">
+  <p>SELECT *|{[DISTINCT]column|expression[alias]} <br>
+  FROM table  [WHEREcondition(s)];</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="vzi6" id="11字符和日期">1.1字符和日期</h3><ul data-anchor-id="ksai">
+<li>字符和日期要包含在单引号中 </li>
+<li>字符大小写敏感，日期格式敏感 </li>
+<li>默认的日期格式是DD-MON-RR <br>
+<img src="http://static.zybuluo.com/l363130002/imwfyhoyz9m430xo9ier3tv0/image_1c08oqnso1roht8n8gl10pt6slm.png" alt="image_1c08oqnso1roht8n8gl10pt6slm.png-12.9kB" title=""></li>
+</ul><div class="md-section-divider"></div><h3 data-anchor-id="9c5b" id="12-比较运算">1.2 比较运算</h3><p data-anchor-id="tqmx"><img src="http://static.zybuluo.com/l363130002/y7bcbpcamlbjocyunrqzei77/image_1c08oueqe18qg6v41076jk01njl13.png" alt="image_1c08oueqe18qg6v41076jk01njl13.png-83.4kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/o341j48vayepmeoeaxdzk4sy/image_1c08ovv2812so19nrg91dr1dl020.png" alt="image_1c08ovv2812so19nrg91dr1dl020.png-11.3kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="s35b" id="13-其它比较运算">1.3 其它比较运算</h3><p data-anchor-id="sh1c"><img src="http://static.zybuluo.com/l363130002/uqwrrxoh1gq1fxvry2zzfdcj/image_1c08p17hj1tptnrl135p9u0d52q.png" alt="image_1c08p17hj1tptnrl135p9u0d52q.png-140.8kB" title=""></p><div class="md-section-divider"></div><h4 data-anchor-id="qam4" id="131-between-在2个值之间">1.3.1 BETWEEN 在2个值之间</h4><p data-anchor-id="yeqa"><img src="http://static.zybuluo.com/l363130002/4lzqr6ygxhas009d128nwndn/image_1c08p6r3d1af7uqdvi1ri8ddb37.png" alt="image_1c08p6r3d1af7uqdvi1ri8ddb37.png-11.9kB" title=""></p><div class="md-section-divider"></div><h4 data-anchor-id="hz58" id="132-in-使用in运算显示列表中的值">1.3.2 IN 使用IN运算显示列表中的值</h4><p data-anchor-id="xcra"><img src="http://static.zybuluo.com/l363130002/efvue42cncrpsnjzhhjt8c0u/image_1c08pd0hefeig7tatoanhpcl3k.png" alt="image_1c08pd0hefeig7tatoanhpcl3k.png-10.6kB" title=""></p><div class="md-section-divider"></div><h4 data-anchor-id="dzum" id="133-like-模糊查询">1.3.3 LIKE 模糊查询</h4><p></p><ul data-anchor-id="h06s"> <br>
+<li>使用LIKE运算选择类似的值</li>
+<li>选择条件可以包含字符或数字 <br>
+%代表一个或多个字符 <br>
+_代表一个字符 <br><p></p>
+
+<blockquote class="white-blockquote">
+  <p>select * from emp where emp_name like '张%'</p></blockquote></li>
+  </ul><br><img src="http://static.zybuluo.com/l363130002/x7fhtlvoz4kh0ce4lg21xf4p/image_1c08pke5dlt51prl1k6g1m8c2o84e.png" alt="image_1c08pke5dlt51prl1k6g1m8c2o84e.png-5.4kB" title=""><p></p><p data-anchor-id="hdl7">‘%’和‘-’可以同时使用</p><blockquote data-anchor-id="zb12" class="white-blockquote">
+  <p>SELECT last_name <br>
+  FROM employees <br>
+  WHERE last_name LIKE '_o%';</p>
+</blockquote><div class="md-section-divider"></div><h4 data-anchor-id="fvaf" id="134-null-使用null判断空值">1.3.4 NULL 使用NULL判断空值</h4><blockquote data-anchor-id="josk" class="white-blockquote">
+  <p>select * from emp where emp_birthday is null ;</p>
+</blockquote><p data-anchor-id="yxi2"><img src="http://static.zybuluo.com/l363130002/659bzfc8plqte6i2jb01l7rz/image_1c08psdvej611j8eise1ies1uag58.png" alt="image_1c08psdvej611j8eise1ies1uag58.png-5.3kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="2kxd" id="14-逻辑运算">1.4 逻辑运算</h3><p data-anchor-id="nn5z"><img src="http://static.zybuluo.com/l363130002/iuhvkvd7vj1lxcot2bfv71i0/image_1c08q2su0slr106nhfhnbej425l.png" alt="image_1c08q2su0slr106nhfhnbej425l.png-68.5kB" title=""></p><div class="md-section-divider"></div><h4 data-anchor-id="pkaq" id="141-and">1.4.1 AND</h4><p data-anchor-id="m8w7">AND要求和的关系为真</p><blockquote data-anchor-id="ibuw" class="white-blockquote">
+  <p>SELECT employee_id, last_name, job_id, salary <br>
+  FROM employees <br>
+  WHERE salary &gt;=10000 AND job_id LIKE '%MAN%';</p>
+</blockquote><div class="md-section-divider"></div><h4 data-anchor-id="4wrk" id="142-or">1.4.2 OR</h4><p data-anchor-id="l39v">OR要求或关系为真</p><blockquote data-anchor-id="bicm" class="white-blockquote">
+  <p>SELECT employee_id, last_name, job_id, salary <br>
+  FROM employees <br>
+  WHERE salary &gt;= 10000 OR job_id LIKE '%MAN%';</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="qbk4" id="15-优先级">1.5 优先级</h3><p data-anchor-id="5nbt">可以使用括号改变优先级顺序 <br>
+<img src="http://static.zybuluo.com/l363130002/lw86acgj18if3oz2sgzznq5g/image_1c08q6rgier2qr719o511gv13tj6s.png" alt="image_1c08q6rgier2qr719o511gv13tj6s.png-89.6kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="c47x" id="2-排序order-by">2 排序ORDER BY</h2><p data-anchor-id="qvao">使用ORDER BY子句排序</p><blockquote data-anchor-id="kx81" class="white-blockquote">
+  <p>– ASC: 升序  <br>
+  – DESC: 降序</p>
+</blockquote><p data-anchor-id="twks">ORDER BY子句在SELECT语句的结尾。 <br>
+<img src="http://static.zybuluo.com/l363130002/slkhw1lo47ts264p9ehc5sqq/image_1c08qc5uu13q1u4a1t9221j1eqq79.png" alt="image_1c08qc5uu13q1u4a1t9221j1eqq79.png-12.8kB" title=""></p><p data-anchor-id="j8aj">多个列排序 <br>
+<img src="http://static.zybuluo.com/l363130002/ypz6vr64y4b1037a8d5bmgwb/image_1c08qd96pn9fe991nq01gt61u9c86.png" alt="image_1c08qd96pn9fe991nq01gt61u9c86.png-14.4kB" title=""></p></div>
+</body>
+</html>

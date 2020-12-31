@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>12 分组函数</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="0n2v" id="12-分组函数">12 分组函数</h1><hr><p data-anchor-id="3f56"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="x2e0" id="1-什么是分组函数">1 什么是分组函数</h2><p data-anchor-id="vuss">分组函数作用于一组数据，并对一组数据返回一个值。 <br>
+<img src="http://static.zybuluo.com/l363130002/yhyokmc1de0ktzdew8yvauqp/image_1c0b7dn66omh1rkb1oqm1eo19b7m.png" alt="image_1c0b7dn66omh1rkb1oqm1eo19b7m.png-50kB"> <br>
+分组函数类型</p><pre data-anchor-id="pjgo"><code>•AVG 平均值
+•COUNT 统计
+•MAX 最大值
+•MIN 最小只
+•SUM  和
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="4di7" id="2-avg平均值和sum合计函数">2 AVG（平均值）和SUM（合计）函数</h2><p data-anchor-id="2675"><img src="http://static.zybuluo.com/l363130002/uct517kvryp4166jij0xji5g/image_1c0b7idie7ij1fcq1ong17dm38h13.png" alt="image_1c0b7idie7ij1fcq1ong17dm38h13.png-108.7kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="ys2y" id="3-min最小值和max最大值函数">3 MIN（最小值）和MAX（最大值）函数</h2><p data-anchor-id="1udf"><img src="http://static.zybuluo.com/l363130002/skdgnri2t8fjilx8llvt94f0/image_1c0b7jnht1je118rs19ig1ie814dg1g.png" alt="image_1c0b7jnht1je118rs19ig1ie814dg1g.png-84kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="km8u" id="4-count计数函数">4 COUNT（计数）函数</h2><p data-anchor-id="pz0g"><img src="http://static.zybuluo.com/l363130002/kqttlxr26u2wdkxanfsy0gmy/image_1c0b7kgb7l3l1aca1snl1m2oi571t.png" alt="image_1c0b7kgb7l3l1aca1snl1m2oi571t.png-32.3kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/jk1x8d2zo52576aoeo31nbda/image_1c0b7ll53k3l19htcio1nsbp003q.png" alt="image_1c0b7ll53k3l19htcio1nsbp003q.png-41.8kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="twus" id="5-分组数据">5 分组数据</h2><p data-anchor-id="dcs0"><img src="http://static.zybuluo.com/l363130002/yr8ox7emsmylromnlqrb8uep/image_1c0b7mjvpn3upi01jqvtr02lr47.png" alt="image_1c0b7mjvpn3upi01jqvtr02lr47.png-67kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/t1c1j1wc8y7aj0m6mv6gc5m0/image_1c0b7mr7jhb513f3751uhm15c14k.png" alt="image_1c0b7mr7jhb513f3751uhm15c14k.png-52.9kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/l4ospdajp2gv08s2c2su5a0p/image_1c0b7ok9317ed88g9o1aokknn51.png" alt="image_1c0b7ok9317ed88g9o1aokknn51.png-66.3kB" title=""> <br>
+使用多个列分组 <br>
+<img src="http://static.zybuluo.com/l363130002/ywdkies3872bmsxwkm2pycaz/image_1c0b7q5nrk9p1sfv4iod341o035e.png" alt="image_1c0b7q5nrk9p1sfv4iod341o035e.png-143.4kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/yfjook3zppj376tmciu5am19/image_1c0b7qfq6e4m1jisac71um7var5r.png" alt="image_1c0b7qfq6e4m1jisac71um7var5r.png-107.8kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="qejl" id="6-非法使用组函数">6 非法使用组函数</h2><blockquote data-anchor-id="e8xq" class="white-blockquote">
+  <p>•不能在WHERE子句中使用组函数。  <br>
+  •可以在HAVING子句中使用组函数。 <br>
+  <img src="http://static.zybuluo.com/l363130002/fitoca4kc9t0nrpj0s7oia4v/image_1c0b7sveorao13ku16fophq1sq775.png" alt="image_1c0b7sveorao13ku16fophq1sq775.png-127.9kB" title=""></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="rb9d" id="7-过滤分组">7 过滤分组</h2><p data-anchor-id="5vp4"><img src="http://static.zybuluo.com/l363130002/zbhdqnjklbj9md165h4i95sh/image_1c0b7urld1scqnl6161pnnmesl92.png" alt="image_1c0b7urld1scqnl6161pnnmesl92.png-116.6kB" title=""></p><p data-anchor-id="29s2">使用HAVING过滤分组:</p><blockquote data-anchor-id="s6c2" class="white-blockquote">
+  <p>1.行已经被分组。 <br>
+  2.使用了组函数。 <br>
+  3.满足HAVING子句中条件的分组将被显示。 <br>
+  <img src="http://static.zybuluo.com/l363130002/zgwidv3tbj9evbx3huvamu4u/image_1c0b7vop5c4s15b68pjeo4vb69f.png" alt="image_1c0b7vop5c4s15b68pjeo4vb69f.png-33.1kB" title=""></p>
+</blockquote></div>
+</body>
+</html>

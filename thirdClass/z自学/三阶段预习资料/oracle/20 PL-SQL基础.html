@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>20 PL/SQL基础</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="knhs" id="20-plsql基础">20 PL/SQL基础</h1><p data-anchor-id="p3xm"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="zs2p" id="1-plsql-的简介">1 PL/SQL 的简介</h2><p data-anchor-id="4utk">PL/SQL 简介 <br>
+PL/SQL 是<strong>过程语言(Procedural Language)与结构化查询语言(SQL)</strong>结合而成的编程语言 <br>
+PL/SQL 是对 <strong>SQL 的扩展</strong> <br>
+支持多种数据类型，如大对象和集合类型，可使用条件和循环等控制结构 <br>
+可用于<strong>创建存储过程、触发器和程序包</strong>，给SQL语句的执行添加程序逻辑 <br>
+与 Oracle 服务器和 Oracle 工具紧密集成，具备可移植性、灵活性和安全性</p><div class="md-section-divider"></div><h2 data-anchor-id="5f2i" id="2-plsql-的优点">2 PL/SQL 的优点</h2><p data-anchor-id="i09r">支持 SQL，在 PL/SQL 中可以使用：</p><blockquote data-anchor-id="szck" class="white-blockquote">
+  <p>数据操纵命令  <br>
+  事务控制命令  <br>
+  游标控制  <br>
+  SQL 函数和 SQL 运算符  <br>
+  支持面向对象编程 (OOP) </p>
+</blockquote><p data-anchor-id="hyev">可移植性，可运行在任何操作系统和平台上的Oralce 数据库  <br>
+更佳的性能，PL/SQL 经过编译执行 <br>
+<img src="http://static.zybuluo.com/l363130002/c8dl9ymkgrzrs0e4rl739brg/image_1c0lkbpb45251iu0m4111bsmt09.png" alt="image_1c0lkbpb45251iu0m4111bsmt09.png-57.9kB" title=""></p><p data-anchor-id="uwzy">与 SQL 紧密集成，简化数据处理。</p><blockquote data-anchor-id="4jii" class="white-blockquote">
+  <p>支持所有 SQL 数据类型  <br>
+  支持 NULL 值  <br>
+  支持 %TYPE 和 %ROWTYPE 属性类型 <br>
+  安全性，可以通过存储过程限制用户对数据的访问 <br>
+  <img src="http://static.zybuluo.com/l363130002/31avf6heuy9yh1oyjmwtvobi/image_1c0lkdfoa1bf61b1h1maigo9vt7m.png" alt="image_1c0lkdfoa1bf61b1h1maigo9vt7m.png-3.6kB" title=""></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="y6fy" id="3-plsql-的体系结构">3 PL/SQL 的体系结构</h2><p data-anchor-id="c3rv">PL/SQL 引擎驻留在 Oracle 服务器中 <br>
+该引擎接受 PL/SQL 块并对其进行编译执行 <br>
+<img src="http://static.zybuluo.com/l363130002/ieo664cp7ole2q8bacumvyvg/image_1c0lkh4tk31t9b811geu2eaj51g.png" alt="image_1c0lkh4tk31t9b811geu2eaj51g.png-61.1kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="ul0m" id="4-plsql-块简介">4 PL/SQL 块简介</h2><p data-anchor-id="cim3">PL/SQL 块是构成 PL/SQL 程序的基本单元 <br>
+将逻辑上相关的声明和语句组合在一起 <br>
+PL/SQL 分为三个部分，声明部分、可执行部分和异常处理部分</p><pre data-anchor-id="awdw"><code>[DECLARE   -- 声明部分定义变量、游标和自定义异常
+declarations]
+BEGIN    --- 包含 SQL 和 PL/SQL 语句的可执行部分
+executable statements
+[EXCEPTION     --- 指定出现错误时需要执行的操作
+handlers]
+END;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="0z22" id="5-pl-sql-入门示例">5 PL SQL 入门示例</h2><div class="md-section-divider"></div><h3 data-anchor-id="ztsu" id="51-创建表">5.1 创建表</h3><pre data-anchor-id="q6gx"><code>create table USER_INFO
+(
+  USER_ID   NUMBER not null,
+  USER_NAME VARCHAR2(50),
+  USER_AGE  NUMBER,
+  USER_SEX  VARCHAR2(10)
+)
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="wnsq" id="52-添加1000测试数据">5.2 添加1000测试数据</h3><pre data-anchor-id="fb58"><code>DECLARE 
+   num number :=1;
+BEGIN
+   loop
+   Dbms_Output.put_line('num='||num);
+   insert into user_info (user_id,user_name) values(num,num||'张三');
+   commit;
+   num:=num+1;
+   exit when num&gt;1000;
+    end loop;
+EXCEPTION 
+   WHEN OTHERS THEN
+   DBMS_OUTPUT.PUT_LINE('出错:'|| SQLERRM);  
+END;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="419i" id="6-作业">6 作业</h2><p data-anchor-id="af8w">创建一张部门表使用PLSQL添加1000条数据 <br>
+ 创建一张员工表添加2000条数据（部门id要在员工表里面做外键）</p></div>
+</body>
+</html>

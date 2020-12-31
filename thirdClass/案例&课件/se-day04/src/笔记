@@ -1,0 +1,441 @@
+线程的创建方式
+   1、继承的方式
+      1-1Thread
+                  线程 是程序中的执行线程。Java 虚拟机允许应用程序并发地运行多个执行线程。 
+	每个线程都有一个优先级，高优先级线程的执行优先于低优先级线程
+   案列:
+   //创建一个线程
+	public class TestThread {
+		public static void main(String[] args) {
+			MyThread  th=   new MyThread();
+			th.start();//开启线程
+		}
+	}
+	class MyThread extends Thread{
+	
+		@Override
+		public void run() {
+	   for (int i = 0; i < 10; i++) {
+		 System.out.println("我执行了线程:::"+i);
+	}
+	
+   
+   2、实现接口的方式
+	 Runnable
+	Runnable 接口应该由那些打算通过某一线程执行其实例的类来实现。类必须定义一个称为 run 的无参数方法
+案列创建线程
+		public class TestRunnable {
+			public static void main(String[] args) {
+		      //开启线程
+				TestRunable  tr=   new TestRunable();
+				Thread th=new Thread(tr);
+				th.start();//开启线程
+			}
+		}
+		class  TestRunable implements Runnable{
+			@Override
+			public void run() {
+		     for (int i = 0; i < 10; i++) {
+				System.out.println("我执行了线程+++"+i);
+			}		
+			}
+		}
+描述使用Runnable的好处
+    1.避免了单继承的局限性,如多类需要同一个线程时候,那么单就无法进行完成
+    就需要接口来进行完成
+    2.多线程可以进行共享同一个接口实现类的对象
+    适合多个相同的线程来进行处理同一个资源
+    
+ 
+了解下线程的生命周期
+   后面会进行讲解
+      1.开启
+      2.运行
+      3.就绪
+      4.休眠(阻塞)
+      5.死亡
+      
+ 3、Thread与Runnable之间的区别
+	 Thread:
+	    好处         	
+	     1.可以直接使用Thread中的方法，代码简单
+	  缺点：
+	   1.如果某个类已经有了父类，就不能进行使用这种方法，以为是单继承的   
+	Runnable:
+	好处	
+	   1、自己定义的线程，如该类有了父类也是没有关系的，
+	   2、Runnable是进行实现的，接口可以进行多实现  
+	缺点:
+	   1.不能直接的使用，必须需要实现类Thread来进行获取到线程对象后，才能达到
+	   启动的方法
+	   2.代码编写量多
+------------------------
+匿名创建线程的方法
+   方式一：
+   //匿名创建线程
+	public void testname() throws Exception {
+		   new Thread() {
+			   public void run() {
+				   for (int i = 0; i < 10; i++) {
+					 System.out.println("我执行了线程:::"+i);
+				}
+		   }
+	}.start();
+	方式二:
+	 //匿名创建线程
+	public void testname01() throws Exception {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				 for (int i = 0; i < 10; i++) {
+					 System.out.println("我执行了线程:++++++::"+i);
+				}
+				
+			}
+		}).start();
+	}	
+	
+线程常用的方法
+     run
+     start
+     
+1.设置线程的名称
+				public void testname01() throws Exception {
+				Thread th=  new Thread("隔壁小姐姐") {
+						   public void run() {
+							   for (int i = 0; i < 10; i++) {
+								 System.out.println("我执行了线程:::"+i);
+							   }
+						   } 
+				  };
+				   System.out.println(th.getName());
+				  th.start();
+			}
+			
+			public void testname() throws Exception {
+				Thread th=  new Thread() {
+						   public void run() {
+							   this.setName("隔壁老陈");
+							   for (int i = 0; i < 10; i++) {
+								 System.out.println("我执行了线程:::"+i);
+							   }
+							   System.out.println(this.getName());
+						   } 
+				  };
+				  
+				   System.out.println(th.getName());
+				  
+				  th.start();
+			}	
+2.获取当前线程的名称
+				/**
+			 * 获取当前线程的名称
+			 * @throws Exception
+			 */
+			public void testname02() throws Exception {
+				Thread th=  new Thread("隔壁小姐姐") {
+					   public void run() {
+						   for (int i = 0; i < 10; i++) {
+							 System.out.println("我执行了线程:::"+i);
+						   }
+					   } 
+			  };
+			   System.out.println(Thread.currentThread().getName());
+			  th.start();
+			}
+
+3.休眠，睡觉(毫秒为单位)
+		/**
+			 * 休眠，睡觉(毫秒为单位)
+			 * @throws Exception
+			 */
+			public void testname03() throws Exception {
+				Thread th=  new Thread("隔壁小姐姐") {
+					   public void run() {
+						   for (int i = 0; i < 10; i++) {
+							   try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							 System.out.println("我执行了线程:::"+i);
+						   }
+					   } 
+			  };
+			   System.out.println(Thread.currentThread().getName());
+			  th.start();
+			}
+4.守护线程
+    1.该线程不会进行单的执行，单其他的非守护线程都执行结束后该自动的退出			
+				/**
+				 * 守护线程
+				 * @throws Exception
+				 */
+				public void testname04() throws Exception {
+					Thread th=  new Thread() {
+						   public void run() {
+							   for (int i = 0; i < 10; i++) {
+								   System.out.println("线程一执行10次中的===="+i);
+								}
+							   }
+						   };
+				  th.start();
+				  
+					Thread th2=  new Thread() {
+						   public void run() {
+							   for (int i = 0; i < 100; i++) {
+								   System.out.println("二号线程===="+i);
+								}
+							   }
+						   };
+						   th2.setDaemon(true);//设置为守护线程
+				  th2.start(); 
+				}
+5.加入线程
+   1.join  
+	      当某个线程执行流中进行调用其他的线程的join方法
+	      ，调用线程将会进行阻塞(堵住)，等待指定的线程执行完毕之后，当前的线程才进行执行
+   2.join(int)...进行指定多少毫秒之后进行继续执行
+	/**
+	 * 加入线程
+	 * @throws Exception
+	 */
+	public void testname05() throws Exception {
+		Thread th=  new Thread() {
+			   public void run() {
+				   for (int i = 0; i < 10; i++) {
+					   System.out.println("1号的线程===="+i);
+					}
+				   }
+			   };
+				Thread th2=  new Thread() {
+					   public void run() {
+						   for (int i = 0; i < 10; i++) {
+							   if(i==3) {
+								   try {
+									th.join();//插入指定的实际，之后进行交替的执行
+									System.out.println("=======1号的线程_插入====");
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}// 
+							   }
+							   
+							   System.out.println("2号的线程===="+i);
+							   
+							}
+						   }
+					   };
+					th.start();
+					th2.start();	   	
+	}
+	
+	
+6.礼让线程	
+   1、在执行线程的过程工程中让出CUP
+		   	/**
+		 * 执行礼让线程
+		 * @author Administrator
+		 */
+		class  MyTh extends  Thread{
+			@Override
+			public void run() {
+		   for (int i = 0; i < 28; i++) {
+		   if(i==20) {
+			   Thread.yield();
+			  System.out.println(getName()+"执行礼让线程");
+		   }
+		   
+		   System.out.println(getName()+"让线程==="+i);   
+		}
+			}
+		}
+7.设置优先级别
+		public void testname06() throws Exception {
+		
+		   Thread th=  new Thread() {
+			   public void run() {
+				   for (int i = 0; i < 50; i++) {
+					   System.out.println("1号的线程===="+i);
+					}
+				   }
+			   };
+			   Thread th1=  new Thread() {
+				   public void run() {
+					   for (int i = 0; i < 50; i++) {
+						   System.out.println("2号的线程===="+i);
+						}
+					   }
+				   };
+				   
+				   //访问最小1最大是10
+				   
+				   th.setPriority(Thread.MAX_PRIORITY);
+				   th1.setPriority(Thread.MIN_PRIORITY);
+				   
+					 th.start();
+					th1.start();
+	}	
+
+----------------------------
+同步
+    1.使用某个关键字，来进行对某个对象或者是一个代码块
+      来进行定义的，当定义之后该代码块或者对象，就是叫做同步(锁)
+    2.多个同步代码如使用相同的锁对象，那么他们也是同步
+      	
+需要同步的地方
+    1.多线程并发
+    2.多段代码需要同时执行，我希望某段代码在执行过程中，CPU不要切换到其他的线程上，就是需要同步
+    3.多段代码,同时只能执行段代码，那么另外的一段代码没有执行结束之前，不会进行执行其他的代码段
+
+使用多线程的优势
+    1、提高了应用的程序响应
+    2、增强了用户的体验
+    3、cpu的利用率
+  
+synchronized的使用 
+   public synchronized void  testname() throws Exception {
+		System.out.print("同");
+		System.out.print("学");
+		System.out.print("们");
+		System.out.print("天");
+		System.out.print("天");
+		System.out.print("向");
+		System.out.print("上");
+		System.out.println();
+		System.out.print("同");
+		System.out.print("学");
+		System.out.print("们");
+		System.out.print("天");
+		System.out.print("天");
+		System.out.print("向");
+		System.out.print("上");
+		System.out.println();
+		
+	}   	
+      	
+生命周期
+    新建
+      1.当Thread子类的对象被创建生明的时候，产生的线程对象处于新建状态
+    就绪
+    1.处于新建状态的线程被start后,进进入到线程列队等待cpu的时间片
+      此刻该线程就有运行的条件
+    
+    运行
+   1.当就绪的线程被调用并获得处理器的资源的时候，就进入了运行的状态
+    run定义了线程的操作的功能
+    
+    
+    阻塞
+    1.在某种情况下，被人为挂起或者输入以及输出操作时，让CUP并临时停止之间的执行
+      进入了阻塞的状态
+    
+    死亡	
+	线程完成了它的全部的工作或者是线程提前强制的终止
+	
+
+
+=======================
+线程的安全
+    1、  当多线程并发操作同一条数据的时候，
+	      就会出现线程的安全的问题
+	      如:多线程进行购买票的使用，多条线程可能进行同时购买到一张票,出现抢占资源
+	      就需要同步代码块了
+ 2、案例购买票的
+	      	class MyThred implements Runnable{
+		//定义票数
+		private  static int number=100;
+		static Object obj=new Object();
+		@Override
+		public void run() {
+			  while(true) {
+				  synchronized(this) {
+					  if(number<=0) {
+						  break;
+					  }
+					  try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					 System.out.println(Thread.currentThread().getName()+"第"+number--+"号票");
+				  }
+			  }
+			
+		}
+		
+	}
+
+
+ 3、死锁案例
+      1.多线程同步的时候，如果同步代码进行嵌套
+      使用了同步锁,就可能会出现死锁
+      
+      2.不同的线程分别占用了对方需要的同步资源还不进行放弃
+         ,都在等待对方进行放弃自己需要的同步资源，就是形成了死锁的状态
+          private  static  String s1="左筷子";
+   private  static  String s2="右筷子";
+	public static void main(String[] args) throws Exception {
+		new Thread() {
+			public void run() {
+				 while(true) {
+					 synchronized(s1){
+						 System.out.println(getName()+"得到了:"+s1+"--等待"+s2);
+					
+					 synchronized(s2){
+						 System.out.println(getName()+"得到了:"+s2+"--开吃");
+					 } 
+					 } 
+				}
+			}
+		}.start();
+		new Thread() {
+			public void run() {
+				 while(true) {
+					 synchronized(s2){
+						 System.out.println(getName()+"得到了:"+s2+"--等待"+s1);
+					
+					 synchronized(s1){
+						 System.out.println(getName()+"得到了:"+s1+"--开吃");
+					 } 
+					 }
+				}
+			}
+		}.start();
+	}  
+         
+           
+扩展设计模式      
+赖汉
+   使用空间获取时间
+/**
+ * 饿汉式
+ */
+class Singleton {
+	//私有的构造方法
+	private  Singleton() {
+	}
+	//创建本身的对象
+	private  static  Singleton S=new Singleton();
+	//提供公共访问对象的方法
+	public static Singleton  getSingleton() {
+		System.out.println("---提供公共访问对象的方法---");
+		return S;
+	}
+}
+
+
+
+
+饿汉
+  时间换取空间
+  
+
+
+
+	
+	   
+		
+  

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>01 JDBC 概述和入门示例</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="bxly" id="01-jdbc-概述和入门示例">01 JDBC 概述和入门示例</h1><p data-anchor-id="jbzy"><code>jdbc</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="ydqi" id="1-jdbc的概述">1 JDBC的概述</h2><p data-anchor-id="oruc"><strong>JDBC</strong>:Java DataBase Connectivity Java数据库的连接.</p><blockquote data-anchor-id="ve2i" class="white-blockquote">
+  <p>是SUN公司统一提供的一套接口规范(JDBC).各个数据库生产商提供实现.</p>
+</blockquote><p data-anchor-id="6114"><strong>驱动</strong>:两个硬件设备之间通信的桥梁.</p><div class="md-section-divider"></div><h2 data-anchor-id="854z" id="2-jdbc的开发步骤">2 JDBC的开发步骤</h2><p data-anchor-id="kf65">1.注册驱动: </p><pre data-anchor-id="o3q9"><code>Class.forName("oracle.jdbc.driver.OracleDriver");
+</code></pre><p data-anchor-id="6mq8">2.获得连接： </p><pre data-anchor-id="mnuj"><code>// orcl 数据库中的数据库名 localhost表示连接本机的oracle数据库 1521 端口号 mysql(3306)
+</code></pre><p data-anchor-id="e4so">String url = "jdbc:oracle:thin:@localhost:1521:orcl"; <br>
+    // 用户名 <br>
+    String user = "liu"; <br>
+    // 密码 <br>
+    String password = "admin"; <br>
+    // 获取链接 <br>
+    Connection conn = DriverManager.getConnection(url, user, password);</p><p data-anchor-id="535g">3.获得执行SQL语句对象:</p><pre data-anchor-id="2fo3"><code>     //获得执行SQL语句对象:
+    Statement sta = conn.createStatement();
+
+    String sql = "select * from book";
+    // 执行SQL，获得结果集ResultSet
+    ResultSet res = sta.executeQuery(sql);
+</code></pre><p data-anchor-id="hr0r">4.释放资源: <br>
+    res.close(); //关闭结果集 <br>
+            sta.close();//关闭执行SQL实例 <br>
+            conn.close();//关闭连接</p><div class="md-section-divider"></div><h2 data-anchor-id="zr6r" id="3-入门示例">3 入门示例</h2><div class="md-section-divider"></div><h3 data-anchor-id="8qjw" id="31-步骤分析">3.1 步骤分析</h3><p data-anchor-id="px26">【步骤一】：创建一个Java项目. <br>
+【步骤二】：引入数据库的驱动包.</p><pre data-anchor-id="nu7w"><code>oracle:ojdbc6.jar
+mysql:mysql-connector-java-5.1.43.jar
+</code></pre><p data-anchor-id="mpdw">【步骤三】：编写代码. <br>
+【步骤四】：完成查询的操作：</p><div class="md-section-divider"></div><h3 data-anchor-id="4efv" id="32-前期准备">3.2 前期准备</h3><p data-anchor-id="f8kw">创建表：</p><pre data-anchor-id="ze3l"><code>create table BOOK
+(
+  book_id   NUMBER(10),
+  sort      VARCHAR2(10),
+  book_name VARCHAR2(50),
+  writer    VARCHAR2(10),
+  output    VARCHAR2(50),
+  price     NUMBER(3)
+)
+</code></pre><p data-anchor-id="gi0m">初始化数据： <br>
+<img src="http://static.zybuluo.com/l363130002/q3tia4cpwpqfnwjvyhhlmi0y/image_1c1cqfbi21rod1c5f1nmsif2a9.png" alt="image_1c1cqfbi21rod1c5f1nmsif2a9.png-24.9kB"></p><div class="md-section-divider"></div><h3 data-anchor-id="3spp" id="33-示例代码">3.3 示例代码</h3><pre data-anchor-id="bwgn"><code>public class TestJDBC {
+
+    public static void main(String[] args) {
+        try {
+            //orcl为oracle数据库中的数据库名，localhost表示连接本机的oracle数据库     
+            //1521为连接的端口号 
+            String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+            // system为登陆oracle数据库的用户名
+            String user = "liu";
+            // manager为用户名system的密码
+            String password = "admin";
+            // 初始化驱动包
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            // 根据数据库连接字符，名称，密码给conn赋值
+            Connection conn = DriverManager.getConnection(url, user, password);
+            //Statement对象
+            Statement sta = conn.createStatement();
+            //sql
+            String sql = "select * from book";
+            //结果集
+            ResultSet re = sta.executeQuery(sql);
+
+            while(re.next()) {
+                System.out.print("编号："+re.getInt("book_id"));
+                System.out.print(" 名称："+re.getString("book_name"));
+                System.out.print(" 价格："+re.getDouble("price"));
+                System.out.println("");
+            }
+
+            //关闭资源
+            re.close();
+            sta.close();
+            conn.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p data-anchor-id="xx2l"><img src="http://static.zybuluo.com/l363130002/i3o4esaju73kikns3eevpwmb/image_1c1crugp2ajhc6r1qu71hnh1q6p16.png" alt="image_1c1crugp2ajhc6r1qu71hnh1q6p16.png-39kB"></p></div>
+</body>
+</html>

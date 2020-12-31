@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>13 子查询</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="t13t" id="13-子查询">13 子查询</h1><hr><p data-anchor-id="flgt"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="g56r" id="1-使用子查询解决问题">1 使用子查询解决问题</h2><p data-anchor-id="d0g0"><img src="http://static.zybuluo.com/l363130002/lmew339xrmsjnr3y3th99vqq/image_1c0b8r9oj1oj9qtn147c1qo91oh99.png" alt="image_1c0b8r9oj1oj9qtn147c1qo91oh99.png-61.1kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="mfw2" id="2-子查询语法">2 子查询语法</h2><blockquote data-anchor-id="99y7" class="white-blockquote">
+  <p>子查询(内查询) 在主查询之前一次执行完成 <br>
+  子查询的结果被主查询使用(外查询) <br>
+  <img src="http://static.zybuluo.com/l363130002/4cim9z79a6c7rb96pqe6uhxx/image_1c0b8st5e17o1t1f3ftsv49ugm.png" alt="image_1c0b8st5e17o1t1f3ftsv49ugm.png-22.1kB" title=""> <br>
+  <img src="http://static.zybuluo.com/l363130002/0rdhi0a88k58gx2ntqft3fiz/image_1c0b9fbrrlplcru1b12k6623f9.png" alt="image_1c0b9fbrrlplcru1b12k6623f9.png-81.3kB" title=""></p>
+</blockquote><p data-anchor-id="fklq">注意事项</p><blockquote data-anchor-id="d964" class="white-blockquote">
+  <p>•子查询要包含在括号内。 <br>
+  •将子查询放在比较条件的右侧。  <br>
+  •除非进行Top-N 分析，否则不要在子查询中使用ORDER BY子句。 <br>
+  •单行操作符对应单行子查询，多行操作符对应多行子查询</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="a61z" id="3-子查询类型">3 子查询类型</h2><p data-anchor-id="1xwh"><img src="http://static.zybuluo.com/l363130002/k7o5hgdsogykym9qkzy1prxl/image_1c0b9pgg41mu398ba9g1n6g4p213.png" alt="image_1c0b9pgg41mu398ba9g1n6g4p213.png-42.6kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="xitj" id="31-单行子查询">3.1 单行子查询</h3><p data-anchor-id="g2mp"><img src="http://static.zybuluo.com/l363130002/7wdl5ahkavhkqfx6aa4elva5/image_1c0b9q5l310kff4cs0iqmis8h1g.png" alt="image_1c0b9q5l310kff4cs0iqmis8h1g.png-50.1kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/v5526qsnfmrpu7mzjw9l4nmk/image_1c0b9qig51gka1fpe1rq81uvl1ic71t.png" alt="image_1c0b9qig51gka1fpe1rq81uvl1ic71t.png-50.1kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/4vvcw21z3t6w22ua7glhh0lt/image_1c0b9sc9m1gpdted1oe71l2n12vd2q.png" alt="image_1c0b9sc9m1gpdted1oe71l2n12vd2q.png-134.9kB" title=""></p><p data-anchor-id="d9yt">在子查询中使用组函数 <br>
+<img src="http://static.zybuluo.com/l363130002/l2s0lvl1oaoaki9ez0b480gf/image_1c0b9smjomci19rf1am39i7kfb37.png" alt="image_1c0b9smjomci19rf1am39i7kfb37.png-34.4kB" title=""></p><p data-anchor-id="7yld">子查询中的HAVING 子句 <br>
+<img src="http://static.zybuluo.com/l363130002/u3ili7v04lr1qudhzpt9j418/image_1c0b9u6pf19o9qnk89qg2o1b244.png" alt="image_1c0b9u6pf19o9qnk89qg2o1b244.png-134.3kB" title=""> <br>
+非法使用子查询 <br>
+<img src="http://static.zybuluo.com/l363130002/nykj89qgibdd0485aikfuqmm/image_1c0ba0n2r96bvtva1h1jhi15no4h.png" alt="image_1c0ba0n2r96bvtva1h1jhi15no4h.png-59.2kB" title=""> <br>
+子查询中的空值问题 <br>
+<img src="http://static.zybuluo.com/l363130002/nyfbar7ecwj15dm7h6ffxjzr/image_1c0ba1nli1jp112o435k1ksme305e.png" alt="image_1c0ba1nli1jp112o435k1ksme305e.png-42.1kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="r2b8" id="32-多行子查询">3.2 多行子查询</h3><p data-anchor-id="i4vl"><img src="http://static.zybuluo.com/l363130002/sgblml9gkon850669t6f2i6k/image_1c0ba2fml308u9c71ninn3ij5r.png" alt="image_1c0ba2fml308u9c71ninn3ij5r.png-62.8kB" title=""> <br>
+在多行子查询中使用ANY操作符 <br>
+<img src="http://static.zybuluo.com/l363130002/8jbxgh2qca8uf79wv0uoygu3/image_1c0ba31cs1b6q1v7pfnpqkma1l68.png" alt="image_1c0ba31cs1b6q1v7pfnpqkma1l68.png-65.8kB" title=""> <br>
+在多行子查询中使用ALL 操作符 <br>
+<img src="http://static.zybuluo.com/l363130002/vjfb90ag20y2dmkm729p2x5g/image_1c0ba3ltphhe1h5n1qit17k21q2l6l.png" alt="image_1c0ba3ltphhe1h5n1qit17k21q2l6l.png-58.8kB" title=""></p></div>
+</body>
+</html>

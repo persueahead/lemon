@@ -1,0 +1,15 @@
+集合的描述
+ list
+    arraylist
+    linkedlist
+    vector
+    
+    listIterator
+    Iterator
+ 
+ set
+    HashSet
+    LinkedHashst
+    treeSet
+         	自然的排序,可自定义排序
+         	

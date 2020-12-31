@@ -1,0 +1,252 @@
+1、请求    ServletRequest
+   Request
+    Reque可以进行直接的st和 response 的对象是由服务器创建的,程序员使用
+    Request对象就是获取请求的消息
+    response  对象就是设置响应的消息
+		    如Request是容器给我传的
+		      源码:
+		      public class RequestFacade implements HttpServletRequest {
+		    // ----------------------------------------------------------- DoPrivileged
+		    private final class GetAttributePrivilegedAction
+		            implements PrivilegedAction<Enumeration<String>> {
+     
+    	 Request执行的流程,有了请求就是响应
+==============================================================    	 
+    	  1-1、Request执行的流程?(如图片【流程图】)
+		    	       描述Request继承结构
+		    	        ServletRequest 接口
+		    	           |
+		    	           V
+		    	        HttpServletRequest   接口
+		    	           |
+		    	           V
+		    	         RequestFacade 实现类(toomcat)  
+		  1-2、Request的功能
+		  eg：http://localhost:8080/day03-servlet02/TestServlet03?name=admin
+						
+						
+		             			
+						//返回发出此请求的HTTP方法的名称，例如GET、POST或PUT。
+		  	     		System.out.println("**request.getMethod():"+request.getMethod());
+						
+						//返回请求的url上指示web应用名称（ <display-name>）的地址部分 /day03-servlet02
+						System.out.println("**获取虚拟的目录地址:"+request.getContextPath());
+						
+						//返回请求的url上指示servlet路径地址名称的部分（/TestServlet03）
+						System.out.println("**获取Servlet的路径地址:"+request.getServletPath());
+						
+						//字符串形式返回路径后面请求的参数（name=admin）
+						System.out.println("获取请求的参数:"+request.getQueryString());
+						
+						//以字符串的形式返回请求参数的值，如果该参数不存在，则返回null。（admin）
+						System.out.println("**获取请求的参数name:"+request.getParameter("name"));
+						
+						//返回从http协议以后的请求地址，不包括请求的参数 （/day03-servlet02/TestServlet03）
+						System.out.println("**获取请求的URL的地址:"+request.getRequestURI());
+						
+						//返回gttp协议版本（HTTP/1.1）
+						System.out.println("获取请求的HTTP的版本:"+request.getProtocol());
+						
+						//返回发送请求的客户机或最后一个代理的Internet协议(IP)地址
+						System.out.println("获取请求的IP地址:"+request.getRemoteAddr());
+						
+						//返回此请求包含的所有头名的枚举。（返回值是 java.util.Enumeration类型，需要遍历）
+						System.out.println("获取请求头的数据:"+request.getHeaderNames());      
+		  1-2、案例:
+		         用户提交数据的案例
+		         	Servlet中的代码
+		         	   //格式化，请求的字符集
+							request.setCharacterEncoding("utf-8");
+							//格式化响应的字符集
+							response.setCharacterEncoding("utf-8");
+							
+							1-2-1、//处理中文乱码
+							/*
+							 * 1.jsp页面的字符集的格式 
+							 * 2. tomcat中的配置文件(serivce.xml)的字符集
+							 *          <Connector port="8080" protocol="HTTP/1.1"
+							               connectionTimeout="20000"
+							               redirectPort="8443" URIEncoding="UTF-8" />
+										   <!--8443是tomcat打开SSL的文本服务的默认端口-->
+
+							 * 3.开发工具的字符集格式
+							 * 4.request和response有没有进行设置字符集||拦截器有没有设置
+							 *   注意:get请求乱码tomcat设置了 URIEncoding="UTF-8"会进处理
+							 *     而初始化是没有办法进行处理需要手动的设置
+							 *     		request.setCharacterEncoding("utf-8");
+										response.setCharacterEncoding("utf-8");
+							 *    
+							 */
+							
+							//获取对应的数据并进行组装成一个对象
+						      //获取数据
+							String name=	request.getParameter("name");
+							String pwd=	request.getParameter("pwd");
+							String phone=	request.getParameter("phone");
+							String age=	request.getParameter("age");
+							
+						      //组装成一个对象
+							Users  useer=new Users();
+							useer.setName(name);
+							useer.setPhone(phone);
+							useer.setPwd(pwd);
+							//需要进行转换
+								useer.setAge(Integer.parseInt(age));
+							System.out.println(age);
+							System.out.println(useer);
+							//调用Serivce层
+						  	          
+    	 				1-2-2、	jsp页面代码
+    	 					  <form action="TestServlet_04" method="get">
+								<input  type="text"  name="name" value="小张" ><br/> 
+								<input  type="text"  name="pwd"  value="123123"><br/> 
+								<input  type="text"  name="phone" value="12312312312"><br/> 
+								<input  type="text"  name="age" value="12" ><br/> 
+								<input  type="submit" value="提交"><br/> 
+							</form>
+			1-3、转发
+			     在服务器内部的资源中进行跳转
+			      特点:
+				        1.浏览器的地址不会发生改变
+				        2.只能进行转发到当前的服务器内部资源中
+				        3.转发是一次请求 	 			    	 					
+    	                     方式一:转换到请求的SERVLET的地址
+    	                     	 //转发到Servlet的请求路径地址TestServlet04  转发到TestServlet05
+							 request.getRequestDispatcher("/TestServlet05").forward(request, response);
+		 	               方式一:转换到请求的页面
+		 	                 	//转发  到页面
+								 request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+			1-4、数据共享					   
+	    	      1-4-1、有个作用域:
+	    	              1、域对象，一个有作用的范围对象,可以在当前的范围内进行共享数据
+	    	              2、Request域：代表一次请求的范围，一般用在请求转发的多个资源中进行共享数据
+	    	      1-4-2、 方法:【Request域,域9个】
+	    	              	1. //设置数据key-value方式
+	    	              	 request.setAttribute(name, o);
+							2.//获取某个key的值
+							 request.getAttribute(name)
+							3. //删除某个key的值
+							 request.removeAttribute(name);
+				   1-4-3、  案列核心代码		   	              
+	    	                	 request.setAttribute("admin","adminMessgae");
+	    	               	 
+	    	               	 	 String  str= (String) request.getAttribute("admin");
+								System.out.println(str);
+								//转发  到页面
+								 request.getRequestDispatcher("index2.jsp").forward(request, response);
+	    	               		 <%=request.getAttribute("admin")%>           
+    	 
+    	 
+    	 
+    	 
+    	 
+    	      
+     
+     
+     
+     
+     
+2、响应  ServletResponse
+    response
+    
+     1.响应行
+         1.组成:
+                              协议/版本   响应状态码  /状态码的描述
+        		1. 响应状态码
+        		      服务器告诉客户端本请求和响应的一个状态
+        		 2.状态码  (3个数据)
+        		    分类
+        		    1xxxx
+        		                   服务器接收客户端的消息，但是没有进行接收完毕，需要等待一段时间，
+        		    2xxx
+        		             200  成功
+        		    3xxxx
+        		                     重定向  302   访问缓存304
+        		    4xxxx
+        		                    客户端问题
+        		              404  请求的路径问题
+        		              405  请求方式没有和SERVLET中的doxxxx方法对应
+        		    5xxxx
+        		         服务器端的错误
+        		             500  服务器内部出现异常     
+     2.响应头
+         1.格式:头名：值
+         2.常见的响应头
+             Content-Type  :服务器告诉客户端本次响应体的数据格式
+             Set-Cookie  :Cookie的值
+             Content-disposition
+                                             服务器告诉客户端是什么样的格式打开响应体数据
+     3.响应体
+                      传输数据
+     4.响应空行 
+      		 
+              
+3、response对象
+         设置响应的数据      
+        1.设置响应头
+          		 response.setHeader(name, value);
+        2.设置状态码
+           		response.setStatus(sc);
+        3.设置响应体的数据
+		            通过流的方式进行设置
+		             1.字符流
+		           	PrintWriter  pt=response.getWriter();   		
+           		     2.字节流
+           			ServletOutputStream OutputStream=  response.getOutputStream();
+        
+       4.重定向
+       		   1.说白了就是资源路径得进行跳转的方式 
+       		   2.重定向的地址会发生变化
+        	 response.sendRedirect("TestServlet7");
+         	3.Request域中的数据是不能在重定向中进行共享的,因为两个请求(地址变化了)
+		                    但是有的情况下，有的数据非要在     重定向中进行数据，常用的Session域(会话..服务器和客户端没有其中一方没有终端就是一个会话)
+				                如:
+				       HttpSession  session= request.getSession();
+					 session.setAttribute("amdinSession", "amdinSessionMssage");
+					   
+				 HttpSession  session= request.getSession();
+				String  strsession= (String) session.getAttribute("amdinSession");
+				System.out.println("======strsession======"+strsession);   		
+		       
+           		response.sendRedirect("https://www.baidu.com/");
+       5.扩展路径地址(了解)
+	           相对地址
+	                不可以确定唯一的资源
+	         	./xxxx
+	             	 
+	           绝对地址    	
+	    	可以确定唯一的资源     	
+           		String path = request.getContextPath();
+           		path+/xxxx
+           		
+	  6.输出数据到浏览器
+			 PrintWriter  pt=	 response.getWriter();
+			    pt.write("asdfasdfsdfsdfsdfsdf");
+		  1.处理中文乱码
+		     	 response.setHeader("Content-Type","text/html;charset=UTF-8");	    
+			    或者
+			     response.setContentType("text/html;charset=UTF-8");
+4、ServletContext对象
+     表示:整个web项目应用，可以和服务器进行通信
+      1、获取对象
+			 ServletContext 定义servlet用于与其servlet容器通信的一组方法
+           	 ServletContext  context=	 request.getServletContext();
+      2.获取通信协议的数据格式与其他常用的方法
+	  
+           			String  str=context.getMimeType("XXXX");//返回指定文件的MIME类型，如果MIME类型未知则返回null。
+                    context.getAttribute(name)//返回具有给定名称的servlet容器属性，如果没有该名称的属性，则返回null
+					 context.setAttribute(name, object);
+					 context.removeAttribute(name);//从servlet上下文中删除具有给定名称的属性。   
+	  3.范围：(全局)
+	             所有用户请求的数据	
+	              如,获取某个文件的服务器的路径	  
+				//返回包含给定虚拟路径的真实路径的字符串。
+			  System.out.println(context.getRealPath("/index.jsp"));
+  		    	System.out.println(context.getRealPath("/WEB-INF/web.xml"));
+ 5、案例
+         文件下载
+           
+          		    	
+  		    	
+  		    	     

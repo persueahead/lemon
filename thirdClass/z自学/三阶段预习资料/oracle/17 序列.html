@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>17 序列</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="6ija" id="17-序列">17 序列</h1><p data-anchor-id="yu5v"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="331c" id="1-序列">1 序列</h2><p data-anchor-id="m3wu">序列是用于生成唯一、连续序号的对象 <br>
+序列可以是升序的，也可以是降序的 <br>
+使用CREATE SEQUENCE语句创建序列</p><pre data-anchor-id="e7b4"><code>CREATE SEQUENCE toys_seq
+    START WITH 10
+    INCREMENT BY 10
+    MAXVALUE 2000
+    MINVALUE 10
+    NOCYCLE
+    CACHE 10;
+</code></pre><p data-anchor-id="welj">指定内存中预先分配的序号数 </p><div class="md-section-divider"></div><h2 data-anchor-id="lpbg" id="2-访问序列">2 访问序列</h2><p data-anchor-id="nh3q">通过序列的伪列来访问序列的值</p><blockquote data-anchor-id="kggw" class="white-blockquote">
+  <p>NEXTVAL 返回序列的下一个值  <br>
+  CURRVAL 返回序列的当前值</p>
+</blockquote><p data-anchor-id="vk5o">指定序列的下一个值</p><pre data-anchor-id="t4xc"><code>SQL&gt; INSERT INTO toys (toyid, toyname, toyprice) 
+     VALUES ( toys_seq.NEXTVAL, ‘TWENTY’, 25);
+SQL&gt; INSERT INTO toys (toyid, toyname, toyprice) 
+     VALUES ( toys_seq.NEXTVAL, ’MAGIC PENCIL’, 75)
+</code></pre><p data-anchor-id="345d">检索序列的当前值</p><pre data-anchor-id="b19k"><code>SQL&gt; SELECT toys_seq.CURRVAL FROM dual;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="cuij" id="3-更改和删除序列">3 更改和删除序列</h2><p data-anchor-id="4qi5">使用ALTER SEQUENCE语句修改序列， <br>
+不能更改序列的START WITH参数</p><pre data-anchor-id="8xiw"><code>SQL&gt; ALTER SEQUENCE toys_seq MAXVALUE 5000 CYCLE;
+</code></pre><p data-anchor-id="q9vr">使用DROP SEQUENCE语句删除序列</p><pre data-anchor-id="qgus"><code>SQL&gt; DROP SEQUENCE toys_seq;
+</code></pre></div>
+</body>
+</html>

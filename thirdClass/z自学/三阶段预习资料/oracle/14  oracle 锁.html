@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>14  oracle 锁</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="ciq6" id="14-oracle-锁">14  oracle 锁</h1><p data-anchor-id="m0a7"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="hb6k" id="1-锁的概念">1 锁的概念</h2><p data-anchor-id="za7e">锁是数据库用来控制共享资源并发访问的机制。 <br>
+锁用于保护正在被修改的数据 <br>
+直到提交或回滚了事务之后，其他用户才可以更新数据 <br>
+<img src="http://static.zybuluo.com/l363130002/ujx8acx2u3ituvhr435xgs0p/image_1c0g81sf0150t1ougckd11a318lhm.png" alt="image_1c0g81sf0150t1ougckd11a318lhm.png-90.1kB" title=""></p><blockquote data-anchor-id="xk3w" class="white-blockquote">
+  <p>并行性：允许多个的优点用户访问同一数据</p>
+  
+  <p>一致性：一次只允许一个用户修改数据</p>
+  
+  <p>完整性：为所有用户提供正确的数据。如果一个用户进行了修改并保存，所做的修改将反映给所有用户</p>
+</blockquote><p data-anchor-id="jot5"><img src="http://static.zybuluo.com/l363130002/ghyh4oo0abr2d3y2moa4nucc/image_1c0g89buivd6120d9h7d1g15ov1t.png" alt="image_1c0g89buivd6120d9h7d1g15ov1t.png-84.5kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="306k" id="2-锁的类型">2 锁的类型</h2><p data-anchor-id="gg9b"><img src="http://static.zybuluo.com/l363130002/2pfqiz6tgwediwb2399jifu6/image_1c0gdbmjl1ehh18ett4sdfu1hpo2q.png" alt="image_1c0gdbmjl1ehh18ett4sdfu1hpo2q.png-24.1kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="8xvi" id="21-行级锁">2.1 行级锁</h3><p data-anchor-id="tjby">对正在被修改的行进行锁定。其他用户可以访问除被锁定的行以外的行 <br>
+<img src="http://static.zybuluo.com/l363130002/vd4ocvx1yx9j91atuawxp0wa/image_1c0gdfqntq2adj41kt8dsk14uj3k.png" alt="image_1c0gdfqntq2adj41kt8dsk14uj3k.png-68.7kB" title=""></p><p data-anchor-id="lfek">行级锁是一种排他锁，防止其他事务修改此行 <br>
+在使用以下语句时，Oracle会自动应用行级锁： <br>
+INSERT <br>
+UPDATE <br>
+DELETE <br>
+SELECT … FOR UPDATE <br>
+SELECT … FOR UPDATE <br>
+语句允许用户一次锁定多条记录进行更新 <br>
+使用COMMIT或ROLLBACK语句释放锁</p><blockquote data-anchor-id="bf25" class="white-blockquote">
+  <p>SELECT … FOR UPDATE语法: <br>
+      SELECT … FOR UPDATE [OF columns][WAIT n | NOWAIT];</p>
+</blockquote><pre data-anchor-id="i4v1"><code>--如果锁定，就不用等待
+select * from lyj.user_info for update nowait
+--如果锁定，更新的时候等待5秒
+select * from lyj.user_info for update wait 5;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="lraf" id="22-表级锁">2.2 表级锁</h3><p data-anchor-id="q21n">锁定整个表，限制其他用户对表的访问 <br>
+<img src="http://static.zybuluo.com/l363130002/8gutqo6085s76lddsd42x7in/image_1c0ge70cpvt018ka1v6ll5bq8841.png" alt="image_1c0ge70cpvt018ka1v6ll5bq8841.png-67.6kB" title=""> <br>
+使用命令显示地锁定表，应用表级锁的语法是:</p><pre data-anchor-id="3cg4"><code> LOCK TABLE table_name IN mode MODE;
+</code></pre><p data-anchor-id="nlpc"><img src="http://static.zybuluo.com/l363130002/7q5xgp6g4g7f0tsjav79a0gt/image_1c0ge81qd13f81e2b7thv9f1sqn4e.png" alt="image_1c0ge81qd13f81e2b7thv9f1sqn4e.png-43kB" title=""></p><p data-anchor-id="jjek">行共享 (ROW SHARE) – 禁止排他锁定表</p><pre data-anchor-id="wvpf"><code>--行共享:允许用户进行任何操作，禁止排他锁
+LOCK TABLE user_info IN row share MODE;
+</code></pre><p data-anchor-id="u3jl">行排他(ROW EXCLUSIVE) – 禁止使用排他锁和共享锁</p><pre data-anchor-id="fxwc"><code>--行排他：允许用户进行任何操作，禁止共享锁
+LOCK TABLE user_info IN row EXCLUSIVE MODE;
+</code></pre><p data-anchor-id="7lb2">共享锁(SHARE)</p><blockquote data-anchor-id="xklq" class="white-blockquote">
+  <p>锁定表，仅允许其他用户查询表中的行 <br>
+      禁止其他用户插入、更新和删除行 <br>
+  多个用户可以同时在同一个表上应用此锁</p>
+</blockquote><pre data-anchor-id="wx16"><code>---共享锁：其他用户只能看，不能修改
+LOCK TABLE user_info IN share MODE;
+</code></pre><p data-anchor-id="3c0b">共享行排他(SHARE ROW EXCLUSIVE)比共享锁更多的限制，禁止使用共享锁及更高的锁</p><pre data-anchor-id="x31m"><code>---共享行排他：禁止使用共享锁及更高的锁
+LOCK TABLE user_info IN SHARE ROW EXCLUSIVE MODE;
+</code></pre><p data-anchor-id="bezf">排他(EXCLUSIVE) – 限制最强的表锁，仅允许其他用户查询该表的行。禁止修改和锁定表</p><pre data-anchor-id="6yt4"><code>--排他锁：其他用户只能看，不能修改，不能加其他的锁
+LOCK TABLE user_info IN EXCLUSIVE MODE;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="gp1m" id="22-死锁">2.2 死锁</h3><p data-anchor-id="ufmr">当两个事务相互等待对方释放资源时，就会形成死锁 <br>
+Oracle会自动检测死锁，并通过结束其中的一个事务来解决死锁 <br>
+<img src="http://static.zybuluo.com/l363130002/r2hsyyx4xooibflgbvnjwk6j/image_1c0geqri5pdm1v9m1sss1o8uu2m58.png" alt="image_1c0geqri5pdm1v9m1sss1o8uu2m58.png-22.2kB" title=""></p><pre data-anchor-id="h88t"><code>--2个用户同时上共享锁
+LOCK TABLE liu.user_info IN share MODE;
+LOCK TABLE liu2.user_info IN share MODE;
+</code></pre></div>
+</body>
+</html>

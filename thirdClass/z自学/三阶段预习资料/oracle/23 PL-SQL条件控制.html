@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>23 PL/SQL条件控制</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="ko1z" id="23-plsql条件控制">23 PL/SQL条件控制</h1><p data-anchor-id="5w8q"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="3eda" id="1-逻辑比较">1 逻辑比较</h2><p data-anchor-id="5chq">布尔表达式由组成 <br>
+布尔表达式的结果为TRUE、FALSE或NULL，通常由逻辑运 <br>
+算符AND、OR和NOT连接</p><p data-anchor-id="p5qo">布尔表达式有三种类型：</p><blockquote data-anchor-id="avd3" class="white-blockquote">
+  <p>数字布尔型 <br>
+  字符布尔型 <br>
+  日期布尔型 <br>
+  <img src="http://static.zybuluo.com/l363130002/0i1tatqw060qnye53cfjbab6/image_1c0lle5b8a6qot3ra6ufa1goa9.png" alt="image_1c0lle5b8a6qot3ra6ufa1goa9.png-47.2kB" title=""></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="zqd7" id="2-set-serveroutput-on">2  set serveroutput on</h2><blockquote data-anchor-id="buyr" class="white-blockquote">
+  <p>dbms_output.put_line将必要的信息输出，以便对存储过程进行调试，只有将serveroutput变量设为on后，信息才能显示在屏幕上。</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="3jn6" id="3-条件控制">3 条件控制</h2><blockquote data-anchor-id="xv6u" class="white-blockquote">
+  <p><strong>IF 语句</strong>  <br>
+  <strong>CASE 语句</strong></p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="owng" id="31-条件控制-if">3.1 条件控制 IF</h3><p data-anchor-id="l17r">IF 语句根据条件执行一系列语句，有三种形式： <br>
+IF-THEN <br>
+IF-THEN-ELSE  <br>
+IF-THEN-ELSIF</p><p data-anchor-id="ytl5">示例1</p><pre data-anchor-id="jsoj"><code>declare 
+  sex number;
+begin
+ sex :=&amp;sex;
+ if sex = 1 then 
+ DBMS_output.put_line('性别为男');
+ else 
+   DBMS_output.put_line('性别为女');
+ end if;
+end;
+</code></pre><p data-anchor-id="k86g">示例2</p><pre data-anchor-id="vtgo"><code>declare 
+  sex number;
+begin
+ sex :=&amp;sex;
+ if sex = 1 then 
+ DBMS_output.put_line('性别为:男');
+ elsif sex =2 then 
+ DBMS_output.put_line('性别为:女');
+ else 
+  DBMS_output.put_line('性别为:保密');
+ end if;
+end; 
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="rves" id="32-条件控制case">3.2 条件控制CASE</h3><p data-anchor-id="824q">CASE 语句用于根据单个变量或表达式与多个值进行比较 <br>
+执行 CASE 语句前，先计算选择器的值 <br>
+示例一</p><pre data-anchor-id="rozs"><code>declare 
+  grade varchar2(10);
+begin
+   grade :='&amp;grade';
+
+   CASE grade
+     when 'A' then DBMS_output.put_line('Java初级程序员'); 
+     when 'B' then DBMS_output.put_line('Java中级程序员'); 
+     when 'C' then DBMS_output.put_line('Java高级程序员'); 
+     when 'D' then DBMS_output.put_line('Java资深级程序员'); 
+     else  DBMS_output.put_line('你不是程序员'); 
+   end   CASE;
+
+end;   
+</code></pre><p data-anchor-id="zfab">示例二</p><pre data-anchor-id="1y7c"><code>BEGIN
+    CASE ‘&amp;grade’
+      WHEN ’A’ THEN DBMS_OUTPUT.PUT_LINE(’优异’);
+      WHEN ’B’ THEN DBMS_OUTPUT.PUT_LINE (优秀’);
+      WHEN ’C’ THEN DBMS_OUTPUT.PUT_LINE (’良好’);
+      WHEN ’D’ THEN DBMS_OUTPUT.PUT_LINE (’一般’);
+      WHEN ’F’ THEN DBMS_OUTPUT.PUT_LINE (’较差’);
+      ELSE DBMS_OUTPUT.PUT_LINE (’没有此成绩’);
+    END CASE;
+END;
+</code></pre></div>
+</body>
+</html>

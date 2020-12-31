@@ -1,0 +1,316 @@
+懒汉式
+    1.时间换取空间
+    2.非线程安全的
+    		class  Singlet{
+				  private static Singlet s;
+					
+				 private Singlet() 
+				 {}
+				 public  static Singlet getSinglet() {
+					 System.out.println("-----------------");
+					 if(s==null) {
+						 s=new Singlet();
+					 }
+					 return s;
+				 }
+				}
+	3.是线程安全的
+			class Singlet01{
+				  private static Singlet01 s;
+					private Singlet01() {
+					}
+					public  static synchronized Singlet01 getSinglet() {
+						 if(s==null) {
+							 s=new Singlet01();
+						 }
+						 return s;
+					}
+			}	
+			
+懒汉式和饿汉式之间的区别
+	  1、 懒汉式:在类加载的时候不会被初始化
+	   2、饿汉式:在列加载的是就进行完成了初始化
+	            但是加载比较慢，获取对象就比较快
+	3、 饿汉式是线程安全的，在类创建好了之后就有一个静态的对象提供给系统使用
+	 4、懒汉式在非线程安全的，如需要是线程安全那么就需要进行加上一个关键字      synchronized
+  -----------------------------
+  
+  ------------------------
+  
+ 1、反射是什么
+    1、反射就被视为动态的语言的关键
+    2、说白了，反射就允许程序在执行期借助于API的方法来进行获取任何类的内部数据信息
+    ，并能进行直接的操作任意对象的内部属性和方法
+    
+    
+2、反射提供了那些功能
+    1.可以获取任意一个对象所属的类
+    2.构造一个类的对象
+    3.判断一个类所具有的成员变量和方法
+    4.可以进行调用一个对象的任意的一个变量和方法
+    5.还可以进行审查动态的代理
+3、常见的API
+       java.lang.Class
+       java.lang.reflect.Method
+       java.lang.reflect.Field
+       java.lang.reflect.Constructor//
+       
+       
+ Class
+   4、实例化Class类对象方法
+      三种
+      		/**
+	 * 实例化Class类对象方法
+	 */
+	public void testname() throws Exception {
+		  //方法一
+		/**
+		 * 知道具体的类，可以使用.class获取方法
+		 *    安全可靠的，程序性能高
+		 */
+		 Class  cl=  String.class;
+		 /**
+		  * 知道某个类的实例
+		  * 调用该实例的时候可以使用..getClass(
+		  *)获取Class对象
+		  */
+		 String  str=	 new String();
+		 Class  c2= str.getClass();
+		 /**
+		  * 知道某个类的全类名名称地址
+		  * 可以进行通过.forName(某个类的路径地址)
+		  */
+		 Class  c3=  Class.forName("java.lang.String");
+		 /**
+		  * 请问这三种方式获取都是同一个对象吗
+		  */
+		 System.out.println(cl==c2);
+		 System.out.println(c3==c2);
+		 System.out.println(c3==cl);
+	}
+5、Class类常用的方法
+   forName(String className) 	  返回与带有给定字符串名的类或接口相关联的 Class 对象。
+   newInstance()    创建此 Class 对象所表示的类的一个新实例。
+   getName() 		以 String 的形式返回此 Class 对象所表示的实体（类、接口、数组类、基本类型或 void）名称。
+   getSuperclass() 		返回表示此 Class 所表示的实体（类、接口、基本类型或 void）的超类的 Class。
+   getInterfaces()    确定此对象所表示的类或接口实现的接口。
+   getClassLoader()     返回该类的类加载器。
+   getMethod(String name, Class<?>... parameterTypes)        返回一个 Method 对象，它反映此 Class 对象所表示的类或接口的指定公共成员方法
+   getMethods()  返回一个包含某些 Method 对象的数组，这些对象反映此 Class 对象所表示的类或接口（包括那些由该类或接口声明的以及从超类和超接口继承的那些的类或接口）的公共 member 方法。
+   getDeclaredField(String name)返回一个 Field 对象，该对象反映此 Class 对象所表示的类或接口的指定已声明字段。 
+   Field[] getDeclaredFields()   返回 Field 对象的一个数组，这些对象反映此 Class 对象所表示的类或接口所声明的所有字段。 
+   getField(String name) 返回一个 Field 对象，它反映此 Class 对象所表示的类或接口的指定公共成员字段。 
+   Field[] getFields()  返回一个包含某些 Field 对象的数组，这些对象反映此 Class 对象所表示的类或接口的所有可访问公共字段。 
+  
+6、通过反射来进行完成调用该类中的构造方法
+     	/**
+	 * 通过反射进行调用带参数的构造函数
+	 * @throws Exception
+	 */
+	public void testname() throws Exception {
+	Class  cl=	Users.class;
+	/**
+	 * 调用带两个参数的构造方法
+	 *    注意getConstructor(....)传入参数类型的时候，
+	 *       一定要和你调用的构造方法的参数的类型包括顺序一致
+	 *       如getConstructor(Integer.class,String.class)
+	 *    调用无参的构造函数,那么就无写参数类型，就可以进行调用了
+	 *        
+	 */
+	Constructor  constructor=
+			cl.getConstructor(int.class,String.class);
+	//需要进行强制转换
+	/**
+	 * 转换传入参数的时候，要和你调用构造函数的参数类型(顺序)
+	 *     一致
+	 */
+	Users  users=(Users)constructor.newInstance(123123,"隔壁老陈");
+	System.out.println("users:"+users);
+	}
+     
+   /**
+	 * 调用无参数的构造函数
+	 * @throws Exception
+	 */
+	public void testname01() throws Exception {
+		Class  cl=	Users.class;
+		Constructor  constructor=
+				cl.getConstructor();
+		Users  users=(Users)constructor.newInstance();
+		System.out.println(users);
+		
+	}
+               
+7、通过反射来进行获取所有的方法
+  	/**
+	 * 获取所有的方法
+	 *  并进行执行某个方法(无参数)
+	 * @throws Exception
+	 */
+	public void testname02() throws Exception {
+		Class  cl=	Users.class;
+		//获取所有的方法
+		 Method[]  me=	cl.getMethods();
+         for (Method method : me) {
+        	 System.out.println("方法:+++"+method.getName());
+        	 //进行调用某一个方法
+			if(method.getName().contains("getName")) {
+				Constructor  co=	cl.getConstructor();
+				Users  users=(Users)co.newInstance();
+				method.invoke(users);
+			}
+		}		 
+	}    
+		/**
+	 * 获取所有的方法
+	 *  并进行执行某个方法(有参数的)
+	 * @throws Exception
+	 */
+	public void testname03() throws Exception {
+		Class  cl=	Users.class;
+		//获取指定的某个的方法
+		/**
+		 * 参数一:  调用的某个方法的名称
+		 * 参数二:该方法中的参数的类型注意(类型和顺序一致)
+		 */
+		Method  me=cl.getMethod("setName01",String.class,int.class);
+		
+		Constructor  co=	cl.getConstructor();
+		Users  users=(Users)co.newInstance();
+		me.invoke(users,"隔壁小姐姐",23);
+	}
+8、获取变量
+	   /**
+		 * 获取变量
+		 * @throws Exception
+		 */
+	public void testname04() throws Exception {
+		Users u=  new Users("隔壁老陈",88,"心意小姐姐",23);
+		System.out.println("之前传入的数据信息::::::::"+u);
+		Class  cl=	Users.class;
+		
+		System.out.println("----打印出所有公共的属性名-------");
+		Field[] fi=cl.getFields();
+		for (Field field : fi) {
+			System.out.println(field.getName());
+		}
+		System.out.println("-----打印出所有属性名(包含私有的)----------------");
+		Field[] f2=cl.getDeclaredFields();
+		for (Field field : f2) {
+			System.out.println(field.getName());
+		}
+		System.out.println("======通过反射重新进行(公共的)属性的值================");
+		Field  F3=cl.getField("lastName");
+		   System.out.println("之前==获取对应的值：："+F3.get(u));
+		   //进行设置
+		   F3.set(u, "小仙女");
+		   System.out.println("设置之后的==获取对应的值：："+F3.get(u));
+		   System.out.println(u);
+			System.out.println("======通过反射重新进行(私有的)属性的值================");
+			Field  f4=	cl.getDeclaredField("name");
+		   //开启Private设置  true标示可以进行对私有化得操作(默认为false)
+			f4.setAccessible(true);
+			  System.out.println("之前==获取对应的值：："+f4.get(u));
+			  f4.set(u,"隔壁老王");
+			  System.out.println("设置之后的==获取对应的值：："+f4.get(u));  
+			  System.out.println(u);
+	}	
+	
+9、动态代理
+  1、动态代理就是指的，客户通过代理类来进行调用其他的对象方法
+        并且在程序运行时根据所需要的动态来进行创建目录类的代理对象
+               如:隔壁老陈是大地主的傻儿子，找个几个贴身丫鬟
+ 2、设计的模式原理
+    1.使用一个代理将对象包装起来，然后用该代理对象取代了原始对象        
+    2.任何对原始对象的调用都要进行通过代理类
+    3.代理对象决定了是否将方法进行转到原始对象上
+3。  java.net.Proxy
+		此类表示代理设置，
+	1、专门来进行完成代理的操作类,所有的动态的代理类的父类
+	2、通过该可以进行完成单个做多个的动态实现类
+	
+	如下常用的方法
+	 创建动态代理的类，创建动态代理对象的静态方法	    
+   getProxyClass  //创建动态代理
+   getProxyInstance //创建动态代理对象的静态方法
+   
+  9-1 动态的代理 案例
+    		//代理类
+     	public class MyHandler implements InvocationHandler {
+				private  Object  obj;
+				public MyHandler(Object obj) {
+					super();
+					this.obj = obj;
+				}
+				public MyHandler() {
+					super();
+					// TODO Auto-generated constructor stub
+				}
+				@Override
+				public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+					// TODO Auto-generated method stub
+					System.out.println("调用验证账号和密码的方法逻辑");
+					method.invoke(obj, args);
+					System.out.println("调用提交登陆产生日志的方法逻辑");
+					return null;
+				}
+			
+			}  
+   			//测试的方法
+		   	public void testname01() throws Exception {
+				Student  IStudent= new StudentImpl();
+				MyHandler  myHandler=  new MyHandler(IStudent);
+				Student  s=(Student)Proxy.newProxyInstance(IStudent.getClass().getClassLoader(),
+						IStudent.getClass().getInterfaces(),myHandler);
+				s.login();
+				s.submit();
+			}
+10.注解
+      1.jdk中有自带内置的基本注解类型
+      2.自定义注解类型
+      3.利用反射获取注解的信息
+      4.注解是在jdk1.5之后开始,java增加了对元数据的支持
+      5.就是代码中的一种特殊的标识,这些标识可以在编译.类加载。运行的
+        时候进行读取，并进行执行相应的处理逻辑
+         都以@XXXXX开头的
+       6.程序一可以在不改名业务逻辑下，在对源文件中进行嵌入写信息
+       7.可以进行对包，类构造器，方法，变量(成员和局部)，参数地方进行声明
+         @XXXXX
+       8.类，方法，变量上    
+      
+      
+      
+  
+    
+          
+               
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      					

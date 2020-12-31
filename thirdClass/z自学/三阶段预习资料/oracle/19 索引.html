@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>19 索引</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="r0wn" id="19-索引">19 索引</h1><p data-anchor-id="jh4t"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="rrso" id="1-索引简介">1 索引简介</h2><ul data-anchor-id="w9a4">
+<li>索引是与表相关的一个可选结构 </li>
+<li>用以提高 SQL 语句执行的性能 </li>
+<li>减少磁盘I/O </li>
+<li>使用 CREATE INDEX 语句创建索引</li>
+<li>在逻辑上和物理上都独立于表的数据 Oracle 自动维护索引</li>
+</ul><p data-anchor-id="08ie">索引有各种类型，除了标准索引外，还有一些特殊类型的索引： <br>
+<img src="http://static.zybuluo.com/l363130002/xaeoimzaxj89r1svezr9xg0g/image_1c0ljgei84q0deoe0s1kmn1e1u13.png" alt="image_1c0ljgei84q0deoe0s1kmn1e1u13.png-29.6kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="cg5d" id="2-索引创建修改删除">2 索引创建修改删除</h2><p data-anchor-id="hxif">创建标准索引</p><pre data-anchor-id="kkzr"><code> CREATE INDEX item_index ON itemfile (itemcode)
+     TABLESPACE index_tbs;
+</code></pre><p data-anchor-id="16lb">重建索引</p><pre data-anchor-id="g986"><code>SQL&gt; ALTER INDEX item_index REBUILD; 
+</code></pre><p data-anchor-id="3v0n">删除索引</p><pre data-anchor-id="xepo"><code>SQL&gt; DROP INDEX item_index;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="jtfn" id="3-唯一索引">3 唯一索引</h2><p data-anchor-id="yvmj"><strong>唯一索引确保在定义索引的列中没有重复值</strong> <br>
+<strong>Oracle 自动在表的主键列上创建唯一索引</strong> <br>
+使用<strong>CREATE UNIQUE INDEX</strong>语句创建唯一索引</p><pre data-anchor-id="0qrn"><code>   SQL&gt; CREATE UNIQUE INDEX item_index
+          ON itemfile (itemcode);
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="nt6q" id="4-组合索引">4 组合索引</h2><p data-anchor-id="gvg8">组合索引是在表的多个列上创建的索引 <br>
+索引中列的顺序是任意的 <br>
+如果 SQL 语句的 WHERE 子句中引用了组合索引的所有列或大多数列，则可以提高检索速度</p><pre data-anchor-id="ak5w"><code>SQL&gt; CREATE INDEX comp_index
+     ON itemfile(p_category, itemrate);
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="2ko3" id="5-反向键索引">5 反向键索引</h2><p data-anchor-id="kdgk">反向键索引反转索引列键值的每个字节 <br>
+通常建立在值是连续增长的列上，使数据均匀地分布在整个索引上 <br>
+创建索引时使用REVERSE关键字 <br>
+1001    1001 <br>
+1002    2001 <br>
+1003    3001 <br>
+1004    4001 <br>
+1005    5001</p><pre data-anchor-id="k357"><code>SQL&gt; CREATE INDEX rev_index 
+     ON itemfile (itemcode) REVERSE;
+
+  SQL&gt; ALTER INDEX rev_index REBUID NOREVERSE;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="uyhe" id="6-位图索引">6 位图索引</h2><p data-anchor-id="jx16">位图索引适合创建在低基数列上 <br>
+位图索引不直接存储ROWID，而是存储字节位到ROWID的映射 <br>
+减少响应时间 <br>
+节省空间占用 <br>
+<img src="http://static.zybuluo.com/l363130002/5ztvt40irm1fyrh7utbf2krx/image_1c0ljrsgn1kg11pg21o8fl1645d1g.png" alt="image_1c0ljrsgn1kg11pg21o8fl1645d1g.png-153.6kB" title=""> <br>
+    SQL&gt; CREATE BITMAP INDEX bit_index <br>
+         ON order_master (orderno);</p></div>
+</body>
+</html>

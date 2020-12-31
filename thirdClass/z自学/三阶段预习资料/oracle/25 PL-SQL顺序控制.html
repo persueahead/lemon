@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>25 PL/SQL顺序控制</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="2vdy" id="25-plsql顺序控制">25 PL/SQL顺序控制</h1><p data-anchor-id="z411"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="a59e" id="1-顺序控制">1 顺序控制</h2><p data-anchor-id="oqmz">顺序控制用于按顺序执行语句 <br>
+顺序控制语句包括： <br>
+GOTO 语句 -  无条件地转到标签指定的语句 <br>
+NULL 语句 -  什么也不做的空语句</p><p data-anchor-id="nd8h">示例1</p><pre data-anchor-id="0mwq"><code>DECLARE
+  qtyhand itemfile.qty_hand%type;
+  relevel itemfile.re_level%type;
+BEGIN
+  SELECT qty_hand,re_level INTO qtyhand,relevel
+  FROM itemfile WHERE itemcode = 'i201';
+  IF qtyhand &lt; relevel THEN
+    GOTO updation;
+  ELSE
+    GOTO quit;
+  END IF;
+  &lt;&lt;updation&gt;&gt;
+  UPDATE itemfile SET qty_hand = qty_hand + re_level
+  WHERE itemcode = 'i201';
+  &lt;&lt;quit&gt;&gt;
+  NULL;
+END;
+</code></pre><p data-anchor-id="mb9s">示例2</p><pre data-anchor-id="jx0d"><code>declare 
+usermark user_info.user_mark%type;
+userId user_info.user_id%type;
+begin
+    userId :=&amp;id;
+    select user_mark into usermark from user_info where user_id=userId;
+    DBMS_OUTPUT.PUT_LINE('usermark:'||usermark);
+
+    if usermark = 1 then
+       GOTO updation;
+    else 
+         GOTO quit;
+    end if; 
+    &lt;&lt;updation&gt;&gt;
+    update user_info set user_age = user_age+10 where user_id=userId;
+    &lt;&lt;quit&gt;&gt;
+    null;
+end;
+</code></pre></div>
+</body>
+</html>

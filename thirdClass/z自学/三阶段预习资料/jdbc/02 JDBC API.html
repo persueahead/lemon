@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>02 JDBC API</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="p1u0" id="02-jdbc-api">02 JDBC API</h1><p data-anchor-id="1k91"><code>jdbc</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="9mpz" id="1-常用jdbc-api">1 常用JDBC API</h2><p data-anchor-id="7wb4">在java.sql包中包含体现JDBC基本功能的若干接口和类：</p><p data-anchor-id="wcq6">1.Driver 接口：代表驱动程序</p><p data-anchor-id="i4d3">2.DriverManager 类：驱动程序管理员</p><p data-anchor-id="aiex">3.Connection 接口：代表数据库连接</p><p data-anchor-id="ivhe">4.Statement 、PreparedStatement、CallableStatement 接口：代表数据库操作对象</p><p data-anchor-id="fpob">5.ResultSet 接口：代表结果集</p><p data-anchor-id="r2vg">6.DatabaseMetadata、ResultSetMetadata接口：代表元数据</p><div class="md-section-divider"></div><h2 data-anchor-id="7jcl" id="2-api之connection">2 API之【Connection】</h2><p data-anchor-id="ifbi">创建执行SQL的对象: <br>
+<img src="http://static.zybuluo.com/l363130002/7d5kt29ws11xq8lbvsxdcqz7/image_1c1cs34ilskuuraqc2ug18379.png" alt="image_1c1cs34ilskuuraqc2ug18379.png-5.1kB" title=""></p><p data-anchor-id="53ek"><img src="http://static.zybuluo.com/l363130002/5dg1tdyw0zugeombgs4tk3pa/image_1c1cs3g4n1v1g1u44r471k30bc9m.png" alt="image_1c1cs3g4n1v1g1u44r471k30bc9m.png-6.3kB" title=""></p><p data-anchor-id="rmfk"><img src="http://static.zybuluo.com/l363130002/53agsyry2ghm9ctxmgomjzwq/image_1c1cs3lggi3esftf531fr5ck113.png" alt="image_1c1cs3lggi3esftf531fr5ck113.png-5.4kB" title=""> <br>
+进行事务管理 <br>
+<img src="http://static.zybuluo.com/l363130002/mzd6835ehikarz37sqo01jjt/image_1c1cs493ug78mov1ucq1eta1ah41g.png" alt="image_1c1cs493ug78mov1ucq1eta1ah41g.png-5kB" title=""></p><p data-anchor-id="x7si"><img src="http://static.zybuluo.com/l363130002/67yu0hpy6qrzrfqzctl85pog/image_1c1cs4ep71qggf0p1q921jshn6u1t.png" alt="image_1c1cs4ep71qggf0p1q921jshn6u1t.png-7kB" title=""></p><p data-anchor-id="sua2"><img src="http://static.zybuluo.com/l363130002/qlntv9a8tv4z8vzb46oku5yb/image_1c1cs4k0e1cqt284a8gje9rd92a.png" alt="image_1c1cs4k0e1cqt284a8gje9rd92a.png-5.9kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="t5uk" id="3-api之statement">3 API之【Statement】</h2><p data-anchor-id="3oeq">执行SQL语句 <br>
+<img src="http://static.zybuluo.com/l363130002/uyn26b1vg25tkl7zn6dd4om8/image_1c1cs605v1grka511c7j1j05e6k2n.png" alt="image_1c1cs605v1grka511c7j1j05e6k2n.png-5.2kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/c1q4e4n0vejyjaooj24yzpp2/image_1c1cs65ved6u1ohv1hgbm7og8c34.png" alt="image_1c1cs65ved6u1ohv1hgbm7og8c34.png-6.5kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/lex2uhl47e1ne7mlivnk0qjj/image_1c1cs6aj722g1coh16cnuh41h163h.png" alt="image_1c1cs6aj722g1coh16cnuh41h163h.png-4.8kB" title=""> <br>
+执行批处理： <br>
+<img src="http://static.zybuluo.com/l363130002/if5de4b224uupi5emxv8falk/image_1c1cs6mla157h7ef14fcgsr15lv3u.png" alt="image_1c1cs6mla157h7ef14fcgsr15lv3u.png-5kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/wavjklwb6rj0mbgyujup2vuf/image_1c1cs6rc31jgs1da41uipo4av1c4b.png" alt="image_1c1cs6rc31jgs1da41uipo4av1c4b.png-4.2kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/ed1fc09s3w31hohvgdkv94o4/image_1c1cs707e35l1vn31oblqmi1llg4o.png" alt="image_1c1cs707e35l1vn31oblqmi1llg4o.png-6.3kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="hq0w" id="4-api之resultset">4 API之【ResultSet】</h2><p data-anchor-id="rage">ResultSet接口是查询结果集接口，它对返回的结果集进行处理。ResultSet是程序员进行JDBC操作的必须接口 <br>
+获得结果集中的数据：</p><pre data-anchor-id="rfkj"><code>* getXXX(int idx);
+     * select cname,cid from category;
+* getXXX(String name);  
+</code></pre><p data-anchor-id="a5tw">默认情况下：next();</p><blockquote data-anchor-id="wx2m" class="white-blockquote">
+  <p>正常的情况下结果集只能向下的.</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="1kar" id="5-statement和-preparedstatement">5 Statement和 PreparedStatement</h2><p data-anchor-id="0126"><strong>Statement</strong>：</p><p data-anchor-id="fds4">Statement 接口代表了一个数据库的状态，再向数据库发送相应的SQL语句时，都需要创建Statement接口或者PreparedStatement 接口。  <br>
+Statement 主要用于操作不带参数的SQL语句，比如增、删、改。</p><p data-anchor-id="x69z"><strong>PreparedStatement</strong>：预编译的Statement接口</p><pre data-anchor-id="t72e"><code>第一步：通过连接获得PreparedStatement接口对象，用带占位符（？）的sql语句构造
+ PreparedStatement ps=con.praperedStatement("select * from test where id=?");
+第二步：设置参数
+         ps.setString(1,"5");
+第三步：执行sql语句
+        rs= ps.executeQuery();
+</code></pre><p data-anchor-id="hm2u"><strong>比较:</strong> <br>
+Statement 发送完整的sql语句到数据库不是直接执行，而是先编译、后运行。 <br>
+PreparedStatement 先发送带参数的sql语句，在发送一组参数值。</p><p data-anchor-id="1ekf">注意点：</p><blockquote data-anchor-id="5o4q" class="white-blockquote">
+  <p>1.使用预编译的Statement （即PreparedStatement）编译多条sql语句一起执行。 <br>
+  2.可以跨数据库使用，编写通用程序。 <br>
+  3.能用预编译时尽量用预编译。</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="nc78" id="6-示例代码">6 示例代码</h2><p data-anchor-id="z81c">package jdbc.oracle.liu;</p><p data-anchor-id="np8v">import java.sql.Connection; <br>
+import java.sql.DriverManager; <br>
+import java.sql.PreparedStatement; <br>
+import java.sql.ResultSet; <br>
+import java.sql.Statement;</p><p data-anchor-id="bghi">public class JDBCTest {</p><pre data-anchor-id="xnis"><code>public static void testPreparedStatement(String bookName) {
+
+    try {
+        /// 1注册驱动
+        // 初始化驱动包
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        /// 2获得连接：
+        // orcl 数据库中的数据库名 localhost表示连接本机的oracle数据库 1521 端口号 mysql(3306)
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        // 用户名
+        String user = "liu";
+        // 密码
+        String password = "admin";
+        // 获取链接
+        Connection conn = DriverManager.getConnection(url, user, password);
+        // 3获得执行SQL语句对象:
+        String sql = "select * from book where book_name like ? ";
+        PreparedStatement sta = conn.prepareStatement(sql);
+        sta.setString(1, "%"+bookName+"%");
+
+        // 执行SQL，获得结果集ResultSet
+        ResultSet res = sta.executeQuery();
+
+        while (res.next()) {
+            System.out.println("书籍编号:" + res.getInt(1) + " 书籍名称：" + 
+        res.getString(3) + "作者："+res.getString(4)+"  书籍价格："+ res.getDouble(6));
+        }
+
+        // 4释放资源:
+        res.close(); //关闭结果集
+        sta.close();//关闭执行SQL实例
+        conn.close();//关闭连接
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+public static void testStatement(String bookName) {
+    try {
+        /// 1注册驱动
+        // 初始化驱动包
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        /// 2获得连接：
+        // orcl 数据库中的数据库名 localhost表示连接本机的oracle数据库 1521 端口号 mysql(3306)
+        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+        // 用户名
+        String user = "liu";
+        // 密码
+        String password = "admin";
+        // 获取链接
+        Connection conn = DriverManager.getConnection(url, user, password);
+        // 3获得执行SQL语句对象:
+        Statement sta = conn.createStatement();
+
+        String sql = "select * from book where book_name like '"+bookName+"'";
+        // 先编译，执行SQL，获得结果集ResultSet
+        ResultSet res = sta.executeQuery(sql);
+
+        // 输出
+    /*  while (res.next()) {
+            System.out.println("书籍编号:" + res.getInt("book_id") + " 书籍名称：" + 
+        res.getString("book_name") + "作者："+res.getString("WRITER")+"  书籍价格："+ res.getDouble("price"));
+        }*/
+        while (res.next()) {
+            System.out.println("书籍编号:" + res.getInt(1) + " 书籍名称：" + 
+        res.getString(3) + "作者："+res.getString(4)+"  书籍价格："+ res.getDouble(6));
+        }
+
+        // 4释放资源:
+        res.close(); //关闭结果集
+        sta.close();//关闭执行SQL实例
+        conn.close();//关闭连接
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+public static void main(String[] args) {
+    testStatement("计算机' or 1=1 or ''='");
+    //testPreparedStatement("计算机' or 1=1 or ''='");
+}
+</code></pre><p data-anchor-id="gbki">}</p><div class="md-section-divider"></div><h2 data-anchor-id="j37r" id="7-作业">7 作业</h2><pre data-anchor-id="go6z"><code>创建一张部门表（部门编号 部门名称） 
+创建一张用户表(用户编号 用户姓名 用户性别  部门编号) 
+往部门表和用户表添加数据：
+使用JDBC查询以下数据：用户编号 用户姓名 用户性别 部门名称
+</code></pre></div>
+</body>
+</html>

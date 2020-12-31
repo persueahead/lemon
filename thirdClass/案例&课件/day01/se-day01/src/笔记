@@ -1,0 +1,267 @@
+1/集合
+   什么是集合
+    1.为了方便对多个对象的操作，就要对象进行存储(如数组...)
+    2.之前学习的数组存储对象的时候，有个缺陷(new String [4])，
+                 开辟空间，如要不断的进行添加数据，那么这空间是不是不够的，如开辟6个空间
+       传入的数据有10个，空间是不是不够
+    3.java中就有个容器，可以进行动态的存储，多个对象，空间不够就进行自动的扩展
+      就是集合
+    4.在java中集合，就可以用于存储数量不等的多个对象，还可以保存有映射关系的数组
+    
+2/集合分类
+    collection 和 Map
+    2-1/collection
+     		  接口 Collection<E>
+	     		  	Collection 表示一组对象，这些对象也称为 collection 的元素。一些 collection 允许有重复的元素，
+	     		  	而另一些则不允许。一些 collection 是有序的，而另一些则是无序的。JDK 不提供此接口的任何直接 实现：
+	     			它提供更具体的子接口（如 Set 和 List）实现     
+  	2-2/Map	
+  			接口 Map<K,V>
+  					K - 此映射所维护的键的类型
+					V - 映射值的类型
+  			
+java.util  						        
+3/List 接口
+     	<有序的> collection（也称为序列）。
+     	此接口的用户可以对列表中每个元素的<插入位置进行精确地控制>。
+     	用户可以根据元素的<整数索引（在列表中的位置）访问元素>，并搜索列表中的元素
+     3-1.接口是不进行实例化的
+          就需要实现类
+      ArrayList    LinkedList   Vector 
+   总结list接口:   
+        元素是有序的, 允许重复的元素
+      
+    3-2.  ArrayList
+         	1）List 接口的大小可变数组的实现   ,说白了，底层就一个数组    
+         	2）实现了所有可选列表操作，并允许包括 null 在内的所有元素
+         	3)	此类大致上等同于 Vector 类，除了此类是不同步的（线程不安全）
+           语法：
+         ArrayList array=    new ArrayList();
+		  array.add(123);
+		  array.add(3);
+		  array.add(23);
+		  array.add(13);
+		  
+		 ArrayList<Integer> array=    new ArrayList();
+		  array.add(123);
+		  array.add(3);
+        遍历方式
+        	方式一:使用for
+        	 for (int i = 0; i < array.size(); i++) {
+				System.out.println(array.get(i));
+		  		}   
+        	方式二
+  				for (Object object : array) {
+				System.out.println("object:"+object);
+		 	 }
+     		方式三listIterator
+     	Iterator  itr=  array.listIterator();
+		  while(itr.hasNext()) {
+			  System.out.println("Iterator："+itr.next());
+		 		 }
+		  	方式四iterator
+		Iterator  itrs=   array.iterator();
+			  while(itrs.hasNext()) {
+			  System.out.println(itrs.next());
+		  }
+     3-3 常用的方法
+	        //删除元素
+			  array.remove(3);//传入的是下标
+			 // array.clear();//清空集合
+			//  如果此列表中包含指定的元素，则返回 true。
+			  System.out.println("contains：-----"+array.contains(333));
+			  System.out.println("array：-----"+array);
+			  Object[] obj= array.toArray();//转换为数组
+	     
+     3-4 优点与缺点
+            		 缺点添加和删除慢，线程不安全
+     				查询快
+     3-5 数组与集合之间的区别
+            	1、array可以包含基本数据类型和对象类型,arrayList只能包含对象类型/类类型
+            	2、   array有固定的空间大小，Arraylist的大小可以动态的变化
+            	3、ArrayList提供了多的方法，和特性
+            	  如addAll(),listIterator，iterator
+     
+     
+     
+     
+     4.LinkedList实现类
+     	List 接口的链接列表实现就是一个双链表
+     	 语法：
+     	 		LinkedList<Integer>  list=   new LinkedList();
+					list.add(12);
+					list.add(132);
+					list.add(1245);
+     	遍历的方式如ArrayList遍历方式
+     	方法都是大同小异的
+       		  总结:
+        		删除和添加速度快，查询就慢
+
+ Vector 
+       1、是一个老集合，
+      2、大多数操作和ArrayList相同，区别就是vector是线程安全
+      3、当插入和删除频繁的时候，使用LinkedList；
+      Vector总是要不ArrayList慢，因为有同步(线程安全)，
+      public synchronized boolean add(E e) {..}
+  4.增加元素的空间的时候，容量会进行2倍的扩展要比ArrayList扩展容量要大
+
+Iterator：
+ 	  迭代器允许调用者利用定义良好的语义在迭代期间从迭代器所指向的 collection 移除元素。 
+   		删除数据
+		  ArrayList array=    new ArrayList();
+		  array.add(123);
+		  array.add(3);
+		  array.add(23);
+		  array.add(13);
+		  //方式三
+		  Iterator  itr=  array.listIterator();
+		  itr.next();
+		  itr.remove();
+		  while(itr.hasNext()) {
+			  System.out.println("Iterator："+itr.next());
+		  }
+		  System.out.println("--------------");
+
+listIterator可以进行添加设置，倒序遍历
+    	  ListIterator  itr=  array.listIterator();
+		  while(itr.hasNext()) {
+			  System.out.println("Iteratorz："+itr.next());
+		  }
+		  System.out.println("--------------");
+		  itr.add(1211111);
+		  itr.add(10211111);
+		  itr.add(12011111);
+		  while(itr.hasPrevious()) {
+			  System.out.println("Iterator："+itr.previous());
+		  } 
+
+
+
+Iterator与listIterator之间的区别
+      1、都有的hasNext和next方法
+      2、listIterator添加和倒序方法
+      3、listIterator只是是在List集合下使用，而Iterator可以在在list和set集合中使用
+      4、都可以进行实现删除，而listIterator可以进行修改(set)，Iterator是不能的
+      
+      
+案列：使用Arrlist去除重复的字符串
+		public ArrayList testName01(ArrayList array){
+				ArrayList ar=   new ArrayList();
+				Iterator  itr=	array.iterator();
+				while(itr.hasNext()) {
+					String str=(String) itr.next();
+				  if(!ar.contains(str)) {
+					  ar.add(str);
+				  }
+				}
+				return ar;
+			}      
+
+     
+ ------------------------------------------------    
+4/Set 接口   
+     一个不包含重复元素的 collection
+   总结：不重复，元素无序    
+      常用实现类
+       TreeSet 
+       HashSet
+       LinkedHashSet, 
+    
+    
+HashSet    
+    	此类实现 Set 接口，由哈希表（实际上是一个 HashMap 实例）支持。
+    	它不保证 set 的迭代顺序；
+    	特别是它不保证该顺序恒久不变。此类允许使用 null 元素。 
+ 案列：
+		   	HashSet set= new HashSet();
+				set.add(123);
+				set.add(23);
+				set.add(13);
+				set.add(3);
+	      for (Object object : set) {
+			System.out.println(object);
+		}
+		 
+	      System.out.println("-----------");
+	      Iterator iter= set.iterator();
+	      while(iter.hasNext()) {
+	    	  System.out.println(iter.next());
+	      }
+
+特点
+  1.不能保证元素的顺序
+  2.非线程安全
+  3.允许使用 null 元素。 
+  4.HashSet集合判断两个元素相等的标识，通过HashCode()方法来进行对比的，
+       并且两个对象的Eques方法返回值也是相同的
+    	如：重新对象的方法hashCode与equals
+    		@Override
+			public int hashCode() {
+				return age;
+			}
+		
+			@Override
+			public boolean equals(Object obj) {
+				   if(this ==obj)
+					   return true;
+				   if(!(obj instanceof Users))
+					 throw new ClassCastException("类型不一致");
+				   Users  us=  (Users)obj;
+				return this.age==us.age;
+			}
+    	  
+TreeSet
+		使用元素的<自然顺序(默认)>对元素进行排序，
+		或者根据创建 set 时提供的 Comparator 进行排序(自定义排序)，
+		具体取决于使用的构造方法。 
+		TreeSet可以进行保证元素的唯一
+	案列(默认自然顺序)	
+	  		 TreeSet<Integer>  tree= new  TreeSet();
+			 tree.add(4);
+			 tree.add(14);
+			 tree.add(40);
+			 tree.add(2);
+			 System.out.println(tree);
+    
+    	自定义排序
+    	   compareTo方法，就进行对比两值的大小
+    	   				TreeSet在添加元素的时候，只有一个元素无须进行比较compareTo方法
+    	   				,后面进行添加的所有的元素都会进行调用compareTo方法进行比较
+    	   				因为，只有相同的实例才会比较大小，所以TreeSet只有唯一的一个元素
+    	   				那么在进行判断两个对象时候相等的标准就是,通过compareTo方法比较进行返回的值来最判断
+    	   			如果返回的是正整数表示的是O1大于O2；
+    	   			如果返回的0,表示相等
+    	   			如果返回的负整数，表示O1小于O2
+    	   			class  CompaerBay implements Comparator<String>{
+						@Override
+						public int compare(String o1, String o2) {
+							//按照字符串的长度进行比较
+							int num=o1.length()-o2.length();//主要对比条件
+							//有的情况下num为0，O1和O2的字符串的长度是相同的
+							return num==0?o1.compareTo(o2):num;//次要的条件
+						}		
+    	  对象
+    			public class Person implements Comparable<Person> {
+				private  String name;
+				private  Integer  age;
+				@Override
+				public int compareTo(Person o) {
+					   //主要的条件名字的长度
+					int naemLength=this.name.length()-o.name.length();
+					//次要条件
+					int num=naemLength==0?this.name.compareTo(o.name):naemLength;
+					//通过年龄对比
+					return num==0?this.age-o.age:num;
+				}}
+       
+ Map  接口    
+ 5/HashMap
+ 
+ 
+ 6/Hashtable
+ 
+ 
+ 7/TreeMap
+ 
+ 
+ 8/LinkedHashMap 

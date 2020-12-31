@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>11 多表查询</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="tdem" id="11-多表查询">11 多表查询</h1><hr><p data-anchor-id="ywe4"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="r5qa" id="1-前期准备">1 前期准备</h2><div class="md-section-divider"></div><h3 data-anchor-id="ffn0" id="11-创建表">1.1 创建表</h3><p data-anchor-id="o5f2"><img src="http://static.zybuluo.com/l363130002/xl1ycj3nfejonnbopy3umn2f/image_1c0b4fltlp1t1v9m1spkh3f14qm.png" alt="image_1c0b4fltlp1t1v9m1spkh3f14qm.png-127.8kB"></p><pre data-anchor-id="e4w0"><code>/*==============================================================*/
+/* Table: departments部门表                                           */
+/*==============================================================*/
+create table departments  (
+   department_id        NUMBER(10)                      not null,
+   location_id          NUMBER,
+   department_name      VARCHAR2(100),
+   constraint PK_DEPARTMENTS primary key (department_id)
+);
+
+/*==============================================================*/
+/* Table: employees 员工表                                             */
+/*==============================================================*/
+create table employees  (
+   employees_id         NUMBER(10)                      not null,
+   department_id        NUMBER(10),
+   last_name            VARCHAR2(100),
+   salary               NUMBER(10),
+   manager_id           NUMBER(10),
+   constraint PK_EMPLOYEES primary key (employees_id)
+);
+
+/*==============================================================*/
+/* Table: job_grades  薪资等级                                           */
+/*==============================================================*/
+create table job_grades  (
+   gra                  VARCHAR2(10),
+   lowest_sal           NUMBER,
+   highest_sal          NUMBER
+);
+
+/*==============================================================*/
+/* Table: locations    城市表                                         */
+/*==============================================================*/
+create table locations  (
+   location_id          NUMBER                          not null,
+   city                 VARCHAR2(100),
+   constraint PK_LOCATIONS primary key (location_id)
+);
+--外键
+alter table departments
+   add constraint FK_DEPARTME_REFERENCE_LOCATION foreign key (location_id)
+      references locations (location_id);
+--外键
+alter table employees
+   add constraint FK_EMPLOYEE_REFERENCE_DEPARTME foreign key (department_id)
+      references departments (department_id);
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="bvfl" id="12-初始化数据">1.2 初始化数据</h3><p data-anchor-id="9kg9">城市表 </p><pre data-anchor-id="a31m"><code>INSERT INTO LOCATIONS VALUES (1, '重庆');
+INSERT INTO LOCATIONS VALUES (2, '北京');
+INSERT INTO LOCATIONS VALUES (3, '上海');
+INSERT INTO LOCATIONS VALUES (4, '大连');
+</code></pre><p data-anchor-id="nzys">部门表</p><pre data-anchor-id="w56i"><code>INSERT INTO DEPARTMENTS VALUES (1, 1, '技术部');
+INSERT INTO DEPARTMENTS VALUES (2, 2, '人事部');
+INSERT INTO DEPARTMENTS VALUES (3, 3, '后勤部');
+INSERT INTO DEPARTMENTS VALUES (4, 4, '研发部');
+INSERT INTO DEPARTMENTS VALUES (5, 2, '销售不');
+INSERT INTO DEPARTMENTS VALUES (6, 3, '人事部');
+</code></pre><p data-anchor-id="0o0h">员工表</p><pre data-anchor-id="mu78"><code>INSERT INTO EMPLOYEES VALUES (1, 1, '张三', 4500, NULL);
+INSERT INTO EMPLOYEES VALUES (2, 3, '李四', 3500, 2);
+INSERT INTO EMPLOYEES VALUES (3, 4, '王五', 8400, 2);
+INSERT INTO EMPLOYEES VALUES (4, 5, '赵六', 15000, 3);
+</code></pre><p data-anchor-id="n1cz">薪资等级表</p><pre data-anchor-id="yjpt"><code>INSERT INTO JOB_GRADES VALUES ('A', 20000, 100000);
+INSERT INTO JOB_GRADES VALUES ('B', 12000, 20000);
+INSERT INTO JOB_GRADES VALUES ('C', 8000, 12000);
+INSERT INTO JOB_GRADES VALUES ('D', 5000, 8000);
+INSERT INTO JOB_GRADES VALUES ('E', 4000, 5000);
+INSERT INTO JOB_GRADES VALUES ('F', 2000, 4000);
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="n42f" id="2-笛卡尔集">2 笛卡尔集</h2><p data-anchor-id="n9tn">笛卡尔集会在下面条件下产生: <br>
+–省略连接条件 <br>
+–连接条件无效 <br>
+–所有表中的所有行互相连接 <br>
+为了避免笛卡尔集，可以在WHERE加入有效的连接条件 <br>
+<img src="http://static.zybuluo.com/l363130002/e033cm5oh28gx2xwz3d5kbni/image_1c0b4ea253o81ajp184d1vv97ln9.png" alt="image_1c0b4ea253o81ajp184d1vv97ln9.png-119kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="z0tz" id="3-oracle-连接">3 Oracle 连接</h2><p data-anchor-id="74o4">使用连接在多个表中查询数据。 <br>
+- 在WHERE字句中写入连接条件。 <br>
+- 在表中有相同列时，在列名之前加上表名前缀。</p><pre data-anchor-id="xa6x"><code>SELECT table1.column, table2.column
+FROM table1, table2
+WHERE table1.column1 =table2.column2;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="vzpx" id="4-等值连接">4 等值连接</h2><p data-anchor-id="tvht"><img src="http://static.zybuluo.com/l363130002/h4ehxqrs52xq9wjjs3jfys0t/image_1c0b68a086of1jkj1v4q9bdrm29.png" alt="image_1c0b68a086of1jkj1v4q9bdrm29.png-83.4kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/88tsvz67ti3ymuw6c5zvner7/image_1c0b68rbbn7cvo5kh3hjal15m.png" alt="image_1c0b68rbbn7cvo5kh3hjal15m.png-155.1kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="ocj3" id="5-连接多个表">5 连接多个表</h2><p data-anchor-id="zqi7"><img src="http://static.zybuluo.com/l363130002/pvjrbhtww4apaeu7rua3xm78/image_1c0b69j131g0554rsbe1lnf1kv513.png" alt="image_1c0b69j131g0554rsbe1lnf1kv513.png-136.3kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="ckve" id="6-非等值连接">6 非等值连接</h2><p data-anchor-id="zx1p"><img src="http://static.zybuluo.com/l363130002/z7nkz2vmjoek7b8y6rkef63i/image_1c0b6ajp5163mc2a9due7djho1g.png" alt="image_1c0b6ajp5163mc2a9due7djho1g.png-80.7kB" title=""></p><pre data-anchor-id="j5mr"><code>select a.*,b.GRA  from EMPLOYEES a,JOB_GRADES b where a.SALARY BETWEEN b.LOWEST_SAL and b.HIGHEST_SAL
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="nho2" id="7-外链接">7 外链接</h2><p data-anchor-id="i4mv"><img src="http://static.zybuluo.com/l363130002/hnj2tjwvrq13ec1v2kpfmf60/image_1c0b6hceot5pghr1vf41i4u1bds1t.png" alt="image_1c0b6hceot5pghr1vf41i4u1bds1t.png-58.4kB"> <br>
+外连接语法</p><blockquote data-anchor-id="6qiw" class="white-blockquote">
+  <p>使用外连接可以查询不满足连接条件的数据 <br>
+  外连接的符号是(+)。 <br>
+  <img src="http://static.zybuluo.com/l363130002/0njzj7296rzy22i1j1kh068t/image_1c0b6jobqp2e1aff1g5njef11342a.png" alt="image_1c0b6jobqp2e1aff1g5njef11342a.png-31.3kB"></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="gsi6" id="8-自连接">8 自连接</h2><p data-anchor-id="0p56"><img src="http://static.zybuluo.com/l363130002/1n6o1qjmsdv1pbp0ff3ov00r/image_1c0b6kmfr1hlk1re41u711vk41vst2n.png" alt="image_1c0b6kmfr1hlk1re41u711vk41vst2n.png-113.7kB"> <br>
+<img src="http://static.zybuluo.com/l363130002/i1578xpfu5i8lkavthykzngu/image_1c0b6ksqt5rseld12mcuub7un34.png" alt="image_1c0b6ksqt5rseld12mcuub7un34.png-130.6kB"></p><div class="md-section-divider"></div><h2 data-anchor-id="sz0m" id="9-使用连接从多个表中查询数据">9 使用连接从多个表中查询数据</h2><p data-anchor-id="0xu7"><img src="http://static.zybuluo.com/l363130002/l5kipz4p2oi4welinl3zjg42/image_1c0b6ngnqdd1j9tsj1mqqgvu3h.png" alt="image_1c0b6ngnqdd1j9tsj1mqqgvu3h.png-172kB"></p><div class="md-section-divider"></div><h2 data-anchor-id="7y9f" id="10-叉集">10 叉集</h2><p data-anchor-id="idmc"><img src="http://static.zybuluo.com/l363130002/nvy369m1izxtlkuva3lnmynr/image_1c0b6o9qg1qm71eoq21h7k8k5h3u.png" alt="image_1c0b6o9qg1qm71eoq21h7k8k5h3u.png-68.6kB"></p><div class="md-section-divider"></div><h2 data-anchor-id="mubk" id="11-自然连接">11 自然连接</h2><p data-anchor-id="fozp">NATURAL JOIN子句，会以两个表中具有相同名字的列为条件创建等值连接。 <br>
+•在表中查询满足等值条件的数据。 <br>
+•如果只是列名相同而数据类型不同，则会产生错误。 <br>
+<img src="http://static.zybuluo.com/l363130002/yjlbpjgdr6ffhz5nbqi403cd/image_1c0b6qem41io41mrv126p19gf16gn4b.png" alt="image_1c0b6qem41io41mrv126p19gf16gn4b.png-50.7kB"></p><div class="md-section-divider"></div><h2 data-anchor-id="0yrf" id="12-使用on子句创建连接">12 使用ON子句创建连接</h2><blockquote data-anchor-id="l9i7" class="white-blockquote">
+  <p>自然连接中是以具有相同名字的列为连接条件的。 <br>
+  可以使用ON子句指定额外的连接条件。  <br>
+  这个连接条件是与其它条件分开的。 <br>
+  ON子句使语句具有更高的易读性。 <br>
+  <img src="http://static.zybuluo.com/l363130002/dno4i5zs310sppfxa90k9mh9/image_1c0b6ssnam405eb1tsi1697qc4o.png" alt="image_1c0b6ssnam405eb1tsi1697qc4o.png-54.4kB"></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="j70y" id="13-使用on子句创建多表连接">13 使用ON子句创建多表连接</h2><p data-anchor-id="4h0c"><img src="http://static.zybuluo.com/l363130002/4ubnermpn39rf79pp82lpthu/image_1c0b6trl710jq1krb112d8a01rf655.png" alt="image_1c0b6trl710jq1krb112d8a01rf655.png-127.2kB"></p><div class="md-section-divider"></div><h2 data-anchor-id="8u7j" id="14-内连接与外连接">14 内连接与外连接</h2><p data-anchor-id="ijon">•内连接只返回满足连接条件的数据。 <br>
+•两个表在连接过程中除了返回满足连接条件的行以外还返回左（或右）表中不满足条件的行，这种连接称为左（或右）外联接。 <br>
+•两个表在连接过程中除了返回满足连接条件的行以外还返回两个表中不满足条件的行，这种连接称为满外联接。</p><div class="md-section-divider"></div><h3 data-anchor-id="qxhv" id="141-左外联接">14.1 左外联接</h3><p data-anchor-id="257p"><img src="http://static.zybuluo.com/l363130002/gv5ogng14f6jk5hpvkkmly5i/image_1c0b71tj519r383h14rpc712q55i.png" alt="image_1c0b71tj519r383h14rpc712q55i.png-114.8kB"></p><div class="md-section-divider"></div><h3 data-anchor-id="otcp" id="142-右外联接">14.2 右外联接</h3><p data-anchor-id="3lcu"><img src="http://static.zybuluo.com/l363130002/u001xunk36u5z73gv3d8ghja/image_1c0b7280t1k81r2r1s871npuqb15v.png" alt="image_1c0b7280t1k81r2r1s871npuqb15v.png-53.3kB"></p><div class="md-section-divider"></div><h3 data-anchor-id="wuz1" id="143-满外联接">14.3 满外联接</h3><p data-anchor-id="q8sp"><img src="http://static.zybuluo.com/l363130002/jx9i6omgal1qo5gxjuc526zv/image_1c0b72rs1uoi1or91lb76mib7h6s.png" alt="image_1c0b72rs1uoi1or91lb76mib7h6s.png-113.7kB"></p><div class="md-section-divider"></div><h3 data-anchor-id="fuzj" id="144-增加连接条件">14.4 增加连接条件</h3><p data-anchor-id="ei0q"><img src="http://static.zybuluo.com/l363130002/uci9236cnvcn0rzton70apc7/image_1c0b7336p1mhc6fk6muhk711ek79.png" alt="image_1c0b7336p1mhc6fk6muhk711ek79.png-42.2kB"></p></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>26 动态SQL</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="owbl" id="26-动态sql">26 动态SQL</h1><p data-anchor-id="rz8m"><code>oracle</code></p><hr><div class="md-section-divider"></div><h3 data-anchor-id="3otn" id="1-动态sql">1 动态SQL</h3><p data-anchor-id="e0vj">动态 SQL 是指在PL/SQL程序执行时生成的 SQL 语句 <br>
+编译程序对动态 SQL 不做处理，而是在程序运行时动态构造语句、对语句进行语法分析并执行 <br>
+DDL 语句命令和会话控制语句不能在 PL/SQL 中直接使用，但是可以通过动态 SQL 来执行 <br>
+执行动态 SQL 的语法：</p><pre data-anchor-id="lr46"><code>   EXECUTE IMMEDIATE dynamic_sql_string
+      [INTO  define_variable_list]
+      [USING bind_argument_list];
+</code></pre><p data-anchor-id="fim1">示例1</p><pre data-anchor-id="fqkg"><code>DECLARE
+  sql_stmt VARCHAR2(200);
+  user_id NUMBER(4) := 7566;
+  user_rec user_info%ROWTYPE;
+BEGIN
+    EXECUTE IMMEDIATE 
+    sql_stmt := 'SELECT * FROM user_info WHERE user_id = :id';
+    EXECUTE IMMEDIATE sql_stmt INTO user_rec USING user_id;
+    Dbms_Output.put_line(user_rec.user_name);
+END;
+</code></pre><p data-anchor-id="ymrq">示例2</p><pre data-anchor-id="4sbc"><code>---动态SQL 创建表
+declare
+ str varchar2(2000);
+begin
+--str := '&amp;str';
+EXECUTE IMMEDIATE 'CREATE TABLE bonus3 (id NUMBER, amt NUMBER)';
+end;
+
+---动态SQL 查询
+
+declare 
+sql_stmt VARCHAR2(200);--SQL
+user_id NUMBER(4) := 2;
+user_rec user_info%ROWTYPE;
+begin
+sql_stmt :='SELECT * FROM user_info WHERE user_id = :userid';
+EXECUTE IMMEDIATE sql_stmt into user_rec USING user_id;
+Dbms_Output.put_line(user_rec.user_name);
+end;
+</code></pre></div>
+</body>
+</html>

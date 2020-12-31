@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置 地址、用户、密码、最大连接池、初始化申请连接的数据等等 -->
+<c3p0-config>  
+<!-- 配置 默认参数 -->
+	<default-config>
+	<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+	<!-- cp30配置文件里面每一个&后面都要加上amp; -->
+	<property name="jdbcUrl">jdbc:mysql://localhost:3306/test?serverTimezone=GMT&amp;useSSL=false&amp;characterEncoding=utf-8</property>
+	<property name="user">root</property>
+	<property name="password">wdylzyn</property>
+	<!-- 其他配置可以不写，会调用默认信息 -->
+	</default-config>
+</c3p0-config>
+	

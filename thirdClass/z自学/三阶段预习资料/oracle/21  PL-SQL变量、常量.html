@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>21  PL/SQL变量、常量</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="ddph" id="21-plsql变量常量">21  PL/SQL变量、常量</h1><p data-anchor-id="kq8v"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="tkew" id="1-变量和常量概述">1 变量和常量概述</h2><p data-anchor-id="8nwc">PL/SQL 块中可以使用变量和常量 <br>
+在声明部分声明，使用前必须先声明 <br>
+声明时必须指定数据类型，每行声明一个标识符 <br>
+在可执行部分的 SQL 语句和过程语句中使用</p><div class="md-section-divider"></div><h2 data-anchor-id="x2e7" id="2-变量和常量语法">2 变量和常量语法</h2><pre data-anchor-id="lhqo"><code>identifier [CONSTANT] datatype [NOT NULL]   
+        [:= | DEFAULT expr];
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="7wqt" id="3-给变量赋值有两种方法">3 给变量赋值有两种方法</h2><blockquote data-anchor-id="8vxp" class="white-blockquote">
+  <p>使用赋值语句 := <br>
+  使用 SELECT INTO 语句</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="g5nw" id="4-示例">4 示例</h2><pre data-anchor-id="5ul5"><code>declare
+    username varchar2(50);
+    usersex varchar2(10);
+    userid CONSTANT number:=1;--常量
+    userage number;--变量
+begin
+    userage :=18;
+    Dbms_Output.put_line('编号='||userid);
+    ----赋值
+    select user_name,user_sex into username,usersex 
+    from user_info where user_id=userid;
+    Dbms_Output.put_line('姓名='||username);
+    Dbms_Output.put_line('性别='||usersex);
+end;
+</code></pre></div>
+</body>
+</html>

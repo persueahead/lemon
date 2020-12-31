@@ -1,0 +1,383 @@
+缓冲流
+   1.我之前的字节流读写的时候可以使用一个数组的来进行读写，
+     使用起来读写就笔记块
+   2.java也考虑到这点了
+   	 从而就进行设计了缓冲流
+ 
+1、   BufferedInputStream
+    BufferedOutputStream
+     为另一个输入流添加一些功能，
+     即缓冲输入以及支持 mark 和 reset 方法的能力 
+   1-1原理
+       	就内置一个数组开辟空间为8192  
+      	  也就是每次进行读取数据，8192在进行缓存，返回给程序，然后在进行读取，如果
+      	 读写完了只有，就从缓冲区进行获取数据
+     案列使用缓冲流
+       进行拷贝图片
+         public void testname() throws Exception {
+		  BufferedInputStream  buff=
+				  new BufferedInputStream(new FileInputStream("D:\\xxx\\xxxx.jpg"));
+		  
+		  BufferedOutputStream  out=
+				  new BufferedOutputStream(new FileOutputStream("D:\\xxx\\0000000.jpg"));
+		  int i;
+		  while((i=buff.read())!=-1) {
+			  out.write(i);
+		  }
+		  out.flush();//就用来进行刷新缓冲区的，刷新了之后可以在次进行写出
+		  			//刷新必须在关闭流之前进行刷新，
+		  buff.close();//关闭整个流，关闭了之后就不在使用该流
+		  out.close(); 	 
+案例二
+    使用字节流进行读取中文
+		         //写中文
+			  public void testname02() throws Exception {
+				  FileOutputStream out=   new FileOutputStream("D:\\xxx\\oo\\xxxoo.txt",true);		  
+				   out.write("柠檬同学好好学习天天向上".getBytes());
+				   out.write("柠檬同学好好学习天天向上".getBytes());
+				   out.write("柠檬同学好好学习天天向上".getBytes());
+				   out.write("柠檬同学好好学习天天向上".getBytes());
+		           out.flush();
+		           out.close();
+			  }  
+			  
+			  //字节流读取中文
+			  public void testname01() throws Exception {
+				  FileInputStream  input=   new FileInputStream("D:\\xxx\\oo\\xxxoo.txt");
+				  byte[] by=  new byte[1024];      
+				  int i;
+				  while((i=input.read(by))!=-1) {
+					  
+					  String s=   new String(by,0,i);
+					    System.out.println(s);
+				  }
+				  
+				  input.close();
+			}
+	  		  
+-------------------------------------------
+字符流是什么
+1、字符流
+	是可以直接读写字符的IO流
+	  读 是首先取到字节,然后将字节转换为字符
+	 写,把字符转换为字节，然后在进行写
+	 
+    FileReder
+    		用来读取字符文件的便捷类，不能进行读取如:图片  视频 .....
+    FileWriter 		
+    		用来写入字符文件的便捷类，不能进行写取如:图片  视频 .....
+    
+FileReder
+      案列读取字符
+       	 /**
+	   *使用字符流记性写中文 
+	   */
+	  public void testname01() throws Exception {
+		  FileWriter  file=  new FileWriter("D:\\xxx\\oo\\qew.txt");
+		  file.write("三阶段");
+		  file.write("三阶段");
+		  file.write(97);
+		  file.flush();
+		  file.close();
+	  }
+	  
+	  /**
+	   * 使用字符流进行读取字符
+	   */
+	  public void testname() throws Exception {
+		  FileReader  reader=new FileReader("D:\\xxx\\oo\\xxxoo.txt");
+		   int i;
+		   while((i=reader.read())!=-1) {
+			   System.out.println((char)i);
+		   }
+		   reader.close();
+		}
+     案列拷贝文件
+     public void testname02() throws Exception {
+		  FileReader  reader=new FileReader("D:\\xxx\\oo\\xxxoo.txt");
+		  FileWriter  file=  new FileWriter("D:\\xxx\\oo\\拷贝.txt");
+		  char[] c=   new char[1024];
+		   int i;
+		   while((i=reader.read(c))!=-1) {
+			   file.write(c, 0, i);
+		   }
+		   file.flush();
+		   file.close();
+		   reader.close(); 
+		}
+ 2、缓冲流
+      BufferedReder     
+      	1\从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。 
+		可以指定缓冲区的大小，或者可使用默认的大小
+      BufferedWriter 
+      	2\将文本写入字符输出流，缓冲各个字符，从而提供单个字符、数组和字符串的高效写入。 
+		可以指定缓冲区的大小，或者接受默认的大小
+   2-1 案列缓冲流进行拷贝文件
+        /**
+	   * 缓冲流拷贝文件
+	   */
+	  public void testname03() throws Exception {
+		  BufferedReader  reader= new BufferedReader(new FileReader("D:\\xxx\\oo\\xxxoo.txt"));
+		  BufferedWriter  file=  new BufferedWriter(new FileWriter("D:\\xxx\\oo\\拷贝1.txt"));
+		  
+		   int i;
+		   while((i=reader.read())!=-1) {
+			   file.write(i);
+			   file.newLine();//换行的
+		   }
+		   file.flush();
+		   file.close();
+		   reader.close(); 
+		}	
+
+ LineNumberReader
+		1、跟踪行号的缓冲字符输入流。此类定义了方法 setLineNumber(int) 和 getLineNumber()，它们可分别用于设置和获取当前行号。 
+		2、默认情况下，行编号从 0 开始。
+案列
+   	  public void testname04() throws Exception {
+		  LineNumberReader line= new LineNumberReader(new FileReader("D:\\xxx\\oo\\拷贝1.txt"));
+		   String str;
+		   line.setLineNumber(100);
+		     while((str=line.readLine())!=null){
+		    	   System.out.println(line.getLineNumber()+":"+str);
+		     }
+		     line.close();
+		}
+案列  ：
+   使用IO流获取一个文件中出现字符的次数
+	  public void testname05() throws Exception {
+		  BufferedReader  reder=     new BufferedReader(new FileReader("D:\\xxx\\oo\\拷贝1.txt"));
+		  HashMap<Character,Integer>  map= new HashMap<>();
+	
+		    int i;
+		    while((i=reder.read())!=-1) {
+		    	map.put((char)i,
+		    			!map.containsKey((char)i)?1:map.get((char)i)+1
+		    			);
+		    }
+		    reder.close();
+		    //写输入到某个文件
+		    BufferedWriter  wrter=  new BufferedWriter(new FileWriter("D:\\xxx\\oo\\统计后的数据.txt"));
+			  for (Character key : map.keySet()) {
+				  wrter.write(key+":"+map.get(key));
+				  wrter.newLine();
+				}
+			  wrter.flush();
+			  wrter.close();
+	  }
+   
+ -------------------------------
+ 转换流
+    字节流和字符流之间的转换
+   InputStreamReader
+   		InputStreamReader 是字节流通向字符流的桥梁   
+   	OutputStreamWriter
+   		OutputStreamWriter 是字符流通向字节流的桥梁
+   	  在使用字节流读取字符的时候，那么贱字节转字符效率要高
+案列：
+   转换流
+    	public void testname() throws Exception {
+				InputStreamReader   streamReader 
+				=new InputStreamReader(new FileInputStream("D:\\xxx\\oo\\拷贝1.txt"),"UTF-8");
+				OutputStreamWriter   out		=
+				new OutputStreamWriter(new FileOutputStream("D:\\xxx\\oo\\拷贝22222221.txt"),"UTF-8");
+				int i;
+				while((i=streamReader.read())!=-1){
+					out.write(i);
+				}
+				streamReader.close();
+				out.close();
+			}  	
+   能不能使用缓冲流来进行完成
+        public void testname01() throws Exception {
+				BufferedReader   streamReader 
+				=new BufferedReader(
+				new InputStreamReader(
+						new FileInputStream("D:\\xxx\\oo\\拷贝1.txt"),"UTF-8"));
+				
+				BufferedWriter   out		=  new BufferedWriter(
+				new OutputStreamWriter(
+						new FileOutputStream("D:\\xxx\\oo\\拷贝XXXXXX.txt"),"UTF-8"));
+				int i;
+				while((i=streamReader.read())!=-1){
+					out.write(i);
+				}
+				streamReader.close();
+				out.close();
+			}				
+ -------------------------------
+ 数据流
+   1、说白就是用来程序员方便进行操作数据(基本数据类型的数据)的一种流	
+   2、读写数据流
+   3、DataInputStream DataOutputStream
+ 案列：
+    /**
+	 * 读
+	 */
+	public void testname01() throws Exception {
+		DataInputStream  out=
+				new DataInputStream(new FileInputStream("D:\\xxx\\oo\\拷贝XXXXXX.txt"));
+		String str=out.readUTF();
+		int i=out.readInt();
+		System.out.println(str);
+		System.out.println(i);
+		
+	}
+	/**
+	 * 数据流
+	 * */
+	public void testname() throws Exception {
+		DataOutputStream out=
+				new DataOutputStream(new FileOutputStream("D:\\xxx\\oo\\拷贝XXXXXX.txt"));
+		out.writeUTF("隔壁老陈，你做坏事了");
+		out.writeInt(12);
+		out.flush();
+		out.close();
+	}	
+==================================
+对象流
+    用于读取对象或者纯对象的一个处理流
+    ObjectInputStream
+    ObjectOutputSteam
+    	ObjectInputStream 对以前使用 ObjectOutputStream 写入的基本数据和对象进行反序列化	
+		ObjectInputStream 用于恢复那些以前序列化的对象
+	序列化
+	    ObjectOutputStream将一个类对象写入到IO流中
+	反序列化	  
+	  ObjectInputStream  从IO流中进行恢复一个对象
+注意:	
+     1、ObjectInputStream 和ObjectOutputSteam  不进行序列化static和transient修饰的成员变量
+	 2、如果某个类的字段不是基本数据类型或者String类型的，
+	 	而一个引用类型的数据
+	 	那么这个引用类型必须要进行序列化得，否则拥有该类型的类似不可进行序列化
+案列:
+   	
+		//进行序列化
+	public class Person implements Serializable {
+		private static final long serialVersionUID = 1L;
+------------------
+		public void testname01() throws Exception {
+				//反序列化
+				ObjectInputStream  in=
+						new ObjectInputStream(new FileInputStream("D:\\xxx\\oo\\person.txt"));
+				Person  p=(Person) in.readObject();
+				System.out.println(p);
+			}
+			public void testname() throws Exception {
+				//序列化
+				ObjectOutputStream
+				out=
+				new ObjectOutputStream(new FileOutputStream("D:\\xxx\\oo\\person.txt"));
+				Person  p=new Person("小张",1231);
+				out.writeObject(p);
+				out.flush();
+				out.close();
+			}	
+-----注意：
+ 2、如果某个类的字段不是基本数据类型或者String类型的，
+	 	而一个引用类型的数据
+	 	那么这个引用类型必须要进行序列化得，否则拥有该类型的类似不可进行序列化
+案例：
+  //进行序列化
+public class Person implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name;
+	private int age;
+	private Student student;//Student也要进行序列化	 		
+	
+=========================================
+===================================================
+线程
+     1、程序是完成特定的任务，用某种编程语言来进行编写的值集合指令
+   	         就是程序
+   	    那么程序中有多个功能
+   	    就得情况下，这些功能都要进行同时执行
+   	   那么就不的不说进程
+   	 2、进程
+   	     1.是程序的一次执行的过程，或者可以理解为正在运行的程序
+   	     2.动态过程,它自身就带有生产，死亡，休眠....
+   	     3.如。输入法,这些是程序静态的，但是进程是动态的，
+   	 3.线程
+   	    1.就是进程进行更加的细化为线程，
+   	       一个程序的内部执行了一个功能，
+   	       那么这个程序不可能只能执行这一个功能，而执行多个功能的吧
+   	       可以执行多线程的
+   	4.多线程
+	   	      多线程并发执行可以进行提高程序的执行效率， 
+	   	    如：网盘下载，是不是是不是可以同时进行下载多个
+	   	           小电影 
+   	          
+   	 5.多线程的并发和并行
+   	    5-1并发
+   	     	并发就是多个任务在都请求运行,而处理器只能接受一个任务
+   	     	就把其他的任务进行轮流的安排进行，
+   	     	一般请求下这多线程的并发相隔的时间比较短，一般都是感觉不到。
+   	     	
+   	    5-2 并行
+   	                并行就是多个任务，同时运行，
+   	                 如A任务在进行运行的时候，那么B任务也在进行运行
+   	                 在程序中，就绪多核CPU才可以
+   	 6.Jvm是不是多线程
+   	   是
+  案例:
+   	  		public void testname() throws Exception {
+					  for (int i = 0; i < 20; i++) {
+						   new FileSize();
+					}
+					  for (int i = 0; i < 20; i++) {
+						  System.out.println("我是主线程.................");
+						  	System.gc();
+					  }
+					
+				}
+			}
+			
+			class  FileSize{
+				@Override
+				protected void finalize() throws Throwable {
+					
+					System.out.println("垃圾回收(清除).....");
+				}
+			}        
+			   	        
+			   	        
+			   	        
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	      
+   	 
+   	 
+   	  注意：
+   	    java程序,都有一个隐藏的主线程也是main方法
+   	    
+   	         
+   	          
+   	     
+   	     
+   	     
+   	     
+   	     
+   	     
+   	     
+   	     
+   	      
+	
+	
+	  
+		  

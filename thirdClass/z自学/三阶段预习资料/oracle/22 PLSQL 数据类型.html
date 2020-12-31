@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>22 PLSQL 数据类型</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="ugib" id="22-plsql-数据类型">22 PLSQL 数据类型</h1><p data-anchor-id="0gsz"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="hsco" id="1-数据类型">1 数据类型</h2><p data-anchor-id="3sux">PL/SQL 支持的内置数据类型 <br>
+<img src="http://static.zybuluo.com/l363130002/ks650oq8m23gb2dxoiacbap4/image_1c0lm7uac1o8a1b2f1oeq7c1cchm.png" alt="image_1c0lm7uac1o8a1b2f1oeq7c1cchm.png-50.2kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="73g5" id="11数字数据类型">1.1数字数据类型</h3><p data-anchor-id="lo6c"><img src="http://static.zybuluo.com/l363130002/g14fpqrxl008scc6pg89ak4t/image_1c0lma29r1n0o1400onrkbo1r6a13.png" alt="image_1c0lma29r1n0o1400onrkbo1r6a13.png-44kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="qq65" id="12字符数据类型">1.2字符数据类型</h3><p data-anchor-id="scav"><img src="http://static.zybuluo.com/l363130002/b6a0uiacpt0n6zj3gee1n7t8/image_1c0lmc15r1tupla11b0tg2o1p9a1g.png" alt="image_1c0lmc15r1tupla11b0tg2o1p9a1g.png-47.3kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="e1at" id="13-日期时间和布尔数据类型">1.3 日期时间和布尔数据类型</h3><p data-anchor-id="fme2">日期时间类型 <br>
+存储日期和时间数据 <br>
+常用的两种日期时间类型</p><pre data-anchor-id="dv7p"><code> DATE
+ TIMESTAMP
+</code></pre><p data-anchor-id="6zbw">布尔数据类型</p><blockquote data-anchor-id="34o9" class="white-blockquote">
+  <p>此类别只有一种类型，即BOOLEAN类型  <br>
+  用于存储逻辑值(TRUE、FALSE和NULL)  <br>
+  不能向数据库中插入BOOLEAN数据 <br>
+  不能将列值保存到BOOLEAN变量中  <br>
+  只能对BOOLEAN变量执行逻辑操作</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="du9t" id="14-lob-数据类型">1.4 LOB  数据类型</h3><p data-anchor-id="ea0o">用于存储大文本、图像、视频剪辑和声音剪辑等非结构化数据。</p><p data-anchor-id="mvjk">LOB 数据类型可存储最大 4GB的数据。  <br>
+LOB 类型包括： </p><blockquote data-anchor-id="wvn9" class="white-blockquote">
+  <p>BLOB   将大型二进制对象存储在数据库中  <br>
+  CLOB  将大型字符数据存储在数据库中  <br>
+  NCLOB 存储大型UNICODE字符数据  <br>
+  BFILE  将大型二进制对象存储在操作系统文件中</p>
+</blockquote><p data-anchor-id="eg5n">LOB 类型的数据库列仅存储定位符，该定位符指向大型 <br>
+对象的存储位置 <br>
+DBMS_LOB程序包用于操纵 LOB 数据</p><pre data-anchor-id="cq7a"><code>declare
+  clob_var   CLOB;
+  amount     INTEGER;
+  offset     INTEGER;
+  output_var VARCHAR2(1000);
+begin
+  select user_remark into clob_var
+  from user_info where user_id =1;
+  amount:=180;-- 要读取的字符数
+  offset := 1;   -- 起始位置
+ DBMS_LOB.READ(clob_var,amount,offset,output_var);--读取
+ DBMS_OUTPUT.PUT_LINE(output_var);
+end;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="jy0s" id="2-属性类型简介">2 属性类型简介</h2><p data-anchor-id="90pb">用于引用数据库列的数据类型，以及表示表中一行的记录类型 <br>
+属性类型有两种：</p><blockquote data-anchor-id="tnom" class="white-blockquote">
+  <p>%TYPE  -  引用变量和数据库列的数据类型 <br>
+  %ROWTYPE  -  提供表示表中一行的记录类型</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="egi4" id="21-属性类型优点">2.1 属性类型优点</h3><p data-anchor-id="aiu3">使用属性类型的优点： <br>
+  不需要知道被引用的表列的具体类型 <br>
+  如果被引用对象的数据类型发生改变，PL/SQL 变量的数据类型也随之改变</p><pre data-anchor-id="qcv0"><code>icode itemfile.itemcode%TYPE;
+emp_rec scott.emp%ROWTYPE;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="414j" id="22-type示例">2.2 %type示例</h3><pre data-anchor-id="z5zx"><code>declare 
+--变量
+userId user_info.user_id%type; 
+userName user_info.user_name%type;
+begin
+select user_id,user_name into userId,userName from user_info where user_id=1;
+Dbms_Output.put_line('编号:'||userId);
+Dbms_Output.put_line('姓名:'||userName);
+end;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="pc29" id="23-rowtype示例">2.3 %rowtype示例</h3><pre data-anchor-id="9kvb"><code>declare 
+    ---一行记录
+    userinfo user_info%rowtype;
+begin
+    select * into userinfo from user_info where user_id=1;
+    Dbms_Output.put_line('编号:'||userinfo.user_id);
+    Dbms_Output.put_line('姓名:'||userinfo.user_name);
+    Dbms_Output.put_line('年龄:'||userinfo.user_age);
+    Dbms_Output.put_line('性别:'||userinfo.user_sex);
+end;
+</code></pre></div>
+</body>
+</html>

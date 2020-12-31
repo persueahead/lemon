@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>servlet_01</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!--进行配置请求的地址的信息-->
+  <servlet>
+    <servlet-name>servlet01</servlet-name>
+    <servlet-class>com.servlet.test01.TestServlet01</servlet-class>
+    <!--  
+       进行指定创建时间
+         1、第一次被创建时候，进行创建load-on-startup的值是为负数
+        2、在服务器启动的时候进行创建load-on-startup的值为0或者是整数
+    -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>servlet01</servlet-name>
+    <!--  /dom01地址-->
+    <url-pattern>/dom01</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+</web-app>

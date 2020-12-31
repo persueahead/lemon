@@ -1,0 +1,27 @@
+
+1.查询工资大于1200的员工姓名和工资
+SELECT ENAME,SAL FROM emp WHERE sal > 1200;
+2.查询员工号为7902的员工的姓名和部门号
+SELECT ENAME,deptno FROM emp WHERE empno=7902;
+3.查询工资不在1200到5000的员工的姓名和工资
+SELECT ENAME,SAL FROM emp WHERE sal<1200 OR sal>5000;
+4.查询雇用时间在1981-02-01到1981-05-01之间的员工姓名，job和雇用时间
+SELECT ENAME,job,hiredate FROM emp WHERE hiredate BETWEEN '1981-02-01' AND '1981-05-01';
+5.查询在20或30号部门工作的员工姓名和部门号
+SELECT ENAME,deptno FROM emp WHERE deptno=20 OR deptno=30;
+6.查询在1980年雇用的员工的姓名和雇用时间
+SELECT ENAME,hiredate FROM emp WHERE hiredate BETWEEN '1980-01-01'AND '1980-12-31';
+7.查询公司中没有管理者的员工姓名及job
+SELECT ENAME,job FROM emp WHERE ISNULL(mgr);
+8.查询公司中有奖金的员工姓名，工资和奖金
+SELECT ENAME,sal,comm FROM emp WHERE comm IS NOT NULL;
+9.查询员工姓名的第三个字母是A的员工姓名
+SELECT ENAME FROM emp WHERE ename LIKE '__A%';
+10.查询姓名中有字母A和S的员工姓名
+SELECT ENAME FROM emp WHERE ename LIKE '%A%' OR ename LIKE '%S%';
+11.显示系统时间
+SELECT SYSDATE();
+12.查询员工号，姓名，工资，以及工资提高百分之20%后的结果
+SELECT EMPNO,ENAME,sal ,  SAL*1.2 FROM emp  ;
+13.查询各员工的姓名，并显示出各员工在公司工作的月份数
+SELECT ENAME,TIMESTAMPDIFF(MONTH,hiredate,NOW()) AS "月数" FROM emp  ; ;

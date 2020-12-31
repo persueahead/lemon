@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>18 视图</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="py3m" id="18-视图">18 视图</h1><p data-anchor-id="u0eg"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="0ss6" id="1-视图简介">1 视图简介</h2><p data-anchor-id="kjej">视图以经过定制的方式显示来自一个或多个表的数据 <br>
+视图可以视为“虚拟表”或“存储的查询” <br>
+创建视图所依据的表称为“基表” <br>
+视图的优点有：</p><blockquote data-anchor-id="i4vy" class="white-blockquote">
+  <p>提供了另外一种级别的表安全性 <br>
+      隐藏的数据的复杂性 <br>
+      简化的用户的SQL命令 <br>
+      隔离基表结构的改变 <br>
+      通过重命名列，从另一个角度提供数据</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="cu1k" id="2-创建视图">2 创建视图</h2><p data-anchor-id="xjko"><img src="http://static.zybuluo.com/l363130002/ggf4zhjd9z7xurff1qe1e1db/image_1c0ghar8c1l0bpm2rdh1qm11gor9.png" alt="image_1c0ghar8c1l0bpm2rdh1qm11gor9.png-33.1kB" title=""></p><pre data-anchor-id="p572"><code>CREATE VIEW stud_view
+AS SELECT studno, studname, subno
+FROM Stud_details;
+</code></pre><p data-anchor-id="jxwn">创建视图语法：</p><pre data-anchor-id="mpck"><code> CREATE [OR REPLACE] [FORCE] VIEW
+    view_name [(alias[, alias]...)] 
+  AS select_statement
+  [WITH CHECK OPTION]
+  [WITH READ ONLY];
+</code></pre><p data-anchor-id="cfcp"><img src="http://static.zybuluo.com/l363130002/rtfohudpxov3oe97wcxbb3tg/image_1c0ghj21q1o53vie1lqg1jcc6ui13.png" alt="image_1c0ghj21q1o53vie1lqg1jcc6ui13.png-62.1kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="iahs" id="3-联接视图">3 联接视图</h2><p data-anchor-id="jmox"><img src="http://static.zybuluo.com/l363130002/o2lqvajza7snq0z1hkpxpr0i/image_1c0ghou2avs8vj41igd1i68svj1g.png" alt="image_1c0ghou2avs8vj41igd1i68svj1g.png-48.5kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/0t519mgthigwdafllem9ly7g/image_1c0ghpjaqidlcg7va81m90t541t.png" alt="image_1c0ghpjaqidlcg7va81m90t541t.png-36.9kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="h0uw" id="4-视图上的dml语句">4 视图上的DML语句</h2><p data-anchor-id="osbu">在视图上也可以使用修改数据的DML语句，如INSERT、UPDATE和DELETE <br>
+视图上的DML语句有如下限制：</p><blockquote data-anchor-id="hlcd" class="white-blockquote">
+  <p>只能修改一个底层的基表  <br>
+  如果修改违反了基表的约束条件，则无法更新视图  <br>
+  如果视图包含连接操作符、DISTINCT关键字、集合操作符、聚合函数或 GROUP BY 子句，则将无法更新视图  <br>
+  如果视图包含伪列或表达式，则将无法更新视图</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="s65a" id="5-视图中的函数">5 视图中的函数</h2><p data-anchor-id="1u08">视图中可以使用单行函数、分组函数和表达式</p><pre data-anchor-id="42bh"><code>CREATE VIEW item_view AS 
+SELECT itemcode, LOWER(itemdesc) item_desc
+FROM itemfile; 
+</code></pre><p data-anchor-id="i9lb">使用DROP VIEW语句删除视图</p><pre data-anchor-id="6vq5"><code>DROP VIEW toys_view
+</code></pre></div>
+</body>
+</html>

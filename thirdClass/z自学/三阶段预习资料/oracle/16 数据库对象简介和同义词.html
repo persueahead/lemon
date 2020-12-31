@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>16 数据库对象简介和同义词</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="1vzz" id="16-数据库对象简介和同义词">16 数据库对象简介和同义词</h1><p data-anchor-id="i5az"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="myu8" id="1数据库对象简介">1数据库对象简介</h2><p data-anchor-id="e6ux">Oracle 数据库对象又称模式对象 <br>
+数据库对象是逻辑结构的集合，最基本的数据库对象是表 <br>
+其他数据库对象包括： <br>
+<img src="http://static.zybuluo.com/l363130002/jgy076tmoqm6w2f998tqiw24/image_1c0ggtjva196e19ct12pq8na8mq9.png" alt="image_1c0ggtjva196e19ct12pq8na8mq9.png-17.6kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="kw7k" id="2-同义词">2 同义词</h2><p data-anchor-id="m81q">同义词是现有对象的一个别名</p><blockquote data-anchor-id="6b6b" class="white-blockquote">
+  <p>简化SQL语句  <br>
+  隐藏对象的名称和所有者  <br>
+  提供对对象的公共访问</p>
+</blockquote><p data-anchor-id="oy3o">同义词共有两种类型</p><blockquote data-anchor-id="zme4" class="white-blockquote">
+  <p>公有同义词可被所有的数据库用户访问  <br>
+  私有同义词只能在其模式内访问，且不能与当前模式的对象同名</p>
+</blockquote><p data-anchor-id="moai"><img src="http://static.zybuluo.com/l363130002/d5fz9smpr3goc3o922b9py59/image_1c0gh1si89h9d1jt91dqt1ds4m.png" alt="image_1c0gh1si89h9d1jt91dqt1ds4m.png-41.4kB" title=""></p><p data-anchor-id="npwl"><img src="http://static.zybuluo.com/l363130002/qu7zhihht7p2gg05oez1ib64/image_1c0gh299rc1b148m1bp21d46pe213.png" alt="image_1c0gh299rc1b148m1bp21d46pe213.png-43.1kB" title=""></p><p data-anchor-id="l0q4">示例： <br>
+    select * from user_info</p><pre data-anchor-id="8ip2"><code>--私有同义词
+CREATE SYNONYM userinfo for lyj.user_info
+
+select * from userinfo
+
+--公有同义词
+CREATE public  SYNONYM userinfo1 for lyj.user_info
+
+select * from userinfo1;
+
+--创建或替换现有的同义词
+CREATE OR REPLACE SYNONYM userinfo for lyj.employess
+
+select * from userinfo2
+
+--删除同义词
+ DROP SYNONYM userinfo2
+</code></pre></div>
+</body>
+</html>

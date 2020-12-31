@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>02 oracle 创建用户和授权</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="0h7f" id="02-oracle-创建用户和授权">02 oracle 创建用户和授权</h1><hr><div class="md-section-divider"></div><h2 data-anchor-id="i0a6" id="1oracle-默认用户">1.Oracle 默认用户</h2><ul data-anchor-id="slw2">
+<li>只有用合法的用户帐号才能访问Oracle数据库 </li>
+<li>Oracle 有几个默认的数据库用户 <br>
+<img src="http://static.zybuluo.com/l363130002/9iwnicbirzouu7ll9m6wx9ma/image_1c08drhk5egf65g1isom47sjj2d.png" alt="image_1c08drhk5egf65g1isom47sjj2d.png-17.7kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/p6l2afbwb9uu2v6wexrkrxpg/image_1c08ds3bo1scldt1btc1imfddk2q.png" alt="image_1c08ds3bo1scldt1btc1imfddk2q.png-9.7kB" title=""></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="aw4r" id="2创建新用户">2.创建新用户</h2><div class="md-section-divider"></div><h3 data-anchor-id="jo8f" id="21-简介">2.1 简介</h3><ul data-anchor-id="sf4r">
+<li>要连接到Oracle数据库，就需要创建一个用户帐户</li>
+<li>每个用户都有一个默认表空间和一个临时表空间</li>
+<li>表空间的分类</li>
+</ul><blockquote data-anchor-id="4v7o" class="white-blockquote">
+  <p>永久表空间：存放永久性数据，如表，索引等。 <br>
+  临时表空间           ：不能存放永久性对象，用于保存数据库排序，分组时产生的临时数据</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="af7v" id="22-创建表空间">2.2 创建表空间</h3><p data-anchor-id="1i68">表空间：表空间是数据库的逻辑划分，一个表空间只能属于一个数据库。所有的数据库对象都存放在指定的表空间中。但主要存放的是表， 所以称作表空间</p><div class="md-section-divider"></div><h4 data-anchor-id="bun1" id="221-创建数据表空间">2.2.1 创建数据表空间</h4><blockquote data-anchor-id="zr2u" class="white-blockquote">
+<pre><code>create tablespace user_data 
+logging 
+datafile 'D:\oracle\oradata\user_data.dbf' 
+size 50m 
+autoextend on 
+next 50m maxsize 20480m 
+extent management local;
+</code></pre>
+</blockquote><div class="md-section-divider"></div><h4 data-anchor-id="bjyk" id="222-创建临时表空间">2.2.2 创建临时表空间</h4><blockquote data-anchor-id="f059" class="white-blockquote">
+<pre><code>create temporary tablespace user_temp2
+tempfile 'D:\oracle\oradata\user_temp1.dbf'
+size 50m
+autoextend on
+next 50m maxsize 20480m
+extent management local
+</code></pre>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="hqde" id="22-创建用户">2.2 创建用户</h3><blockquote data-anchor-id="ruz3" class="white-blockquote">
+<pre><code>create user etc  -- 用户名
+identified by "admin" --密码
+default tablespace user_data --数据表空间
+temporary tablespace user_temp1 -- 临时表空间
+</code></pre>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="ke8d" id="25-用户解锁">2.5 用户解锁</h3><blockquote data-anchor-id="72t8" class="white-blockquote">
+  <p>alter user 用户名 account unlock;</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="9ijl" id="3-授予权限">3 授予权限</h2><div class="md-section-divider"></div><h3 data-anchor-id="b749" id="31-授予权限">3.1 授予权限</h3><ul data-anchor-id="6okh">
+<li>权限指的是执行特定命令或访问数据库对象的权利</li>
+<li>权限有两种类型，系统权限和对象权限 <br>
+
+
+<blockquote class="white-blockquote">
+   系统权限允许用户执行某些数据库操作，如创建表就是一个系统权限  <br>
+   对象权限允许用户对数据库对象（如表、视图、序列等）执行特定操作</blockquote></li>
+  <li>角色是一组相关权限的组合，可以将权限授予角色，再把角色授予用户，以简化权限管理。</li>
+  </ul><div class="md-section-divider"></div><h3 data-anchor-id="nh5d" id="32-3种标准角色">3.2 3种标准角色</h3><ul data-anchor-id="lrf4">
+<li>CONNECT Role(连接角色) </li>
+</ul><blockquote data-anchor-id="pr8q" class="white-blockquote">
+  <p>临时用户，特别是那些不需要建表的用户，通常只赋予他们CONNECTrole。CONNECT是使用Oracle的简单权限，这种权限只有在对其他用户 的表有访问权时，包括select、insert、update和delete等，才会变得有意义。拥有CONNECT role的用户还能够创建表、视图、序列（sequence）、簇（cluster）、同义词（synonym ）、会话（session）和与其他数据库的链（link）。</p>
+</blockquote><ul data-anchor-id="8t7l">
+<li>RESOURCE Role(资源角色) </li>
+</ul><blockquote data-anchor-id="dvu0" class="white-blockquote">
+  <p>更可靠和正式的数据库用户可以授予RESOURCE role。RESOURCE提供给用户另外的权限以创建他们自己的表、序列、过程（procedure）、触发器（trigger）、索引（index）和簇（cluster）</p>
+</blockquote><ul data-anchor-id="5m14">
+<li>DBA Role(数据库管理员角色)</li>
+</ul><blockquote data-anchor-id="8xn8" class="white-blockquote">
+  <p>DBA role拥有所有的系统权限----包括无限制的空间限额和给其他用户授予各种权限的能力。SYSTEM由DBA用户拥有。下面介绍一些DBA经常使用的典型权限。</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="e2m4" id="33-授予权限">3.3 授予权限</h3><p data-anchor-id="uymb">GRANT 命令可用于为用户分配权限或角色 </p><blockquote data-anchor-id="k0ga" class="white-blockquote">
+  <p>赋予系统权限：grant 角色 to 用户； <br>
+  赋予对象权限：Grant insert update delete select on表to用户； <br>
+  回收系统权限：revoke角色from用户； <br>
+  回收对象权限：revoke all on表from用户； <br>
+  更改：ALTER USER MARTIN IDENTIFIED BY martinpass;(修改密码) <br>
+  删除：drop user 用户</p>
+</blockquote><p data-anchor-id="99xo"><img src="http://static.zybuluo.com/l363130002/xpn6ygmr359k13rh10go1nic/image_1c08fidv51itsvni1s081f6a176l9.png" alt="image_1c08fidv51itsvni1s081f6a176l9.png-65.1kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/zcaw5v5arfnqj02uz6v3k3wq/image_1c08fjloq1ipikje1dpa139710p6m.png" alt="image_1c08fjloq1ipikje1dpa139710p6m.png-45.5kB" title=""></p><p data-anchor-id="vbgo"><code>oracle</code></p></div>
+</body>
+</html>

@@ -1,0 +1,356 @@
+ Map  接口    
+ 	 Map 是键值对的方式来进行存储的
+      键key  值values
+   map和collection并列存在的 
+   map  中的key和value 都是可以使用任何的引用数据类型
+   map  中的key使用set来进行存放的，注意由于是set来进行存储的，
+              那么不允许key是重复的.
+              如可以重复了，那么就会进行覆盖之前的key所对应的value数据
+              
+ 1/HashMap
+ 		 1.hashMap是Map接口中使用最多的一个,
+ 		 2.基于哈希表的 Map 接口的实现。
+	                此实现提供所有可选的映射操作，并允许使用 null 值和 null 键
+     	3、得到结果和HashSet一样，不能保证映射的顺序  
+     	4、hashMap是通过HashCode和Equals方法来进行判断key是否一致，
+     	
+     案列:
+       方式一:
+      public void testHashMap() {
+		  HashMap  map=  new HashMap();
+		  map.put("1号",1);
+		  map.put("2号","同学们");
+		  map.put("3号","能听懂吗?");
+		  map.put("4号",66666);
+		  System.out.println(map);
+		}
+    方式二:
+     	 public void testHashMap01() {
+		  HashMap<String ,Object>  map=  new HashMap();
+		  map.put("1号",1);
+		  map.put("2号","同学们");
+		  map.put("4号",66666);
+		  System.out.println(map);
+			}	
+      	注意的使用key和value可以使用null值
+      	 public void testHashMap01() {
+		  HashMap<String ,Object>  map=  new HashMap();
+		  map.put("1号",1);
+		  map.put("2号","同学们");
+		  map.put("4号",66666);
+		  map.put(null,null);
+		  System.out.println(map);
+			}
+    1-2/hashMap常用的方法
+          		  HashMap<String ,Object>  map=  new HashMap();
+				  map.put("1号",1);
+				  map.put("4号","同学们");
+				  map.put("2号",66666);
+				 Integer  i=  (Integer) map.remove("1号");
+				  System.out.println(i);
+				  System.out.println(map);
+				  System.out.println(map.containsKey("1号"));
+				  System.out.println(map.isEmpty());
+				  System.out.println(map.containsValue(66666));
+    1-3/HashMap的遍历
+        方式一:
+       Set<String> keyset=  map.keySet();
+		Iterator	iterator=	keyset.iterator();
+		  while(iterator.hasNext()) {
+			  String  key=(String) iterator.next();
+			   System.out.println("k:"+key+"v:"+map.get(key));
+		  }
+    方式二：
+      Set<Map.Entry<String ,Object>> set2= map.entrySet();
+		Iterator<Map.Entry<String ,Object>>	iterator01= set2.iterator();
+		  while(iterator01.hasNext()) {
+			  Map.Entry<String ,Object> m=
+					  iterator01.next();  
+	          System.out.println("key:="+ m.getKey());
+	          System.out.println("value:="+ m.getValue());
+		  } 
+  方式三
+    	Collection<Object> keyset01=  map.values();
+		    for (Object object : keyset01) {
+				System.out.println(object);
+			}		
+		  for(Entry<String ,Object> e:map.entrySet()) {
+			  System.out.println( e.getKey()+"=" + e.getValue());  
+		  }
+		  
+		  System.out.println("-================-");
+		  //for遍历
+		Set<String>  se= map.keySet(); 
+                  for (String string : se) {
+					  System.out.println(string);
+				}	
+			  
+ 案列：
+    使用HashMap来进程统一字符串的次数
+    	public void testname(){
+		String  s="QWEQWEQWEQQWEQWEQWEQWEWESDASDASDQER";
+	     char[]  arr=		s.toCharArray();
+	     HashMap<Character,Integer>  ha=  new  HashMap();
+			 	for (char c : arr) {
+			 		ha.put(c,!ha.containsKey(c)?1:ha.get(c)+1);
+			 	}
+			for (Character c : ha.keySet()) {
+				System.out.println("key="+c+":"+ha.get(c));
+				
+			}
+		}
+ 
+ 
+ 2/Hashtable
+      1. 此类实现一个哈希表，该哈希表将键映射到相应的值。任何非 null 对象都可以用作键或值
+ 	public void testnameHashTable(){
+		Hashtable<String,Object> hash= new Hashtable();
+		hash.put("k1", 1111);
+		hash.put("k2", 2222);
+		hash.put("k3", 333);
+		hash.put("null", 444);//这里的null是一个字符串
+		//hash.put(null,null);//不能使用null
+		System.out.println(hash);
+	}
+ 	 2.HashMap与Hashtable之间区别
+ 	      HashMap的key和value都可以使用null
+ 	      Hashtable是不可的
+ 	      HashMap和Hashtable遍历处理的数据是没有顺序的
+ 	      key都是不能进行重复的，set的方式
+ 	      HashMap非线程安全   Hashtable线程安全
+ 
+ 3/TreeMap
+ 	该映射根据其键的自然顺序进行排序，
+ 	或者根据创建映射时提供的 Comparator 进行排序，
+ 	具体取决于使用的构造方法
+  	1、treeMap默认是使用自然顺序进行排序，
+  	TreeMap<String ,Integer>  map=    new TreeMap();
+	  map.put("A",1);
+	  map.put("G",11);
+	  map.put("D",133);
+	  map.put("F",144);
+	  map.put("D",155);
+	 System.out.println(map);
+ 	2.自定义
+		 	  public void testname(){
+			  TreeMap<Users ,String>  map=   
+					  new TreeMap(new Comparator<Users>() {
+						@Override
+						public int compare(Users o1, Users o2) {
+							    int i=o1.getName().compareTo(o2.getName());
+							return i==0?o1.getAge()-o2.getAge():i;
+						}
+			});
+			  
+			  map.put(new Users("A",11) , "1111");
+			  map.put(new Users("A",121) , "2222");
+			  map.put(new Users("b",113) , "3333");
+			  map.put(new Users("c",141) , "4444");
+			  map.put(new Users("d",115) , "555");
+			  System.out.println(map);
+		}
+		 ------------
+		 public class Users implements Comparable<Users> {
+			 	@Override
+			public String toString() {
+				return "Users [name=" + name + ", age=" + age + "]";
+			}	
+ 
+ 4/LinkedHashMap
+   	1、Map 接口的哈希表和链接列表实现
+   	2、是HashMap的子类，
+   	3、此链接列表定义了迭代顺序，
+   	     该迭代顺序通常就是将键插入到映射中的顺序（插入顺序）。
+              说白就是，你插入是什么样的顺序那么出来就是什么样的顺序
+  
+  案列：
+   LinkedHashMap<String,Integer> ha=    new LinkedHashMap();
+		ha.put("D", 161);
+		ha.put("A", 151);
+		ha.put("C", 141);
+		ha.put("F", 131);
+		ha.put("D", 121);
+		System.out.println(ha);  
+扩展>  
+Properties
+   1.Properties是Hashtable的子类，由于是Hashtable的子类那么Properties属于线程安全的
+       源码:  public synchronized Object setProperty(Str
+    		 属于进行处理文件的
+   2.属性列表中每个键及其对应值都是一个字符串。 
+   
+ 案列：
+  	//获取数据源的使用后进行用到
+	public void testname(){
+		Properties pr=  new Properties();
+	//	pr.put(123, 1212);//一般的情况不会这进行put数据
+		pr.setProperty("usersname","xxxxoooo");
+		pr.setProperty("password","11211");
+		System.out.println(pr.getProperty("password"));
+		System.out.println(pr);
+	} 
+   		 
+ =-===========================================================
+ IO流
+    什么是IO流吧
+	  1。java中使用IO(输入和输出)流
+	     来进行读和写的操作，读写设备上的数据，硬盘，内存的数据.....  
+	  2.内存到硬盘的数据(输出流)
+	  3.硬盘到内存就是(输入流)
+      4.长用的标准流。
+          System.in //输入流	  
+	  	  System.out //输出流
+ 
+File类 
+    就是来进行创建文件或者是目录，当然删除 修改  查询
+案列:
+   	//创建目录的地址
+	public void testname(){
+		File  file=  new File("D:\\xxx\\oo");
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+	}    
+    //创建文件的
+	public void testname01() throws IOException{
+		File  file=  new File("D:\\xxx\\oo\\text.xls");
+		if(!file.exists()) {
+			file.createNewFile();
+		}
+	}
+ 	//删除文件
+	public void testname02() throws IOException{
+		File  file=  new File("D:\\xxx\\oo\\text.xls");
+		file.delete();
+	}
+ 	//删除文件
+	public void testname03() throws IOException{
+		File  file=  new File("D:\\xxx\\oo");
+		file.delete();
+	}
+   //修改文件名
+   //如地址相同则是进行修改文件的名称
+   //如地址不同则是进行剪切并且将文件的名称进行修改
+	public void testname04_1() throws IOException{
+		File  file1=  new File("D:\\xxx\\oo\\OOOXXXX.xls");
+		File  file=  new File("D:\\xxx\\text.xls");
+		System.out.println(file1.renameTo(file));
+	}
+	public void testname04() throws IOException{
+		File  file=  new File("D:\\xxx\\oo\\text.xls");
+		File  file1=  new File("D:\\xxx\\oo\\OOOXXXX.xls");
+        System.out.println(file.renameTo(file1));
+	}
+		//判读
+		public void testname05() throws IOException{
+		File  file=  new File("D:\\xxx\\oo");
+		System.out.println("判断当前目录是否是目录"+file.isDirectory());
+		System.out.println("判断当前目录是否是文件"+file.isFile());
+		System.out.println("判断当前目录是否有隐藏的文件"+file.isHidden());
+		}
+ 	//查询
+ 			File  file=  new File("D:\\xxx");
+		//获取所有的名称
+		String [] s=
+				file.list();
+		for (String string : s) {
+			System.out.println(string);
+		}
+		System.out.println("---------------");
+		//获取文件
+		File[]  files=file.listFiles();
+		for (File file2 : files) {
+			System.out.println(file2);
+		}
+		System.out.println("获取绝对的路径地址:"+file.getAbsolutePath());
+		System.out.println("获取存入的路径地址:"+file.getPath());
+		System.out.println("获取文件名:"+file.getName());
+		System.out.println("获取长度:"+file.length());
+		//获取时间
+		System.out.println("获取时间:"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+				.format(file.lastModified()));
+---------------------- 		
+流的分类
+   在java中所有IO包下的流
+   1、按照流的流向
+        输出流 输入流
+ 2、按照操作类型
+      常见的 
+     字节流  
+     2-1、字节流可以操作任何的数据，因为在计算机中任何的数据都是以字节的方式来进行存储的
+         字节流的父类
+         inputStream
+         OutputStream
+         
+   
+    字符流 
+       2-2、只能进程操作纯字符的数据，那么操作起来比较方便
+         父类
+         reader
+         Writer
+-----------------------------------------------------------       
+  字节流
+   1.可以进行读取任何的数据
+   		案列
+   读
+   	public void testname() throws IOException{
+		FileInputStream intput= 
+				new FileInputStream("D:\\xxx\\oo\\XXXOO.txt");
+	       int i;
+	       while((i=intput.read())!=-1) {
+	    	   System.out.println(i);//码表的值
+	       }
+	       intput.close();
+	}
+   		         
+    public void testname() throws IOException{
+		FileInputStream intput= 
+				new FileInputStream("D:\\xxx\\oo\\XXXOO.txt");
+		byte[] b=  new byte[1024*1024];
+	       int i;
+	       while((i=intput.read(b))!=-1) {
+	    	   System.out.println(new String(b,0,i));//码表的值
+	       }
+	       intput.close();
+	} 	
+   写    
+   //1.true 是进行追加，false是进行覆盖重新的编写(默认的）
+     public void testname01() throws IOException{
+			FileOutputStream out=
+					new FileOutputStream("D:\\xxx\\oo\\XXXOO.txt");
+			out.write(12);
+			out.write(56);
+			out.write(66);
+			out.write(18);
+			out.close();
+		}   
+       
+ 案列：
+   拷贝图片的
+      public void testname03() throws Exception {
+		FileInputStream  in=  new FileInputStream("D:\\xxx\\xxxx.jpg");
+		FileOutputStream  out=new FileOutputStream("D:\\xxx\\xxxx修改之后的.jpg");
+		int  i;
+		while((i=in.read())!=-1) {
+			out.write(i);
+		}
+		in.close();
+		out.close();
+	}   
+  //优化下
+	public void testname03_1() throws Exception {
+		FileInputStream  in=  new FileInputStream("D:\\xxx\\xxxx.jpg");
+		FileOutputStream  out=new FileOutputStream("D:\\xxx\\xxxx修改之后的.jpg");
+		byte[] b=	  new byte[1024*1024];
+		
+		int  i;
+		while((i=in.read(b))!=-1) {
+			out.write(b,0,i);
+		}
+		in.close();
+		out.close();
+	}
+  
+  
+      	
+ 	
+ 	

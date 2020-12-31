@@ -1,0 +1,6 @@
+1.(不懂的先看下录播)
+课程中的案例动态查询条件是用=拼接  思考 条件也是动态的 例如可以是 like  =  > < 如何实现？  
+2.课程中实现 in('aaa','222','xxx')方法参数用list<Object>如下 如何实现
+public List<Department> find3(List<Object> list);
+3.mybatis调用mysql的存储过程
+4.实现多表查询多对一的配置 

@@ -1,0 +1,802 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>03 JDBC 工具类和CRUD操作</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="umpr" id="03-jdbc-工具类和crud操作">03 JDBC 工具类和CRUD操作</h1><p data-anchor-id="33aj"><code>jdbc</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="gc7m" id="1-工具类抽取">1 工具类抽取</h2><div class="md-section-divider"></div><h3 data-anchor-id="0k8g" id="11-普通方式">1.1 普通方式</h3><pre data-anchor-id="b3b2"><code>package jdbc.oracle.utils;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+/**
+ * 数据库链接从工具类
+ * @author Administrator
+ *
+ */
+public class JDBCUtils {
+    //数据库驱动
+    private static final String driverClass="oracle.jdbc.driver.OracleDriver";
+    //URL
+    private static final String url="jdbc:oracle:thin:@localhost:1521:orcl";
+    //用户名
+    private static final String username="liu";
+    //密码
+    private static final String password="admin";
+
+    /**
+     * 加载驱动
+     */
+    public static void loadDriver() {
+        try {
+            Class.forName(driverClass);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取连接的方法
+     * @return
+     */
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            loadDriver();
+            con = DriverManager.getConnection(url, username, password);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+    /**
+     * 释放资源
+     * @param res
+     * @param pre
+     * @param con
+     */
+    public static void release(ResultSet res,Statement pre,Connection con) {
+        if(res!=null) {
+            try {
+                res.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        //垃圾回收尽快回收对象
+        res =null;
+        if(pre!=null) {
+            try {
+                pre.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        pre = null;
+        if(con!=null) {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        con = null;
+
+    }
+
+}
+</code></pre><p data-anchor-id="9651">测试代码：</p><pre data-anchor-id="rwzm"><code>package jdbc.oracle.utils;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        Connection con = null;
+        PreparedStatement pre = null;
+        ResultSet res = null;
+        try {
+            //获取连接
+            con = JDBCUtils.getConnection();
+            String sql = "select * from book";
+            //获取实例
+            pre = con.prepareStatement(sql);
+            //执行SQL，返回结果集
+            res = pre.executeQuery();
+            while (res.next()) {
+                System.out.println("书籍编号:" + res.getInt(1) + " 书籍名称：" + 
+            res.getString(3) + "作者："+res.getString(4)+"  书籍价格："+ res.getDouble(6));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            //释放资源
+            JDBCUtils.release(res, pre, con);
+        }
+
+
+    }
+}
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="8qt8" id="12-带有属性文件的工具类">1.2 带有属性文件的工具类</h3><p data-anchor-id="cs04">创建jdbc.properties文件：</p><pre data-anchor-id="149q"><code>driverClass=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:orcl
+username=liu
+password=admin
+</code></pre><p data-anchor-id="8bwk">创建JDBCUtils2.ajva</p><pre data-anchor-id="ta5j"><code>package jdbc.oracle.utils;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Properties;
+
+/**
+ * 数据库链接从工具类
+ * @author Administrator
+ *
+ */
+public class JDBCUtils2 {
+    //数据库驱动
+    private static final String driverClass;
+    //URL
+    private static final String url;
+    //用户名
+    private static final String username;
+    //密码
+    private static final String password;
+
+    //静态代码块
+    static {
+        Properties properties = null;
+        //读取属性文件,使用java中Properties的对象
+        try {
+            InputStream is = new FileInputStream("src/jdbc.properties");
+            properties = new Properties();
+            properties.load(is);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        driverClass = properties.getProperty("driverClass");
+        url = properties.getProperty("url");
+        username = properties.getProperty("username");
+        password = properties.getProperty("password");
+
+    }
+
+    /**
+     * 加载驱动
+     */
+    public static void loadDriver() {
+        try {
+            Class.forName(driverClass);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取连接的方法
+     * @return
+     */
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            loadDriver();
+            con = DriverManager.getConnection(url, username, password);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+    /**
+     * 释放资源
+     * @param res
+     * @param pre
+     * @param con
+     */
+    public static void release(ResultSet res,Statement pre,Connection con) {
+        if(res!=null) {
+            try {
+                res.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        //垃圾回收尽快回收对象
+        res =null;
+        if(pre!=null) {
+            try {
+                pre.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        pre = null;
+        if(con!=null) {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        con = null;
+
+    }
+
+}
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="vwai" id="2-使用工具类crud操作">2 使用工具类CRUD操作</h2><p data-anchor-id="jhph">前期准备： <br>
+1.创建实体类Book.java</p><pre data-anchor-id="0dp8"><code>package com.nm.domain;
+
+/**
+ * 书记表的实体类
+ * @author Administrator
+ *
+ */
+public class Book {
+
+    //书籍编号
+    private Integer bookId;
+
+    private String sort;
+
+    //书籍名称
+    private String bookName;
+
+    //作者
+    private String  writer;
+
+    //出版社
+    private String outPut;
+
+    //价格
+    private Double price;
+
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
+
+    public String getOutPut() {
+        return outPut;
+    }
+
+    public void setOutPut(String outPut) {
+        this.outPut = outPut;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+}
+</code></pre><p data-anchor-id="b5zi">2.创建jdbc.properties，并配置Oracle数据库</p><pre data-anchor-id="g9li"><code>driverClass=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:orcl
+username=liu
+password=admin
+</code></pre><p data-anchor-id="xjx6">3.创建数据库工具类JDBCUtils.java</p><pre data-anchor-id="uo5u"><code>package com.nm.utils;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Properties;
+
+/**
+ * 数据库链接从工具类
+ * @author Administrator
+ *
+ */
+public class JDBCUtils {
+    //数据库驱动
+    private static final String driverClass;
+    //URL
+    private static final String url;
+    //用户名
+    private static final String username;
+    //密码
+    private static final String password;
+
+    //静态代码块
+    static {
+        Properties properties = null;
+        //读取属性文件,使用java中Properties的对象
+        try {
+            InputStream is = new FileInputStream("src/jdbc.properties");
+            properties = new Properties();
+            properties.load(is);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        driverClass = properties.getProperty("driverClass");
+        url = properties.getProperty("url");
+        username = properties.getProperty("username");
+        password = properties.getProperty("password");
+
+    }
+
+    /**
+     * 加载驱动
+     */
+    public static void loadDriver() {
+        try {
+            Class.forName(driverClass);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取连接的方法
+     * @return
+     */
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            loadDriver();
+            con = DriverManager.getConnection(url, username, password);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+    /**
+     * 释放资源
+     * @param res
+     * @param pre
+     * @param con
+     */
+    public static void release(ResultSet res,Statement pre,Connection con) {
+        if(res!=null) {
+            try {
+                res.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        //垃圾回收尽快回收对象
+        res =null;
+        if(pre!=null) {
+            try {
+                pre.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        pre = null;
+        if(con!=null) {
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        con = null;
+
+    }
+
+}
+</code></pre><p data-anchor-id="ub5b">4.创建dao包，用户存放数据库操作的java类 <br>
+<img src="http://static.zybuluo.com/l363130002/o3r064dl8g9nrpeejpdaygp5/image_1c1fkbo0h1fi551vs71dhd1vmo9.png" alt="image_1c1fkbo0h1fi551vs71dhd1vmo9.png-1kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/0ixuo1b6j5kf4vfov2t91sn9/image_1c1fkdtkl15jbdc3g0q1df51m07m.png" alt="image_1c1fkdtkl15jbdc3g0q1df51m07m.png-48.5kB"></p><div class="md-section-divider"></div><h3 data-anchor-id="dffs" id="21-查询数据">2.1 查询数据</h3><pre data-anchor-id="ow4y"><code>package com.nm.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nm.domain.Book;
+import com.nm.utils.JDBCUtils;
+
+/**
+ * 书籍管理的数据库访问对象
+ * 
+ * @author Administrator
+ *
+ */
+public class BookDAO {
+
+    /**
+     * 查询书籍信息
+     * 
+     * @param book
+     *            查询条件
+     * @return 多条书籍信息
+     */
+    public List&lt;Book&gt; list(Book book) {
+
+        Connection con = null; // 数据连接
+        PreparedStatement pre = null;// SQL执行实例
+        ResultSet res = null; // 结果集
+        List&lt;Book&gt; list = null;
+        try {
+
+            // 获取连接
+            con = JDBCUtils.getConnection();
+            StringBuffer sql = new StringBuffer("select * from book where 1=1 ");
+
+            if (book != null) {
+                // 数据名称
+                if (book.getBookName() != null &amp;&amp; !book.getBookName().equals("")) {
+                    sql.append(" and book_name like ? ");
+                }
+                if (book.getWriter() != null &amp;&amp; !book.getWriter().equals("")) {
+
+                    sql.append(" and writer=? ");
+                }
+
+            }
+
+            // 获取实例
+            pre = con.prepareStatement(sql.toString());
+
+            if (book != null) {
+                // 数据名称
+                if (book.getBookName() != null &amp;&amp; !book.getBookName().equals("")) {
+                    pre.setString(1, "%" + book.getBookName() + "%");
+                }
+                if (book.getWriter() != null &amp;&amp; !book.getWriter().equals("")) {
+                    pre.setString(1, book.getWriter());
+
+                }
+
+            }
+            // 执行SQL，并返回结果集
+            res = pre.executeQuery();
+            list = new ArrayList&lt;Book&gt;();
+            // 遍历
+            while (res.next()) {
+                // Book实体类要与数据库中book表对应
+                Book b = new Book();
+                b.setBookId(res.getInt("book_id"));
+                b.setSort(res.getString("sort"));
+                b.setBookName(res.getString("book_name"));
+                b.setWriter(res.getString("writer"));
+                b.setOutPut(res.getString("output"));
+                b.setPrice(res.getDouble("price"));
+
+                list.add(b);
+            }
+
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭资源
+            JDBCUtils.release(res, pre, con);
+        }
+
+        return null;
+    }
+
+    /**
+     * 根据添加查询数据
+     * 
+     * @param sql 查询SQL
+     * @param plist 查询条件
+     * @return
+     */
+    public List&lt;Book&gt; list(String sql, List&lt;Object&gt; plist) {
+
+        Connection con = null; // 数据连接
+        PreparedStatement pre = null;// SQL执行实例
+        ResultSet res = null; // 结果集
+        List&lt;Book&gt; list = null;
+        try {
+
+            // 获取连接
+            con = JDBCUtils.getConnection();
+            // 获取实例
+            pre = con.prepareStatement(sql.toString());
+
+            if(plist!=null &amp;&amp; plist.size()&gt;0) {
+                for(int i=0;i&lt;plist.size();i++) {
+                    pre.setObject(i+1, plist.get(i));
+                }
+            }
+
+            // 执行SQL，并返回结果集
+            res = pre.executeQuery();
+            list = new ArrayList&lt;Book&gt;();
+            // 遍历
+            while (res.next()) {
+                // Book实体类要与数据库中book表对应
+                Book b = new Book();
+                b.setBookId(res.getInt("book_id"));
+                b.setSort(res.getString("sort"));
+                b.setBookName(res.getString("book_name"));
+                b.setWriter(res.getString("writer"));
+                b.setOutPut(res.getString("output"));
+                b.setPrice(res.getDouble("price"));
+
+                list.add(b);
+            }
+
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭资源
+            JDBCUtils.release(res, pre, con);
+        }
+
+        return null;
+    }
+}
+</code></pre><p data-anchor-id="jryt">测试代码：</p><pre data-anchor-id="dhwe"><code>@Test
+    public void list() {
+        BookDAO dao = new BookDAO();
+
+        //查询条件
+        Book book = new Book();
+        book.setBookName("计算机");
+        //book.setWriter("力钧");
+        List&lt;Book&gt; list = dao.list(book);
+        for(Book b:list) {
+            System.out.println(b.toString());
+        }
+    }
+
+
+    @Test
+    public void list2() {
+        BookDAO dao = new BookDAO();
+
+        //查询条件
+        Book book = new Book();
+        //book.setBookName("计算机");
+        //book.setWriter("黄力钧");
+
+        List&lt;Object&gt; plist =new ArrayList&lt;&gt;();
+        StringBuffer sql = new StringBuffer("select * from book where 1=1 ");
+        if (book != null) {
+            // 数据名称
+            if (book.getBookName() != null &amp;&amp; !book.getBookName().equals("")) {
+                sql.append(" and book_name like ? ");
+                plist.add("%"+book.getBookName()+"%");
+            }
+            if (book.getWriter() != null &amp;&amp; !book.getWriter().equals("")) {
+
+                sql.append(" and writer=? ");
+                plist.add(book.getWriter());
+            }
+
+        }
+
+
+        List&lt;Book&gt; list = dao.list(sql.toString(),plist);
+        for(Book b:list) {
+            System.out.println(b.toString());
+        }
+    }
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="8rkg" id="22-添加数据">2.2 添加数据</h3><pre data-anchor-id="6ddl"><code>    /**
+     * 添加书籍信息
+     * @param book
+     * @return
+     */
+    public boolean add(Book book) {
+
+        Connection con = null;
+        PreparedStatement pre =null;
+
+        try {
+            //获取连接
+            con = JDBCUtils.getConnection();
+            String sql = "insert into book (book_id,sort,book_name,writer,output,price)"
+                    + " values(?,?,?,?,?,?)";
+            //创建实例
+            pre = con.prepareStatement(sql);
+            pre.setInt(1, book.getBookId());
+            pre.setString(2, book.getSort());
+            pre.setString(3, book.getBookName());
+            pre.setString(4, book.getWriter());
+            pre.setString(5, book.getOutPut());
+            pre.setDouble(6, book.getPrice());
+            //executeUpdate 添加 修改 删除  返回影响行数 大于1 证明操作成功
+            int i = pre.executeUpdate();
+            if(i&gt;0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.release(null, pre, con);
+        }
+
+        return false;
+    }
+</code></pre><p data-anchor-id="ap48">测试：</p><pre data-anchor-id="0fum"><code>@Test
+    public void add() {
+        Book b = new Book();
+        b.setBookId(1001);
+        b.setSort("TTT/123");
+        b.setBookName("java工程师");
+        b.setWriter("老牛吃嫩草");
+        b.setOutPut("柠檬出版社");
+        b.setPrice(998.0);
+
+        BookDAO dao = new BookDAO();
+        boolean f = dao.add(b);
+        if(f) {
+            System.out.println("添加成功");
+        }else {
+            System.out.println("添加失败");
+        }
+
+
+    }
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="5rjz" id="23-修改数据">2.3 修改数据</h3><pre data-anchor-id="ntzl"><code>/**
+     * 修改书籍信息
+     * @param book
+     * @return
+     */
+    public boolean update(Book book) {
+
+        Connection con = null;
+        PreparedStatement pre =null;
+
+        try {
+            //获取连接
+            con = JDBCUtils.getConnection();
+            String sql = "update  book set sort=?,book_name=?,writer=?,output=?,price=?"
+                    + " where book_id = ?";
+            //创建实例
+            pre = con.prepareStatement(sql);
+
+            pre.setString(1, book.getSort());
+            pre.setString(2, book.getBookName());
+            pre.setString(3, book.getWriter());
+            pre.setString(4, book.getOutPut());
+            pre.setDouble(5, book.getPrice());
+            pre.setInt(6, book.getBookId());
+            //executeUpdate 添加 修改 删除  返回影响行数 大于1 证明操作成功
+            int i = pre.executeUpdate();
+            if(i&gt;0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.release(null, pre, con);
+        }
+
+        return false;
+    }
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="1yry" id="24-删除数据">2.4 删除数据</h3><p data-anchor-id="zz6e">/** <br>
+ * 根据编号删除书籍信息 <br>
+ * @param bookId 书籍编号 <br>
+ * @return <br>
+ */ <br>
+public boolean delete(Integer bookId) {</p><pre data-anchor-id="yxnf"><code>Connection con = null;
+PreparedStatement pre =null;
+
+try {
+    //获取连接
+    con = JDBCUtils.getConnection();
+    String sql = "delete from book  where book_id = ?";
+    //创建实例
+    pre = con.prepareStatement(sql);
+
+    pre.setInt(1,bookId);
+    //executeUpdate 添加 修改 删除  返回影响行数 大于1 证明操作成功
+    int i = pre.executeUpdate();
+    if(i&gt;0) {
+        return true;
+    }
+
+} catch (Exception e) {
+    e.printStackTrace();
+}finally {
+    JDBCUtils.release(null, pre, con);
+}
+
+return false;
+</code></pre><p data-anchor-id="tojv">}</p><div class="md-section-divider"></div><h2 data-anchor-id="0c9n" id="3-事务操作">3 事务操作</h2><pre data-anchor-id="lwu7"><code>Connection con = null;
+PreparedStatement pre1 = null;
+PreparedStatement pre2 = null;
+try {
+
+    //获取连接
+    con = JDBCUtils.getConnection();
+    //关闭自动提交事务
+    con.setAutoCommit(false);
+
+    pre1 = con.prepareStatement("insert into book (book_id,sort,book_name) values(10001,'ttttt/111','java工程师')");
+    pre2 = con.prepareStatement("insert into book (book_id,sort,book_name) values(10002,'ssss/111','PHP工程师')");
+
+    pre1.executeUpdate();
+    pre2.executeUpdate();
+
+    //手动提交事务
+    con.commit();
+
+} catch (Exception e) {
+    try {
+        //回滚
+        con.rollback();
+    } catch (SQLException e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+    }
+    e.printStackTrace();
+}finally {
+    JDBCUtils.release(null, pre1, con);
+    JDBCUtils.release(null, pre2, null);
+}
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="ccoi" id="4-jdbc-调用oracle存储过程">4 JDBC 调用oracle存储过程</h2><p data-anchor-id="l903">CallableStatement：</p><pre data-anchor-id="my70"><code>    //1、创建执行存储过程的语句对象
+    String sql = "{call findEmpInfo(?,?,?)}";
+    CallableStatement callableStatement = connection.prepareCall(sql);
+    //2、设置参数
+    callableStatement.setInt(1, 7902);
+    callableStatement.registerOutParameter(2, oracle.jdbc.OracleTypes.VARCHAR);
+    callableStatement.registerOutParameter(3, oracle.jdbc.OracleTypes.NUMBER);
+    //3、执行
+    callableStatement.execute();
+    //4、获取数据
+    String ename = callableStatement.getString(2);
+    double sal = callableStatement.getDouble(3);
+    System.out.println("姓名："+ename+" 员工工资："+sal);
+</code></pre></div>
+</body>
+</html>

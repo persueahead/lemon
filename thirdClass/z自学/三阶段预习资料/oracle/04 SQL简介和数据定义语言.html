@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>04 SQL简介和数据定义语言</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="y5fb" id="04-sql简介和数据定义语言">04 SQL简介和数据定义语言</h1><hr><div class="md-section-divider"></div><h2 data-anchor-id="bv6c" id="1sql简介">1.SQL简介</h2><ul data-anchor-id="dlv8">
+<li>SQL 是 Structured Query Language（结构化查询语言）的首字母缩写词</li>
+<li>SQL 是数据库语言，Oracle使用该语言存储和检索信息 </li>
+<li>通过 SQL可以实现与 Oracle 服务器的通信</li>
+<li>表是主要的数据库对象，用于存储数据 <br>
+<img src="http://static.zybuluo.com/l363130002/85cpzn2f4ge06qeemfyab9z6/image_1c08gr0ra1dph631nqsun0idi13.png" alt="image_1c08gr0ra1dph631nqsun0idi13.png-75.2kB" title=""></li>
+<li>SQL 支持下列类别的命令</li>
+</ul><blockquote data-anchor-id="quk6" class="white-blockquote">
+  <p>数据定义语言（DDL）: CREATE ALTER DROP <br>
+  数据操纵语言（DML）: INSERT DELETE UPDATE SELECT <br>
+  事务控制语言（TCL）: COMMIT ROLLBACK  <br>
+  数据控制语言（DCL）: GRANT REVOKE </p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="bays" id="2数据定义语言">2.数据定义语言</h2><p data-anchor-id="v7fm">数据定义语言用于改变数据库结构，包括创建、更改和删除数据库对象 <br>
+用于操纵表结构的数据定义语言命令有：    </p><blockquote data-anchor-id="1au4" class="white-blockquote">
+  <p>CREATE TABLE  创建表 <br>
+  ALTER TABLE  修改表 <br>
+  TRUNCATE TABLE 删除表中的数据 日志只记录一次  效率高 <br>
+  DROP TABLE 删除表</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="wv1b" id="21创建表">2.1创建表</h3><blockquote data-anchor-id="8mj1" class="white-blockquote">
+<pre><code>create table emp
+(
+  emp_id NUMBER(10) not null, --员工编号
+  emp_name VARCHAR2(100), --员工姓名
+  emp_sex VARCHAR2(5), --员工性别
+  emp_birthday DATE, --生日
+  emp_salary DATE,  --薪资
+  primary key (emp_id)  --主键
+)
+</code></pre>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="mvxd" id="22修改表">2.2修改表</h3><blockquote data-anchor-id="5lz5" class="white-blockquote">
+<pre><code>alter table 表名  add constraint 字段 primary key (字段); --设置主键
+alter table USER_INFO modify USER_NAME VARCHAR2(500); --修改字段长度
+</code></pre>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="f2fp" id="23删除表记录">2.3删除表记录</h3><blockquote data-anchor-id="8wkw" class="white-blockquote">
+  <p>TRUNCATE TABLE 表名 <br>
+  TRUNCATE TABLE USER_INFO</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="i262" id="24删除表">2.4删除表</h3><blockquote data-anchor-id="9byr" class="white-blockquote">
+  <p>DROP TABLE 表名</p>
+</blockquote><p data-anchor-id="zdq2"><code>oracle</code></p></div>
+</body>
+</html>

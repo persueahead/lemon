@@ -1,0 +1,303 @@
+一、.扩展
+		    1-1 当客户端【关闭】，服务器不进行关闭，两次获取的Session是不是同一个Seesion
+		        默认的情况下，(不是)  
+		       1-1-1如有的情况下，需要相同.
+		                1-1-2-1可进行  创建Cookie,的键为JSESSIONID,设置最大存活时间，让Cookie持久化保存    
+		                下节课来写代码
+		          代码如下:       
+                  	HttpSession  session=	request.getSession();
+					 Object  obj=  session.getAttribute("msg");
+					   System.out.println(obj);
+					  //创建Cookie
+					   Cookie  cook=	   new Cookie("JSESSIONID",session.getId());
+					   //设置Cookie的时间
+					   cook.setMaxAge(60 * 60);
+					   
+					   response.addCookie(cook); 
+		   1-2、当客户端进行【不关闭】，服务器【关闭】后,两次获取的Session是同一个吗？
+		   			     不是同一个，当要确保数据不丢失。tomcat会进自动的完成如下的工作
+		        1-2-1、Session的钝化
+		                            在服务器正常的关闭之前，将Session对象进行序列化到磁盘中
+		            
+		        1-2-2、Session的话化     
+		                               在服务器启动后，将Seesion文件进行转化为内存中的Seesion对象即可
+		        
+		         可以查询E:\EclipseFile\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work
+		           目录下的文件(SESSIONS.ser)                        
+		   
+		   1-3、Session什么时候进行被销毁
+		            1、服务器进行关闭
+		            2、Session对象进行调用session.invalidate();方法
+		            3、默认的情况下，Session失效是时间是30分钟
+		             	3-1、也可以进行设置失效的时间
+		             	 	 tomcat中web.xml文件中进行设置
+		             	 	  session-config配置进行设置          
+		                <session-config>
+						        <session-timeout>30</session-timeout>
+						 </session-config>
+二、  Session的特点
+       	1、用于在存储一次会话的多次请求的参数，注意存在【服务器】
+        2、可以进行存储任意的数据、并且任意的大小
+三、Session和Cookie之间的区别
+     1、Session是存储在服务器的而cookie是存在客户端的
+     2、Session是没有大小限制，而Cookie有的
+     3、Seesion的数据是安全的，Cookie是相对于不安全的
+=======================================================================
+========================================================================
+一、JSP
+     1.jsp 【Java Server  Pages】  java服务端页面
+        		就一个简化的Servlet的设计
+     2、可以进行理解为是一个特殊的页面，可以进行指定HTML标签和定义java里面的代码
+二、JSP的指令
+ 	用于配置JSP页面，导入资源的文件
+		  1、格式：
+		       <%@指令名称   属性名1=属性值1  属性名2=属性值2  ......>
+		       如:
+		   		<%@page  contentType="text/html;charset=UTF-8"  language="java">	         
+		  2、分类
+		      1、page 【配置jsp页面】
+		           1、contentType类似于Servlet中的response.setContentType(type);
+		      			进行设置响应体的mime类型以及字符集
+		      	   2、设置当前页面的	 编码格式
+		      	            使用 pageEncoding="UTF-8"来进行设置
+		      	   3、import="" 导包 
+		      	   4、errorPage="" 
+		      	                标识的当前的这个页面发生了异常，会进行跳转到某个错误的页面使用  errorPage="" 来进行指定
+		      	   5、isErrorPage="false"
+		      	          	指定当前页面是否可以作为另一个JSP页面的错误处理页面
+		      	              true:是，可以使用内置对象【Exeption】了解
+		      	       		   false 不是【默认的】  不能进行使用内置对象【Exeption】	
+		      2、include 【页面包含的，导入的页面的资源文件】
+						        如引用
+						          <%@ include file="NewFile.jsp" %>    
+		      2、taglib【导入资源】
+		    		      一般技术使用这个指令进行引入JSTL的
+ 					 1、prefix=""前缀
+ 					 2、uri=""地址 
+           		     如引用JSTL(后面学)【导入对应的jar包】
+                 		<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+三、jsp页面中注释
+    1、html注释
+        注意：使用HTML这种注释会进行显示在前端的页面上
+		    如:
+		    <!-- <c:if test=""></c:if> -->      
+    2、JSP的注释
+           	可以进行注释所有的资源代码
+     注意：使用了这种注释也能进行注释HTML页面【注释了之后不会进行显示在前端的 页面上】
+		 <%-- <base href="<%=basePath%>" /> --%>           
+		            
+四、jsp脚本
+    jsp页面上进行定义java代码的方式
+  语法:
+     1、*  <%  对应的java代码  %>
+     		1、定义的java代码，在对应的页面进行编译后会生成.java文件
+     		2、这里面可以进行编写【在Service行中可以进行编写什么在这里就可以记性编写什么】
+     		3、Service方法就是.java文件中的方法
+     		4、一般情况主要获取相对的路径地址
+     		<%
+					//获取绝对路径路径 
+					String path = request.getContextPath();
+				
+					String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+							+ path + "/";
+			%> 
+     		
+     2、<%! 对应的java代码  %>
+       			1、定义的是java代码，对应在jsp页面进行转换后的Java类的成员的位置
+     		  如：
+     		  <%!  String  lastName="admin";  %>
+     		  编译后的代码
+     		   public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+				    implements org.apache.jasper.runtime.JspSourceDependent,
+				                 org.apache.jasper.runtime.JspSourceImports {
+						  String  lastName="admin";  
+     		  
+     3、<%=   对应的JAVA代码 %>
+    		 1、定义的java代码，进行输出到页面上
+    		 2、输出的语句中可以定义什么，该脚本就可以进行定义什么           
+五、原理
+     jsp 本质上就一个Servlet
+      如jsp原理图
+六、 内置对象
+   1、一共有九个
+   2、jsp页面中，不需要进行创建，可以进行直接的使用对象
+   3、说了就在jsp页面编译的_jspService方法可以进行看到      
+   4、九大内置对象如下：
+     	 pageContext
+            		作用:当前页面共享数据，还可以获取其他的8个内置对象
+     	 request
+      				作用：一次请求访问的多个资源(转发)
+     	 session 
+     	 				作用:一次会话多个请求
+      	application    
+        			作用:所有的用户共享数据
+       response
+       			          作用：响应对象
+     	 page 		
+                 	作用:当前页面 (Servlet)的对象 ==>this			     											      		     		            
+		out
+					作用:输出对象，数据输出到页面上
+					
+		config
+					作用:Servlet的配置对象
+		Exception
+					作用:  异常对象			
+	  4大作用域：
+	     	request           
+		    session        
+		    application  
+		    page  
+案列pageContext
+		  		<body>
+					<%
+					pageContext.setAttribute("name", "隔壁老陈");
+					request.setAttribute("lasetName", "隔壁老张");
+					session.setAttribute("age",123123);
+					%>
+					<hr/>
+					<%=pageContext.getAttribute("name") %>
+					<%=request.getAttribute("lasetName") %>
+					<%=session.getAttribute("age") %>
+					</body>	    
+		//获取其他的作用域的对象
+			pageContext.getResponse();
+			pageContext.getRequest();
+			pageContext.getAttribute();    
+		//案列:servlet返回对应的数据
+						request.setAttribute("nameRequest","nameRequest");
+						HttpSession  session=request.getSession();
+							session.setAttribute("nameSession", "nameSession");
+							ServletContext  context=	request.getServletContext();
+							context.setAttribute("contextName", "contextName");
+						//	request.getRequestDispatcher("student.jsp").forward(request, response);
+							response.sendRedirect("student.jsp");
+					页面获取:
+						nameRequest:<%=request.getAttribute("nameRequest") %><br/>
+						nameRequest:<%=session.getAttribute("nameSession") %><br/>
+						nameSession:<%=application.getAttribute("contextName") %><br/>
+============================
+一：MVC模式
+   什么是MVC模式?
+       了解下JSP页面的演变到开发模式
+        1、在早期只有Servlet,只能 使用  response输出标签来进行显示数据
+        
+        2、后来出现JSP；简化了Servlet的开发，在jsp中可以进行写大量Java代码与HTML代码
+           由于，大量的java代码与Hmtl混合在一起，就导致维护起来非常困难
+           
+        3、后面就出现了WEB开发，就是借鉴与MVC开发的模式，使用程序设计更加的合理化，更加的便于开发与维护
+           
+二、MVC模式
+     1.MVC的全名称，Model  View  Controller
+         model【模型】  view【视图】  controller【控制器】 
+     2、是一种软件的设计典范，用一种业务逻辑
+    			 数据、界面显示的分离的方法，从而组成的代码
+     3、将业务逻辑聚集到一个部件里面，在进行改进和个性化定制页面与用户进行交互，就不需要进行重新的编写新业务逻辑了
+     
+  model【模型】
+        1、主要进行完成具体的业务操作(查询数据，封装对象)。。。。。。
+  view【视图】
+        1、用于展示数据的如(jsp  html ....)
+  controller【控制器】 
+   		1、主要用于用户的输入数据
+   		2、进行调用模型
+   		3、进行返回数据给视图展示	               
+  
+三、优点缺点
+   优点
+	     耦合性低
+	     方便维护
+	     利于分工协作
+	     重用性高
+   缺点
+       使整个项目架构变的复杂化了     
+     
+ ===================================
+ 一、EL
+   Expresion  Language
+         1、就是为了使用JSP写起来更加的简单 
+          2、让jsp页面上的代码更加的简化整洁
+    语法:${写上表达式} 
+    【注意】
+      1、jsp页面默认是支持el表达式的，如要进行忽略el表达式
+		   	 	   就需要在jsp页面的page指令中进行设置 isELIgnored="true"  
+		       	  就表示当前的jsp页面中所有的el表达式忽略
+		      如忽略jsp也的el表达式   	  
+		  <%@ page language="java"  isisELIgnored="true"  contentType="text/html; charset=UTF-8"
+		    pageEncoding="UTF-8"%>
+	  2、有的情况下，要进行忽略某个El表达式
+	      \${表达式 }  忽略当前的EL表达式	                 
+   【入门案列】            
+  		 Servlet
+  		 				request.setAttribute("nameRequest","nameRequest");
+						HttpSession  session=request.getSession();
+					session.setAttribute("nameSession", "nameSession");
+					ServletContext  context=	request.getServletContext();
+					context.setAttribute("contextName", "contextName");
+					request.getRequestDispatcher("student2.jsp").forward(request, response);
+	    jsp页面【EL生效】
+	       				Request:${nameRequest}<br/>
+						Session:${nameSession}<br/>
+						application:${contextName}<br/>		
+		【某个EL失效】以文本的方式呈现		
+							Request:\${nameRequest}<br/>
+							Session:\${nameSession}<br/>
+							application:${contextName}<br/>
+		【某个jsp页面EL失效】以文本的方式呈现
+					<%@ page language="java"   isELIgnored="true"  contentType="text/html; charset=UTF-8"
+   							 pageEncoding="UTF-8"%>
+二、运算
+     1、算术运算符
+         - + * /【div】    %【mod】
+     		[案列]
+     		<h1>算术运算符</h1>
+				\${ 7 + 9 }:${ 7 + 9 }<br/>
+				\${ 18 / 9 }:${ 18 / 9 }<br/>
+				\${ 18 div 9 }::${18 div 9}<br/> 
+				\${ 7 * 9 }:${ 7 * 9 }<br/>
+				\${ 18 % 9 }:${ 18 % 9 }<br/>
+				\${ 28 mod  7 }:${ 28 mod 7 }<br/>
+	
+     2、比较运算符
+        >  <  >=  <=  ==  !=
+     	[案列]
+     			<h1>比较运算符</h1>
+				\${ 3 == 6 }:	${ 3 == 6 }<br/>
+				\${ 3 != 6 }:	${ 3 != 6 }<br/>
+     3、逻辑运算符
+         &&【and】    ||【or】     !【not】
+     	[案列]
+     		<h1>逻辑运算符</h1>
+			\${ 3 == 6  &&    3 != 6  }:	${ 3 == 6  &&    3 != 6  }<br/>
+			\${ 3 < 6  ||  1 < 3 }:	${ 3 < 6  ||  1 < 3 }<br/>
+			\${ 3 == 6  and    3 != 6  }:	${ 3 == 6  and    3 != 6  }<br/>
+			\${ 3 < 6  or  1 < 3 }:	${ 3 < 6 or   1 < 3 }<br/>	
+     
+     4、空运算符【判断是否为空（是否有数据）】
+	  empty
+	       	【功能】
+	       	    1、用于判断字符串、集合、数组、对象是否为null  或者  长度是否为0
+	       	        【语法】
+	       	        1、${empty 表达式}
+	       	           判断当前的表达式[字符串、集合、数组、对象]是否为null  或者  长度为0
+	       	        2、${not empty 表达式}    
+	       	          判断当前的表达式[字符串、集合、数组、对象]是否不为null  或者  长度大于0  
+	       	  [案列]
+	       	  		<h1>空运算符</h1>
+					<% ArrayList array= new ArrayList();
+					array.add("小张");
+					array.add("小王");
+					array.add("小李");
+					request.setAttribute("array",array);
+					%>
+					${array}<br/>
+					ArrayList:${empty array}<br/>
+					ArrayList:${not empty array}<br/>
+	   5、【注意】
+	          el表达式只能从域对象中进行获取到值
+					       如:${array}这回事语法使用哪个域中进行获取的值?
+					           获取的方式:依次从最小的域中进行查询，是否有该键所对应的值，直到查询到为止,如没有查询则就是显示空null  
+						如:${域名称.array}	    
+						    下节课来说       
+	            	  		       			
+					
+						    

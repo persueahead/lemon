@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>31 Oracle 触发器</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="9coq" id="31-oracle-触发器">31 Oracle 触发器</h1><p data-anchor-id="bdn5"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="wu7o" id="1-触发器">1 触发器</h2><p data-anchor-id="npu3">触发器是当特定事件出现时自动执行的存储过程 <br>
+特定事件可以是执行更新的DML语句和DDL语句 <br>
+触发器不能被显式调用 <br>
+触发器的功能：</p><pre data-anchor-id="1s0s"><code>自动生成数据
+自定义复杂的安全权限
+提供审计和日志记录
+启用复杂的业务逻辑
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="j17f" id="2-创建触发器的语法">2 创建触发器的语法</h2><pre data-anchor-id="cnxx"><code>CREATE [OR REPLACE] TRIGGER trigger_name
+AFTER | BEFORE | INSTEAD OF
+[INSERT] [[OR] UPDATE [OF column_list]] 
+[[OR] DELETE]
+ON table_or_view_name
+[REFERENCING {OLD [AS] old / NEW [AS] new}]
+[FOR EACH ROW]
+[WHEN (condition)]
+pl/sql_block;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="ntgx" id="3-触发器的组成部分">3 触发器的组成部分</h2><p data-anchor-id="96ef">触发器由三部分组成： <br>
+触发器语句（事件） 定义激活触发器的 DML 事件和 DDL 事件</p><pre data-anchor-id="2194"><code>   --在更新 emp_sal 列之后激活触发器
+    CREATE OR REPLACE TRIGGER trig_sal
+        AFTER UPDATE OF empsal ON salary_records
+</code></pre><p data-anchor-id="4q0c">触发器限制  执行触发器的条件，该条件必须为真才能激活触发器</p><pre data-anchor-id="sc3v"><code>--如果WHEN子句中的条件得到满足，将执行BEGIN 块中的代码
+BEGIN
+      sal_diff:=:NEW.empsal-:OLD.empsal;
+      DBMS_OUTPUT.PUT_LINE(‘工资差额：’sal_diff);
+    END;
+</code></pre><p data-anchor-id="3673">触发器操作（主体） 包含一些 SQL 语句和代码，它们在发出了触发器语句且触发限制的值为真时运行</p><pre data-anchor-id="qzkg"><code>--只有在WHEN子句中的条件得到满足时，才激活trig_sal 触发器
+FOR EACH ROW
+    WHEN (NEW.empsal&gt;OLD.empsal)
+    DECLARE
+    Sal_diff NUMBER;
+</code></pre><p data-anchor-id="aqr6"><strong>BRFORE触发器的工作原理</strong> <br>
+<img src="http://static.zybuluo.com/l363130002/e0axbz791s33tl0sca5shncz/image_1c1ckcqns1mdm15qm3a7i158cd9.png" alt="image_1c1ckcqns1mdm15qm3a7i158cd9.png-73.1kB" title=""> <br>
+<strong>AFTER触发器的工作原理</strong> <br>
+<img src="http://static.zybuluo.com/l363130002/s9hqzol4uk1cvgfw37rrc3w2/image_1c1ckrkse1u4s1upusrnr20qdh4a.png" alt="image_1c1ckrkse1u4s1upusrnr20qdh4a.png-69.7kB" title=""></p><pre data-anchor-id="i78h"><code>CREATE OR REPLACE TRIGGER aiu_itemfile
+AFTER INSERT
+ON itemfile
+FOR EACH ROW
+BEGIN
+  IF (:NEW.qty_hand = 0) THEN
+    DBMS_OUTPUT.PUT_LINE('警告：已插入记录，但数量为零');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE(‘已插入记录');
+  END IF;
+END;
+--AFTER
+create or replace trigger book_update_trigger1
+AFTER  update on book 
+begin 
+ DBMS_output.put_line(' AFTER修改数据成功!2');
+end;
+---BRFORE
+create or replace trigger book_update_trigger2
+before  update on book 
+begin 
+ DBMS_output.put_line(' before修改数据成功!1');
+end;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="yy6l" id="4-触发器类型">4 触发器类型</h2><p data-anchor-id="7wey"><img src="http://static.zybuluo.com/l363130002/4bxxge1es1canaevqg5h4l59/image_1c1ckf9d81kl51b3j1hatqr711kd13.png" alt="image_1c1ckf9d81kl51b3j1hatqr711kd13.png-55.7kB" title=""></p><p data-anchor-id="l83a"><img src="http://static.zybuluo.com/l363130002/kdf557b5ltgr6gxhwzz0d653/image_1c1cki8g8ueb1qbngog1ds9pah3t.png" alt="image_1c1cki8g8ueb1qbngog1ds9pah3t.png-148.2kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="d4oq" id="41-行级触发器">4.1 行级触发器</h3><pre data-anchor-id="0yba"><code>---创建表
+CREATE TABLE TEST_TRG
+          (ID NUMBER, NAME VARCHAR2(20));
+---创建序列
+CREATE SEQUENCE SEQ_TEST;
+
+----创建触发器(ID自动增长触发器)
+CREATE OR REPLACE TRIGGER BI_TEST_TRG
+BEFORE INSERT OR UPDATE OF ID
+ON TEST_TRG
+FOR EACH ROW
+BEGIN
+     IF INSERTING THEN
+       SELECT SEQ_TEST.NEXTVAL INTO :NEW.ID FROM DUAL;
+     ELSE
+       RAISE_APPLICATION_ERROR(-20020, '不允许更新ID值！');
+     END IF;
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="qanm" id="42-语句级触发器">4.2 语句级触发器</h3><pre data-anchor-id="ahuu"><code>CREATE OR REPLACE TRIGGER trgdemo
+   AFTER INSERT OR UPDATE OR DELETE
+   ON order_master
+BEGIN
+   IF UPDATING THEN
+     DBMS_OUTPUT.PUT_LINE(‘已更新 ORDER_MASTER 中的数据');
+   ELSIF DELETING THEN
+     DBMS_OUTPUT.PUT_LINE(‘已删除 ORDER_MASTER 中的数据');
+   ELSIF INSERTING THEN
+     DBMS_OUTPUT.PUT_LINE(‘已在 ORDER_MASTER 中插入数据');
+   END IF;
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="ob87" id="43-instead-of-触发器">4.3 INSTEAD OF 触发器</h3><pre data-anchor-id="52yz"><code>--创建视图
+CREATE OR REPLACE view book_view as 
+select * from book;
+--创建触发器
+CREATE OR REPLACE TRIGGER upd_ord_view
+  INSTEAD OF UPDATE ON book_view
+  FOR EACH ROW
+BEGIN
+  update book set book_name=:new.book_name where book_id=:old.book_id;
+  DBMS_OUTPUT.PUT_LINE('已激活触发器');
+END;
+update book_view set book_name='java上班' where book_id='445501'
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="xprw" id="44-模式触发器">4.4 模式触发器</h3><pre data-anchor-id="vhb3"><code> CREATE TABLE dropped_obj (
+          obj_name VARCHAR2(30),
+          obj_type VARCHAR2(20),
+          drop_date DATE);
+
+SQL&gt; CREATE OR REPLACE TRIGGER log_drop_obj
+AFTER DROP ON SCHEMA
+BEGIN
+  INSERT INTO dropped_obj
+  VALUES( ORA_DICT_OBJ_NAME, 
+          ORA_DICT_OBJ_TYPE, 
+          SYSDATE);
+END;
+</code></pre><p data-anchor-id="o5tc">ORA_DICT_OBJ_NAME 触发DDL的数据库对象名称 <br>
+ ORA_DICT_OBJ_TYPE 触发DDL的数据库对象类型</p><pre data-anchor-id="izlj"><code> drop table employee2;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="ohkh" id="5-启用禁用和删除触发器">5 启用、禁用和删除触发器</h2><p data-anchor-id="5xb6">启用和禁用触发器</p><pre data-anchor-id="kvsh"><code>SQL&gt; ALTER TRIGGER aiu_itemfile DISABLE;
+SQL&gt; ALTER TRIGGER aiu_itemfile ENABLE;
+</code></pre><p data-anchor-id="exxb">删除触发器</p><pre data-anchor-id="9zyl"><code>SQL&gt; DROP TRIGGER aiu_itemfile;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="5gey" id="6-查看有关触发器的信息">6 查看有关触发器的信息</h2><p data-anchor-id="s7mj">USER_TRIGGERS 数据字典视图包含有关触发器的信息</p><pre data-anchor-id="wxo4"><code>SQL&gt; SELECT TRIGGER_NAME FROM USER_TRIGGERS
+WHERE TABLE_NAME='EMP';
+
+SQL&gt; SELECT TRIGGER_TYPE, TRIGGERING_EVENT, WHEN_CLAUSE
+FROM USER_TRIGGERS
+WHERE TRIGGER_NAME = 'BIU_EMP_DEPTNO';
+</code></pre></div>
+</body>
+</html>

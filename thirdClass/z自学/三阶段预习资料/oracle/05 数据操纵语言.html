@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>05 数据操纵语言</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="1z8b" id="05-数据操纵语言">05 数据操纵语言</h1><hr><p data-anchor-id="jog2"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="0e7o" id="1-数据操纵语言">1 数据操纵语言</h2><ul data-anchor-id="vh37">
+<li>数据操纵语言用于检索、插入和修改数据 </li>
+<li>数据操纵语言是最常见的SQL命令 </li>
+<li>数据操纵语言命令包括：</li>
+</ul><blockquote data-anchor-id="2tyj" class="white-blockquote">
+  <p>SELECT 查询 <br>
+  INSERT 添加 <br>
+  UPDATE 修改 <br>
+  DELETE 删除</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="6204" id="2-select命令查询">2 SELECT命令（查询）</h2><div class="md-section-divider"></div><h3 data-anchor-id="w0il" id="21-查询表中记录">2.1 查询表中记录</h3><blockquote data-anchor-id="s6u9" class="white-blockquote">
+  <p>SELECT * FROM EMP; --查询所有员工信息</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="s91s" id="22-利用现有的表创建表">2.2 利用现有的表创建表</h3><blockquote data-anchor-id="il6m" class="white-blockquote">
+  <p>语法：CREATE TABLE new_table_name AS <br>
+          SELECT column_names FROM old_table_name; <br>
+  <img src="http://static.zybuluo.com/l363130002/b017fwckslbzrmmhzajxv4m2/image_1c08iq8ll1bkh1inu8so4p9ur99.png" alt="image_1c08iq8ll1bkh1inu8so4p9ur99.png-22.5kB" title=""></p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="icox" id="23-选择无重复的行distinct关键字">2.3 选择无重复的行(DISTINCT关键字)</h3><p data-anchor-id="8vik">在SELECT子句，使用DISTINCT关键字</p><blockquote data-anchor-id="7ej3" class="white-blockquote">
+  <p><code>SELECT DISTINCT emp_name FROM emp;</code></p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="ysav" id="24-使用列别名">2.4 使用列别名</h3><p data-anchor-id="opbz">为列表达式提供不同的名称 <br>
+该别名指定了列标题</p><blockquote data-anchor-id="foro" class="white-blockquote">
+  <p><code>select emp_id,emp_name,emp_sex,emp_birthday,emp_salary*2 from emp;</code></p>
+</blockquote><pre data-anchor-id="16pf"><code> select emp_id,emp_name,emp_sex,emp_birthday,emp_salary*2 as "双倍薪资" from emp;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="6su8" id="3-insert命令添加">3 INSERT命令（添加）</h2><div class="md-section-divider"></div><h3 data-anchor-id="r4xq" id="31-添加记录">3.1 添加记录</h3><blockquote data-anchor-id="vjpi" class="white-blockquote">
+  <p>insert into emp (emp_id,emp_name,emp_sex,emp_salary) <br>
+  values(2,'李四'，'女',3000);</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="utt5" id="32-插入日期类型的值">3.2 插入日期类型的值</h3><ul data-anchor-id="f6pk">
+<li>日期数据类型的默认格式为“DD-MON-RR” </li>
+<li>使用日期的默认格式 </li>
+<li>使用TO_DATE函数转换</li>
+</ul><blockquote data-anchor-id="byqt" class="white-blockquote">
+  <p>insert into emp (emp_id,emp_name,emp_sex,emp_birthday,emp_salary) <br>
+  values(5,'李四','女','12-12月-2017',3000);</p>
+  
+  <p>insert into emp (emp_id,emp_name,emp_sex,emp_birthday,emp_salary) <br>
+  values(6,'李四','女',to_date('2017-12-12','YYYY-MM-DD'),3000);</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="g4an" id="33-插入来自其它表中的记录">3.3 插入来自其它表中的记录</h3><blockquote data-anchor-id="f2pc" class="white-blockquote">
+  <p>INSERT INTO table_name    SELECT column_names FROM other_table_name;</p>
+  
+  <p>insert into emp2  select * from emp;</p>
+  
+  <p>insert into emp2(emp_id,emp_name)  select emp_id,emp_name from emp;</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="p11k" id="4-update命令修改">4 UPDATE命令（修改）</h2><blockquote data-anchor-id="zw18" class="white-blockquote">
+  <p>update emp set emp_name = '张三',emp_sex='男' where emp_id='3' </p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="9pxv" id="5-delete命令修改">5 DELETE命令（修改）</h2><blockquote data-anchor-id="uhmh" class="white-blockquote">
+  <p>delete from  emp  --删除所有记录 <br>
+  delete from emp where emp_id=1  --删除一条记录 </p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="t52d" id="6-droptruncate和delete的区别">6 DROP、TRUNCATE和DELETE的区别</h2><p data-anchor-id="nffb">(1) 日志记录</p><blockquote data-anchor-id="u3bd" class="white-blockquote">
+  <ul>
+  <li>DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行进行回滚操作。 </li>
+  <li>TRUNCATE TABLE则一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器。执行速度快</li>
+  </ul>
+</blockquote><p data-anchor-id="9fxa">(2) 表和索引所占空间</p><blockquote data-anchor-id="bumh" class="white-blockquote">
+  <ul>
+  <li>当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小</li>
+  <li>DELETE操作不会减少表或索引所占用的空间。  </li>
+  <li>DROP语句将表所占用的空间全释放掉。</li>
+  </ul>
+</blockquote><p data-anchor-id="yphe">(3) 效率</p><blockquote data-anchor-id="c3ky" class="white-blockquote">
+  <p>drop &gt; truncate &gt; delete</p>
+</blockquote></div>
+</body>
+</html>

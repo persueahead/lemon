@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>03 Oracle数据类型</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="tqbw" id="03-oracle数据类型">03 Oracle数据类型</h1><hr><div class="md-section-divider"></div><h2 data-anchor-id="eplh" id="1oracle-数据类型简介">1.Oracle 数据类型简介</h2><p data-anchor-id="rnk5">创建表时，必须为各个列指定数据类型,以下是 Oracle 数据类型的类别：</p><p data-anchor-id="rxti"><img src="http://static.zybuluo.com/l363130002/scg30qq6jj5uvakdye3nhzld/image_1c08g2if71li5cifsn42htcui9.png" alt="image_1c08g2if71li5cifsn42htcui9.png-33.4kB"></p><div class="md-section-divider"></div><h2 data-anchor-id="0upb" id="2字符数据类型">2.字符数据类型</h2><p data-anchor-id="iau6"><img src="http://static.zybuluo.com/l363130002/lor571rpzsktp4t6e2olqz7y/image_1c08g4iq25qu1pqr15vk127b11pm9.png" alt="image_1c08g4iq25qu1pqr15vk127b11pm9.png-33kB" title=""></p><blockquote data-anchor-id="v3p4" class="white-blockquote">
+  <p>当需要固定长度的字符串时，使用 CHAR 数据类型。 <br>
+  CHAR 数据类型存储字母数字值。 <br>
+  CHAR 数据类型的列长度可以是 1 到 2000 个字节。 <br>
+  VARCHAR2数据类型支持可变长度字符串 <br>
+  VARCHAR2数据类型存储字母数字值 <br>
+  VARCHAR2数据类型的大小在1至4000个字节范围内 <br>
+  LONG 数据类型存储可变长度字符数据 <br>
+  LONG 数据类型最多能存储 2GB</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="zgx0" id="3数值数据类型">3.数值数据类型</h2><ul data-anchor-id="nli8">
+<li>可以存储整数、浮点数和实数数据 </li>
+<li>最高精度为 38 位数据</li>
+</ul><blockquote data-anchor-id="j7ew" class="white-blockquote">
+  <p>数值数据类型的声明语法： <br>
+  NUMBER [( p[, s])] <br>
+  P表示精度，S表示小数点的位数</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="rqt0" id="4日期时间数据类型">4.日期时间数据类型</h2><p data-anchor-id="3nz3">日期时间数据类型存储日期和时间值，包括年、月、日，小时、分钟、秒</p><blockquote data-anchor-id="hj50" class="white-blockquote">
+  <p>DATE - 存储日期和时间部分，精确到整个的秒 <br>
+  TIMESTAMP - 存储日期、时间和时区信息，秒值精确到小数点后6位</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="fyph" id="5二进制数据">5.二进制数据</h2><blockquote data-anchor-id="kiq7" class="white-blockquote">
+  <p>RAW 数据类型用于存储二进制数据 <br>
+  RAW 数据类型最多能存储 2000 字节 <br>
+  LONG RAW 数据类型用于存储可变长度的二进制数据 <br>
+  LONG RAW 数据类型最多能存储 2 GB <br>
+  <img src="http://static.zybuluo.com/l363130002/96dv1iagwe6w52ypbfuavuvy/image_1c08ggl3p6bk1iom15711v7qvmf9.png" alt="image_1c08ggl3p6bk1iom15711v7qvmf9.png-101.9kB" title=""></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="2qom" id="6伪列">6.伪列</h2><ul data-anchor-id="31ep">
+<li>Oracle 中伪列就像一个表列，但是它并没有存储在表中</li>
+<li>伪列可以从表中查询，但不能插入、更新和删除它们的值</li>
+<li>常用的伪列有ROWID和ROWNUM <br>
+<img src="http://static.zybuluo.com/l363130002/wmnm2ejrfji6zik3xt0rldw2/image_1c08gip2e13fe16pgf0q6eu1ofcm.png" alt="image_1c08gip2e13fe16pgf0q6eu1ofcm.png-27.8kB" title=""></li>
+</ul><p data-anchor-id="8b8p"><code>oracle</code></p></div>
+</body>
+</html>

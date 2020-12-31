@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>09 Oracle之单行函数</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_SVG_Hidden"></div><svg><defs id="MathJax_SVG_glyphs"><path id="MJMAIN-31" stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJMAIN-32" stroke-width="1" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJMAIN-33" stroke-width="1" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJMAIN-2C" stroke-width="1" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJMAIN-34" stroke-width="1" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path id="MJMAIN-35" stroke-width="1" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJMAIN-36" stroke-width="1" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJMAIN-2E" stroke-width="1" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJMAIN-37" stroke-width="1" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJMAIN-38" stroke-width="1" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJMAIN-2032" stroke-width="1" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path></defs></svg></div><div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="wjam" id="09-oracle之单行函数">09 Oracle之单行函数</h1><hr><p data-anchor-id="pazp"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="nqn7" id="1-sql函数介绍">1 SQL函数介绍</h2><p data-anchor-id="rzf3"><img src="http://static.zybuluo.com/l363130002/z7tgj8o21d9h1osu69ro8ghl/image_1c08qh8sipl510db1n141mch19abm.png" alt="image_1c08qh8sipl510db1n141mch19abm.png-86.3kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/k1n0p5lb2umbeze92yd0tkol/image_1c08qio091l826b11a281fb1uq513.png" alt="image_1c08qio091l826b11a281fb1uq513.png-47kB" title=""></p><p data-anchor-id="dxhj">单行函数</p><ul data-anchor-id="08rn">
+<li>操作数据对象 </li>
+<li>接受函数返回一个结果 </li>
+<li>只对一行进行变换 </li>
+<li>每行返回一个结果 </li>
+<li>可以转换数据类型 </li>
+<li>可以嵌套 </li>
+<li>参数可以是一列或一个值 <br>
+<img src="http://static.zybuluo.com/l363130002/7582m2ranutucnqo654448u7/image_1c08qlbrr1okt19851inb1pmd1e2m1g.png" alt="image_1c08qlbrr1okt19851inb1pmd1e2m1g.png-85.9kB" title=""></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="wfj9" id="2-dual-伪表">2 DUAL 伪表</h2><p data-anchor-id="fy2m">DUAL是一个‘伪表’，可以用来测试函数和表达式</p><blockquote data-anchor-id="h865" class="white-blockquote">
+  <p>获取当前时间： <br>
+  select sysdate  from dual </p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="l3m1" id="3-字符函数">3. 字符函数</h2><p data-anchor-id="uisn"><img src="http://static.zybuluo.com/l363130002/w1iv786s6eo3q1tgywdb4j0q/image_1c08qn0u7102cet7roe173c8r22d.png" alt="image_1c08qn0u7102cet7roe173c8r22d.png-111kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="knap" id="31-大小写控制函数">3.1 大小写控制函数</h3><p data-anchor-id="vheu">这类函数改变字符的大小写 <br>
+<img src="http://static.zybuluo.com/l363130002/48z57a9b4n2lg9lyrieal2w1/image_1c08r1d7famf87n1fv8d9f1q7t37.png" alt="image_1c08r1d7famf87n1fv8d9f1q7t37.png-90.6kB" title=""></p><blockquote data-anchor-id="mhcs" class="white-blockquote">
+  <p>select lower('HELLO') from dual  -- 小写 <br>
+  select upper('hello world') from dual  -- 大写 <br>
+  select initcap('hello world') from dual  -- 首字母大写</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="krl0" id="32-字符控制函数">3.2 字符控制函数</h3><p data-anchor-id="37ki"><img src="http://static.zybuluo.com/l363130002/8ig6lzznvyokkwzb3kpkkk2x/image_1c08r25fg1hpr1od3q744m9ar3k.png" alt="image_1c08r25fg1hpr1od3q744m9ar3k.png-195.4kB" title=""></p><blockquote data-anchor-id="z3w4" class="white-blockquote">
+  <p>select concat('hello','world') from dual;--合并 <br>
+  select substr('helloworld',1,3) from dual;--截取 <br>
+  select length('helloworld') from dual;--长度 <br>
+  select instr('helloworld','w') from dual;--查找</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="3z5l" id="4-数字函数">4 数字函数</h2><p data-anchor-id="s63f"><img src="http://static.zybuluo.com/l363130002/xuiw0fnrdddoske5qum2xe15/image_1c08r311noqml5s1r0rcqm6in41.png" alt="image_1c08r311noqml5s1r0rcqm6in41.png-87.7kB" title=""></p><blockquote data-anchor-id="w4us" class="white-blockquote">
+  <p>select round(45.0418,3) from dual <br>
+  select trunc(45.0498,2) from dual <br>
+  select mod(3,2) from dual</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="8grr" id="5-日期函数">5 日期函数</h2><p data-anchor-id="udzw">Oracle 内部使用数字存储日期: 世纪,年,月,日,小时,分钟,秒。 <br>
+默认的日期格式是DD-MON-RR. <br>
+–可以只指定年的后两位在20世纪存放21世纪的日期。 <br>
+–同样可以在21世纪存放20世纪的日期</p><div class="md-section-divider"></div><h3 data-anchor-id="tptv" id="51-日期的数学运算">5.1 日期的数学运算</h3><ul data-anchor-id="x8ip">
+<li>在日期上加上或减去一个数字结果仍为日期</li>
+<li>两个日期相减返回日期之间相差的天数</li>
+</ul><blockquote data-anchor-id="xlz8" class="white-blockquote">
+  <p>SELECT last_name, (SYSDATE-hire_date)/7 AS WEEKS <br>
+  FROM employees <br>
+  WHERE department_id = 90</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="5r67" id="52-日期函数">5.2 日期函数</h3><p data-anchor-id="bh47"><img src="http://static.zybuluo.com/l363130002/nyjchn5km8d912visrhrudxk/image_1c08ra0i218jj15ph1k1c1qndfs94u.png" alt="image_1c08ra0i218jj15ph1k1c1qndfs94u.png-177.1kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/mxatt7by3l7f0gqhy83vju1d/image_1c08ra9ge18go1fhn1shp9a01h135b.png" alt="image_1c08ra9ge18go1fhn1shp9a01h135b.png-114.6kB" title=""></p><blockquote data-anchor-id="47no" class="white-blockquote">
+  <p>select sysdate from dual <br>
+  select e.*,sysdate-e.emp_birthday,(sysdate-e.emp_birthday )/7  from emp e <br>
+  select months_between(sysdate,'01-1月-15') from dual</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="8964" id="6-转换函数">6 转换函数</h2><p data-anchor-id="r6pg"><img src="http://static.zybuluo.com/l363130002/si2xsrbjx961pwcyr8yynr1s/image_1c08rc8rg1h6c1mfh210udl4jg5o.png" alt="image_1c08rc8rg1h6c1mfh210udl4jg5o.png-71.5kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="qdql" id="61-隐式数据类型转换">6.1 隐式数据类型转换</h3><p data-anchor-id="6gtj"><img src="http://static.zybuluo.com/l363130002/0szfuc8pd1ihjfsh1rcpe2ac/image_1c08rif22kd5u4v1apltj27t465.png" alt="image_1c08rif22kd5u4v1apltj27t465.png-119kB" title=""></p><blockquote data-anchor-id="yj5f" class="white-blockquote">
+  <p>select '123'+321 from dual--隐式</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="zr8j" id="62-tochar函数对日期的转换">6.2 TO_CHAR函数对日期的转换</h3><ul data-anchor-id="0xp4">
+<li>必须包含在单引号中而且大小写敏感。</li>
+<li>可以包含任意的有效的日期格式。</li>
+<li>可以使用fm去掉多余的空格或者前导零。</li>
+<li>与日期指用逗号隔开。</li>
+</ul><blockquote data-anchor-id="kb2a" class="white-blockquote">
+  <p>TO_CHAR(date, 'format_model') <br>
+  select to_char(sysdate,'yyyy-MM-dd HH24:mm:ss') from dual</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="qjqs" id="63-tonumber">6.3 TO_NUMBER</h3><blockquote data-anchor-id="5vkp" class="white-blockquote">
+  <p>TO_NUMBER('123.45') 结果  123.45  <br>
+  TO_NUMBER('<span class="MathJax_Preview"></span><span class="MathJax_SVG" id="MathJax-Element-1-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -822.5706205033341 5595.782503100455 1039.4739218313905" style="width: 13ex; height: 2.444ex; vertical-align: -0.556ex; margin: 1px 0px;"><g stroke="black" fill="black" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-31"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-32" x="500" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-33" x="1001" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2C" x="1501" y="0"></use><g transform="translate(1946,0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-34"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-35" x="500" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-36" x="1001" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2E" x="1501" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-37" x="1780" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-38" x="2280" y="0"></use><use transform="scale(0.7071067811865476)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2032" x="3932" y="572"></use></g><g transform="translate(5022,0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2C"></use><use transform="scale(0.7071067811865476)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#MJMAIN-2032" x="393" y="513"></use></g></g></svg></span><script type="math/tex" id="MathJax-Element-1">123,456.78','</script>999,999.99')  结果  123,456.78 </p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="nc8t" id="64-todate">6.4 TO_DATE</h3><blockquote data-anchor-id="sxg8" class="white-blockquote">
+  <p>select to_date(’2003-10-17 21:15:37’,’yyyy-mm-dd hh24:mi:ss’) from dual</p>
+  
+  <p>select * from user_info where <br>
+  user_time&gt;to_date('2015-01-01','yyyy-MM-dd')</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="vs6j" id="7-通用函数">7 通用函数</h2><p data-anchor-id="43tt">这些函数适用于任何数据类型，同时也适用于空值：</p><blockquote data-anchor-id="20kf" class="white-blockquote">
+  <p>NVL (expr1, expr2)  <br>
+  NVL2 (expr1, expr2, expr3)  <br>
+  NULLIF (expr1, expr2) <br>
+  COALESCE (expr1, expr2, ..., exprn)</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="ajg3" id="71-nvl函数">7.1 NVL函数</h3><p data-anchor-id="i1au">将空值转换成一个已知的值： <br>
+•可以使用的数据类型有日期、字符、数字。 <br>
+•函数的一般形式:</p><blockquote data-anchor-id="z9im" class="white-blockquote">
+  <p>–NVL(commission_pct,0)  <br>
+  –NVL(hire_date,'01-JAN-97')  <br>
+  –NVL(job_id,'NoJobYet')</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="xsvw" id="72-nvl2函数">7.2 NVL2函数</h3><p data-anchor-id="nds4"><img src="http://static.zybuluo.com/l363130002/6xc12ftjrey0vnmg397y090k/image_1c0ahm839n3101913mnjd4mu49.png" alt="image_1c0ahm839n3101913mnjd4mu49.png-151.9kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="aemt" id="73-nullif函数">7.3 NULLIF函数</h3><p data-anchor-id="ejlj"><img src="http://static.zybuluo.com/l363130002/hmcjazw3s4rpyhtwgm0qigyf/image_1c0aho5m7m7asi7177oog0hpfm.png" alt="image_1c0aho5m7m7asi7177oog0hpfm.png-156.3kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="rafn" id="74-coalesce">7.4 COALESCE</h3><ul data-anchor-id="unmg">
+<li>COALESCE与NVL相比的优点在于COALESCE可以同时处理交替的多个值。</li>
+<li>如果第一个表达式非空,则返回这个表达式，对其他的参数进行COALESCE。 <br>
+<img src="http://static.zybuluo.com/l363130002/1cju2y3tsgskfc9oic4c4uoj/image_1c0ahsjcc1k9l10ll9u2haig1c1g.png" alt="image_1c0ahsjcc1k9l10ll9u2haig1c1g.png-79.8kB" title=""></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="0yet" id="8-条件表达式">8 条件表达式</h2><p data-anchor-id="g76p">使用两种方法: <br>
+– CASE表达式 <br>
+– DECODE函数</p><div class="md-section-divider"></div><h3 data-anchor-id="49j1" id="81-case表达式">8.1 CASE表达式</h3><p data-anchor-id="fr05">在需要使用IF-THEN-ELSE 逻辑时</p><blockquote data-anchor-id="ro6z" class="white-blockquote">
+<pre><code>select e.*,
+       CASE e.emp_mark
+         WHEN 1 THEN  'Java初级程序员'
+         WHEN 2 THEN  'Java中级程序员'
+         WHEN 3 THEN  'Java高级程序员'
+         ELSE
+          '未入门'
+       END CASE
+  from emp e
+</code></pre>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="ggzm" id="82-decode函数">8.2 DECODE函数</h3><pre data-anchor-id="8hyk"><code> DECODE(col|expression,search1,result1[, search2, result2,...,][, default])
+</code></pre><p data-anchor-id="3v8f"><img src="http://static.zybuluo.com/l363130002/sku76n748lkxq771tw8u109c/image_1c0aibp4911ps23d14ga1h8a1l762n.png" alt="image_1c0aibp4911ps23d14ga1h8a1l762n.png-131.5kB" title=""></p><blockquote data-anchor-id="a85a" class="white-blockquote">
+<pre><code>  select e.*,
+         decode(e.emp_mark,
+                1,'Java初级程序员',
+                2,'Java中级程序员',
+                3,'Java高级程序员',
+                '未入门')
+    from emp e
+</code></pre>
+</blockquote></div>
+</body>
+</html>

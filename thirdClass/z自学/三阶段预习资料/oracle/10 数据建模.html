@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>10 数据建模</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="r658" id="10-数据建模">10 数据建模</h1><hr><p data-anchor-id="3su1"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="15j5" id="1-为什么要进行数据库建模">1 为什么要进行数据库建模？</h2><p data-anchor-id="16ko">了解数据库建模的两种基本方法 <br>
+ - 实体-联系模型（E/R图） <br>
+ - 会用实体-联系模型（E/R图）建立简单的数据库模型 <br>
+ 了解数据库设计的基本原则 <br>
+ - 掌握用E/R图表示子类的方法 <br>
+ - 理解键码和引用完整性这两个基本概念 </p><div class="md-section-divider"></div><h3 data-anchor-id="dxfc" id="11-项目开发中数据库的使用">1.1 项目开发中数据库的使用</h3><p data-anchor-id="8spw"><img src="http://static.zybuluo.com/l363130002/w4fkfo95h2voxtbj7tg3iwqk/image_1c0akm3ltn681herhge93jblgm.png" alt="image_1c0akm3ltn681herhge93jblgm.png-155.1kB"></p><div class="md-section-divider"></div><h3 data-anchor-id="pj0z" id="12-数据库设计三大范式">1.2 数据库设计三大范式</h3><p data-anchor-id="0rie">为了建立冗余较小、结构合理的数据库，设计数据库时必须遵循一定的规则。在关系型数据库中这种规则就称为范式。 <br>
+在实际开发中最为常见的设计范式有三个。</p><div class="md-section-divider"></div><h4 data-anchor-id="81hn" id="121-第一范式确保每列保持原子性">1.2.1 第一范式(确保每列保持原子性)</h4><p data-anchor-id="lqwi">第一范式是最基本的范式。如果数据库表中的<strong>所有字段值都是不可分解的原子值</strong>，就说明该数据库表满足了第一范式。 <br>
+第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性，本来直接将“地址”属性设计成一个数据库表的字段就行。但是如果系统经常会访问“地址”属性中的“城市”部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式，如下表所示。 <br>
+<img src="http://static.zybuluo.com/l363130002/upvpavm5uajq88xs6gxzha4v/image_1c0algibmvfep201dh4vbqu482a.png" alt="image_1c0algibmvfep201dh4vbqu482a.png-15.5kB"></p><div class="md-section-divider"></div><h4 data-anchor-id="yur8" id="122-第二范式确保表中的每列都和主键相关">1.2.2 第二范式(确保表中的每列都和主键相关)</h4><p data-anchor-id="yzic">第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。<strong>也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中</strong> <br>
+比如要设计一个订单信息表，因为订单中可能会有多种商品，所以要将订单编号和商品编号作为数据库表的联合主键，如下表所示: <br>
+ <img src="http://static.zybuluo.com/l363130002/fe8bexpaphvbyjsbzy9ujl9f/image_1c0allbsg4k1gv11tq338rht19.png" alt="image_1c0allbsg4k1gv11tq338rht19.png-12.9kB"> <br>
+    这样就产生一个问题：这个表中是以订单编号和商品编号作为联合主键。这样在该表中商品名称、单位、商品价格等信息不与该表的主键相关，而仅仅是与商品编号相关。所以在这里违反了第二范式的设计原则。</p><p data-anchor-id="ed01">而如果把这个订单信息表进行拆分，把商品信息分离到另一个表中，把订单项目表也分离到另一个表中，就非常完美了。如下所示。 <br>
+<img src="http://static.zybuluo.com/l363130002/7t59gm7ksppp3fv9yn1o468v/image_1c0alncjp138b7vikpo6mqf4gm.png" alt="image_1c0alncjp138b7vikpo6mqf4gm.png-19kB"></p><div class="md-section-divider"></div><h4 data-anchor-id="66or" id="123-第三范式确保每列都和主键列直接相关而不是间接相关">1.2.3 第三范式(确保每列都和主键列直接相关,而不是间接相关)</h4><p data-anchor-id="t10y">第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。 <br>
+比如在设计一个订单数据表的时候，可以将客户编号作为一个外键和订单表建立相应的关系。而不可以在订单表中添加关于客户其它信息（比如姓名、所属公司等）的字段。如下面这两个表所示的设计就是一个满足第三范式的数据库表。 <br>
+<img src="http://static.zybuluo.com/l363130002/lw601gsi44y2fb4utiserfpo/image_1c0alpb8due445o184fojp14ha13.png" alt="image_1c0alpb8due445o184fojp14ha13.png-17.1kB"> <br>
+这样在查询订单信息的时候，就可以使用客户编号来引用客户信息表中的记录，也不必在订单信息表中多次输入客户信息的内容，减小了数据冗余。</p><div class="md-section-divider"></div><h2 data-anchor-id="fk9p" id="2-数据库建模">2 数据库建模</h2><p data-anchor-id="c8om">数据库的结构，也称为数据库模式 <br>
+确定数据库的结构的过程就称为数据库建模 <br>
+数据库模式表示法:</p><blockquote data-anchor-id="pzr2" class="white-blockquote">
+  <p>实体—联系模型，也叫做E/R图  <br>
+  矩形表示实体， 椭圆形表示属性，菱形和箭头表示联系 <br>
+  <img src="http://static.zybuluo.com/l363130002/zwibn9mqegqidh7acmzrzfzw/image_1c0b1c8d91df41jtq15j3c0u2i49.png" alt="image_1c0b1c8d91df41jtq15j3c0u2i49.png-26.9kB"></p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="goy9" id="3-概念模型">3 概念模型</h2><div class="md-section-divider"></div><h3 data-anchor-id="ebbg" id="31-安装建模工具powerdesigner">3.1 安装建模工具PowerDesigner</h3><p data-anchor-id="qvfu">下载地址：链接：<a href="https://pan.baidu.com/s/1qYQIB8o" target="_blank">https://pan.baidu.com/s/1qYQIB8o</a> 密码：auud</p><div class="md-section-divider"></div><h3 data-anchor-id="52ra" id="32-概念数据模型概述">3.2 概念数据模型概述</h3><p data-anchor-id="w84u">数据模型是现实世界中数据特征的抽象。数据模型应该满足三个方面的要求：</p><blockquote data-anchor-id="naph" class="white-blockquote">
+  <p>1）能够比较真实地模拟现实世界  <br>
+  2）容易为人所理解  <br>
+  3）便于计算机实现</p>
+</blockquote><p data-anchor-id="32z8">概念数据模型也称信息模型，它以实体－联系(Entity-RelationShip,简称E-R)理论为基础，并对这一理论进行了扩充。</p><p data-anchor-id="u0o4">就是先将现实世界中的客观对象抽象为实体(Entity)和联系 (Relationship),它并不依赖于具体的计算机系统或某个DBMS系统，这种模型就是我们所说的CDM;然后再将CDM转换为计算机上某个 DBMS所支持的数据模型，这样的模型就是物理数据模型,即PDM</p><p data-anchor-id="mql6">CDM是一组严格定义的模型元素的集合，这些模型元素精确地描述了系统的静态特性、动态特性以及完整性约束条件等，其中包括了数据结构、数据操作和完整性约束三部分。</p><blockquote data-anchor-id="kzmo" class="white-blockquote">
+  <p>1）数据结构表达为实体和属性; <br>
+  2）数据操作表达为实体中的记录的插入、删除、修改、查询等操作; <br>
+  3）完整性约束表达为数据的自身完整性约束（如数据类型、检查、规则等）和数据间的参照完整性约束（如联系、继承联系等）;</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="wjmy" id="33-实体属性及标识符的表达">3.3 实体、属性及标识符的表达</h3><p data-anchor-id="fdhl"><img src="http://static.zybuluo.com/l363130002/xmoms1qvt83w6mycwlkdalip/image_1c0b1vga5ss71868b16124f6g5m.png" alt="image_1c0b1vga5ss71868b16124f6g5m.png-77.7kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="4hi6" id="34-新建概念数据模型">3.4 新建概念数据模型</h3><p data-anchor-id="hzmg">1）选择File--&gt;New,弹出如图所示对话框，选择CDM模型（即概念数据模型）建立模型。 <br>
+<img src="http://static.zybuluo.com/l363130002/a4xxl8s6nf926g3rnywy2qwg/image_1c0b21c6k1aql6j41ngr1m6r14t213.png" alt="image_1c0b21c6k1aql6j41ngr1m6r14t213.png-101kB" title=""></p><p data-anchor-id="du72">2）完成概念数据模型的创建。以下图示，对当前的工作空间进行简单介绍。（以后再更详细说明） <br>
+<img src="http://static.zybuluo.com/l363130002/7w3frdwcuguqfnhvdxb8pmap/image_1c0b21pkn1ol671v16rd17kr1cqr1g.png" alt="image_1c0b21pkn1ol671v16rd17kr1cqr1g.png-313.5kB" title=""></p><p data-anchor-id="usb7">3） 选择新增的CDM模型，右击，在弹出的菜单中选择“Properties”属性项，弹出如图所示对话框。在“General”标签里可以输入所建模型的名 称、代码、描述、创建者、版本以及默认的图表等等信息。在“Notes”标签里可以输入相关描述及说明信息。当然再有更多的标签，可以点击 "More&gt;&gt;"按钮，这里就不再进行详细解释。 <br>
+<img src="http://static.zybuluo.com/l363130002/gqq6tq9qa39qvyqdvb88wchd/image_1c0b22cfv1ho71cal1rdk1kke1l6m1t.png" alt="image_1c0b22cfv1ho71cal1rdk1kke1l6m1t.png-150.2kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="bfpv" id="35-创建新实体">3.5 创建新实体</h3><p data-anchor-id="0lrt">1）在CDM的图形窗口中，单击工具选项版上的Entity工具，再单击图形窗口的空白处，在单击的位置就出现一个实体符号。点击Pointer工具或右击鼠标，释放Entitiy工具。如图所示 <br>
+<img src="http://static.zybuluo.com/l363130002/zzspkxg6uykx6fy4un2ezj04/image_1c0b252nf1n6qnauae1elv16bg2a.png" alt="image_1c0b252nf1n6qnauae1elv16bg2a.png-58.2kB" title=""> <br>
+2）双击刚创建的实体符号，打开下列图标窗口，在此窗口“General”标签中可以输入实体的名称、代码、描述等信息。 <br>
+<img src="http://static.zybuluo.com/l363130002/e5u86nyo87en1d891whbu1v2/image_1c0b25h581luj1i4lrukf27rq62n.png" alt="image_1c0b25h581luj1i4lrukf27rq62n.png-75.7kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="cz30" id="36-添加实体属性">3.6 添加实体属性</h3><p data-anchor-id="ehw8">1）在上述窗口的“Attribute”选项标签上可以添加属性，如下图所示。 <br>
+<img src="http://static.zybuluo.com/l363130002/k8dzwcjegswtdz2goonz7978/image_1c0b2abaj19ea1ovecf01r7k1n7t34.png" alt="image_1c0b2abaj19ea1ovecf01r7k1n7t34.png-276.2kB" title=""> <br>
+2）在上图所示窗口中，点击插入属性按钮，弹出属性对话框，如下图所示 <br>
+<img src="http://static.zybuluo.com/l363130002/c7xoi36xsn970b2ahwietuvk/image_1c0b2bea01lkuvfu1khej6r8fd3h.png" alt="image_1c0b2bea01lkuvfu1khej6r8fd3h.png-153.9kB" title=""> <br>
+3）选择某个实体双击弹出实体的属性对话框。在Identifiers选项卡上可以进行实体标识符的定义。 <br>
+<img src="http://static.zybuluo.com/l363130002/xuqi9u2b6nz45df66s8mus1c/image_1c0b2d2tu1hl11m856pp111i1hr63u.png" alt="image_1c0b2d2tu1hl11m856pp111i1hr63u.png-152.6kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="inso" id="37-建立联系">3.7 建立联系</h3><p data-anchor-id="ias4">在CDM工具选项板中除了公共的工具外，还包括如下图所示的其它对象产生工具<img src="http://static.zybuluo.com/l363130002/954wbvefltps8ktahnor6bny/image_1c0b2ed1r2b012cd1scn11978pp4b.png" alt="image_1c0b2ed1r2b012cd1scn11978pp4b.png-97.5kB" title=""> <br>
+在图形窗口中创建两个实体后，单击“实体间建立联系”工具，单击一个实体，在按下鼠标左键的同时把光标拖至别一个实体上并释放鼠标左键，这样就在两个实体间创建了联系，右键单击图形窗口，释放Relationship工具。如下图所示 <br>
+<img src="http://static.zybuluo.com/l363130002/bpbrrmji68uxq75z8e15azsl/image_1c0b2f671l2us2s11lu1u4cvt64o.png" alt="image_1c0b2f671l2us2s11lu1u4cvt64o.png-17.3kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="d85w" id="38-四种基本的联系">3.8 四种基本的联系</h3><ul data-anchor-id="0mcw">
+<li>一对一（ONE TO ONE）联系</li>
+<li>一对多（ONE TO MANY）联系</li>
+<li>多对一（MANY TO ONE）联系</li>
+<li>多对多（MANY TO MANY）联系 <br>
+<img src="http://static.zybuluo.com/l363130002/nx2123koy6hqjr21ov6yw1b8/image_1c0b2hbpo1mopj0ctutv2160m55.png" alt="image_1c0b2hbpo1mopj0ctutv2160m55.png-81.4kB" title=""></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="82wq" id="4-物理模型">4 物理模型</h2><div class="md-section-divider"></div><h3 data-anchor-id="kj52" id="41-物理模型简介">4.1 物理模型简介</h3><p data-anchor-id="y9ok">物理数据模型（Physical Data Model）PDM，提供了系统初始设计所需要的基础元素，以及相关元素之间的关系；数据库的物理设计阶段必须在此基础上进行详细的后台设计，包括数据库的存储过程、操作、触发、视图和索引表等 <br>
+物理数据模型（PDM）的主要功能：</p><blockquote data-anchor-id="6vfi" class="white-blockquote">
+  <p>1、可以将数据库的物理设计结果从一种数据库移植到另一种数据库； <br>
+  2、可以通过反向工程将已经存在的数据库物理结构重新生成物理模型或概念模型； <br>
+  3、可以定制生成标准的模型报告；  <br>
+  4、可以转换为OOM； <br>
+  5、完成多种数据库的详细物理设计（涵盖常用的各种数据库的DBMS），并生成数据库对象的.sql脚本；</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="admz" id="42-创建物理模型pdm">4.2 创建物理模型PDM</h3><p data-anchor-id="8yqn">1)创建模型 <br>
+<img src="http://static.zybuluo.com/l363130002/h2lu3x452npdks2nzuzxpaub/image_1c0b2ssh7e1m32ora7of7mah5i.png" alt="image_1c0b2ssh7e1m32ora7of7mah5i.png-169.4kB" title=""> <br>
+2)创建表 <br>
+<img src="http://static.zybuluo.com/l363130002/9388p8ok2qhgmpjh79unzqnl/image_1c0b2uhic1irn1v5re61rjl1iih5v.png" alt="image_1c0b2uhic1irn1v5re61rjl1iih5v.png-63.1kB" title=""> <br>
+3）设计表 <br>
+<img src="http://static.zybuluo.com/l363130002/jotafh4vw2iwhflwl2eohlpf/image_1c0b2vic71ii56db90gmf15df6c.png" alt="image_1c0b2vic71ii56db90gmf15df6c.png-140kB" title=""> <br>
+4）按下Ctrl+G 导出SQL文件 <br>
+<img src="http://static.zybuluo.com/l363130002/ovktcjho6bgg5ua5iji8p7dj/image_1c0b30n8h13vqsptmei8vgael6p.png" alt="image_1c0b30n8h13vqsptmei8vgael6p.png-113.7kB" title=""></p></div>
+</body>
+</html>

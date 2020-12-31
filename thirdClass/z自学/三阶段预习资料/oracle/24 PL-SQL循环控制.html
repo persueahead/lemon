@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>24 PL/SQL循环控制</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="5ptl" id="24-plsql循环控制">24 PL/SQL循环控制</h1><p data-anchor-id="3b87"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="5kkf" id="1-循环控制">1 循环控制</h2><p data-anchor-id="zmgx">循环控制用于重复执行一系列语句 <br>
+循环控制语句包括： <br>
+LOOP、EXIT 和 EXIT WHEN <br>
+循环控制的三种类型：</p><blockquote data-anchor-id="r0k6" class="white-blockquote">
+  <p>LOOP   -   无条件循环  <br>
+  WHILE  -  根据条件循环  <br>
+  FOR  -  循环固定的次数</p>
+</blockquote><div class="md-section-divider"></div><h2 data-anchor-id="vwjm" id="2-循环控制loop">2 循环控制LOOP</h2><p data-anchor-id="bzvh">示例1</p><pre data-anchor-id="3f2c"><code>LOOP 
+  sequence_of_statements
+END LOOP;
+</code></pre><p data-anchor-id="hk8t">示例2</p><pre data-anchor-id="1e8j"><code>   declare
+     i int :=0; 
+     begin
+     loop
+     if i=10 then 
+          exit;
+     end if;
+            dbms_output.put_line(i);
+          i :=i+1;
+     end loop;
+     end;
+</code></pre><p data-anchor-id="6i9g">示例3</p><pre data-anchor-id="e9xt"><code>   declare
+       i int :=0; 
+     begin
+         loop
+              dbms_output.put_line(i);
+              i :=i+1;
+              exit when i=10;
+         end loop;
+     end;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="tg3k" id="3-循环控制while">3 循环控制WHILE</h2><p data-anchor-id="nxwc">示例1 </p><pre data-anchor-id="pdz5"><code>WHILE condition LOOP 
+  sequence_of_statements
+END LOOP;
+</code></pre><p data-anchor-id="427z">示例2</p><pre data-anchor-id="nm3y"><code>   declare
+       i int :=0; 
+     begin
+     while  i&lt;20
+         loop
+          ---  exit when i=10;
+             dbms_output.put_line(i);
+              i :=i+1;
+         end loop;
+     end;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="6j5j" id="4-循环控制for">4 循环控制FOR</h2><p data-anchor-id="cdfn">示例1</p><pre data-anchor-id="a21d"><code>FOR counter IN [REVERSE] value1..value2
+LOOP 
+  sequence_of_statements
+END LOOP;
+</code></pre><p data-anchor-id="vt5v">示例2</p><pre data-anchor-id="7gw8"><code>    declare
+       i int :=0; 
+     begin
+   for i in 0..100
+         loop
+             dbms_output.put_line(i);
+         end loop;
+     end;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="9ieo" id="5-打印99乘法表">5 打印99乘法表</h2></div>
+</body>
+</html>

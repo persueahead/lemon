@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>28  Oracle 游标</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="kzv5" id="28-oracle-游标">28  Oracle 游标</h1><p data-anchor-id="6uo1"><code>oracle</code></p><hr><div class="md-section-divider"></div><h2 data-anchor-id="jvww" id="１-什么是游标">　１　什么是游标</h2><p data-anchor-id="bwav">游标提供了一种对从表中检索出的数据进行操作的灵活手段，就本质而言，游标实际上是一种能从包括<strong>多条数据记录的结果集中每次提取一条记录的机制</strong></p><p data-anchor-id="4f8j"><img src="http://static.zybuluo.com/l363130002/dupbmwse1pn01p1bqpbp82z2/image_1c12e6cjjpp9n0cq31ou6u4ep.png" alt="image_1c12e6cjjpp9n0cq31ou6u4ep.png-44kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="8kd4" id="2-游标有什么作用">2 游标有什么作用</h2><p data-anchor-id="y56g">①指定结果集中特定行的位置。 <br>
+②基于当前的结果集位置检索一行或连续的几行。 <br>
+③在结果集的当前位置修改行中的数据。 <br>
+④对其他用户所做的数据更改定义不同的敏感性级别。 <br>
+⑤可以以编程的方式访问数据库。</p><div class="md-section-divider"></div><h2 data-anchor-id="3948" id="3-游标类型">3 游标类型</h2><p data-anchor-id="zxwr">逐行处理查询结果，以编程的方式访问数据 <br>
+游标的类型 <br>
+<img src="http://static.zybuluo.com/l363130002/ldpf1ib0bjri0bwyfyk876rk/image_1c12e89te17br1vjr15gtrarfhn16.png" alt="image_1c12e89te17br1vjr15gtrarfhn16.png-48.2kB" title=""></p><p data-anchor-id="5ndn">在PL/SQL中使用DML语句时自动创建隐式游标 <br>
+隐式游标自动声明、打开和关闭，其名为 SQL <br>
+通过检查隐式游标的属性可以获得最近执行的DML 语句的信息 <br>
+隐式游标的属性有：</p><blockquote data-anchor-id="srqv" class="white-blockquote">
+  <p>%FOUND – SQL 语句影响了一行或多行时为 TRUE  <br>
+  %NOTFOUND – SQL 语句没有影响任何行时为TRUE <br>
+  %ROWCOUNT – SQL 语句影响的行数  <br>
+  %ISOPEN  - 游标是否打开，始终为FALSE</p>
+</blockquote><div class="md-section-divider"></div><h3 data-anchor-id="35lq" id="31-隐式游标-found">3.1 隐式游标 %FOUND</h3><pre data-anchor-id="8ofr"><code>DECLARE
+BEGIN
+  insert into book (book_id,book_name)  values('445561','java继承');
+    if SQL%found then 
+     Dbms_Output.put_line('found为true');
+     else 
+     Dbms_Output.put_line('found为false');
+     end if;
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="ax5h" id="32-隐式游标-found">3.2 隐式游标 %FOUND</h3><pre data-anchor-id="knxn"><code>DECLARE
+BEGIN
+  update book  set book_name = 'java继承' where book_id='4455011';
+    if SQL%found then 
+     Dbms_Output.put_line('found为true');
+     else 
+     Dbms_Output.put_line('found为false');
+     end if;
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="g3o5" id="33-隐式游标-notfound">3.3 隐式游标 %NOTFOUND</h3><pre data-anchor-id="9t1z"><code>DECLARE
+BEGIN
+  insert into book (book_id,book_name)  values('445561','java继承');
+    if SQL%notfound then 
+     Dbms_Output.put_line('notfound为true');
+     else 
+     Dbms_Output.put_line('notfound为false');
+     end if;
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="1xrv" id="34-隐式游标-notfound">3.4 隐式游标 %NOTFOUND</h3><pre data-anchor-id="iqn7"><code>DECLARE
+BEGIN
+  update book  set book_name = 'java继承' where book_id='4455011';
+    if SQL%notfound then 
+     Dbms_Output.put_line('notfound为true');
+     else 
+     Dbms_Output.put_line('notfound为false');
+     end if;
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="he2u" id="35-隐式游标-rowcount">3.5 隐式游标 %ROWCOUNT</h3><pre data-anchor-id="5lvd"><code>DECLARE
+BEGIN
+  insert into book (book_id,book_name)  values('445561','java继承');
+  Dbms_Output.put_line('游标影响的行数'||SQL%rowcount);
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="8shl" id="36-隐式游标-rowcount">3.6 隐式游标 %ROWCOUNT</h3><pre data-anchor-id="8t84"><code>DECLARE
+BEGIN
+  insert into book (book_id,book_name)  values('445561','java继承');
+  Dbms_Output.put_line('游标影响的行数'||SQL%rowcount);
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="hfmo" id="37-隐式游标-rowcount">3.7 隐式游标 %ROWCOUNT</h3><pre data-anchor-id="de34"><code>DECLARE
+BEGIN
+  update book  set book_name = 'java继承' where book_id='4455011';
+  Dbms_Output.put_line('游标影响的行数'||SQL%rowcount);
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="guz0" id="38-隐式游标-isopen">3.8 隐式游标 %ISOPEN</h3><pre data-anchor-id="mc2j"><code>DECLARE
+BEGIN
+  insert into book (book_id,book_name)  values('445561','java继承');
+     if SQL%isopen then 
+     Dbms_Output.put_line('isopen为true');
+     else 
+     Dbms_Output.put_line('isopen为false');
+     end if;
+  commit;                
+END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="gei9" id="39-隐式游标-isopen">3.9 隐式游标 %ISOPEN</h3><pre data-anchor-id="csis"><code>DECLARE
+BEGIN
+  update book  set book_name = 'java继承' where book_id='4455011';
+     if SQL%isopen then 
+     Dbms_Output.put_line('isopen为true');
+     else 
+     Dbms_Output.put_line('isopen为false');
+     end if;
+  commit;                 
+END;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="0t2k" id="4-显示游标">4 显示游标</h2><p data-anchor-id="aqu9">显式游标在 PL/SQL 块的声明部分定义查询，该查询可以返回多行 <br>
+显式游标的操作过程 <br>
+<img src="http://static.zybuluo.com/l363130002/crqbgzx8ipquigb50hr6dpe2/image_1c12ekb821ak1fs9j1s19qd1m9f1j.png" alt="image_1c12ekb821ak1fs9j1s19qd1m9f1j.png-26.1kB" title=""></p><div class="md-section-divider"></div><h3 data-anchor-id="j4k4" id="41-声明显示游标">4.1 声明显示游标</h3><pre data-anchor-id="8zhd"><code>CURSOR &lt;cursor_name&gt; IS
+SELECT statement FOR UPDATE;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="ctbq" id="42-使用loop从游标中提取所有记录">4.2 使用LOOP从游标中提取所有记录</h3><pre data-anchor-id="6lii"><code>SQL&gt;SET SERVER OUTPUT ON
+SQL&gt;DECLARE
+        my_toy_price toys.toyprice%TYPE;                 
+         CURSOR toy_cur IS
+           SELECT toyprice FROM toys
+           WHERE toyprice&lt;250;
+    BEGIN
+         OPEN toy_cur;  
+         LOOP
+           FETCH toy_cur INTO my_toy_price;
+           EXIT WHEN toy_cur%NOTFOUND;
+           DBMS_OUTPUT.PUT_LINE 
+          ('TOYPRICE=:玩具单价=：'||my_toy_price);
+         END LOOP;
+         CLOSE toy_cur;
+   END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="dwbo" id="43-使用loop从游标中提取所有记录">4.3 使用LOOP从游标中提取所有记录</h3><pre data-anchor-id="00n9"><code>SQL&gt; SET SERVEROUTPUT ON
+SQL&gt; DECLARE
+        desig    VARCHAR2(20);
+        emp_code VARCHAR2(5);
+        empnm    VARCHAR2(20);
+        CURSOR emp_cur(desigparam VARCHAR2) IS
+         SELECT empno, ename FROM employee
+         WHERE designation=desig;
+     BEGIN
+        desig:= '&amp;desig';
+        OPEN emp_cur(desig);
+        LOOP
+            FETCH emp_cur INTO emp_code,empnm;
+            EXIT WHEN emp_cur%NOTFOUND;
+            DBMS_OUTPUT.PUT_LINE(emp_code||' '||empnm);
+        END LOOP;
+        CLOSE emp_cur;
+     END;
+</code></pre><div class="md-section-divider"></div><h3 data-anchor-id="xtoe" id="44-循环游标用于简化游标处理代码">4.4 循环游标用于简化游标处理代码</h3><p data-anchor-id="t5av">当用户需要从游标中提取所有记录时使用 <br>
+循环游标的语法如下：</p><pre data-anchor-id="brwx"><code>  FOR &lt;record_index&gt; IN &lt;cursor_name&gt;
+    LOOP
+        &lt;executable statements&gt;
+    END LOOP;
+
+
+
+示例
+
+
+SQL&gt; SET SERVER OUTPUT ON
+SQL&gt; DECLARE 
+      CURSOR mytoy_cur IS
+        SELECT toyid, toyname, toyprice
+        FROM toys;
+     BEGIN
+      FOR toy_rec IN mytoy_cur
+      LOOP
+            DBMS_OUTPUT.PUT_LINE(
+                             ‘玩具编号：'||' ' ||toy_rec.toyid||' '            
+            ||‘玩具名称：'||' '||toy_rec.toyname||' '
+            ||‘玩具单价：'||' '||toy_rec.toyprice);
+      END LOOP;
+     END;
+</code></pre><p data-anchor-id="x60r">4.5 案例</p><pre data-anchor-id="y3v8"><code>----定义游标
+declare 
+userinfo user_info%rowtype;
+cursor user_cursor is 
+select * from user_info;
+begin
+---打开游标
+OPEN user_cursor;
+loop
+FETCH  user_cursor into userinfo;
+exit when user_cursor%NOTFOUND;
+Dbms_Output.put_line('编号：'||userinfo.user_id ||' 姓名:'||userinfo.user_name||'  年龄：'||userinfo.user_sex);
+end loop;
+CLOSE user_cursor;--关闭游标
+
+end;
+
+select * from user_info;
+
+--------带参数游标
+declare 
+userinfo user_info%rowtype;
+userId number;
+--定义带参数的游标
+cursor user_cur(uid number) is
+select * from user_info where user_id=uid;
+begin
+userId :=&amp;userid;
+OPEN user_cur(userId);---打开
+loop 
+FETCH user_cur into userinfo;
+exit when user_cur%NOTFOUND;
+Dbms_Output.put_line('编号：'||userinfo.user_id ||' 姓名:'||userinfo.user_name||'  性别：'||userinfo.user_sex);
+end loop;
+CLOSE user_cur;--关闭游标
+end ;
+
+
+-----使用for in提取游标中记录
+declare 
+userinfo user_info%rowtype;--一行的记录类型
+cursor user_cursor is  --游标
+select * from user_info;
+begin
+--自动打开游标  自动关闭游标
+for userinfo in user_cursor 
+LOOP
+Dbms_Output.put_line('编号：'||userinfo.user_id ||' 姓名:'||userinfo.user_name||'  性别：'||userinfo.user_sex);
+end loop;
+end;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="j2at" id="5-ref游标">5 REF游标</h2><p data-anchor-id="fi4i">REF 游标和游标变量用于处理运行时动态执行的 SQL 查询 <br>
+创建游标变量需要两个步骤： <br>
+声明 REF 游标类型 <br>
+声明 REF 游标类型的变量 <br>
+用于声明 REF 游标类型的语法为：</p><pre data-anchor-id="zult"><code>TYPE &lt;ref_cursor_name&gt; IS REF CURSOR
+[RETURN &lt;return_type&gt;];
+</code></pre><p data-anchor-id="veha">打开游标变量的语法如下： <br>
+     OPEN cursor_name FOR select_statement; <br>
+<img src="http://static.zybuluo.com/l363130002/jhfrje0wje4i00d5gukcsqrx/image_1c12f1mume5113kf39v1okpihk40.png" alt="image_1c12f1mume5113kf39v1okpihk40.png-32.1kB" title=""></p><p data-anchor-id="55qi">声明强类型的 REF 游标 <br>
+<img src="http://static.zybuluo.com/l363130002/avxhiza6ivni9nzem08nwh6n/image_1c17ndm7dc6ohko1slv1ofa15u19.png" alt="image_1c17ndm7dc6ohko1slv1ofa15u19.png-84.3kB" title=""> <br>
+声明弱类型的 REF 游标 <br>
+<img src="http://static.zybuluo.com/l363130002/iuqf8njg9f06jutq74wfc3f8/image_1c17nebrd6841p2dt351o1k1t6a16.png" alt="image_1c17nebrd6841p2dt351o1k1t6a16.png-83.5kB" title=""> <br>
+<img src="http://static.zybuluo.com/l363130002/bwt4fnpu1dg4a5va638j8v1z/image_1c17nemsgi5cq8be5o1ivl1tqd23.png" alt="image_1c17nemsgi5cq8be5o1ivl1tqd23.png-89.6kB" title=""></p></div>
+</body>
+</html>

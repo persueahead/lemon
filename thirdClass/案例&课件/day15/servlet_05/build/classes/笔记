@@ -1,0 +1,411 @@
+ ===================================
+ 一、EL
+   Expresion  Language
+         1、就是为了使用JSP写起来更加的简单 
+          2、让jsp页面上的代码更加的简化整洁
+    语法:${写上表达式} 
+    【注意】
+      1、jsp页面默认是支持el表达式的，如要进行忽略el表达式
+		   	 	   就需要在jsp页面的page指令中进行设置 isELIgnored="true"  
+		       	  就表示当前的jsp页面中所有的el表达式忽略
+		      如忽略jsp也的el表达式   	  
+		  <%@ page language="java"  isisELIgnored="true"  contentType="text/html; charset=UTF-8"
+		    pageEncoding="UTF-8"%>
+	  2、有的情况下，要进行忽略某个El表达式
+	      \${表达式 }  忽略当前的EL表达式	                 
+   【入门案列】            
+  		 Servlet
+  		 				request.setAttribute("nameRequest","nameRequest");
+						HttpSession  session=request.getSession();
+					session.setAttribute("nameSession", "nameSession");
+					ServletContext  context=	request.getServletContext();
+					context.setAttribute("contextName", "contextName");
+					request.getRequestDispatcher("student2.jsp").forward(request, response);
+	    jsp页面【EL生效】
+	       				Request:${nameRequest}<br/>
+						Session:${nameSession}<br/>
+						application:${contextName}<br/>		
+		【某个EL失效】以文本的方式呈现		
+							Request:\${nameRequest}<br/>
+							Session:\${nameSession}<br/>
+							application:${contextName}<br/>
+		【某个jsp页面EL失效】以文本的方式呈现
+					<%@ page language="java"   isELIgnored="true"  contentType="text/html; charset=UTF-8"
+   							 pageEncoding="UTF-8"%>
+二、运算
+     1、算术运算符
+         - + * /【div】    %【mod】
+     		[案列]
+     		<h1>算术运算符</h1>
+				\${ 7 + 9 }:${ 7 + 9 }<br/>
+				\${ 18 / 9 }:${ 18 / 9 }<br/>
+				\${ 18 div 9 }::${18 div 9}<br/> 
+				\${ 7 * 9 }:${ 7 * 9 }<br/>
+				\${ 18 % 9 }:${ 18 % 9 }<br/>
+				\${ 28 mod  7 }:${ 28 mod 7 }<br/>
+	
+     2、比较运算符
+        >  <  >=  <=  ==  !=
+     	[案列]
+     			<h1>比较运算符</h1>
+				\${ 3 == 6 }:	${ 3 == 6 }<br/>
+				\${ 3 != 6 }:	${ 3 != 6 }<br/>
+     3、逻辑运算符
+         &&【and】    ||【or】     !【not】
+     	[案列]
+     		<h1>逻辑运算符</h1>
+			\${ 3 == 6  &&    3 != 6  }:	${ 3 == 6  &&    3 != 6  }<br/>
+			\${ 3 < 6  ||  1 < 3 }:	${ 3 < 6  ||  1 < 3 }<br/>
+			\${ 3 == 6  and    3 != 6  }:	${ 3 == 6  and    3 != 6  }<br/>
+			\${ 3 < 6  or  1 < 3 }:	${ 3 < 6 or   1 < 3 }<br/>	
+     
+     4、空运算符【判断是否为空（是否有数据）】
+	  empty
+	       	【功能】
+	       	    1、用于判断字符串、集合、数组、对象是否为null  或者  长度是否为0
+	       	        【语法】
+	       	        1、${empty 表达式}
+	       	           判断当前的表达式[字符串、集合、数组、对象]是否为null  或者  长度为0
+	       	        2、${not empty 表达式}    
+	       	          判断当前的表达式[字符串、集合、数组、对象]是否不为null  或者  长度大于0  
+	       	  [案列]
+	       	  		<h1>空运算符</h1>
+					<% ArrayList array= new ArrayList();
+					array.add("小张");
+					array.add("小王");
+					array.add("小李");
+					request.setAttribute("array",array);
+					%>
+					${array}<br/>
+					ArrayList:${empty array}<br/>
+					ArrayList:${not empty array}<br/>
+ 5、【注意】
+	          el表达式只能从域对象中进行获取到值
+					       如:${键名}这回事语法使用哪个域中进行获取的值?
+					           获取的方式:依次从最小的域中进行查询，是否有该键所对应的值，直到查询到为止,如没有查询则就是显示空null  
+						如:${域名称.键名}	    
+						    标识的是,指定域，从指定的域中进行获取
+						    	【如该域中没有这个数据，那么这进行显示空的字符串】
+						     域：
+						      pageContext   =>pageScope
+						      request  =>requestScope
+						      session   =>  sessionScope
+						      application[ServetlConttext]  =>applicationScope
+						  案列:
+						   			request.setAttribute("request","当前是Request与的值");
+									HttpSession  session=	request.getSession();
+									session.setAttribute("seesion","当前是Session与域中值");
+									ServletContext app=	request.getServletContext();
+									app.setAttribute("app", "当前数据是Application与的中值");
+						  获取对应的数据
+						       		获取对应的值：
+									request:${requestScope.request}
+									<hr/>
+									session:${sessionScope.seesion }
+									<hr/>
+									application:${applicationScope.app}	      
+6、【获取复杂类型数据】
+   1、  获取对象、获取集合、获取Map
+            1-1、对象：
+                                                       域名称可写可不行
+                   		  语法:${域名名称.键名.属性名}	
+                   		      注意、获取对象的数据，本质上就调用对象的getter方法
+                   		         那么就是谁该对象必须要有get set  方法
+                   		         这里的属性名是get  set 方法把set get  去掉  首小写				  
+					【案列】
+					    		Users  users=   new  Users();
+								users.setAge("1232");
+								users.setId(111);
+								users.setName("amdin");
+								request.setAttribute("users",users);		        
+						    
+						  	获取对象中的值：
+							<hr/>
+							id:${users.id}
+							<hr/>
+							name:${users.name}
+							<hr/>
+							age:${users.age}
+							<HR	/>  
+	             1-2、集合：
+	                  		域名称可写可不写
+	                  	语法:${域名称.健名[索引]}
+	             	1、纯数据
+	             			    //
+							ArrayList  arr=	  new  ArrayList<>();
+							arr.add("admin");
+							arr.add(123);
+							arr.add("tom");
+							request.setAttribute("arr",arr);
+	             
+	             			获取集合中的值：
+								<hr/>
+								${arr[0]}
+								<hr/>
+								${arr[1]}
+								<hr/>
+								${arr[2]}
+	              	1、存入的对象
+	             		 语法:
+	             		    ${域名称.键名[索引].对象的属性名}
+	             	【案列】
+	             					ArrayList  arr=	  new  ArrayList<>();
+									Users  user=new Users();
+									user.setAge("tom");
+									user.setName("admin");
+									user.setId(1);
+									arr.add(user);	
+									
+									Users  user1=new Users();
+									user1.setAge("jack");
+									user1.setName("dylan");
+									user1.setId(2);
+									arr.add(user1);
+									request.setAttribute("arrUser", arr);	    
+	             				------
+	             				  获取集合存入的对象中的值：
+									<hr/>
+									id:${arrUser[0].id}
+									<hr/>
+									name:${arrUser[0].name}
+									<hr/>
+									age:${arrUser[0].age}
+									<hr/>
+									id:${arrUser[1].id}
+									<hr/>
+									name:${arrUser[1].name}
+									<hr/>
+									age:${arrUser[1].age}
+	             1-3、Map对象
+	       			          域名称可行可不行
+	                 	${域名称.键名.key的名称}
+	             	【案列】
+								HashMap  has=  new HashMap<String,String>();
+								has.put("key1","amdin");
+								has.put("key2","tom");
+								request.setAttribute("has",has);	             
+	             		---
+	             				获取map中的值：
+								<hr/>
+								${has.key1 }
+								<hr/>
+								${has.key2 }
+								获取map中的值方式二：
+								<hr/>
+								${has["key1"] }
+								<hr/>
+								${has["key2"] }
+7、El的隐式对象(了解)
+    1、EL表达式中有11个隐式对象
+        其中就包含了pageContext  获取的jsp  页面其他的八个内置对象
+    pageContext
+    pageScope
+    requestScope
+    sessionScope
+    applicationScope
+    param
+    paramValues
+    header
+    headerVaulrs
+    cookie
+    initParam
+    
+ ======================================   
+ ================
+ JSTL
+一、描述
+  1、 JSTL(JavaServer  Pages  Standard  tag  Library)  JSP标准标签库
+   
+  2、是一个不断完善的开源的代码的jsp标签库。是由apach来进行维护的
+  
+  3、简化了对JSP和web应用程序的开发
+  
+     【使用步骤】
+        1、导入jstl 相关的jar包
+            jstl-xxx.jar
+        2、引入标签库【JSP中的指令   taglib】
+            	<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
+
+二：常见的JSTL的标签
+   1、set标签
+                属性:
+           vaule:要存储的值
+           target:要修改的属性所属的对象
+           property:要修改的属性
+           var:存储信息的变量
+           scope:var属性的作用域            
+	【案列】
+	    <h1>SET标签</h1>
+		<c:set var="age"  scope="session" value="${ 12345 * 2 }"></c:set>
+		<HR/>
+		获取数据:
+		<c:out value="${age}"></c:out>
+   2、if标签
+      1、类似于Java中的if标签
+         	属性:
+         	   test【必须要的】	
+         	    	   表示的是，接受boolean 表达式   
+         	    	  如果表达式是为true，那么这进行显示if标签体中内容
+         	    	  如果表达式是false  那么则不进行显示if标签体中的数据
+         	    var  :表示用于存储条件结果的变量
+         	    scope :  var属性的作用域
+         	【注意】
+         	    if标签虽然类似java中的if语句，但是该标签中没有else
+         	      那么如果要想有else  则在进行定义一个if标签即可	    
+                                【案列】
+              	<h4>if标签</h4>
+				<c:set  var ="name"  scope="session" value="${234 * 5 }" />
+				使用if标签记性判断当前name中的数大于1000  输出对应的工资
+				<hr>
+				<c:if test="${name > 1000 }">
+				 <p>我的工资</p>:<c:out value="${name}" />
+				</c:if>                   		       	    
+  3、choose
+    	 类似java中的Switch语句
+     		
+        choose  标签的声明
+              	[相当于SWitch 声明]
+         when 标签用于判断
+          		[相当于case]
+         otherwise  标识其他的情况下使用
+            	[相当于Default]
+        【案列】
+	          当工资  小于或等于0  输出我  没有工资了
+	         当前工资大于2000   就属性我的生活还是够吃饭
+	           	<h4>choose标签</h4>
+				<c:set  var="sal" scope="session" value="${30 * 6 }" />
+				<c:out value="${sal}"></c:out>
+				<p>我的工资是：</p>
+				<c:choose>
+				  <c:when test="${sal <= 0 }">
+				 		 我没有工资了
+				  </c:when>
+				  <c:when test="${sal >  2000 }">
+				 		 我的生活还是够吃饭
+				  </c:when>
+				  <c:otherwise>
+				    	哎工资不够吃饭的钱
+				  </c:otherwise>
+				</c:choose>   	   		     			  
+     		     
+  4、foreach标签(*)
+     类似java中的for循环语句
+       属性：
+          items:
+			要被进行循环的信息
+          begin:
+			开始的元素(0->第一个元素,1->第二个元素)   
+          end：
+			最后一个元素(0->第一个元素,1->第二个元素)    	   		 
+		  step：
+			 每次迭代多少的步伐  
+			说白就是每次循环的增加多少
+		   var  
+			当前条目的变量名称  	
+		   varStatus
+			表示循环状态的变量名称
+	【案例1】		
+			<h4>foeeach标签</h4>
+				<c:forEach var="i"  begin="1"  end="6">
+				   的到的结果:<c:out value="${i}"></c:out><br/>
+				</c:forEach>	 	  
+	【案例 2】
+	      获取后台数据的集合进行遍历
+					ArrayList  arr= new  ArrayList<Users>();
+					  for (int i = 0; i < 10; i++) {
+						  Users  user=new Users();
+						  user.setId(i);
+						  user.setLastAge(i);
+						  user.setName(i+"号考生");
+						arr.add(user);  
+					}
+					  request.setAttribute("arr", arr);
+          ----
+     	    页面获取数据
+				<h4>foeeach标签循环后台的集合对象</h4>
+					<table>
+					<thead>
+					  <tr>
+					     <th>
+					      	  编号
+					     </th>
+					      <th>
+					      	  考生
+					     </th>
+					     <th>
+					      	  年龄
+					     </th>
+					  </tr>
+					</thead>
+					<tbody>
+						<c:forEach var="users" items="${arr}">
+						   <h6>这样写获取的对象\${users }:${users }</h6>
+						  <tr>
+						    <td>\${users.id } ${users.id }</td>
+						    <td>\${users.id }  ${users.name }</td>
+						    <td>\${users.id } ${users.lastAge }</td>
+						  </tr>
+						</c:forEach>
+					</tbody>
+					</table>
+  5、remove 标签
+       属性
+         var  需要进行移除的变量 名称[必要的]
+         scope 变量属性的作用域
+   【案列】
+      <h4>remove标签</h4>
+		<c:set value="${2345 * 6 }"  scope="session" var="lastSal"></c:set>
+		<h6>没有进行删除之前的数据:<c:out value="${lastSal}"></c:out></h6>
+		<hr />
+		删除数据......
+		<c:remove var="lastSal"/>
+		<hr />
+		<h6>删除之后的数据:<c:out value="${lastSal}"></c:out></h6>       
+ 6、param  和url 标签
+       url 标签属性:
+             value  
+               		基础的URL  【必须要的】
+   			context
+   			     本地网络应用程序的名称
+   			var  
+   			    表示URL的变量名称
+   			scope
+   			   var属性的作用域
+   		param标签属性	:
+   		      name
+   		         url中要设置的参数的名称[必须要有的]   
+   		       value
+   		           	参数的值          	
+      	【案列】
+   			<c:url var="myURL" value="index.jsp">
+			     <c:param name="name" value="admin" />
+			  		<c:param name="url" value="www.baidu.com" />
+			</c:url>
+			<hr>
+			<a href="/<c:out value="${myURL}"/>">点击指定发送参数</a>
+			  拼接 			 
+        	  http://localhost:8080/index.jsp?name=admin&url=www.baidu.com
+ 7、redirect
+      属性：
+        url:目标URL[必要的]
+        
+        context
+           紧接着一个本地网络的应用程序
+     说白了，该标签就是一个重定向的用处      
+           
+     【案列】
+      <h4>redirect标签</h4>
+	<c:redirect url="https://www.baidu.com/"></c:redirect>
+
+ 8、c:import
+     导入的
+     url:目标URL                   	  
+     【案列】
+      <c:import url="index.jsp"></c:import>   	  
+
+【综合案列-验证码】
+
+        	  
+        	  
+        	  	             	  		       

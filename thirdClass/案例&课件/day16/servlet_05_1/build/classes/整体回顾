@@ -1,0 +1,301 @@
+一:集合
+     SET
+          	元素无序，不可重复的
+         HashSet(常用的)
+                            底层采用的Hash算法来进行存储的集合
+          		 特点:
+                      不能保证元素的排列顺序
+                      不是线程安全的
+                      集合元素可以是null
+                      集合判断两个元素的标准:
+                     是通过对象的HashCode方法比较相等，并且两个的Equls()返回值也是相同的
+             案例（除去重复的对象）          
+         LinkedHashSet
+         	   是HashSet的子类
+              LinkedHashSet插入的性能低于HashSet 
+              	，但是咋迭代访问set里的全部元素的时候性能好
+                                        不允许集合的元素重复，保证元素的唯一，和HashSet原理一样
+                底层就是链表似的，是Set集合中唯一一个能进行保证怎么存入的数据就怎么进行取出数据
+                
+                
+         TreeSet 	    
+          	可保证元素处于排序状态
+          	 同一也是可以进行保证元素的唯一
+          	一种自然排序(默认的排序)
+          	自定义排序(Comparable  Comparator)
+     LIST
+      		   元素有序，可重复
+      	 1、ArrayList
+      	     	 底层就是一大数组
+      	       	 是线程不安全的
+      	       	 查询的速度比LinkedList快、添加删除效率低
+      	 2、LinkedList
+      	                       链表的方式进行存入
+				对于频繁的插入删除的操作效率高,但是查询低
+      	 3、Vector
+      	       	大部分与Arraylist相同，区别在于Vector线程安全的
+      	   		单插入删除频繁的操作，使用LinkedList  ,尽量避免使用Vector/ArrayList
+      	 4、ListIterator
+			List 额外提供的一个迭代器
+			    只是专门为List进行提供      	 
+      	 5、Iterator
+      	 	    迭代器
+      	 ListIterator与Iterator区别
+      	  	   都有hasNext 和next方法可以进行实现顺序的遍历
+      	  	 但是     ListIterator有HasPrecious和Precious
+      	  	   可以进行实现逆向遍历,Iterator是不可以的
+      	  	 ListIterator有Add方法，可以向List中进行插入数据
+      	  	 而Iterator是不可以的
+      	  	 都可以进行删除对象，但是ListIterator可以进行实现对象的修改
+      	  	 set方法可以进行实现，Iterator是不可以的
+      		   
+     MAP
+       Map是key(键)-value(值)的映射关系存储的
+       key(键)是唯一的
+       HashMap
+           	    是经常使用的一map集合
+          		允许使用null键与null值，与HashSet一样不能保证顺序
+          		
+       LinKedHashMap
+           		 是HashMap子类
+           		 与LinkedHashSet类似
+           		 存入的数据和取出的的顺序一样的
+       TreeMap
+		           可以进行保证key-value处于有序的状态
+		         进行排序
+		          默认的自然排序
+		          自定义排序
+       
+       HashTable
+       			是线程安全的
+       			与HashMap不同的，HashTable不允许使用null作为key和value
+                与HashMap一样Hashtable不能进行不好找key-Value的顺序
+                    
+       properties
+		             是HashTable的子类 
+		           一用处理属性文件的使用
+		           键和值都是字符串类型的
+		       
+       
+     
+二:IO流
+     输入和输出流
+       读到内存就是输入
+       内存到磁盘就得输出
+     
+     File类
+           创建，删除。重命名....文件和目录
+       
+      字节流
+      FileOutputStream
+      FileInputStream
+         缓冲流
+         Buffered......
+          原理
+          就是一个数组的方式进行读取的   8192
+      
+      
+      
+      字符流 
+       FlieReader
+       FileWriter
+      缓冲流   
+      Buffered。。。
+       
+   LineNumberReader
+   
+   转换流
+      InoputStreamReader
+      OutoputStreamReader
+       
+  数据流
+     DataInputStream  和 DataOutputStream
+ 对象流
+   在该对象中要进行实现序列化  (是接口Serializable)
+   就是那个id
+   ObjectInputStream
+   ObjectoutputStream
+       
+三:多线程
+    	线程 进程  程序  之前区别
+		        线程
+		           单线程
+		           多线程
+		             并发和并行
+		           并行就是两个任务同时运行，就是需要多核cpu
+		           并发就是两个任务请求运行，而只能处理一个任务
+		      Java JVM至少启动了两条线程
+		      
+		   线程的创建方式
+		     Thread
+		     Runnnbale接口
+		     
+		    	都是进行调用Start方法，从而启动线程的调用用Run方法
+		        
+		       Thread 和Runnnbale之前的区别
+		          类:
+		          重写Run方法,
+		          当调用Start方法，直接找到子类的run方法(JVM给我们完成)
+		    Runnnbale
+		        start调用Run方法使用 Thread来进行完成
+		     好处坏处
+		        类 
+		          好处:代码简单直接使用
+		          
+		        不能多继承只能单继承   
+		             
+		    接口   
+		      可以进实现多个，没居限性
+		  代码多,不能直接使用需要得到Thread类中的方法才可以使用          
+		    
+		  匿名内部类进行实现线程
+		  
+		 线程的同步  synchronize
+		    同步方法，同步代码块
+		    
+		  生命周期
+		    新建   就绪  运行  阻塞  死亡        
+       
+                      死锁
+    
+四:反射
+     class类
+        xxx.classs
+		   类名  对象名=     new 类名   
+		   对象名.getClass()
+		Class.forName("java.lang.String")
+		通过反射进行调用构造函数
+		获取某个类中的方法
+		获取某个类中的属性
+		动态代理Proxy
+		   
+五:注解
+    元注解
+      @Retention
+                                 修饰  保留多长的时间
+      @Target
+           		    用于修饰那些程序的元素(如，变量类方法)
+      @Documented
+       		      支持Javadoc工具的提取文档
+      @Inherited
+                             是否具有继承性
+    自定义注解
+六:MYSQL
+    DQL  DDL  DML DCL  语句
+     基本查询
+   条件查询
+   排序
+   函数
+   分组
+   过滤
+   笛卡尔乘积
+   子查询
+   分页
+   模糊查询
+   左右外连接
+   内连接
+   自连接
+   集合运算
+   表操作(增删改字段以及创建包删除表修改表.....)
+   约束
+     主键
+     非空
+     检查
+     唯一
+     外键约束
+   增删改SQL语句    
+
+     
+六:JDBC
+   Result
+   Connection
+   DriverManager
+   Statement
+   Class.forName
+        入门的增删改查
+   预编译
+	   PreparedStatement
+	        描述SQL的注入
+	    使用的是?的方式
+	    注意这里的?是从1开始计算的
+	   事务描述   
+	  事务(转账那个案例)
+七：连接池
+    C3P0
+    DRUID
+
+八:servlet
+    HTTP请求的协议
+      web.xml文件的方式进行编写
+    Servlet执行的原理
+     Servlet的生命周期
+     
+     Servlet3.0版本
+         @WebServlet注解
+     请求消息格式
+     Request
+     Request原理图
+     获取页面的数据
+     数据的共享
+     乱码处理
+     转发    
+   响应的消息格式
+   Response对象
+        重定向
+        响应数据给页面
+        乱处理
+   	使用流存送到页面      
+    ServletContext对象
+    文件的下载
+    Cookie(原理图)
+      发送单个和发送多个
+      设置Cookie的的时间
+      Cookie处理中文
+      Cookie的共享
+      Session(原理图)
+      Session的销毁
+
+九：jsp
+      jsp的3大指令
+	      page
+	      include
+	      taglib
+             注释
+             内置对象9个
+             脚本
+     JSP页面的原理(原理图)
+	  MVC模式
+	  	模型  视图  控制器	
+十:EL表达式
+     ${}
+    运算符
+   	 比较运算符 	  	
+	 算术运算符
+	 逻辑运算符
+	 空运算符
+   获取值
+     ${域名.键名}	
+     ${键名}	  
+  获取复杂的值  对象  集合  map
+       对象:${域名称.键名.属性名}
+       集合:${域名称.键名[索引]}
+     		   集合中传入对象
+       ${域名称.键名[索引].属性名}
+   map
+       ${域名称.键名.key名称}  
+         ${域名称.键名["key名称"]}  
+    描述了下隐式对象11个            	
+十：jstl标签
+    使用jsp的taglib指令导入标签库
+    set
+    if
+    out
+    choose
+         when
+         otherwise
+    foreach
+    remove
+    param  
+    url
+    redirect     
+    

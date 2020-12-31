@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html class="theme theme-white">
+<head>
+<meta charset="utf-8">
+<title>07 SQL之SELECT语句</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
+</head>
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="3db8" id="07-sql之select语句">07 SQL之SELECT语句</h1><hr><p data-anchor-id="2mit"><code>oracle</code></p><div class="md-section-divider"></div><h2 data-anchor-id="vs5o" id="1-select语句">1 SELECT语句</h2><p data-anchor-id="dn2e">SELECT标识选择哪些列。 <br>
+FROM标识从哪个表中选择:</p><blockquote data-anchor-id="ok8h" class="white-blockquote">
+  <p>SELECT *|{[DISTINCT] column|expression[alias],...}   FROM table;</p>
+</blockquote><p data-anchor-id="k0n1">编写SQL语句 <br>
+ - SQL 语言大小写不敏感 <br>
+ - SQL 可以写在一行或者多行 <br>
+ - 关键字不能被缩写也不能分行 <br>
+ - 各子句一般要分行写 <br>
+ - 使用缩进提高语句的可读性</p><div class="md-section-divider"></div><h2 data-anchor-id="31lt" id="2-选择全部列">2 选择全部列</h2><blockquote data-anchor-id="jjcu" class="white-blockquote">
+  <p>select * from emp;</p>
+</blockquote><p data-anchor-id="lhbr"><img src="http://static.zybuluo.com/l363130002/vlb9g05dg73fgz7j5yyyynog/image_1c08mllo1eubntq3ivg981sp320.png" alt="image_1c08mllo1eubntq3ivg981sp320.png-9.2kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="7q7h" id="3-选择特定的列">3 选择特定的列</h2><blockquote data-anchor-id="nvuc" class="white-blockquote">
+  <p>select emp_id,emp_name from emp;</p>
+</blockquote><p data-anchor-id="ojwc"><img src="http://static.zybuluo.com/l363130002/zslc8v2xnk3hnphzjd8tdo2y/image_1c08mnqe71g1c1l051sriag1cqq2d.png" alt="image_1c08mnqe71g1c1l051sriag1cqq2d.png-4.1kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="5g5o" id="4-算术运算符">4 算术运算符</h2><p data-anchor-id="ah41">数字和日期使用的数学表达式 <br>
+<img src="http://static.zybuluo.com/l363130002/f41omvwqwxy526d0xab8j8ml/image_1c08msrpk1g1klg65f2149k1q6a37.png" alt="image_1c08msrpk1g1klg65f2149k1q6a37.png-43.4kB" title=""></p><blockquote data-anchor-id="ourq" class="white-blockquote">
+  <p>select emp_id,emp_name,emp_birthday,emp_salary+300 from emp;</p>
+</blockquote><p data-anchor-id="ay91"><img src="http://static.zybuluo.com/l363130002/wht2gm9rhv3q0v4v207cmkrb/image_1c08mvt8bt8e15ujlac163dp2d3k.png" alt="image_1c08mvt8bt8e15ujlac163dp2d3k.png-8.6kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="04a0" id="5-操作符优先级">5 操作符优先级</h2><ul data-anchor-id="tq55">
+<li>乘除的优先级高于加减 </li>
+<li>同一优先级运算符从左向右执行 </li>
+<li>括号内的运算先执行 <br>
+<img src="http://static.zybuluo.com/l363130002/hhi5orekn61eqiw1d469bvbd/image_1c08n56qp1s9i18ou1ktcrpm1hrf41.png" alt="image_1c08n56qp1s9i18ou1ktcrpm1hrf41.png-10.6kB" title=""></li>
+</ul><blockquote data-anchor-id="i1v2" class="white-blockquote">
+  <p>select emp_id,emp_name,emp_birthday,emp_salary*3+300 from emp;</p>
+</blockquote><p data-anchor-id="s8vp"><img src="http://static.zybuluo.com/l363130002/60w2n1221msymk08xq7ngzw6/image_1c08n6fkc16jg11ue1m801ae9r3u4e.png" alt="image_1c08n6fkc16jg11ue1m801ae9r3u4e.png-8.4kB" title=""></p><div class="md-section-divider"></div><h2 data-anchor-id="dkqm" id="6-列的别名">6 列的别名</h2><ul data-anchor-id="9ifh">
+<li>重命名一个列。 </li>
+<li>便于计算。 </li>
+<li>紧跟列名，也可以在列名和别名之间加入关键字‘AS’，以便在别名中包含空格或特殊的字符并区分大小写 <br>
+<img src="http://static.zybuluo.com/l363130002/28chmzfx9wxvsfd3czk9xmf5/image_1c08n9kmb5qscjn11fs1jknuhb4r.png" alt="image_1c08n9kmb5qscjn11fs1jknuhb4r.png-103.2kB" title=""></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="noad" id="7-连接符">7 连接符</h2><ul data-anchor-id="dv3r">
+<li>把列与列，列与字符连接在一起 </li>
+<li>用‘||’表示 </li>
+<li>可以用来‘合成’列 <br>
+<img src="http://static.zybuluo.com/l363130002/z72kfv1u72c15teklyxpkd0r/image_1c08nd9bo14fa8j7up44b9jt58.png" alt="image_1c08nd9bo14fa8j7up44b9jt58.png-9.8kB" title=""></li>
+</ul><div class="md-section-divider"></div><h2 data-anchor-id="o1nr" id="8-字符串">8 字符串</h2><ul data-anchor-id="c2v8">
+<li>字符串可以是SELECT列表中的一个字符,数字,日期</li>
+<li>日期和字符只能在单引号中出现 </li>
+<li>每当返回一行时，字符串被输出一次 <br>
+<img src="http://static.zybuluo.com/l363130002/bymqggwu5isr5wjwz67pjzrk/image_1c08nii301jpb1pfb1336tol3t662.png" alt="image_1c08nii301jpb1pfb1336tol3t662.png-15.6kB" title=""></li>
+</ul></div>
+</body>
+</html>
