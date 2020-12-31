@@ -1,0 +1,363 @@
+注解--
+注意：在开发中注解和配置都是混合使用的
+     没有专注与那个进行使用
+
+    <!--标识标识扫描当前对应的包-->
+        <context:component-scan base-package="com.bj.spring"></context:component-scan>
+     /*
+       表示：
+        我们之前使用的bean配置
+        <bean name="users" class=""></bean>
+     * */
+     @Component("users")
+     public class Users {
+       .....
+
+SpringMVC中的注解
+  mvc层的注解
+@Component("users")、
+@Service
+@Repository
+@Controller
+1.这些注解使用在上,都是进告诉Spring,此类似需要被管理的bean
+   其中的@Component功能是最为单一的通用的,仅是表明需要被Spring
+   进行管理的bean对象，其他的3个,都代表类在应用的角色
+@Component
+    -需要被Spring进行管理的bean,没有具体的角色
+@Service
+    - 是一业务层的对象,(3层架构中的业务层 如之前项目中Serivce包 )
+    @Service
+    public class Car {
+
+@Controller
+   - 是一个前端控制器对象(3层架构中表现层)
+    @Controller
+    public class Student {
+
+@Repository
+  - 是一个dao对象,(3层架构中的数据访问层)
+   如:
+        @Repository
+        public class Person {
+无论使用那个注解都可以获取对应的对象,
+  - 这4个注解都可以进行指定Bean在容器中的名称。
+     如没有进行指定,则使用默认的类名称(首字母小写),然后来进行作为bena的名称
+
+-----------
+@Scope 对象作用域
+  Scope常用的属性
+     singleton(默认的)
+        单列对象,在Spring容器中只会出现一个对象
+     prototype
+        多列原型，在spring容器中每次都会创建一个新对象
+     session(了解)
+         在web环境中的,当前对象与Session的生明周期一致
+      request (了解)
+         在web环境中,对象与Request的生命周期一致
+       在一般的情况下， 都是还是使用默认的,
+        如下:
+        @Service
+        @Scope(scopeName="prototype")
+        public class Car {
+-----
+ @Value("值") 属性注入
+  方式一:
+      1.直接进行加载在属性名上
+            @Service
+            @Scope(scopeName="singleton")
+            public class Car {
+                @Value("123")
+                private  Integer id;
+                @Value("隔壁老陈")
+                private  String name;
+   方式二:
+      2.直接加载在set方法上面
+           @Repository
+           public class Person {
+               private  String name;
+               private  String phone;
+               @Value("1008611")
+               public void setPhone(String phone) {
+                   this.phone = phone;
+               }
+               @Value("隔壁小姐姐")
+               public void setName(String name) {
+                   this.name = name;
+               }
+   区别:
+      如上两种方式的区别
+         1.加在属性名上,的字段上通过反射的Filed赋值()破坏了封装的特性
+         2.加在Set方法上,是通过set方法进行赋值(推荐使用)
+   EL表达式和SQEL表达式
+      EL表达式
+          @Value("值") 该注解的功能不仅仅是进行赋值
+            还可以进行使用EL赋值
+            语法:
+            @Value("${....}")
+      案例:
+         1.在SRC目录下进行创建db.properties文件
+            中间进行编写
+                jdbc.driverClss=com.mysql.jdbc.Driver
+                jdbc.users=root
+                jdbc.pwd=root
+         2.在   appliactionContext.xml进行
+            扫描加载
+                   <!--进行加载db.properties文件数据-->
+                <context:property-placeholder location="db.properties"></context:property-placeholder>
+
+         3.实体类的编写
+            @Repository
+            public class JdbcDriver {
+                @Value("${jdbc.driverClss}")
+                private  String name;
+                @Value("${jdbc.users}")
+                private  String users;
+                ....GET SET TOString 方法
+          SQEL表达式
+            1.获取当前系统语言
+             语法
+             @Value("#{jdbc.driverClss}")
+            2.案列
+                @Repository
+                public class JdbcDriver {
+                    @Value("${jdbc.driverClss}")
+                    private  String name;
+                    @Value("${jdbc.users}")
+                    private  String users;
+-------------------
+对象的引入的注入
+    方式一:
+            @Autowired("对象名")结合@Qualifier
+      案列:
+            @Component("car01")
+            public class Car {
+                @Value("法拉利")
+                private  String name;
+                @Value("红色")
+                private  String color;
+
+        @Component("person01")
+        public class Person {
+            @Value("隔壁老陈")
+            private  String name;
+            @Autowired
+            @Qualifier("car01")
+            private  Car  car ;
+
+      1.自动装配是通过类型进行扫描来完成装配的
+      2.当我们使用  @Autowired  ||  @Autowired(required=true)
+         这两种写法是相同的，如容器无法提供对应的Bean对象的时候，那么就抛出异常
+      3.@Autowired(required=false)
+        含义是需要进行注入的，如果没有那么就是无所谓的
+      4.如果匹配到了多个相同的bean对象，无法主动进行装配那么就使用
+          @Qualifier("car01")来进行指定对应的对象名称
+   寻找依赖的顺序
+        1.类型(byType
+           1-注解在Setter 方法或者是构造函数上，选择参数类型
+           2-注解在属性上,选择属性的类型
+           3-如果容器中出现了多个相同的类型的bean,那么则使用byName的方式完成
+
+        2.指定名称(byName
+           1-通过注解 @Qualifier("car01")来进行指定名称，则使用容器中寻找指定的名称的Bean
+
+
+        @Qualifier
+          1.提供注入的限制,必须按照名称来进注入
+        @Required
+           1.用于在Setter方法上使用，用于验证此依赖是否已经注入，如果,没有注入,则Spring在构建bean的时候,抛出异常
+
+         方式二:
+            JSR250 的标准来进行注入
+            @Resource("对象名")
+            @Resource 就是类型与@Autowired他
+              1-但是注入的顺序是想进行byName ,然后在进行byType
+                 最后按照 @Qualifier自动名称的方式进行注入
+          案例:
+            @Component
+            public class Stu {
+                @Value("小姐姐")
+                 private  String name;
+                @Resource(name="car01")
+                private  Car car;
+
+
+-------------------
+初始化和销毁的注解
+        @PostConstruct与 @PreDestroy
+            @Component
+            public class Dog {
+                   @Value("小黄")
+                private  String name;
+                  @Value("白色")
+                 private  String color;
+                  @PostConstruct //类似 init-method=""
+                  public   void testInit(){
+                      System.out.println("public   void testInit()");
+                  }
+                  @PreDestroy //类似于destroy-method=""
+                  public   void testDestroy(){
+                      System.out.println("public   void testDestroy");
+                  }
+ 使用接口(不推荐) InitializingBean,DisposableBean
+            @Component("car01")
+            public class Car implements InitializingBean,DisposableBean {
+                @Value("法拉利")
+                private  String name;
+                @Value("红色")
+                private  String color;
+
+                @Override
+                public void destroy() throws Exception {
+                    System.out.println(" public void destroy() throws Exception");
+                }
+
+                @Override
+                public void afterPropertiesSet() throws Exception {
+                    System.out.println("  public void afterPropertiesSet() throws Exception");
+                }
+
+ 扩展：
+    如果在开发。接口，注解，配置混合使用的时候
+     1.注解
+     2.接口
+     3.配置
+     如有出现过多种方式,使用同一个方法,那么此方法只会执行一次
+---------
+  Bean 创建的先后顺序
+   1.bean A 使用ref指向Bean B 的时候，已经是隐藏了B要先于A创建,但是有的时候两个Bean的创建不相互依赖的情况下,M
+      但是从业务逻辑的角度来看,是有依赖关系的
+   2.比如:
+       bean b 是进行我jdbc 驱动注册的作用的，Bean A 是创建Connetion  的，这两个Bean 在创建
+       的时候，是没有依赖关系的,但是从依赖逻辑上来说，JDBC要先注册创建，然后才能获取到Connetion
+   3,那么针对于这种隐藏的依赖关系,我们就可以使用先后顺序来进行显示指定，而且可以指定多个对象(逗号,分号,空白字符)
+     分割
+        <bean name="dog" class="com.bj.spring.test02.Dog" depends-on="stu02">
+             <property name="color" value="红色"></property>
+            <property name="name"  value="旺财"></property>
+        </bean>
+
+        <bean name="stu02" class="com.bj.spring.test02.Stu01"></bean>
+
+-----
+   延迟加载
+      分为全局和局部
+       1.修改默认的全局
+          |-通过在xml配置文件的根标签<beans>上加上<beans default-lazy-init=""
+             并进行赋值为True,（也可以使用默认的False）
+          |-当前该配置设置为True的时候，标识容器中所有的Bean都是延迟加载的
+       2.对单个bean来记性配置
+          1.通过<bean  lazy-init="" 配置进行赋值为True
+          2.标识创建时间延迟到第一个被访问的时候才进行创建
+          3.如没有进行配置,那么这使用默认的全局配置
+              单个bean的配置会进行覆盖全局的配置
+            <bean name="dog" class="com.bj.spring.test02.Dog" >
+                    <property name="color" value="红色"></property>
+                    <property name="name"  value="旺财"></property>
+             </bean>
+            <bean  lazy-init="true" name="stu02" class="com.bj.spring.test02.Stu01"></bean>
+
+------
+Spring 方法注入(了解)
+   1. bean A 依赖于 bean B ,而且A 需要每次 使用B都是新的B
+      而且不是同一个B
+   2。spring 默认的注入的机制,在创建A的时候注入一个B(创建出所有的Bean),而不是没有使用的进行注入
+   3.我可以使用之前学过的scope=prototype 多列模式
+        public class Users {
+            ApplicationContext ac;
+            public   void testSerivce(){
+                Car c=testCar();
+                System.out.println("============"+c.getClass());
+            }
+            public   Car testCar(){
+             return ac.getBean(Car.class);
+            }
+             <bean name="users" class="com.bj.spring.test03.Users" autowire="byType"></bean>
+              <bean name="car" class="com.bj.spring.test03.Car" scope="prototype"></bean>
+Lookup 方法注入
+   1.spring 中可以进行重写Bean中的某个方法(这个方法返回值是一个Bean)
+   2。然后在容器中查询一个Lookup想对应的Bean名称,作为返回值
+   3,创建类
+      public class Car {
+          private  String name;
+          private  String color;
+
+      public abstract class Student {
+          abstract   public  Car  getCar();
+      }
+   4.配置
+       <bean name="car" class="com.bj.spring.test04.Car"></bean>
+       <bean name="student" class="com.bj.spring.test04.Student">
+           <lookup-method name="getCar" bean="car"></lookup-method>
+       </bean>
+方法的覆盖实现注入(了解)
+  1.进行覆盖Bean中的某个方法的具体的实现
+        创建类
+        public class Users {
+            public   void testUsers(){
+                System.out.println("public   void testUsers(");
+            }
+        }
+
+    public class Studnet implements MethodReplacer {
+        @Override
+        public Object reimplement(Object o, Method method, Object[] objects) throws Throwable {
+            System.out.println(method.getName() + "我被执行了");
+
+            return null;
+        }
+    }
+   配置
+            <bean name="users" class="com.bj.spring.test05.Users">
+                <replaced-method name="testUsers" replacer="studnet">
+
+                </replaced-method>
+            </bean>
+            <bean name="studnet" class="com.bj.spring.test05.Studnet"></bean>
+------
+使用jumit方式，进行测试
+            jar
+            com.springsource.org.apache.commons.logging-1.1.1.jar
+            com.springsource.org.apache.log4j-1.2.15.jar
+            hamcrest-core-1.3.jar
+            junit-4.12.jar
+            spring-aop-4.3.2.RELEASE.jar
+            spring-beans-5.0.8.RELEASE.jar
+            spring-context-5.0.8.RELEASE.jar
+            spring-core-5.0.8.RELEASE.jar
+            spring-expression-5.0.8.RELEASE.jar
+            spring-test-4.3.2.RELEASE.jar
+      测试：
+          @RunWith(SpringJUnit4ClassRunner.class)
+          @ContextConfiguration("classpath:appliactionContext.xml")//加载配置文件
+          public class TestSpring04 {
+
+              @Resource(name="users")
+              private Users users;
+
+              @Test
+              public   void test(){
+                  users.testUsers();
+              }
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

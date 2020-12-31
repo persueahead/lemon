@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--注册对应的容易
+      比如我们之前new Users()来进行创建对象，那么现在就不
+       用，之间交Spring来进行处理
+    -->
+    <bean name="users" class="com.bj.spring.pojo.Users"></bean>
+
+
+</beans>

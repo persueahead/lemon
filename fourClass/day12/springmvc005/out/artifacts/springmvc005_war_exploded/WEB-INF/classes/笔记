@@ -1,0 +1,136 @@
+异常处理
+  1.在SpringMVC通过HandlerExceptionResolver接口来进行处理程序的异常
+    包括Handler 映射，数据绑定以及目标方法执行时候发送的异常
+  2.HandlerExceptionResolver  的实现类
+      ExceptionHandlerExceptionResolver
+  3.dispatcherServlet 默认装配的HandlerExceptionResolver,在开发中使用
+   这个配置<mvc:annotation-driven ></mvc:annotation-driven>
+   ，就会自动的加载4个异常处理类
+    DefaultHandlerExceptionResolver
+    ExceptionHandlerExceptionResolver
+    ResponseStatusExceptionResolver
+    SimpleMappingExceptionResolver
+
+
+ ExceptionHandlerExceptionResolver
+ 1.主要进行处理Hadler 中的@ExceptionHandler 注解定义的方法
+ 2.@ExceptionHandler 注解定义的方法优先级的问题，
+     假如发生的是nullPointerException，但是声明的异常有
+     RuntimeException  和 Exception  ，那么此时会根据异常的最将的继承的关系去找
+     深度最浅的那个@ExceptionHandler注解的方法
+ 案列
+    controller
+           @RequestMapping("/TestController001/test001")
+            public   String  test001(@RequestParam("id") int  id){
+                System.out.println(20 / id);
+                return  "lsit";
+            }
+    异常处理
+               @ExceptionHandler({ArithmeticException.class})
+                public ModelAndView test002(Exception  ex){
+                    System.out.println(ex);
+                    ModelAndView view = new ModelAndView();
+                    view.setViewName("error");
+                    view.addObject("exception",ex.getMessage());
+                    return   view;
+                }
+            <hr>
+              ${exception}
+              </body>
+      如设置的是当前的Controller请求中的异常处理方式,那么怎么进行设置全局的异常处理
+---------------
+设置全局异常处理
+   1.创建一个全局的异常处理的类
+
+   2.  ExceptionHandlerExceptionResolver内部如找不到@ExceptionHandler 注解的时候，
+       那么会进行查询@ControllerAdvice中的@ExceptionHandler注解的方法(异常处理去全局)
+@ControllerAdvice
+public class ThisArithmeticException {
+    @ExceptionHandler({ArithmeticException.class})
+    public ModelAndView test002(Exception  ex){
+        System.out.println(ex);
+        ModelAndView view = new ModelAndView();
+        view.setViewName("error");
+        view.addObject("exception",ex.getMessage());
+        return   view;
+    }
+
+}
+   如上的一异常处理，都是SpringMVC中的自带的
+    那么如如果要进行自定义，怎么处理
+ --------------------------
+ 自定义异常处理
+        import org.springframework.web.bind.annotation.ResponseStatus;
+        @ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "除数不能为0。。。。。。。。")
+        public class MyThisException extends RuntimeException{
+            public MyThisException() {
+            }
+
+            public MyThisException(String message) {
+                super(message);
+            }
+        }
+      Controller
+           @RequestMapping("/TestController001/test002")
+            public   String  test002(@RequestParam("id") int  id){
+               // System.out.println(20 / id);
+                if(id==0){
+                    throw new MyThisException();
+                }
+                return  "lsit";
+            }
+
+
+
+---------------------------------------------
+使用配置文件你啊进行自动异常页面 SimpleMappingExceptionResolver
+          @Controller
+          public class TestController002 {
+              @RequestMapping("/TestController002/test")
+              public   String   test(@RequestParam ("id") int id){
+                  String[]  str=   new String[5];
+                  System.out.println(str[id]);
+                  return "lsit";
+              }
+          }
+  springmvc.xml文件
+        <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+
+            <!--配置异常的属性名，默认的情况下是不会生效的-->
+            <property name="exceptionAttribute" value="exe"></property>
+            <!--异常的映射-->
+            <property name="exceptionMappings">
+                <props>
+                    <!--异常跳转的页面
+                      必须是异常类的全类名
+                    -->
+                     <prop key="java.lang.ArrayIndexOutOfBoundsException">error</prop>
+                </props>
+
+            </property>
+        </bean>
+         <hr>
+          ${exception}
+          <%--默认获取的信息是exception--%>
+          <hr>
+          ${exe}
+          </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

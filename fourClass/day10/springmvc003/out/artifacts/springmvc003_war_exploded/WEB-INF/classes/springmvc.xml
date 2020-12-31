@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<!--配置是扫描包-->
+    <context:component-scan base-package="com.bj.springmvc.test"></context:component-scan>
+
+    <!--开启注解配置-->
+    <!--   <mvc:annotation-driven></mvc:annotation-driven>-->
+   <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+      <!--进行记性配置静态资源的处理-->
+   <mvc:default-servlet-handler/>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <property name="prefix" value="/"></property>
+            <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--配置转换工厂,并进行指定我的自定义的转换器-->
+<!--   <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
+         <property name="converters">
+             <set>
+                 &lt;!&ndash;指定我的自定义的转换器&ndash;&gt;
+                 <ref bean="testConversionServiceFactoryBean" />
+
+             </set>
+
+         </property>
+
+
+   </bean>-->
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
+        <property name="converters">
+            <set>
+                <!--指定我的自定义的转换器-->
+                <ref bean="testConversionServiceFactoryBean" />
+
+            </set>
+
+        </property>
+
+
+    </bean>
+
+</beans>

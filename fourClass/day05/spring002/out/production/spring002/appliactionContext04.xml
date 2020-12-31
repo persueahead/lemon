@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean name="coll01" class="com.bj.pojo.Collection">
+    <!--
+      如数组，中只有一个值的时候，对象可以使用valeu=""或者ref=""的方式进行注入
+    -->
+    <property name="obj" value="小王" ></property>
+</bean>
+
+<!--数组多个值-->
+    <bean name="coll02" class="com.bj.pojo.Collection">
+         <property name="obj">
+             <array>
+                 <value>小哥哥</value>
+                 <value>小姐姐</value>
+                 <ref bean="car" />
+             </array>
+         </property>
+    </bean>
+    <bean name="car" class="com.bj.pojo.Car">
+        <property name="name" value="奔驰"></property>
+        <property name="color" >
+            <value>红色</value>
+        </property>
+    </bean>
+<!--集合-->
+    <bean class="com.bj.pojo.Collection" name="coll03">
+        <property name="list">
+            <!--<set></set> -->
+            <list>
+                <value>隔壁老陈</value>
+                <value>隔壁老王</value>
+                <ref bean="car" />
+            </list>
+        </property>
+    </bean>
+
+<!--map-->
+  <bean name="coll04" class="com.bj.pojo.Collection">
+      <property name="map" >
+          <map>
+            <entry key="key01" value="小张同学"></entry>
+            <entry key="key02" value="123123"></entry>
+            <entry key="obj" value-ref="car"></entry>
+             <entry key-ref="car" value="key是一个对象"></entry>
+             <entry key-ref="car" value="key是一个对象"></entry>
+          </map>
+      </property>
+  </bean>
+    <!--Properties-->
+    <bean class="com.bj.pojo.Collection" name="coll05">
+        <property name="pro">
+            <props>
+                <prop key="usersNaem">root</prop>
+                <prop key="driverClass">com.jdbc.mysql.Driver</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean name="car01" class="com.bj.pojo.Car">
+        <property name="name" value="奔驰"></property>
+        <property name="color" >
+            <value>null</value>
+        </property>
+    </bean>
+    <bean name="car02" class="com.bj.pojo.Car">
+        <property name="name" value="奔驰"></property>
+        <property name="color" >
+                <null/>
+        </property>
+    </bean>
+</beans>

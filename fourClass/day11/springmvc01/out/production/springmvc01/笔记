@@ -1,0 +1,276 @@
+SpirngMVC
+    1、SpringMVC是基于ServletAPI来进行构建的一个WEB框架
+       是Spring家族中的一个模版
+      可以理解成之前的Servlet干了什么事，那么现在都是SpringMVC来进行后处理
+入门案例
+     1.导入对应的jar
+            commons-logging-1.2.jar
+            spring-aop-4.3.2.RELEASE.jar
+            spring-aspects-4.3.2.RELEASE.jar
+            spring-beans-4.3.2.RELEASE.jar
+            spring-context-4.3.2.RELEASE.jar
+            spring-core-4.3.2.RELEASE.jar
+            spring-expression-4.3.2.RELEASE.jar
+            spring-web-4.3.2.RELEASE.jar
+            spring-webmvc-4.3.2.RELEASE.jar
+     2.编写WEB.xml文件
+             <!--配置核心处理器-->
+                <servlet>
+                    <servlet-name>dispatcherservlet</servlet-name>
+                    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+                    <!--记性配置扫描SpringMVC.xml文件-->
+                    <init-param>
+                        <param-name>contextConfigLocation</param-name>
+                        <param-value>classpath:springmvc.xml</param-value>
+                    </init-param>
+                </servlet>
+                <servlet-mapping>
+                    <servlet-name>dispatcherservlet</servlet-name>
+                    <url-pattern>/</url-pattern>
+                </servlet-mapping>
+      3. 在SRC目录下创建springmvc.xml
+            <!--配置是扫描包-->
+                <context:component-scan base-package="com.springmvc.mvc.controller"></context:component-scan>
+
+                <!--开启注解配置-->
+                 <mvc:annotation-driven></mvc:annotation-driven>
+                <!--配置视图解析器-->
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                     <property name="prefix" value="/"></property>
+                        <property name="suffix" value=".jsp"></property>
+                </bean>
+        4.编写Controller
+                @Controller
+                public class TestController01 {
+
+                    @RequestMapping("/Test01")
+                    public  String Test01(){
+                        System.out.println("我执行了请求的方法");
+                        return  "sucess";
+                    }
+                }
+
+       5.请求执行
+                http://localhost:8080/Test01
+
+@RequestMapping注解描述
+         1.springMVC使用的@RequestMapping注解标识为控制器进行指定的一个处理的URL请求的地址
+            类似我们之前Servlet中的请求地址(@WebServlet("/xxxx"))
+         2.可以进行使用在方法上，也可以使用在类上
+            类上定义
+                提供初步的前的映射信息
+                  相当于WEB应用的根目录
+
+            方法上定义
+                提供进一部的细化的映射的信息
+                    相当于类定义的URL的对应地址（指定那个具体的请求地址）
+             如果类同个class中出了类上和方法上都有该注解
+             那么请求的地址就  类/方法
+              如下:
+                @Controller
+                @RequestMapping("/TestController01")
+                public class TestController01 {
+
+                      //这方式get /post都执行
+                    @RequestMapping("/Test01")
+                    public  String Test01(){
+                        System.out.println("我执行了请求的方法");
+                        return  "sucess";
+                    }
+                }
+                    http://localhost:8080/TestController01/Test01
+
+        3.参数
+               value  指定的请求的路径地址
+               method 指定请求的方式(get/post)
+
+            执行get方法
+                        @RequestMapping(value = "/test02",method = RequestMethod.GET)
+                        public   String test02(){
+                            System.out.println("RequestMethod.GET");
+                            return  "sucess";
+                        }
+
+                         @GetMapping("/test04")
+                            public   String test04(){
+                                System.out.println("GetMapping");
+                                return  "sucess";
+
+                            }
+             执行post方法
+                       @RequestMapping(value = "/test03",method = RequestMethod.POST)
+                        public   String test03(){
+                            System.out.println("RequestMethod.POST");
+                            return  "sucess";
+
+                        }
+
+                         @PostMapping("/test05")
+                            public   String test05(){
+                                System.out.println("PostMapping.POST");
+                                return  "sucess";
+
+                            }
+              如提交的方式不对抛出
+                  HTTP Status 405 – Method Not Allowed
+                  Type Status Report
+                  Message Request method 'POST' not supported
+                  Description The method received in the request-line is known by the origin server but not supported by the target resource.
+
+              请求参数和请求头
+                 params  headers
+                name  标识请求必须包含名称为  name 的请求参数
+                 age!=10 请求不能包含age=10的
+                 {"Accept-Language=zh,en-US;q=0.9,en;q=0.8"}
+                   标识请求头必须有 Accept-Language=zh,en-US;q=0.9,en;q=0.8
+                    才可以进行执行
+
+                @RequestMapping(value = "/test06",params = {"name","age!=10"}
+                   ,headers = {"Accept-Language=zh,en-US;q=0.9,en;q=0.8"}
+                   )
+                   public   String test06(){
+                       System.out.println("test06");
+                       return  "sucess";
+
+                   }
+                     <A HREF="test06?name=amdin&age=12">test06</A>
+
+            4.springMVC 那么也使用通过符
+                ? 一个字符
+                * 匹配任意个字符
+                ** 多层路径
+                        @RequestMapping(value = "/test07/*/asd?/**")
+                        public   String test07(){
+                            System.out.println("test07");
+                            return  "sucess";
+
+                        }
+                 请求：
+                         <A HREF="test07/q//asdF/w/qw">test07</A>
+-----------------
+获取轻的数据
+               @RequestMapping("/Test01")
+                public  String Test01(String name,Integer  age){
+                    System.out.println(name+"=="+age);
+                    return  "sucess";
+                }
+                  <FORM ACTION="TestController02/Test01" method="post">
+
+                     <INPUT TYPE="text" NAME="name">
+                      <BR/>
+                      <INPUT TYPE="text" NAME="age">
+                      <BR/>
+                      <input type="submit" value="提交">
+
+                  </FORM>
+            绑定占位符进行赋值
+                 通过@PathVariable注解将URL中的占位符参数进行绑定到控制器的处理方法
+                 的入参数中.,URL地址中使用{xxx}这站位符可通过
+                 @PathVariable("xxx") 进行绑定操作方法中的入参中
+                    @RequestMapping("/Test01/{name}/{age}")
+                    public  String Test01(@PathVariable("name") String name, @PathVariable("age") Integer  age){
+                        System.out.println(name+"=="+age);
+                        return  "sucess";
+                    }
+                      <A HREF="TestController02/Test01/tom/2222">TestController02/Test01/tom/2222</A>
+-----------------
+Rest 风格
+            1。表现层状态的转换，是目前最流向的一种软件架构，
+               结构清晰，符合标准，容易理解
+            2。GET(获取资源的)  POST(新建资源)  PUT(更新资源)  DELETE(删除资源)
+            3. PUT DELETE 怎么进行操作
+            4.httpMethodFilter类来进行拦截转换
+       在WEB.xml文件中进行配置
+                    <filter>
+                        <filter-name>HiddenHttpMethodFilter</filter-name>
+                        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+                    </filter>
+                    <filter-mapping>
+                        <filter-name>HiddenHttpMethodFilter</filter-name>
+                        <url-pattern>/*</url-pattern>
+                    </filter-mapping>
+
+           编写Controller
+             @RequestMapping(value="/Test04DELETE/{name}",method = RequestMethod.DELETE)
+                public  String Test04(@PathVariable("name") String name){
+                    System.out.println("RequestMethod.DELETE"+name);
+                    System.out.println("RequestMethod.DELETE");
+                    return  "sucess";
+                }
+                @RequestMapping(value="/Test03PUT/{name}",method = RequestMethod.PUT)
+                public  String Test03(@PathVariable("name") String name){
+                    System.out.println("RequestMethod.PUT"+name);
+                    System.out.println("RequestMethod.PUT");
+                    return  "sucess";
+                }
+                @RequestMapping(value="/Test02POST/{name}",method = RequestMethod.POST)
+                public  String Test02(@PathVariable("name") String name){
+                    System.out.println("RequestMethod.POST");
+                    System.out.println("RequestMethod.POST"+name);
+                    return  "sucess";
+                }
+                @RequestMapping(value="/Test01GET/{name}",method = RequestMethod.GET)
+                public  String Test01(@PathVariable("name") String name){
+                    System.out.println("RequestMethod.GET");
+                    System.out.println("RequestMethod.GET"+name);
+                    return  "sucess";
+                }
+            页面
+              <FORM ACTION="TestController03/Test04DELETE/admin" method="post">
+                  <input type="hidden" name="_method" VALUE="DELETE">
+                  <input type="submit" value="Test04DELETE">
+              </FORM>
+
+            <HR>
+
+              <FORM ACTION="TestController03/Test03PUT/admin" method="post">
+                  <input type="hidden" name="_method" VALUE="PUT">
+                  <input type="submit" value="Test03PUT">
+              </FORM>
+              <HR>
+
+              <FORM ACTION="TestController03/Test02POST/admin" method="post">
+                  <input type="submit" value="post">
+              </FORM>
+              <HR>
+
+              <FORM ACTION="TestController03/Test01GET/admin" method="get">
+                  <input type="submit" value="post">
+              </FORM>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

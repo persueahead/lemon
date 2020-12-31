@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--1.将连接池配置到容器中-->
+    <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+         <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+         <property name="jdbcUrl" value="jdbc:mysql://192.168.116.128:3306/testMysql?useUnicode=true&amp;characterEncoding=utf-8" ></property>
+         <property name="user"  value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+     <!--将JdbcTemplate注入到容器中-->
+<!--
+    <bean name="jdbctemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+-->
+
+    <!--将UsersDao注入到容器中-->
+    <bean name="usersDao" class="com.bj.jdbc.dao.imp.UsersDaoImp2">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+</beans>

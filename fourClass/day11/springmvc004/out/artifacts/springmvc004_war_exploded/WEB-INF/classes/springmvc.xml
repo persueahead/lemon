@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<!--配置是扫描包-->
+    <context:component-scan base-package="com.bj.springmvc.test"></context:component-scan>
+
+    <!--开启注解配置-->
+    <!--   <mvc:annotation-driven></mvc:annotation-driven>-->
+   <mvc:annotation-driven ></mvc:annotation-driven>
+      <!--进行记性配置静态资源的处理-->
+   <mvc:default-servlet-handler/>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <property name="prefix" value="/"></property>
+            <property name="suffix" value=".jsp"></property>
+    </bean>
+    
+    <!--进行配置Josn数据格式-->
+    <!--从请求和响应中.读取编写的字符串-->
+ <bean id="stringHttpMessage" class="org.springframework.http.converter.StringHttpMessageConverter">
+     <property name="supportedMediaTypes">
+         <list>
+              <value>text/palin;charset=UTF-8</value>
+         </list>
+     </property>
+ </bean>
+    <!--将对象转换为josn数据的-->
+    <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+          <property name="messageConverters">
+              <list>
+                  <ref bean="stringHttpMessage" />
+                  <ref bean="jsonConverter" />
+              </list>
+          </property>
+    </bean>
+    <!--进行配置文件上传-->
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+       <!--进行配置文件上传的大小 和相关的字符集-->
+      <property name="defaultEncoding" value="UTF-8"></property>
+      <!--上传的总文件的大小-->
+      <property name="maxUploadSize" value="123123123"></property>
+      <!--进行配置每个文件上传的大小-->
+      <property name="maxUploadSizePerFile" value="#{1024 * 1024 }"></property>
+      <!--配置阀值,如果在这个范围内，内存中之外存在临时文件中-->
+      <property name="maxInMemorySize" value="#{1024 * 1024 * 1024 }"></property>
+  </bean>
+
+    <mvc:interceptors>
+        <bean class="com.bj.springmvc.test.MyThisHandlerInterceptor"></bean>
+        <bean  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+
+        <mvc:interceptor>
+            <!--
+               <mvc:mapping  path=""  不生效的路径地址
+               <mvc:exclude-mapping path=""  生效小的路径地址
+            -->
+            <mvc:mapping path="/TestCotriller003/**"/>
+            <bean class="com.bj.springmvc.test.MyThisHandlerInterceptor"></bean>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+
+
+
+</beans>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--指定，进程查询数据库的配置信息-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+ <!--将连接进行注入到Spring容器中-->
+    <bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="user" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+
+    </bean>
+
+    <!--将userDap bean注入容器 注入dataSource给jdbcDaoSupport获取 来提供jdbcTemplate用以执行sql-->
+  <bean name="usersdao" class="com.bj.spring.dao.UsersDaoImp">
+      <property name="dataSource" ref="datasource"></property>
+  </bean>
+    <!--将Serivce注入到容器中-->
+   <bean name="usersSerivce" class="com.bj.spring.serivce.UsersSerivceImp">
+       <property name="usersdao" ref="usersdao"></property>
+       <property name="transactionTemplate" ref="transactionTemplate"></property>
+   </bean>
+
+
+     <!--将核心的事务配置到容器中-->
+      <bean
+           name="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+          <property name="dataSource" ref="datasource"></property>
+      </bean>
+    <!--配置事务模版对象-->
+    <bean name="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+         <property name="transactionManager" ref="transactionManager"></property>
+    </bean>
+
+
+
+
+</beans>

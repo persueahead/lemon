@@ -1,0 +1,242 @@
+事务?
+   什么是事务
+     1.在数据库中.进行操作某一条数据或者多条数据的时候，数据库中的sql
+        语句组成的一个不可分割的单元，
+     2.当事务中的所有的操作都是正常完成的手，整个事务才能别提交到数据中
+       ,如果有条数据操作没有执行，那么所有的操作数据库都不会进行执行
+     3.要么一起成功，要么一起失败。
+
+事务的特性,
+      原子性,
+         标识将事务中所有的操作进行捆绑层一个不可分割的单元格，
+         计对事务所有进行的数据库修改等操作，要么全部执行，要么就是全部失败
+      一致性
+         表示事务完成时，必须使所有的数据都保持一致的状态
+      隔离性
+        指的是一个事务的执行，不能被其他的事务进行干扰，
+         、一个事务内部的操作以及使用的数据库对并发的其他事务
+         都是进行隔离的，并发执行的各个事务之间是不能进行相互干扰的
+      持久性
+         永久性，指一个事务提交之后，它对数据库中的数据库的改变
+         应该是永久性的
+事务的并发
+       1脏读
+          一个事务读取到另外一个事务未提交的数据
+       2不可重复读
+          一个事务读取到了另外一个事务已经提交的update数据
+           导致在同一个事务中多次查询的结果不一致
+       3幻|虚读
+          一个事务读取都了另外一个事务已经提交的insert数据,导致在同Hige事务中的多次查询的数据不一致
+==============================
+Spring 中事务的入门
+   1.导入对应的jar包
+        c3p0-0.9.1.2.jar
+        com.springsource.org.aopalliance-1.0.0.jar
+        com.springsource.org.apache.commons.logging-1.1.1.jar
+        com.springsource.org.apache.log4j-1.2.15.jar
+        com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar
+        hamcrest-core-1.3.jar
+        junit-4.12.jar
+        mysql-connector-java-5.1.38.jar
+        spring-aop-5.0.8.RELEASE.jar
+        spring-aspects-5.0.8.RELEASE.jar
+        spring-beans-5.0.8.RELEASE.jar
+        spring-context-5.0.8.RELEASE.jar
+        spring-core-5.0.8.RELEASE.jar
+        spring-expression-5.0.8.RELEASE.jar
+        spring-jdbc-5.0.8.RELEASE.jar
+        spring-test-5.0.8.RELEASE.jar
+        spring-tx-5.0.8.RELEASE.jar
+  2.创建dao数据访问
+            public class UsersDaoImp extends JdbcDaoSupport implements  UsersDao {
+                @Override
+                public void addMonery(Integer id, Integer monery) {
+                    String  sql="update users set  monery=monery+? where id=?";
+
+                    super.getJdbcTemplate().update(sql,monery,id);
+                }
+
+                @Override
+                public void updateMonery(Integer id, Integer monery) {
+                    String  sql="update users set  monery=monery-? where id=?";
+                    super.getJdbcTemplate().update(sql,monery,id);
+                }
+            }
+  3.serivce层
+        public class UsersSerivceImp  implements  UsersSerivce{
+            private UsersDao   usersdao;
+
+            @Override
+            public void getTestSpring(Integer id1, Integer id2, Integer monery) {
+                usersdao.addMonery(id1,monery);
+                usersdao.updateMonery(id2,monery);
+            }
+  4.配置文件
+        <!--指定，进程查询数据库的配置信息-->
+            <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+         <!--将连接进行注入到Spring容器中-->
+            <bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                <property name="driverClass" value="${jdbc.driverClass}"></property>
+                <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+                <property name="user" value="${jdbc.user}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+
+            </bean>
+
+            <!--将dao层注入到容器中-->
+          <bean name="usersdao" class="com.bj.spring.dao.UsersDaoImp">
+              <property name="dataSource" ref="datasource"></property>
+          </bean>
+            <!--将Serivce注入到容器中-->
+           <bean name="usersSerivce" class="com.bj.spring.serivce.UsersSerivceImp">
+               <property name="usersdao" ref="usersdao"></property>
+           </bean>
+
+  5.如上使用运行的时候,如果Service层中的的方法出现了异常，那么这个转账，就会发生一个是添加了,另外一个没减少
+     那么他们之间的数据库就会不一样
+      为了处理以上的方法，我们就可以使用事务,来进行处理
+----------------------------------------
+事务的进程管理
+    方式一:
+        使用模版
+      1.将核心的事务管理器,进行配置到容器中
+                 <!--将核心的事务配置到容器中-->
+                  <bean
+                       name="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                      <property name="dataSource" ref="datasource"></property>
+                  </bean>
+                <!--配置事务模版对象-->
+                <bean name="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+                     <property name="transactionManager" ref="transactionManager"></property>
+                </bean>
+      2.进行配置对应的模版
+            public class UsersSerivceImp  implements  UsersSerivce{
+                private UsersDao   usersdao;
+                private TransactionTemplate  transactionTemplate;
+
+                @Override
+                public void getTestSpring(Integer id1, Integer id2, Integer monery) {
+
+                    transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+                        @Override
+                        protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
+                            usersdao.addMonery(id1,monery);
+                            System.out.println(1 / 0);
+                            usersdao.updateMonery(id2,monery);
+                        }
+                    });
+
+                }
+       3.注入值
+                <!--将Serivce注入到容器中-->
+               <bean name="usersSerivce" class="com.bj.spring.serivce.UsersSerivceImp">
+                   <property name="usersdao" ref="usersdao"></property>
+                   <property name="transactionTemplate" ref="transactionTemplate"></property>
+               </bean>
+
+    方式二:
+        使用aop的方法 *****
+               <!--配置事务的通知-->
+              <tx:advice id="txAdvice"   transaction-manager="transactionManager">
+                    <tx:attributes>
+
+                        <!--
+                           进行配置什么样的方法需要事务
+                              isolation 事务的隔离级别
+
+
+                               propagation  传播属性
+                                        保证再一个事务中
+                                          REQUIRED     支持当前事务,如果不存在事务,就进行创建一个新的事务
+                                          SUPPORTS      支持当前事务，如果不存在，就不使用事务
+                                          MANDATORY    支持当前事务,如不存在，抛出异常
+                                        没有在同一个事务中
+                                            REQUIRES_NEW    如有事务,存在，挂起当前事务，创建一个新的事务
+                                             NOT_SUPPORTED   以非事务的方法运行，如有事务存在，挂起当前事务
+                                             NEVER   以非事务函数运行，如有事务存在，抛出异常
+                                              NESTED   如当前事务存在，这进行嵌套事务执行
+
+                              read-only  配置是否只读
+                                 false  可操作
+                                 true  只读
+                        -->
+                        <tx:method name="getTestSpring" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+
+                            <!--企业中的标准方法-->
+                        <tx:method name="add*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+                        <tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+                        <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+                        <tx:method name="modify*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+                        <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+                        <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+
+                        <!--查询-->
+                        <tx:method name="select*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+                        <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+                        <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+                    </tx:attributes>
+              </tx:advice>
+
+                <!--5,织入到目标中-->
+                    <aop:config>
+                        <aop:pointcut id="txpointcut" expression="execution( * com.bj.spring.serivce.*.*(..))"/>
+                        <!--配置切面-->
+                        <aop:advisor advice-ref="txAdvice" pointcut-ref="txpointcut"></aop:advisor>
+                    </aop:config>
+    方式三:
+        注解的方法 *****
+            开启注解配置
+                   <tx:annotation-driven></tx:annotation-driven>
+
+            在Serivce中记性加上注解
+               public class UsersSerivceImp03 implements  UsersSerivce{
+                   private UsersDao   usersdao;
+                /*   private TransactionTemplate  transactionTemplate;
+                   private TransactionTemplate  transactionTemplate;*/
+
+                   @Override
+                   @Transactional(isolation = Isolation.REPEATABLE_READ,propagation =  Propagation.REQUIRED,readOnly = false)
+                   public void getTestSpring(Integer id1, Integer id2, Integer monery) {
+
+                               usersdao.addMonery(id1,monery);
+                              //System.out.println(1 / 0);
+                               usersdao.updateMonery(id2,monery);
+
+                   }
+
+                注意:事务注解可在类或者是方法上使用，如在类上使用，标识该类中的所有方法都需要事务，如在方法上使用
+                    就是当前的方法需要事务
+-----------------------
+SpringMVC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

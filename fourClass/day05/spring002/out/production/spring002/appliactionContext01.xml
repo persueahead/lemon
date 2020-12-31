@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   <!--
+      bean 元素,使用元素表示需要spring容器管理获取对象
+           |-name ：给被管理的对象去名称,获取该对象就需要使用个名称
+                      这个名称是非唯一的;可以使用特殊字符(推荐使用name值)
+                       可以用于给bean冥名多个名称,使用逗号/分号/空白字符
+                       3种字符隔开即可
+            |-class:  被管理对象列的相对的路径地址(完整的类名)
+            |-id:  与name属性一样的性质,但是id是唯一的,不能使用特殊字符(不推荐使用)
+
+   -->
+    <bean  id="users03" name="users;users2" class="com.bj.pojo.Users"></bean>
+
+    <!--
+          scope="":属性
+                    prototype
+                        多列原型，在spring容器中每次都会进行创建一个新的对象、
+
+                    singleton(默认的)
+                       单列对象，在spring容器中只会有一个对象
+                    session(了解)
+                        在WEB环境中,对象与Session的生明周期是一致
+                    request(了解)
+                        在WEB环境中,对象与request的生明周期是一致
+                    在一般情况下,都是使用默认的
+    -->
+    <bean  name="users05" scope="prototype" class="com.bj.pojo.Users"></bean>
+
+
+
+
+    <!--
+      空参构造函数进行创建对象
+    -->
+    <bean   name="users22" class="com.bj.pojo.Users"></bean>
+
+    <!--
+       使用静态的工厂方法
+            调用UsersFactory中的createUsers方法来进行创建Users对象，并放入到容器中
+         factory-method|-执行工厂类中的方法
+    -->
+       <bean name="usersFactory" class="com.bj.pojo.UsersFactory" factory-method="createUsers"></bean>
+
+    <!--
+       使用实例工厂的方式进行创建
+    -->
+      <bean name="usersFactory03" class="com.bj.pojo.UsersFactory"></bean>
+            <!--
+         使用静态的工厂方法
+              调用UsersFactory中的createUsers方法来进行创建Users对象，并放入到容器中
+           factory-method|-执行工厂类中的方法
+           factory-bean |- 指向UsersFactory的对象名(Beanm名称)
+        -->
+       <bean name="users003" factory-bean="usersFactory03" factory-method="createUsers02"></bean>
+
+
+
+
+
+
+
+</beans>

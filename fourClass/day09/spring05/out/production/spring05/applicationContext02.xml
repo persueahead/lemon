@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--指定，进程查询数据库的配置信息-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+ <!--将连接进行注入到Spring容器中-->
+    <bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+    </bean>
+
+    <!--将dao层注入到容器中-->
+  <bean name="usersdao" class="com.bj.spring.dao.UsersDaoImp">
+      <property name="dataSource" ref="datasource"></property>
+  </bean>
+    <!--将Serivce注入到容器中-->
+   <bean name="usersSerivce" class="com.bj.spring.serivce.UsersSerivceImp02">
+       <property name="usersdao" ref="usersdao"></property>
+    <!--   <property name="transactionTemplate" ref="transactionTemplate"></property>-->
+   </bean>
+
+
+     <!--将核心的事务配置到容器中-->
+      <bean
+           name="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+          <property name="dataSource" ref="datasource"></property>
+      </bean>
+    <!--配置事务模版对象-->
+  <!--  <bean name="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+         <property name="transactionManager" ref="transactionManager"></property>
+    </bean>-->
+     <!--配置事务的通知-->
+  <tx:advice id="txAdvice"   transaction-manager="transactionManager">
+        <tx:attributes>
+
+            <!--
+               进行配置什么样的方法需要事务
+                  isolation 事务的隔离级别
+
+
+                   propagation  传播属性
+                            保证再一个事务中
+                              REQUIRED     支持当前事务,如果不存在事务,就进行创建一个新的事务
+                              SUPPORTS      支持当前事务，如果不存在，就不使用事务
+                              MANDATORY    支持当前事务,如不存在，抛出异常
+                            没有在同一个事务中
+                                REQUIRES_NEW    如有事务,存在，挂起当前事务，创建一个新的事务
+                                 NOT_SUPPORTED   以非事务的方法运行，如有事务存在，挂起当前事务
+                                 NEVER   以非事务函数运行，如有事务存在，抛出异常
+                                  NESTED   如当前事务存在，这进行嵌套事务执行
+
+                  read-only  配置是否只读
+                     false  可操作
+                     true  只读
+            -->
+<!--            给原有方法配置事务-->
+            <tx:method name="getTestSpring" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+
+                <!--企业中的标准方法-->
+            <tx:method name="add*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="modify*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+
+            <!--查询-->
+            <tx:method name="select*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+  </tx:advice>
+
+    <!--5,织入到目标中-->
+        <aop:config>
+            <aop:pointcut id="txpointcut" expression="execution( * com.bj.spring.serivce.*.*(..))"/>
+            <!--配置切面-->
+            <aop:advisor advice-ref="txAdvice" pointcut-ref="txpointcut"></aop:advisor>
+        </aop:config>
+
+
+
+
+</beans>

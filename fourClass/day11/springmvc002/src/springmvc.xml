@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<!--配置是扫描包-->
+    <context:component-scan base-package="com.bj.springmvc.test"></context:component-scan>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n"></property>
+
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+
+    <!--开启注解配置-->
+     <mvc:annotation-driven></mvc:annotation-driven>
+
+  <mvc:interceptors>
+      <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+  </mvc:interceptors>
+
+   <bean
+        class="org.springframework.web.servlet.view.BeanNameViewResolver">
+
+       <!--
+       order  视图解析器的优秀级  值越小,优先级越高
+
+       -->
+        <property name="order" value="100"></property>
+
+   </bean>
+
+
+    <mvc:view-controller path="/success" view-name="success" ></mvc:view-controller>
+
+   <mvc:annotation-driven></mvc:annotation-driven>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <property name="prefix" value="/"></property>
+            <property name="suffix" value=".jsp"></property>
+    </bean>
+
+
+</beans>

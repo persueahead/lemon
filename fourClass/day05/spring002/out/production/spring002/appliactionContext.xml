@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean name="person101" class="com.bj.pojo.Person" autowire="byName">
+        <property name="name" value="小王"></property>
+        <property name="id" value="123"></property>
+    </bean>
+
+  <!--  <bean name="person102" class="com.bj.pojo.Person" autowire="byType">
+        <property name="name" value="小张"></property>
+        <property name="id" value="234"></property>
+    </bean>-->
+<!--    <bean name="person103" class="com.bj.pojo.Person" autowire="constructor">
+         <constructor-arg name="car" ref="car01"></constructor-arg>
+    </bean>-->
+
+    <bean autowire-candidate="true" name="car"  class="com.bj.pojo.Car">
+        <property name="color" value="黄色"></property>
+        <property name="name" value="大众1号"></property>
+    </bean>
+
+    <bean autowire-candidate="false" name="car01"  class="com.bj.pojo.Car">
+        <property name="color" value="黄色"></property>
+        <property name="name" value="大众"></property>
+    </bean>
+
+    <bean name="person104" class="com.bj.pojo.Person" autowire="byType" >
+        <property name="name" value="小张"></property>
+        <property name="id" value="234"></property>
+    </bean>
+</beans>

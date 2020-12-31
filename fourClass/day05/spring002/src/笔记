@@ -1,0 +1,436 @@
+描述Spring的XML的文件的配置(基础)
+ 1.Bean 元素的解释
+    1)使用元素表示需要Spring容器管理获取对象的
+         <!--
+              bean 元素,使用元素表示需要spring容器管理获取对象
+                   |-name ：给被管理的对象去名称,获取该对象就需要使用个名称
+                              这个名称是非唯一的;可以使用特殊字符(推荐使用name值)
+                               可以用于给bean冥名多个名称,使用逗号/分号/空白字符
+                               3种字符隔开即可
+                    |-class:  被管理对象列的相对的路径地址(完整的类名)
+                    |-id:  与name属性一样的性质,但是id是唯一的,不能使用特殊字符(不推荐使用)
+
+           -->
+            <bean  id="users03" name="users;users2" class="com.bj.pojo.Users"></bean>
+
+ 2. 3种创建对象的方式
+      方式一：使用空参数的构造函数(常用)
+            <!--
+              空参构造函数进行创建对象
+            -->
+            <bean   name="users22" class="com.bj.pojo.Users"></bean>
+      方式二:静态工厂的创建(了解)
+                1)创建的一个工厂
+                            public class UsersFactory {
+                                public  static  Users  createUsers
+                                        (){
+                                    System.out.println("我是静态的工厂方法");
+                                    return  new Users();
+                                }
+                            }
+                 2）在配置文件中进行配置
+                             <!--
+                                使用静态的工厂方法
+                                     调用UsersFactory中的createUsers方法来进行创建Users对象，并放入到容器中
+                                  factory-method|-执行工厂类中的方法
+                             -->
+                                <bean name="usersFactory" class="com.bj.pojo.UsersFactory" factory-method="createUsers"></bean>
+       方式三:实挒工厂的创建(了解)
+                  1)创建一个工厂
+                    public class UsersFactory {
+                        public    Users  createUsers02
+                                (){
+                            System.out.println("我是静态的工厂方法");
+                            return  new Users();
+                        }
+                    }
+
+                2)在配置文件中进行配置
+                         <!--
+                               使用实例工厂的方式进行创建
+                            -->
+                              <bean name="usersFactory03" class="com.bj.pojo.UsersFactory"></bean>
+                                    <!--
+                                 使用静态的工厂方法
+                                      调用UsersFactory中的createUsers方法来进行创建Users对象，并放入到容器中
+                                   factory-method|-执行工厂类中的方法
+                                   factory-bean |- 指向UsersFactory的对象名(Beanm名称)
+                                -->
+                               <bean name="users003" factory-bean="usersFactory03" factory-method="createUsers02"></bean>
+3.Bean元素的详解
+        1）scope属性
+                <!--
+                      scope="":属性
+                                prototype
+                                    多列原型，在spring容器中每次都会进行创建一个新的对象、
+
+                                singleton(默认的)
+                                   单列对象，在spring容器中只会有一个对象
+                                session(了解)
+                                    在WEB环境中,对象与Session的生明周期是一致
+                                request(了解)
+                                    在WEB环境中,对象与request的生明周期是一致
+                                在一般情况下,都是使用默认的
+                -->
+                <bean  name="users05" scope="singleton" class="com.bj.pojo.Users"></bean>
+                  测试:
+                        @Test
+                        public   void test(){
+                            ClassPathXmlApplicationContext classPath
+                                    = new ClassPathXmlApplicationContext("appliactionContext.xml");
+
+                            Users users = (Users) classPath.getBean("users05");
+                            Users users01 = (Users) classPath.getBean("users05");
+                            System.out.println(users==users01);
+                        }
+
+    2）生明周期
+         1、生明周期初始化方法,Spring在这个对象创建之后进行调用
+         2、生明周期销毁方法，spring容器在进行关闭并销毁所有容器中的对象
+             注意,需要进行手动的条件close()方法
+         3、创建实体
+                public class Student {
+                    private  Integer id;
+                    private  String name;
+                    public  void  getInit(){
+                        System.out.println("-----我是一个初始化的方法-----");
+                    }
+
+                    public  void  getDestroy(){
+                        System.out.println("======我是一个销毁的方法=============");
+                    }
+         4、配置
+                    <bean name="student"  init-method="getInit" destroy-method="getDestroy"
+                             class="com.bj.pojo.Student"></bean>
+          5、测试
+                     @Test
+                     public   void test(){
+                         ClassPathXmlApplicationContext classPath
+                                 = new ClassPathXmlApplicationContext("appliactionContext.xml");
+
+                         Student student = (Student) classPath.getBean("student");
+                         System.out.println(student);
+                         //如果需要执行的方法.进行手动的关闭
+                         classPath.close();
+                     }
+4.模块化的导入配置
+         1、如果需要进行同时加载多个配置文件的时候，就绪要模块haul的导入
+         2、说白了，就是一个配置文件中引入另外一个配置文件(可以引入多个)
+         3、在使用其他bean的时候，没有进行引入对应的配置文件就报错
+           org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'users03' available
+         4、引入其他的配置文件
+            <!--
+                可以进行使用Ant-style风格
+                   1.3个通配符
+                      |- ? 匹配任何单个字符
+                      |- * 匹配0个或者任意数量的名称
+                      |- ** 匹配0或者过层的目录
+             -->
+             <import resource="appliactionContext01.xml" />
+
+
+5、常用的注入
+     我们之前user.setId(xxx).那么现在学了spring，就不用想之前那样了,
+     都交给Spring来进行完成
+    1）set 方法注入
+          1.创建一个实体类
+            ....
+          2.配置注入
+            <!--set方法的注入-->
+                <bean name="person" class="com.bj.pojo.Person" >
+                     <!--
+                       就是类似之前的xxx.setId(xx);
+                         name="值"，对应的值是该实体列的属性(get  set)
+                                 名称去掉get  set  并且首字母小写
+                         value="值" 在传入值的时候，需要类型一致，
+                     -->
+                    <property name="id" value="1"></property>
+                    <property name="name" value="隔壁老陈"></property>
+                </bean>
+    2）值类型注入
+            1.创建实体类
+                public class Car {
+                    private  String name;
+                    private  String  color;
+                    。。。。。。
+
+                public class Person {
+                    private  Integer id;
+                    private  String name;
+                    private  Car  car;
+                    。。。。。。
+            2.值注入配置
+                  <!--car对象-->
+                      <bean name="car" class="com.bj.pojo.Car">
+                          <property name="name" value="法拉利"></property>
+                          <property name="color" value="黄色"></property>
+                      </bean>
+
+                    <bean name="person01" class="com.bj.pojo.Person">
+                        <property name="id" value="2"></property>
+                        <property name="name" value="小姐姐"></property>
+                        <!--
+                        name =属性名
+                        ref=指定配置的bean名称
+                        -->
+                        <property name="car" ref="car"></property>
+                    </bean>
+   3）构造函数的注入
+                1.实体类
+                    public class Person {
+                        private  Integer id;
+                        private  String name;
+                        private  Car  car;
+
+                        public Person() {
+                        }
+
+                        public Person(Integer id, String name, Car car) {
+                            this.id = id;
+                            this.name = name;
+                            this.car = car;
+                        }
+                        public Person(Integer id, String name) {
+                            this.id = id;
+                            this.name = name;
+                        }
+                    .......
+                2.配置
+                            <!--构造函数的注入
+                              方式一
+                            -->
+                            <bean name="perosn02" class="com.bj.pojo.Person">
+                                <constructor-arg name="id" value="123"></constructor-arg>
+                                <constructor-arg name="name" value="小哥哥"></constructor-arg>
+                            </bean>
+                            <!--构造函数的注入
+                              方式二
+                            -->
+                            <bean name="perosn03" class="com.bj.pojo.Person">
+                                <constructor-arg index="0" value="123" ></constructor-arg>
+                                <constructor-arg index="1" value="李四"></constructor-arg>
+                            </bean>
+                            <!--构造函数的注入
+                           方式三
+                         -->
+                            <bean name="perosn04" class="com.bj.pojo.Person">
+                                <constructor-arg  value="123"  type="java.lang.Integer"></constructor-arg>
+                                <constructor-arg value="王五" type="java.lang.String"></constructor-arg>
+                            </bean>
+                            <!--构造函数的注入
+                                方式存入对象
+                                -->
+                            <bean name="perosn05" class="com.bj.pojo.Person">
+                                <constructor-arg name="id" value="123"></constructor-arg>
+                                <constructor-arg name="name" value="小哥哥"></constructor-arg>
+                                <property name="car" ref="car"></property>
+                            </bean>
+                           <!--car对象-->
+                                   <bean name="car" class="com.bj.pojo.Car">
+                                       <property name="name" value="法拉利"></property>
+                                       <property name="color" value="黄色"></property>
+                              </bean>
+
+    4）p名称空间的注入(了解)
+        1.p名称注入本质就是set方法
+           的方式进行注入的
+        2.使用p名称空间的方式进行注入
+           需要进行引入名称空间
+           xmlns:p="http://www.springframework.org/schema/p"
+
+        3.实体类如上
+        4.配置
+             <!--P名称的方式进行注入
+              -->
+              <bean name="person06" class="com.bj.pojo.Person" p:id="23" p:name="隔壁老王" p:car-ref="car" ></bean>
+    5)spel 注入了解
+       Spring Expressin Language
+       说白了,就是Spring的表达式语言
+       取其他bean中的值，来当成自己的值使用
+       #{bean名称.属性名}
+       注释ref不能使用
+       1)配置
+             <bean name="person06" class="com.bj.pojo.Person" p:id="23" p:name="隔壁老王" p:car-ref="car" ></bean>
+             <bean name="person07" class="com.bj.pojo.Person">
+                 <property name="name" value="#{person06.name}"></property>
+                 <property name="id" value="#{123 * 2}"></property>
+                 <property name="car" ref="car"></property>
+             </bean>
+6、复杂类型的注入
+    1)实体类
+        public class Collection {
+            private  Object[] obj;
+            private List list;
+            private Map map;
+            private Properties pro;
+            .......
+    1)数组
+       1）单个值的方式注入
+            <bean name="coll01" class="com.bj.pojo.Collection">
+                <!--
+                  如数组，中只有一个值的时候，对象可以使用valeu=""或者ref=""的方式进行注入
+                -->
+                <property name="obj" value="小王" ></property>
+            </bean>
+        2）多个值
+            <!--数组多个值-->
+                <bean name="coll02" class="com.bj.pojo.Collection">
+                     <property name="obj">
+                         <array>
+                             <value>小哥哥</value>
+                             <value>小姐姐</value>
+                             <ref bean="car" />
+                         </array>
+                     </property>
+                </bean>
+                <bean name="car" class="com.bj.pojo.Car">
+                    <property name="name" value="奔驰"></property>
+                    <property name="color" >
+                        <value>红色</value>
+                    </property>
+                </bean>
+    2)集合
+       无论是list集合还是Set集合都是一样的使用
+       唯一的是标签名称不一样,
+        <!--集合-->
+            <bean class="com.bj.pojo.Collection" name="coll03">
+                <property name="list">
+                    <!--<set></set> -->
+                    <list>
+                        <value>隔壁老陈</value>
+                        <value>隔壁老王</value>
+                        <ref bean="car" />
+                    </list>
+                </property>
+            </bean>
+    3)Map
+        <!--map-->
+          <bean name="coll04" class="com.bj.pojo.Collection">
+              <property name="map" >
+                  <map>
+                    <entry key="key01" value="小张同学"></entry>
+                    <entry key="key02" value="123123"></entry>
+                    <entry key="obj" value-ref="car"></entry>
+                     <entry key-ref="car" value="key是一个对象"></entry>
+                     <entry key-ref="car" value="key是一个对象"></entry>
+                  </map>
+              </property>
+          </bean>
+    4)Properties
+         <!--Properties-->
+            <bean class="com.bj.pojo.Collection" name="coll05">
+                <property name="pro">
+                    <props>
+                        <prop key="usersNaem">root</prop>
+                        <prop key="driverClass">com.jdbc.mysql.Driver</prop>
+                    </props>
+                </property>
+
+            </bean>
+
+7、注入null值
+        1.在注入null(空值)使用如下方式进行注入，也一个字符串
+            <bean name="car01" class="com.bj.pojo.Car">
+                    <property name="name" value="奔驰"></property>
+                    <property name="color" >
+                        //是一个字符串
+                        <value>null</value>
+                    </property>
+                </bean>
+        2.使用一个标签还标识null值
+           <null/>
+               <bean name="car02" class="com.bj.pojo.Car">
+                    <property name="name" value="奔驰"></property>
+                    <property name="color" >
+                            <null/>
+                    </property>
+                </bean>
+
+
+8、自动注入与候选者
+   1.自动注入分为全局/局部
+   2.自动注入会大量的减少相关的配置,但是同时也会进行导致通过配置文件无法
+     看到对应的bean与bean之间的依赖的关系
+   3.全局
+            <beans default-autowire="" .....
+   4.局部
+          <bean name="car" autowire=""  .......
+   5.4大类型
+      1>no 默认值
+         不能进行自动注入,需要进行手动的注入(ref方式)
+      2>byName
+         1.通过bean名称进行serter方法自动注入的
+         2.如果bean有对应的setter方法如(setUsers),这会从容器中查找一个
+           users的bean进行注入.如查找到多个或者0个则异常
+         3.配置
+                <bean name="car"  class="com.bj.pojo.Car">
+                    <property name="color" value="黄色"></property>
+                    <property name="name" value="大众"></property>
+                </bean>
+                <bean name="person101" class="com.bj.pojo.Person" autowire="byName">
+                    <property name="name" value="小王"></property>
+                    <property name="id" value="123"></property>
+                </bean>
+      3>byType
+         1.通过bean类型进行setter自动注入,如bean有set方法如setCar()
+         2.那么从容器中查询Bean类型的兼容,Car类型的bean进行自动的注入
+         3.如没有或者是多个这异常
+         4.注意
+            类型的兼容是值接口类型的实现类或者是父类的子类(继承)
+
+              <bean name="person102" class="com.bj.pojo.Person" autowire="byType">
+                  <property name="name" value="小张"></property>
+                  <property name="id" value="234"></property>
+              </bean>
+
+        4>constructor
+           1.类似于byType ,但是针对的是构造函数的注入
+           2.如没找到或者是多个则异常
+               <bean name="person103" class="com.bj.pojo.Person" autowire="constructor">
+                </bean>
+            3.注意使用构造函数自动注入的时候
+               实体列必须要有对应的构造函数,
+                 public Person( Car car) {
+                        this.car = car;
+                    }
+   6.在工作中，我都是手动注入与自动注入结合使用
+     1.如自动和手动注入混合使用
+       则先进行自动注入，在进行手动注入
+       那么手动注入会进行覆盖自动注入的值
+                <bean name="person103" class="com.bj.pojo.Person" autowire="constructor">
+                     <constructor-arg name="car" ref="car01"></constructor-arg>
+                </bean>
+
+                <bean name="car01"  class="com.bj.pojo.Car">
+                    <property name="color" value="红色"></property>
+                    <property name="name" value="法拉利"></property>
+                </bean>
+
+9、候选者
+    1.通过bytype 和constructor 的两种方式可以 会出现多个bean满足的条件,
+      那么这些bean我们是要做执行对应的那个Bean(就先后顺序),就是我们的后续者
+    2.全局/局部
+      全局
+         1）<beans default-autowire-candidates=""
+         2)可用于指定容器中的那些bean对象作为默认的自动注入的候选者
+         (多个使用逗号分隔)
+         3)默认值是空,表示所有的bean都是候选者
+      局部
+         1） <bean autowire-candidate=""
+         2）使用True来进行指名当前的bean要作为候选者,会进行覆盖全局的设置
+            <bean autowire-candidate="true" name="car"  class="com.bj.pojo.Car">
+                    <property name="color" value="黄色"></property>
+                    <property name="name" value="大众1号"></property>
+                </bean>
+
+                <bean autowire-candidate="false" name="car01"  class="com.bj.pojo.Car">
+                    <property name="color" value="黄色"></property>
+                    <property name="name" value="大众"></property>
+                </bean>
+
+                <bean name="person104" class="com.bj.pojo.Person" autowire="byType" >
+                    <property name="name" value="小张"></property>
+                    <property name="id" value="234"></property>
+                </bean>
+
+

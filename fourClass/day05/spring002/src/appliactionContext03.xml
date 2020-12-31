@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--set方法的注入-->
+    <bean name="person" class="com.bj.pojo.Person" >
+         <!--
+           就是类似之前的xxx.setId(xx);
+             name="值"，对应的值是该实体列的属性(get  set)
+                     名称去掉get  set  并且首字母小写
+             value="值" 在传入值的时候，需要类型一致，
+         -->
+        <property name="id" value="1"></property>
+        <property name="name" value="隔壁老陈"></property>
+    </bean>
+
+
+    <!--car对象-->
+      <bean name="car" class="com.bj.pojo.Car">
+          <property name="name" value="法拉利"></property>
+          <property name="color" value="黄色"></property>
+      </bean>
+
+    <bean name="person01" class="com.bj.pojo.Person">
+        <property name="id" value="2"></property>
+        <property name="name" value="小姐姐"></property>
+        <!--
+        name =属性名
+        ref=指定配置的bean名称
+        -->
+        <property name="car" ref="car"></property>
+    </bean>
+
+
+    <!--构造函数的注入
+      方式一
+    -->
+    <bean name="perosn02" class="com.bj.pojo.Person">
+        <constructor-arg name="id" value="123"></constructor-arg>
+        <constructor-arg name="name" value="小哥哥"></constructor-arg>
+    </bean>
+    <!--构造函数的注入
+      方式二
+    -->
+    <bean name="perosn03" class="com.bj.pojo.Person">
+        <constructor-arg index="0" value="123" ></constructor-arg>
+        <constructor-arg index="1" value="李四"></constructor-arg>
+    </bean>
+    <!--构造函数的注入
+   方式三
+ -->
+    <bean name="perosn04" class="com.bj.pojo.Person">
+        <constructor-arg  value="123"  type="java.lang.Integer"></constructor-arg>
+        <constructor-arg value="王五" type="java.lang.String"></constructor-arg>
+    </bean>
+    <!--构造函数的注入
+        方式存入对象
+        -->
+    <bean name="perosn05" class="com.bj.pojo.Person">
+        <constructor-arg name="id" value="123"></constructor-arg>
+        <constructor-arg name="name" value="小哥哥"></constructor-arg>
+        <property name="car" ref="car"></property>
+    </bean>
+
+    <!--P名称的方式进行注入
+
+    -->
+    <bean name="person06" class="com.bj.pojo.Person" p:id="23" p:name="隔壁老王" p:car-ref="car" ></bean>
+
+    <bean name="person07" class="com.bj.pojo.Person">
+        <property name="name" value="#{person06.name}"></property>
+        <property name="id" value="#{123 * 2}"></property>
+        <property name="car" ref="car"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--指定，进程查询数据库的配置信息-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+ <!--将连接进行注入到Spring容器中-->
+    <bean name="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&amp;serverTimezone=GMT"/>
+        <property name="user" value="root"/>
+        <property name="password" value="wdylzyn"/>
+
+    </bean>
+
+    <!--将dao层注入到容器中-->
+  <bean name="usersdao" class="com.bj.spring.dao.UsersDaoImp">
+      <property name="dataSource" ref="datasource"></property>
+  </bean>
+    <!--将Serivce注入到容器中-->
+   <bean name="usersSerivce" class="com.bj.spring.serivce.UsersSerivceImp03">
+       <property name="usersdao" ref="usersdao"></property>
+    <!--   <property name="transactionTemplate" ref="transactionTemplate"></property>-->
+   </bean>
+
+
+     <!--将核心的事务配置到容器中-->
+   <!--   <bean
+           name="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+          <property name="dataSource" ref="datasource"></property>
+      </bean>
+-->
+
+    <tx:annotation-driven></tx:annotation-driven>
+</beans>

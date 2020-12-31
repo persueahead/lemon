@@ -1,0 +1,386 @@
+请求参数
+   1.相应的注解(@PathVariable,@RequestParam，@RequestHeader....)
+      SpringMVC 框架会将HTTP请求中的信息进行绑定到相应的方法参数中
+      ,并根据返回的返回值类型,做出相应的处理
+@RequestParam
+     绑定请求参数的值
+      1.在处理方法注入参的使用进行使用,@RequestParam可以报请求参数传递个请求的方法
+        value  参数名
+        required
+           是否必须,默认是为true，表示请求参数这两个必须包含对应的参数
+           ,返之则抛出异常
+        defaultValue
+           请求参数的默认值
+            @Controller
+            public class TestConteoller01 {
+                @RequestMapping("/test001")
+                public   String  test001(@RequestParam("name") String  name,
+                                         @RequestParam(value = "age",required = false,defaultValue = "123")   int age
+                                         ){
+                    System.out.println(name + "：：" + age);
+
+                    return  "success";
+                }
+                  <form action="test001" method="get">
+                    <input type="text" name="name" value="name">
+                    <HR>
+                    <INPUT TYPE="text"  name="age" VALUE="">
+                  <INPUT TYPE="submit" VALUE="test001">
+                  </form>
+      @RequestHeader
+          请求头包含的属性，服务器可以根据此获取客户端的信息
+          将请求头中的数据值进行绑定到处理方法的参数中
+               @RequestMapping("/test002")
+                public   String  test002(@RequestHeader("Accept-Language") String  language){
+                    System.out.println(language);
+                    return  "success";
+                }
+      @CookieValue 绑定请求中的Cookie值
+        可以让处理方法人参进行绑定某个Cookie值
+               @RequestMapping("/test003")
+                public   String  test003(@CookieValue(value = "JSESSIONID",required = false,defaultValue = "no  ......") String  cookie){
+                    System.out.println(cookie);
+
+                    return  "success";
+                }
+pojo对象进行绑定请求参数的值
+   1.springMVC中会按照请求参数名和POJO对象进行自动的匹配,
+    自动为该对象填充属性值，并且还值级联属性
+            public class Student {
+                private  String name;
+                private  String sex;
+                private  String adder;
+                private  Integer age;
+              --------------------------------
+                @RequestMapping("/test004")
+                public   String  test004(Student  student){
+                    System.out.println(student);
+
+                    return  "success";
+                }
+               -----------------------------------
+                <form action="test004" method="get">
+                   <input type="text" name="name" value="name">
+                   <HR>
+                   <INPUT TYPE="text"  name="age" VALUE="121">
+                   <HR>
+                   <INPUT TYPE="text"  name="sex" VALUE="女">
+                   <HR>
+                   <INPUT TYPE="text"  name="adder" VALUE="重庆">
+                   <HR>
+                   <INPUT TYPE="text"  name="phone" VALUE="10086">
+                   <HR>
+                   <INPUT TYPE="text"  name="Classs" VALUE="一班">
+                   <HR>
+                 <INPUT TYPE="submit" VALUE="test001">
+                 </form>
+                -----------------------------
+                级联获取数据
+                --------------------
+                public class Student {
+                    private  String name;
+                    private  String sex;
+                    private  String adder;
+                    private  Integer age;
+                    private  Person  person;
+                    -----------------------------
+                  <form action="test004" method="post">
+                    <input type="text" name="name" value="name">
+                    <HR>
+                    <INPUT TYPE="text"  name="age" VALUE="121">
+                    <HR>
+                    <INPUT TYPE="text"  name="sex" VALUE="女">
+                    <HR>
+                    <INPUT TYPE="text"  name="adder" VALUE="重庆">
+                    <HR>
+                    <INPUT TYPE="text"  name="person.phone" VALUE="10086">
+                    <HR>
+                    <INPUT TYPE="text"  name="person.Classs" VALUE="一班">
+                    <HR>
+                  <INPUT TYPE="submit" VALUE="test001">
+                  </form>
+                -------------------------------------
+                     @RequestMapping("/test004")
+                        public   String  test004(Student  student){
+                            System.out.println(student);
+
+                            return  "success";
+                        }
+当post请求的时候，会出现乱码
+                在web.xml文件中进行处理乱码
+        <filter>
+            <filter-name>characterEncodingFilter</filter-name>
+            <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+            <init-param>
+                <param-name>forceEncoding</param-name>
+                <param-value>true</param-value>
+            </init-param>
+            <init-param>
+                <param-name>encoding</param-name>
+                <param-value>UTF-8</param-value>
+            </init-param>
+
+        </filter>
+
+      <filter-mapping>
+          <filter-name>characterEncodingFilter</filter-name>
+          <url-pattern>/*</url-pattern>
+      </filter-mapping>
+Spring MVC也可写原始的Servlet对应的API
+                @RequestMapping("/test005")
+                public   String  test005(HttpServletRequest  request, HttpServletResponse  response){
+                    System.out.println(request.getParameter("name"));
+                    return  "success";
+                }
+--------------------------------------------------------------------------------
+处理数据模型
+    将数据返回给页面，页面进行显示出来，这个时候就需要数据模型来进行处理对应的数据了
+   ModelAndView
+            @RequestMapping("/TestConteoller02/test001")
+            public   ModelAndView  test001(){
+                ModelAndView view = new ModelAndView();
+                view.addObject("msg",new Date());
+                view.addObject("name","asdasdas");
+                view.addObject("age",123123);
+                view.setViewName("success");
+                return  view;
+            }
+              <HR>
+               ${requestScope.msg}<%--request 域--%>
+              ${name}
+              ${age}
+              源码：
+            while(var3.hasNext()) {
+                Entry<String, Object> entry = (Entry)var3.next();
+                String modelName = (String)entry.getKey();
+                Object modelValue = entry.getValue();
+                if (modelValue != null) {
+                    request.setAttribute(modelName, modelValue);
+                    if (this.logger.isDebugEnabled()) {
+                        this.logger.debug("Added model object '" + modelName + "' of type [" + modelValue.getClass().getName() + "] to request in view with name '" + this.getBeanName() + "'");
+                    }
+                } else {
+                    request.removeAttribute(modelName);
+                    if (this.logger.isDebugEnabled()) {
+                        this.logger.debug("Removed model object '" + modelName + "' from request in view with name '" + this.getBeanName() + "'");
+                    }
+                }
+            }
+
+            ------------------------
+                RequestDispatcher rd = this.getRequestDispatcher(request, dispatcherPath);
+                    if (rd == null) {
+                        throw new ServletException("Could not get RequestDispatcher for [" + this.getUrl() + "]: Check that the corresponding file exists within your web application archive!");
+                    } else {
+                        if (this.useInclude(request, response)) {
+                            response.setContentType(this.getContentType());
+                            if (this.logger.isDebugEnabled()) {
+                                this.logger.debug("Including resource [" + this.getUrl() + "] in InternalResourceView '" + this.getBeanName() + "'");
+                            }
+
+                            rd.include(request, response);
+                        } else {
+                            if (this.logger.isDebugEnabled()) {
+                                this.logger.debug("Forwarding to resource [" + this.getUrl() + "] in InternalResourceView '" + this.getBeanName() + "'");
+                            }
+
+                            rd.forward(request, response);
+                        }
+Map<String, ?> model的模型
+         1.使用Map类型进行处理模型
+                @RequestMapping("/TestConteoller02/test003")
+                public   String   test003(Map<String,Object> map){
+
+                    map.put("map","TestConteoller02/test003");
+
+                    return  "success";
+                }
+
+                ---
+                    @RequestMapping("/TestConteoller02/test004")
+                    public   String   test004(ModelMap  map){
+
+                        map.addAttribute("KEY",new Date());
+
+                        return  "success";
+                    }
+                ------
+                   @RequestMapping("/TestConteoller02/test005")
+                    public   String   test005(Model map){
+
+                        map.addAttribute("mapkey",new Date());
+
+                        return  "success";
+                    }
+
+=============================
+有的情况下需要在重定向中获取数据
+ 重定向中Request域对象是获取比到数据的
+ 就需要对应的Session域 @SessionAttributes
+@SessionAttributes 多个
+@SessionAttribute  单个
+
+      在多格请求之间进行共享某个模型数据的时候，就需要@SessionAttributes，
+      就是类似于HttpSession
+      将对应的模型存入到会话中，
+        @Controller
+        @SessionAttributes(value = {"mapkey","mapkey1"},types = {Date.class,String.class})
+        public class TestConteoller02 {
+            @RequestMapping("/TestConteoller02/test006")
+            public   String   test006(Model map){
+                map.addAttribute("mapkey",new Date());
+                map.addAttribute("mapkey1","王麻子");
+                map.addAttribute("mapkey2","李四");
+                map.addAttribute("mapkey3","王老五");
+
+                return  "success";
+            }
+            ------
+              sessionScope.mapkey : ${sessionScope.mapkey}
+              sessionScope.mapkey1: ${sessionScope.mapkey1}
+==================================================
+@ModelAttribute
+    1.之前传入对象修改数据的时候，当传入的对象其中的某个数据没有值的时候，修改了数据库中的某条数据，该对应的值就null值
+    2.那么出现这种问题怎么进行处理?
+    3.ModelAttribute 就是来处理这种问题的，
+      原理
+         先到数据库中进程查询出对应的数据，如传入的对象修改的数据中没有值，则对该进行的查询出来的值进行对应的赋值
+
+                @ModelAttribute
+                public   void test(@RequestParam(value = "id",required = false
+                ) Integer id,Map<String,Object> map){
+                   //相当于从数据库中查询出来的数据
+                    Users user = new Users(id, "隔壁老陈", 123);
+                    map.put("users",user);
+                }
+
+                @RequestMapping("/TestConteoller03/test001")
+                public   String  test001(Users  users){
+
+                    System.out.println("我们要修改提交的数:"+users);
+
+                    return  "success";
+                }
+
+JSTLView  && 自定义视图  &&  国际化
+     InternalResourceViewResolver
+        是将jsp或者其他的页面，资源进行封装正一个视图,
+        也默认的实体解析器
+
+        JSTLView
+          如jsp中使用L jstl国际标签的功能，那么就需要首映JSTLview视图的功能
+1.导入jar包
+            commons-logging-1.2.jar
+            jstl-1.2.jar
+            spring-aop-4.3.2.RELEASE.jar
+            spring-aspects-4.3.2.RELEASE.jar
+            spring-beans-4.3.2.RELEASE.jar
+            spring-context-4.3.2.RELEASE.jar
+            spring-core-4.3.2.RELEASE.jar
+            spring-expression-4.3.2.RELEASE.jar
+            spring-web-4.3.2.RELEASE.jar
+            spring-webmvc-4.3.2.RELEASE.jar
+            standard.jar
+    1,在SRC目录下进行创建一国际化的文件
+        i18n_en_US.properties
+                i18n.usersname=UsersName
+                i18n.password=Password
+        i18n_zh_CNproperties
+                i18n.usersname=用户
+                i18n.password=密码
+    2.配置文件中进行配置国际化
+            <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+                <property name="basename" value="i18n"></property>
+
+            </bean>
+   3.页面设置
+   、 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+     <fmt:message key="i18n.usersname"></fmt:message>
+     <br>
+     <fmt:message key="i18n.password"></fmt:message>
+
+   4。请求地址
+            @Controller
+            public class TestConteoller05 {
+                @Autowired
+              private ResourceBundleMessageSource  messageSource;
+                @RequestMapping("/TestConteoller05/test001")
+                public   String  test001(Locale locale){
+                    String message = messageSource.getMessage("i18n.usersname", null, locale);
+                    System.out.println(message);
+
+                    return  "success";
+                }
+
+  5。使用A标签来进行控制国际化
+         配置文件中编写
+            <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+          <mvc:interceptors>
+              <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+          </mvc:interceptors>
+    页面：
+        <form action="TestConteoller05/test001" method="post">
+          <input type="text" name="locale" value="zh_CN">
+
+        <INPUT TYPE="submit" VALUE="zh_CN">
+        </form>
+        <form action="TestConteoller05/test001" method="post">
+          <input type="text" name="locale" value="en_US">
+
+          <INPUT TYPE="submit" VALUE="en_US">
+        </form>
+
+        <A HREF="TestConteoller05/test001?locale=zh_CN" >zh_CN</A>
+        <A HREF="TestConteoller05/test001?locale=en_US" >en_US</A>
+
+<mvc:view-controller
+      springMVC无需通过Controller进行跳转的页面
+    <mvc:view-controller path="/success" view-name="success" ></mvc:view-controller>
+   <mvc:annotation-driven></mvc:annotation-driven>
+
+
+自定义视图
+      1创建calss
+        @Component
+        public class ThisMyView implements View {
+            @Override
+            public String getContentType() {
+                return "text/html;charset=UTF-8";
+            }
+
+            @Override
+            public void render(Map<String, ?> map, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+
+                httpServletResponse.getWriter().print("HELOO"+new Date());
+            }
+        }
+      2 配置xml
+           <bean
+                class="org.springframework.web.servlet.view.BeanNameViewResolver">
+
+               <!--
+               order  视图解析器的优秀级  值越小,优先级越高
+
+               -->
+                <property name="order" value="100"></property>
+
+           </bean>
+
+       Controller
+             @RequestMapping("/TestConteoller06/test002")
+                public   String  test002(Locale locale){
+
+
+                    return  "thisMyView";
+                }
+
+
+
+
+
+
+
+
+
+
+

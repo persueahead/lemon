@@ -1,0 +1,358 @@
+类型出错异常的处理
+        1.创建一个Controller层
+            @RequestMapping("/TestCotriller001/test001")
+               public   String  test001(Users users, BindingResult   result){
+
+                    System.out.println(users);
+                    if(result.getErrorCount()>0){
+                        for (FieldError error : result.getFieldErrors()) {
+                            System.out.println("出了错了" + error.getField() + "：：" + error.getDefaultMessage()+"\t");
+                        }
+                    }
+                    return "success";
+                  }
+        2.提交数据
+              <FORM  ACTION="TestCotriller001/test001" METHOD="get">
+                <INPUT TYPE="text" NAME="id" value="123阿打算" ><BR/>
+                <INPUT TYPE="text" NAME="name"  value="adasd"><BR/>
+                <input TYPE="submit" value="提交">
+              </FORM>
+
+        3.打印异常信息数据
+                Users{id=null, name='admin'}
+                出了错了id：：Failed to convert property value of type [java.lang.String] to required type [java.lang.Integer] for property 'id'; nested exception is java.lang.NumberFormatException: For input string: "1231231阿萨斯"
+
+--------------------------------
+JSR303  数据验证
+    1.JSR303  是java为Bean 数据合法性的效验提供的标准的框架，已经包含在JavaEE 6。0
+      相关的验证
+    2.JSR303 通过在Bean属性上标准类似于@NotNull  @Max等标准的注解进行指定效验规则
+       并通过标准的验证接口对Bean进行验证
+    3.JSR303相关的注解
+        @Null   被注解的元素必须为null
+        @NotNull   被注解的元素不能为null
+        @AssertTrue    被注解的元素必须为True
+        @AssertFalse   被注解的元素必须为false
+        @Min(value)    被注解的元素必须是一个数字,该值必须大于等于指定的最小值
+        @Max(value)    被注解的元素必须是一个数字，该值必须小于等于指定的最大值
+        @DecimalMin(value)  被注解的元素必须是一个数字，该值必须大于等于指定的最小值
+        @DecimalMax(value)   被注解的元素必须是一个数字，该值必须小于等于指定的最大值
+        @Size(max,min)          被注解的元素的大小必须在指定的范围内
+        @Digits(xxx,xxx)      被注解的元素必须是一个数字，其值必须在key接受的范围内
+        @Past                 被注解的元素必须是一个过去的时间日期
+        @Future                  被注解的元素必须是一个将来的时间日期
+        @Pattern(value)         被注解的元素必须符合指定的正则表达式
+     扩展：
+        Hibernate Validator 的注解
+          1.  Hibernate Validator 是JSR303的参考的实现
+             除了支持所有的标准的效验的注解之外，它还支持一下的扩展的注解
+          @Email   被注解的元素必须是一个电子邮件的地址
+          @Length   被注解的字符串的大小必须在指定的范围类
+          @NotEmpty  被注解的字符串的必须是非空的
+          @Range     被注解的元素必须在适合的范围内
+    验证
+       Spring 本身是没有提供JSR303的实现,那么所以就必须将JSR303的jar包导入到工程中
+            需要的jar包如下：
+                classmate-0.8.0.jar
+                commons-logging-1.2.jar
+                hibernate-validator-5.0.0.CR2.jar
+                hibernate-validator-annotation-processor-5.0.0.CR2.jar
+                jboss-logging-3.1.1.GA.jar
+                jstl-1.2.jar
+                spring-aop-4.3.2.RELEASE.jar
+                spring-aspects-4.3.2.RELEASE.jar
+                spring-beans-4.3.2.RELEASE.jar
+                spring-context-4.3.2.RELEASE.jar
+                spring-core-4.3.2.RELEASE.jar
+                spring-expression-4.3.2.RELEASE.jar
+                spring-web-4.3.2.RELEASE.jar
+                spring-webmvc-4.3.2.RELEASE.jar
+                standard.jar
+                validation-api-1.1.0.CR1.jar
+        实体类
+                public class Student {
+                private  Integer id;
+                @NotNull
+                private  String name;
+                @Email
+                private String  email;
+                .........
+        controller
+              @RequestMapping("/TestCotriller001/test002")
+              public   String  test002(@Valid Student student, BindingResult   result){
+
+                  System.out.println(student);
+                  if(result.getErrorCount()>0){
+                      for (FieldError error : result.getFieldErrors()) {
+                          System.out.println("出了错了" + error.getField() + "：：" + error.getDefaultMessage()+"\t");
+                      }
+                  }
+                  return "success";
+              }
+        页面请求
+               <FORM  ACTION="TestCotriller001/test002" METHOD="get">
+                 <INPUT TYPE="text" NAME="id" value="1111" ><BR/>
+                 <INPUT TYPE="text" NAME="name"  value="adasd"><BR/>
+                 <INPUT TYPE="text" NAME="email"  value="啊实打实大sdf"><BR/>
+                 <input TYPE="submit" value="提交">
+               </FORM>
+
+            Student{id=1111, name='adasd', email='啊实打实大sdf'}
+            出了错了email：：不是一个合法的电子邮件地址
+
+----------------------------------------------------------------
+Json  数据的请求
+   1.加入对应的jar包
+        jackson-annotations-2.8.0.jar
+        jackson-core-2.8.1.jar
+        jackson-databind-2.8.1.jar
+
+   2.Controller中编写一个请求
+         @RequestMapping("/TestCotriller002/test001")
+             @ResponseBody
+            public ArrayList<Users> test001(Users users){
+                 System.out.println(users);
+                 //调用Service层，当然这里的Service数据，省略不写,
+
+                 //进行模拟Service中返回的数据
+                 ArrayList<Users> objects = new ArrayList<>();
+                 for (int i = 0; i < 5; i++) {
+                     objects.add(users);
+                 }
+                 return objects;
+            }
+    3.配置SpringMVC.xml文件
+                <!--进行配置Josn数据格式-->
+                <!--从请求和响应中.读取编写的字符串-->
+             <bean id="stringHttpMessage" class="org.springframework.http.converter.StringHttpMessageConverter">
+                 <property name="supportedMediaTypes">
+                     <list>
+                          <value>text/palin;charset=UTF-8</value>
+                     </list>
+                 </property>
+             </bean>
+                <!--将对象转换为josn数据的-->
+                <bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                </bean>
+
+                <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+                      <property name="messageConverters">
+                          <list>
+                              <ref bean="stringHttpMessage" />
+                              <ref bean="jsonConverter" />
+                          </list>
+                      </property>
+                </bean>
+              页面编写
+                      <head>
+                        <title>$Title$</title>
+                        <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+
+                        <script type="text/javascript">
+                          $(function(){
+                              $("#testJson").click(function () {
+                                  var  url=this.href;
+                                  var args={
+                                      'id':123,
+                                      'name':'小王'
+                                  };
+                                  alert(url);
+
+                                  $.post(url,args,function (data) {
+
+                                      alert(data);
+                                      for (var i=0;i<data.length;i++){
+                                          var id=data[i].id;
+                                          var name=data[i].name;
+                                          alert(id+":"+name);
+                                      }
+
+                                  });
+                                  return false;
+
+                              });
+
+
+
+
+                          })
+
+
+                        </script>
+                      </head>
+                      <body>
+                      <a href="TestCotriller002/test001" id="testJson">Test Josn</a>
+                      </body>
+----
+原理
+   HttpMessageConverter<T> 是Spring3.0新增加的一个接口，负责架将请求的信息转换为一个对象(类型就是为泛型)
+     将对象(泛型)输出为响应的信息
+   使用的如下两个方法进行之间的转换
+       T read(Class<? extends T> var1, HttpInputMessage var2) throws IOException, HttpMessageNotReadableException;
+       void write(T var1, MediaType var2, HttpOutputMessage var3) throws IOException, HttpMessageNotWritableException;
+
+-----------------------------------------------------
+文件上传
+   1.springMVC 为文件上传也提供了对应的支持，通过 MultipartResolver的实现类来进行完成文件上传
+
+   2.springMVC上下文中的默认没有进行配置  MultipartResolver如，需要使用Spring的文件上传的功能
+     那么，就需要进行配置上下文
+
+1.导入对应的jar包
+        commons-fileupload-1.3.1.jar
+        commons-io-2.4.jar
+        还有SpringMVC其他的关联包
+            classmate-0.8.0.jar
+            commons-logging-1.2.jar
+            hibernate-validator-5.0.0.CR2.jar
+            hibernate-validator-annotation-processor-5.0.0.CR2.jar
+            jackson-annotations-2.8.0.jar
+            jackson-core-2.8.1.jar
+            jackson-databind-2.8.1.jar
+            jboss-logging-3.1.1.GA.jar
+            jstl-1.2.jar
+            spring-aop-4.3.2.RELEASE.jar
+            spring-aspects-4.3.2.RELEASE.jar
+            spring-beans-4.3.2.RELEASE.jar
+            spring-context-4.3.2.RELEASE.jar
+            spring-core-4.3.2.RELEASE.jar
+            spring-expression-4.3.2.RELEASE.jar
+            spring-web-4.3.2.RELEASE.jar
+            spring-webmvc-4.3.2.RELEASE.jar
+            standard.jar
+            validation-api-1.1.0.CR1.jar
+      2.springMVC.XML文件的配置
+                <!--进行配置文件上传-->
+              <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+                   <!--进行配置文件上传的大小 和相关的字符集-->
+                  <property name="defaultEncoding" value="UTF-8"></property>
+                  <!--上传的总文件的大小-->
+                  <property name="maxUploadSize" value="123123123"></property>
+                  <!--进行配置每个文件上传的大小-->
+                  <property name="maxUploadSizePerFile" value="#{1024 * 1024 }"></property>
+                  <!--配置阀值,如果在这个范围内，内存中之外存在临时文件中-->
+                  <property name="maxInMemorySize" value="#{1024 * 1024 * 1024 }"></property>
+              </bean>
+        3.配置Controller
+                 @RequestMapping("/TestCotriller003/test001")
+                    public String test001(@RequestParam("desc") String desc
+                             , @RequestParam("file")MultipartFile  file) throws IOException {
+
+                            if(!file.isEmpty()){
+                                System.out.println("desc::" + desc);
+                                System.out.println("file.getOriginalFilename()"+file.getOriginalFilename());
+
+                                System.out.println("file.getInputStream()"+file.getInputStream());
+                            }
+                         return "success";
+                    }
+
+        4.页面
+               <FORM ACTION="TestCotriller003/test001" METHOD="post" ENCTYPE="multipart/form-data">
+                 file:<input type="file" name="file"><br/>
+                 desc:<INPUT TYPE="text" NAME="desc"><BR>
+                 <INPUT TYPE="submit" VALUE="提交">
+               </FORM>
+-----------------------------------------------------------------------------
+自定义拦截器
+   1.SpringMVC 也可以使用拦截器对请求进行拦截处理，用户可自定义拦截器来进行实现特定的功能
+      必须实现HandlerInterceptor接口
+   该接口中有以下3个方法
+            boolean preHandle(HttpServletRequest var1, HttpServletResponse var2, Object var3) throws Exception;
+            void postHandle(HttpServletRequest var1, HttpServletResponse var2, Object var3, ModelAndView var4) throws Exception;
+            void afterCompletion(HttpServletRequest var1, HttpServletResponse var2, Object var3, Exception var4) throws Exception;
+
+boolean preHandle
+        这个方法,在也处理器请求之前被调用，在该方法中对用户请求rquest进行处理
+            如果该拦截器对请求进行拦截处理后还要进行调用其他的拦截，或者是业务处理器去进行处理，则返回true
+        如不需要在次调用其他的组件处理请求，这返回false
+
+void postHandle
+        这个方法在业务处理器处理完请求后，但是DispathcherServlet向客户端返回响应前被调用
+        ，在该方法中对用户请求的request处理
+afterCompletion
+    这个方法，在DispatcherServlet完全处理完请求后被调用，可以在该方法中进行一些资源清理的操作
+
+使用方式:
+   进行创建一个自定义的拦截器
+            public class MyThisHandlerInterceptor  implements HandlerInterceptor{
+                @Override
+                public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+                    System.out.println("public boolean preHandle(...............");
+                    return true;
+                }
+                @Override
+                public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+                    System.out.println("public void postHandle.......");
+                }
+
+                @Override
+                public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
+                    System.out.println("public void afterCompletion================");
+                }
+            }
+进行配置Springmvc.xml文件
+               <mvc:interceptors>
+                    <bean class="com.bj.springmvc.test.MyThisHandlerInterceptor"></bean>
+                    <bean  class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+                </mvc:interceptors>
+
+有个情况下，我们要进行指定某个地址生效拦截
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
