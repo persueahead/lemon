@@ -1,0 +1,12 @@
+com\bjlemon\security\web\handler\CustomDeniedHandler.class
+com\bjlemon\security\web\controller\IndexController.class
+com\bjlemon\security\web\handler\CustomAuthenticationSuccessHandler.class
+com\bjlemon\security\service\UserService.class
+com\bjlemon\security\dao\UserDao.class
+com\bjlemon\security\domain\Role.class
+com\bjlemon\security\web\handler\CustomAuthenticationFailureHandler.class
+com\bjlemon\security\domain\User.class
+com\bjlemon\security\web\handler\CustomExceptionHandlerResolver.class
+com\bjlemon\security\web\controller\UserController.class
+com\bjlemon\security\service\impl\UserServiceImpl.class
+com\bjlemon\security\dao\impl\UserDaoImpl.class

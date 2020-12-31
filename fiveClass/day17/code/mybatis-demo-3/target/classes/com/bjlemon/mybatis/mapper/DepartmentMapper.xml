@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.DepartmentMapper">
+
+    <resultMap id="DepartmentBaseResultMap" type="Department">
+        <id property="id" column="department_id"/>
+        <result property="name" column="department_name"/>
+        <result property="location" column="department_location"/>
+    </resultMap>
+
+    <!--<resultMap id="DepartmentResultMap" type="Department" extends="DepartmentBaseResultMap">
+        <collection property="employees" column="department_id" ofType="Employee"
+                    resultMap="com.bjlemon.mybatis.mapper.EmployeeMapper.EmployeeBaseResultMap"/>
+    </resultMap>-->
+
+    <resultMap id="DepartmentResultMap" type="Department" extends="DepartmentBaseResultMap">
+        <collection property="employees" column="department_id" ofType="Employee"
+                    select="com.bjlemon.mybatis.mapper.EmployeeMapper.findEmployeesByDepartmentId"/>
+    </resultMap>
+
+    <insert id="save">
+        INSERT INTO mybatis_department (department_name, department_location) VALUES (#{name},#{location})
+    </insert>
+
+    <select id="findById" resultType="Department">
+        select
+            department_id id,
+            department_name name,
+            department_location location
+        from
+            mybatis_department
+        where
+            department_id = #{id}
+    </select>
+
+    <select id="findEmployeesByDepartmentName" resultType="Employee">
+        select
+            me.employee_id id,
+            me.employee_name name,
+            me.employee_password password,
+            me.employee_salary salary,
+            me.employee_birthday birthday
+        from
+            mybatis_employee me
+        left join
+            mybatis_department md on me.department_id = md.department_id
+        where
+            md.department_name = #{name}
+    </select>
+
+    <!--<select id="findByName" resultMap="DepartmentResultMap">
+        select
+            md.department_id,
+            md.department_name,
+            md.department_location,
+            me.employee_id,
+            me.employee_name,
+            me.employee_password,
+            me.employee_salary,
+            me.employee_birthday
+        from
+            mybatis_department md
+        left join
+            mybatis_employee me on md.department_id = me.department_id
+        where
+            md.department_name = #{name}
+    </select>-->
+
+    <select id="findByName" resultMap="DepartmentResultMap">
+        select
+            department_id,
+            department_name,
+            department_location
+        from
+            mybatis_department
+        where
+            department_name = #{name}
+    </select>
+</mapper>

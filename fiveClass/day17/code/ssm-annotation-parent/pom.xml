@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bjlemon</groupId>
+    <artifactId>ssm-annotation-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>ssm-annotation-common</module>
+        <module>ssm-annotation-domain</module>
+        <module>ssm-annotation-dao</module>
+        <module>ssm-annotation-service</module>
+        <module>ssm-annotation-web</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>5.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>5.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>5.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>5.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>5.2.2.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>5.2.2.RELEASE</version>
+            </dependency>
+
+
+            <!--mybatis相关-->
+            <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.5.3</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>2.0.3</version>
+            </dependency>
+
+            <!--分页插件-->
+            <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.1.10</version>
+            </dependency>
+
+            <!--数据源-->
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.21</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.48</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>javax.servlet.jsp-api</artifactId>
+                <version>2.3.3</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>1.2</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.9</version>
+            </dependency>
+
+
+            <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2.2</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.6</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.10</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.9</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.9.9</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.9.9</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

@@ -1,0 +1,31 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: springboot-mybatis-plus-demo
+  thymeleaf:
+    cache: false
+    enabled: true
+    encoding: UTF-8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///springboot-mybatis?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+mybatis-plus:
+  configuration:
+    ### \u8868\u4E2D\u5B57\u6BB5\u4E0E\u9886\u57DF\u5BF9\u8C61\u7684\u5C5E\u6027\u6620\u5C04\u5173\u7CFB\uFF08\u9700\u8981\u6EE1\u8DB3\u4E00\u5B9A\u7684\u7EA6\u675F\uFF09
+    ### domain-----userId
+    ### table------user_id
+    map-underscore-to-camel-case: true
+    ### \u4E3B\u952E\u751F\u6210\u7B56\u7565
+    use-generated-keys: true
+  global-config:
+    db-config:
+      table-prefix: springboot_mybatis_

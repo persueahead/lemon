@@ -1,0 +1,11 @@
+com\bjlemon\ssm\domain\Department.class
+com\bjlemon\ssm\domain\DepartmentExample$GeneratedCriteria.class
+com\bjlemon\ssm\domain\DepartmentExample$Criteria.class
+com\bjlemon\ssm\vo\DepartmentQueryVO.class
+com\bjlemon\ssm\domain\EmployeeExample$Criteria.class
+com\bjlemon\ssm\domain\EmployeeExample$Criterion.class
+com\bjlemon\ssm\domain\DepartmentExample$Criterion.class
+com\bjlemon\ssm\domain\DepartmentExample.class
+com\bjlemon\ssm\domain\EmployeeExample.class
+com\bjlemon\ssm\domain\Employee.class
+com\bjlemon\ssm\domain\EmployeeExample$GeneratedCriteria.class

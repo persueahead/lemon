@@ -1,0 +1,10 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: springboot-freemarker-demo
+  freemarker:
+    cache: false
+    enabled: true
+    suffix: .ftl
+    template-loader-path: classpath:/templates/

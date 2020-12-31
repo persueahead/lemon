@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.UserMapper">
+
+    <sql id="userColumnList">
+        user_id id,
+        user_name name,
+        user_password password,
+        user_salary salary,
+        user_birthday birthday
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" keyColumn="user_id">
+        insert into mybatis_user (user_name, user_password, user_salary, user_birthday) VALUES
+        (#{name},#{password},#{salary},#{birthday})
+    </insert>
+
+    <insert id="persist">
+        <selectKey keyProperty="id" keyColumn="user_id" order="AFTER" resultType="int">
+            select last_insert_id() as id
+        </selectKey>
+        insert into mybatis_user (user_id,user_name, user_password, user_salary, user_birthday) VALUES
+        (#{id},#{name},#{password},#{salary},#{birthday})
+    </insert>
+
+    <update id="update">
+        update
+        mybatis_user
+        <set>
+            <if test="name != null and name != ''">
+                user_name = #{name},
+            </if>
+
+            <if test="password != null and password != ''">
+                user_password = #{password},
+            </if>
+
+            <if test="salary != null">
+                user_salary = #{salary},
+            </if>
+
+            <if test="birthday != null">
+                user_birthday = #{birthday},
+            </if>
+        </set>
+        where
+        user_id = #{id}
+    </update>
+
+    <select id="findByCondition" resultType="User">
+        select
+        user_id id,
+        user_name name,
+        user_password password,
+        user_salary salary,
+        user_birthday birthday
+        from
+        mybatis_user
+        <where>
+            <if test="name != null and name != ''">
+                and user_name like #{name}
+            </if>
+
+            <if test="password != null and password != ''">
+                and user_password like #{password}
+            </if>
+
+            <if test="salary != null">
+                and user_salary = #{salary}
+            </if>
+
+            <if test="birthday != null">
+                and user_birthday = #{birthday}
+            </if>
+        </where>
+    </select>
+
+    <select id="findById" resultType="User">
+        select
+        <include refid="userColumnList"/>
+        from
+        mybatis_user
+        where
+        user_id = #{id}
+    </select>
+
+    <select id="findByIds" resultType="User">
+        select
+        <include refid="userColumnList"/>
+        from
+        mybatis_user
+        where
+        user_id in
+        <foreach collection="array" open="(" close=")" separator="," item="uid">
+            #{uid}
+        </foreach>
+    </select>
+
+    <select id="findByIdList" resultType="User">
+        select
+        <include refid="userColumnList"/>
+        from
+        mybatis_user
+        where
+        user_id in
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

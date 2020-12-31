@@ -1,0 +1,18 @@
+user:
+  username: lisi
+  password: test
+  # \u5355\u5F15\u53F7\u4E0D\u4F1A\u8F6C\u4E49
+  info: 'aaaa\nbbbb'
+  # \u53CC\u5F15\u53F7\u4F1A\u8F6C\u4E49\uFF08\u6362\u884C\uFF09
+#  info: "aaaa\nbbbb\u201C
+
+person: {username: "wangwu",password: "admin"}
+
+#student:
+#  inters:
+#    - football
+#    - basketball
+#    - volleyball
+
+student:
+  inters: ["football","basketball","volleyball"]

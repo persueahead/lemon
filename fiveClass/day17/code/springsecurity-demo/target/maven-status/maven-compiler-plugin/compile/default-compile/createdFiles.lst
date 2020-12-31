@@ -1,0 +1,4 @@
+com\bjlemon\security\web\handler\CustomAuthenticationFailureHandler.class
+com\bjlemon\security\web\controller\UserController.class
+com\bjlemon\security\web\controller\IndexController.class
+com\bjlemon\security\web\handler\CustomAuthenticationSuccessHandler.class

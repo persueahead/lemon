@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/persistence"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="jpa-demo" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <properties>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/jpa_demo"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="root"/>
+            <!--说明:数据库的方言，用于存放不同数据库之间的SQL语句差异。-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
+
+            <!--
+                create:每次启动服务器重新建表
+                update:更新表结构
+            -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!--每次执行操作会发SQL语句-->
+            <property name="hibernate.show_sql" value="true"/>
+            <!--格式化SQL语句-->
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

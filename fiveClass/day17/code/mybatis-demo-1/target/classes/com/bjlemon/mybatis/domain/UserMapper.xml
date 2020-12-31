@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.domain">
+
+    <insert id="save" parameterType="com.bjlemon.mybatis.domain.User">
+        insert into
+            mybatis_user(user_name, user_password, user_salary, user_birthday)
+        values
+            (#{name},#{password},#{salary},#{birthday})
+    </insert>
+
+    <delete id="delete">
+        delete
+        from
+            mybatis_user
+        where
+            user_id = #{id}
+    </delete>
+
+    <update id="update">
+        update
+            mybatis_user
+        set
+            user_name = #{name},
+            user_password = #{password},
+            user_salary = #{salary},
+            user_birthday = #{birthday}
+        where
+            user_id = #{id}
+    </update>
+
+    <select id="findById" resultType="com.bjlemon.mybatis.domain.User">
+        select
+            user_id id,
+            user_name name,
+            user_password password,
+            user_salary salary,
+            user_birthday birthday
+        from
+            mybatis_user
+        where
+            user_id = #{id}
+    </select>
+
+    <select id="findAll" resultType="com.bjlemon.mybatis.domain.User">
+        select
+            user_id id,
+            user_name name,
+            user_password password,
+            user_salary salary,
+            user_birthday birthday
+        from
+            mybatis_user
+    </select>
+
+</mapper>

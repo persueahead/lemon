@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="db.properties"/>
+
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+        <!--开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <!--
+            默认去使用com.bjlemon.mybatis.domain包下的所有的类对应的类的简单名作为别名
+            com.bjlemon.mybatis.domain.User别名为User
+        -->
+        <package name="com.bjlemon.mybatis.domain"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--
+            默认去com.bjlemon.mybatis.mapper包下找到对应的映射文件
+            该映射文件的名称与接口的名称保持一致
+        -->
+        <package name="com.bjlemon.mybatis.mapper"/>
+    </mappers>
+
+</configuration>

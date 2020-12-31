@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.EmployeeMapper">
+
+    <!--开启二级缓存的支持-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <resultMap id="EmployeeBaseResultMap" type="Employee">
+        <id property="id" column="employee_id"/>
+        <result property="name" column="employee_name"/>
+        <result property="password" column="employee_password"/>
+        <result property="salary" column="employee_salary"/>
+        <result property="birthday" column="employee_birthday"/>
+    </resultMap>
+
+    <resultMap id="EmployeeResultMap" type="Employee" extends="EmployeeBaseResultMap">
+        <association property="department" column="department_id" javaType="Department"
+                     select="com.bjlemon.mybatis.mapper.DepartmentMapper.findById"/>
+    </resultMap>
+
+    <update id="update">
+        update
+        mybatis_employee
+        <set>
+            <if test="name != null and name !=''">
+                employee_name = #{name},
+            </if>
+
+
+            <if test="password != null and password !=''">
+                employee_password = #{password},
+            </if>
+
+            <if test="salary != null">
+                employee_salary = #{salary},
+            </if>
+
+            <if test="birthday != null">
+                employee_birthday = #{birthday},
+            </if>
+        </set>
+        where
+        employee_id = #{id}
+    </update>
+
+    <select id="findAll" resultMap="EmployeeResultMap" useCache="true">
+        select
+            *
+        from
+            mybatis_employee
+    </select>
+
+    <select id="findById" resultMap="EmployeeBaseResultMap">
+        select
+            employee_id, employee_name, employee_password, employee_salary, employee_birthday
+        from
+            mybatis_employee
+        where
+            employee_id = #{id}
+    </select>
+
+    <select id="getById" resultMap="EmployeeBaseResultMap">
+        select
+            employee_id, employee_name, employee_password, employee_salary, employee_birthday
+        from
+            mybatis_employee
+        where
+            employee_id = #{id}
+    </select>
+
+
+</mapper>

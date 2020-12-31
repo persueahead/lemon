@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="185c910f-faad-46eb-ba46-44b76b4cd760" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="mavenHome" value="D:/Program Files/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1ZLlmrrGRLRyV2ZykRwlNXSUR87" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="JUnit" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.UserTest.testFindPagination">
+    <configuration name="UserTest.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jpa-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.jpa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.jpa.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.jpa.test.UserTest" />
+      <option name="METHOD_NAME" value="testAdd" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testFindAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jpa-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.jpa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.jpa.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.jpa.test.UserTest" />
+      <option name="METHOD_NAME" value="testFindAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testFindPagination" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jpa-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.jpa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.jpa.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.jpa.test.UserTest" />
+      <option name="METHOD_NAME" value="testFindPagination" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jpa-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.jpa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.jpa.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.jpa.test.UserTest" />
+      <option name="METHOD_NAME" value="testLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testLogin1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jpa-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.jpa.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.jpa.test" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.jpa.test.UserTest" />
+      <option name="METHOD_NAME" value="testLogin1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserTest.testFindPagination" />
+        <item itemvalue="JUnit.UserTest.testLogin1" />
+        <item itemvalue="JUnit.UserTest.testLogin" />
+        <item itemvalue="JUnit.UserTest.testFindAll" />
+        <item itemvalue="JUnit.UserTest.testAdd" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.194159" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="JUnit" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="JUnit" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="JUnit" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="185c910f-faad-46eb-ba46-44b76b4cd760" name="Default Changelist" comment="" />
+      <created>1584626416055</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584626416055</updated>
+      <workItem from="1584626419404" duration="4145000" />
+      <workItem from="1584791787988" duration="1610000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="556" y="213" key="#Project_Structure" timestamp="1584627559748">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="556" y="213" key="#Project_Structure/0.24.1920.1056@0.24.1920.1056" timestamp="1584627559748" />
+    <state x="719" y="258" key="#xdebugger.evaluate" timestamp="1584629106119">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="719" y="258" key="#xdebugger.evaluate/0.24.1920.1056@0.24.1920.1056" timestamp="1584629106119" />
+    <state x="744" y="315" key="FileChooserDialogImpl" timestamp="1584793385678">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="744" y="315" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1584793385678" />
+    <state width="1489" height="410" key="GridCell.Tab.0.bottom" timestamp="1584793404327">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1584792538923">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.bottom.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538923" />
+    <state width="1489" height="860" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974212" />
+    <state width="1489" height="410" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404327" />
+    <state width="1489" height="410" key="GridCell.Tab.0.center" timestamp="1584793404327">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1584792538921">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.center.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538921" />
+    <state width="1489" height="860" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974212" />
+    <state width="1489" height="410" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404327" />
+    <state width="1489" height="410" key="GridCell.Tab.0.left" timestamp="1584793404326">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1584792538921">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.left.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538921" />
+    <state width="1489" height="860" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974212" />
+    <state width="1489" height="410" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404326" />
+    <state width="1489" height="410" key="GridCell.Tab.0.right" timestamp="1584793404327">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1584792538921">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.0.right.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538921" />
+    <state width="1489" height="860" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974212" />
+    <state width="1489" height="410" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404327" />
+    <state width="1489" height="410" key="GridCell.Tab.1.bottom" timestamp="1584793404328">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.bottom.inPresentationMode" timestamp="1584792538925">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.bottom.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538925" />
+    <state width="1489" height="860" key="GridCell.Tab.1.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974213" />
+    <state width="1489" height="410" key="GridCell.Tab.1.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404328" />
+    <state width="1489" height="410" key="GridCell.Tab.1.center" timestamp="1584793404328">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.center.inPresentationMode" timestamp="1584792538925">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.center.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538925" />
+    <state width="1489" height="860" key="GridCell.Tab.1.center/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974213" />
+    <state width="1489" height="410" key="GridCell.Tab.1.center/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404328" />
+    <state width="1489" height="410" key="GridCell.Tab.1.left" timestamp="1584793404327">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.left.inPresentationMode" timestamp="1584792538924">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.left.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538924" />
+    <state width="1489" height="860" key="GridCell.Tab.1.left/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974212" />
+    <state width="1489" height="410" key="GridCell.Tab.1.left/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404327" />
+    <state width="1489" height="410" key="GridCell.Tab.1.right" timestamp="1584793404328">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.right.inPresentationMode" timestamp="1584792538925">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="1523" height="811" key="GridCell.Tab.1.right.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792538925" />
+    <state width="1489" height="860" key="GridCell.Tab.1.right/0.24.1920.1056@0.24.1920.1056" timestamp="1584629974213" />
+    <state width="1489" height="410" key="GridCell.Tab.1.right/0.30.1920.1050@0.30.1920.1050" timestamp="1584793404328" />
+    <state x="465" y="192" key="SettingsEditor" timestamp="1584791814158">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="465" y="187" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1584627922335" />
+    <state x="465" y="192" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1584791814158" />
+    <state width="498" height="445" key="SwitcherDM" timestamp="1584628340510">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="533" height="700" key="SwitcherDM.inPresentationMode" timestamp="1584792425796">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state width="533" height="700" key="SwitcherDM.inPresentationMode/0.30.1920.1050@0.30.1920.1050" timestamp="1584792425796" />
+    <state width="498" height="445" key="SwitcherDM/0.24.1920.1056@0.24.1920.1056" timestamp="1584628340510" />
+    <state x="348" y="252" key="new project wizard" timestamp="1584793402118">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="348" y="252" key="new project wizard/0.30.1920.1050@0.30.1920.1050" timestamp="1584793402118" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1584628168889">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1584628168889" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/jpa/test/UserTest.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/jpa/test/UserTest.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

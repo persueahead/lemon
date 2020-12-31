@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f1a3f748-fbb3-4cf9-9519-b2fd4f0f13bf" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="springsecurity_demo@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="springsecurity_demo@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="springsecurity_demo@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="springsecurity_demo: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="FxmlFile" />
+        <option value="Jsp File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="mavenHome" value="D:/Program Files/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1ZZo9jv1IrnXeOa1bjJEgF8QWc0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Workspace14/day17/code/springsecurity-demo-11" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day12\code\springsecurity-demo-1\src\main\resources" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day12\code\springsecurity-demo-1\src\main\webapp\WEB-INF" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MavenRunConfiguration" />
+      </set>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.20822066" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Maven" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Maven" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1a3f748-fbb3-4cf9-9519-b2fd4f0f13bf" name="Default Changelist" comment="" />
+      <created>1585055827386</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585055827386</updated>
+      <workItem from="1585055831720" duration="6287000" />
+      <workItem from="1585062679232" duration="18000" />
+      <workItem from="1585224064816" duration="1273000" />
+      <workItem from="1585231535141" duration="105000" />
+      <workItem from="1585231958823" duration="369000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585060220865">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1585060220865" />
+    <state x="769" y="271" key="#com.intellij.ide.util.MemberChooser" timestamp="1585061131546">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="769" y="271" key="#com.intellij.ide.util.MemberChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1585061131546" />
+    <state x="719" y="258" key="#xdebugger.evaluate" timestamp="1585059662906">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="719" y="258" key="#xdebugger.evaluate/0.24.1920.1056@0.24.1920.1056" timestamp="1585059662906" />
+    <state x="744" y="310" key="FileChooserDialogImpl" timestamp="1585232327413">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="744" y="310" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1585232327413" />
+    <state width="1463" height="860" key="GridCell.Tab.0.bottom" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state width="1463" height="860" key="GridCell.Tab.0.center" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state width="1463" height="860" key="GridCell.Tab.0.left" timestamp="1585232328916">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328916" />
+    <state width="1463" height="860" key="GridCell.Tab.0.right" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state width="1463" height="860" key="GridCell.Tab.1.bottom" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.1.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state width="1463" height="860" key="GridCell.Tab.1.center" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.1.center/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state width="1463" height="860" key="GridCell.Tab.1.left" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.1.left/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state width="1463" height="860" key="GridCell.Tab.1.right" timestamp="1585232328917">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1463" height="860" key="GridCell.Tab.1.right/0.24.1920.1056@0.24.1920.1056" timestamp="1585232328917" />
+    <state x="444" y="129" key="SettingsEditor" timestamp="1585057992936">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="444" y="129" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1585057992936" />
+    <state x="685" y="286" width="570" height="524" key="StructurePopup" timestamp="1585059714646">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="685" y="286" width="570" height="524" key="StructurePopup/0.24.1920.1056@0.24.1920.1056" timestamp="1585059714646" />
+    <state width="498" height="536" key="SwitcherDM" timestamp="1585224922991">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="498" height="536" key="SwitcherDM/0.24.1920.1056@0.24.1920.1056" timestamp="1585224922991" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1585059304441">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1585059304441" />
+    <state x="490" y="239" key="spring file set editor" timestamp="1585056140170">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="490" y="239" key="spring file set editor/0.24.1920.1056@0.24.1920.1056" timestamp="1585056140170" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/handler/CustomAuthenticateSuccessHandler.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/handler/CustomAuthenticateFailureHandler.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/service/impl/UserServiceImpl.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

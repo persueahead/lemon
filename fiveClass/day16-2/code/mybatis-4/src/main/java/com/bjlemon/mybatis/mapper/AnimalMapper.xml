@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.AnimalMapper">
+
+    <insert id="saveCat">
+        INSERT INTO mybatis_animal (animal_id, animal_name, eye_color, fur_color, type)
+        VALUES (NULL,#{name},#{eyeColor},null,'C')
+    </insert>
+
+    <insert id="saveDog">
+        INSERT INTO mybatis_animal (animal_id, animal_name, eye_color, fur_color, type)
+        VALUES (NULL,#{name},null,#{furColor},'D')
+    </insert>
+
+    <resultMap id="AnimalResultMap" type="Animal">
+        <id property="id" column="animal_id"/>
+        <result property="name" column="animal_name"/>
+        <discriminator javaType="java.lang.String" column="type">
+            <case value="C" resultMap="CatResultMap"/>
+            <case value="D" resultMap="DogResultMap"/>
+        </discriminator>
+    </resultMap>
+
+    <resultMap id="CatResultMap" type="Cat" extends="AnimalResultMap">
+        <result property="eyeColor" column="eye_color"/>
+    </resultMap>
+
+    <resultMap id="DogResultMap" type="Dog" extends="AnimalResultMap">
+        <result property="furColor" column="fur_color"/>
+    </resultMap>
+
+    <select id="findById" resultMap="AnimalResultMap">
+        SELECT
+            animal_id, animal_name, eye_color, fur_color, type
+        FROM mybatis_animal
+        WHERE animal_id = #{id}
+    </select>
+
+
+</mapper>

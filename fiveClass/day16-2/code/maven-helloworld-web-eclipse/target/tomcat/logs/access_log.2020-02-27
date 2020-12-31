@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [27/Feb/2020:22:59:17 +0800] "GET /helloworld HTTP/1.1" 200 38 http-bio-9090-exec-1 80
+0:0:0:0:0:0:0:1 - - [27/Feb/2020:22:59:18 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9090-exec-3 6

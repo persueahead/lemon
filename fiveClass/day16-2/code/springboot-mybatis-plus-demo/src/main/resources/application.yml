@@ -1,0 +1,28 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: springboot-mybatis-plus-demo
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///springboot_mybatis?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    aggressive-lazy-loading: false
+    lazy-loading-enabled: true
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+#  global-config:
+#    db-config:
+##       表名的前缀名 t_domainClassName---> 表名
+#      table-prefix: t_

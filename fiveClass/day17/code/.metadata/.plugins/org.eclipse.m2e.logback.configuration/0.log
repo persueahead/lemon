@@ -1,0 +1,242 @@
+2019-12-21 22:46:29,165 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2019-12-21 22:46:32,219 [Worker-11: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:46:34,124 [Worker-11: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:46:34,186 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:46:34,192 [Worker-11: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:46:34,196 [Worker-11: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:46:35,896 [Worker-7: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:46:35,914 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:46:37,036 [Worker-7: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:46:37,042 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:46:37,051 [Worker-12: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:46:38,277 [Worker-10: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:46:38,281 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:46:38,284 [Worker-10: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:46:38,288 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:47:19,443 [Worker-6: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:47:19,448 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:47:19,450 [Worker-6: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:47:19,490 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:47:33,618 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2019-12-21 22:47:55,713 [Worker-7: Launching maven-helloworld-eclipse] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse
+2019-12-21 22:47:55,715 [Worker-7: Launching maven-helloworld-eclipse] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -gs "D:\Program Files\apache-maven-3.5.4\conf\settings.xml" mvn clean install
+2019-12-21 22:48:50,213 [Worker-7: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2019-12-21 22:48:51,406 [Worker-7: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:48:51,761 [Worker-7: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /maven-helloworld-eclipse/src/main/java
+2019-12-21 22:48:51,762 [Worker-7: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /maven-helloworld-eclipse/src/main/resources
+2019-12-21 22:48:51,763 [Worker-7: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /maven-helloworld-eclipse/src/test/java
+2019-12-21 22:48:51,764 [Worker-7: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /maven-helloworld-eclipse/src/test/resources
+2019-12-21 22:48:52,268 [Worker-7: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 2 sec
+2019-12-21 22:48:52,560 [Worker-7: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:48:52,567 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:48:52,570 [Worker-7: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:48:52,574 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:49:07,418 [Worker-14: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:49:07,424 [Worker-14: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:49:07,425 [Worker-14: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:49:07,429 [Worker-14: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:49:14,132 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2019-12-21 22:49:14,484 [Worker-6: Launching maven-helloworld-eclipse] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse
+2019-12-21 22:49:14,484 [Worker-6: Launching maven-helloworld-eclipse] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -gs "D:\Program Files\apache-maven-3.5.4\conf\settings.xml" mvn clean install
+2019-12-21 22:49:32,364 [Worker-12: Launching Executing install in F__Course Workspace_bjlemon_Workspace14_day1_code_maven-helloworld-eclipse] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse
+2019-12-21 22:49:32,366 [Worker-12: Launching Executing install in F__Course Workspace_bjlemon_Workspace14_day1_code_maven-helloworld-eclipse] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -gs "D:\Program Files\apache-maven-3.5.4\conf\settings.xml" install
+2019-12-21 22:49:41,651 [Worker-13: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:49:41,655 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:49:41,657 [Worker-13: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:49:41,661 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:29,047 [Worker-5: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:50:29,480 [Worker-5: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:29,485 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:29,489 [Worker-5: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:29,492 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:31,259 [Worker-3: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:31,262 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:31,264 [Worker-3: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:31,269 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:33,975 [Worker-8: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:50:34,329 [Worker-8: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:34,335 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:34,338 [Worker-8: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:34,341 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:56,207 [Worker-4: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:50:56,534 [Worker-4: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:56,541 [Worker-4: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:56,544 [Worker-4: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:56,548 [Worker-4: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:58,283 [Worker-7: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:58,288 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:50:58,290 [Worker-7: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:50:58,294 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:51:00,313 [Worker-13: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:51:00,647 [Worker-13: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:51:00,651 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:51:00,653 [Worker-13: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:51:00,656 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:51:02,887 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-eclipse:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-eclipse\pom.xml.
+2019-12-21 22:51:03,189 [Worker-0: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:51:03,195 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:51:03,197 [Worker-0: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2019-12-21 22:51:03,201 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-12-21 22:52:25,942 [Worker-5: Creating maven-archetype-webapp] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Collecting project info '/pom.xml' F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml
+2019-12-21 22:52:26,996 [Worker-5: Creating maven-archetype-webapp] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:52:29,337 [Worker-5: Creating maven-archetype-webapp] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /maven-helloworld-web-eclipose/src/main/java
+2019-12-21 22:52:29,337 [Worker-5: Creating maven-archetype-webapp] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /maven-helloworld-web-eclipose/src/test/java
+2019-12-21 22:52:32,835 [Worker-5: Creating maven-archetype-webapp] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 6 sec
+2019-12-21 22:52:33,475 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:52:33,476 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:52:33,479 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:52:33,479 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:52:34,442 [Worker-0: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11-sources.jar
+2019-12-21 22:52:41,794 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:52:41,794 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:52:41,798 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:52:41,798 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:52:56,869 [Worker-10: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2019-12-21 22:52:57,779 [Worker-10: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:52:59,718 [Worker-10: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /maven-helloworld-web-eclipose/src/main/java
+2019-12-21 22:52:59,734 [Worker-10: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /maven-helloworld-web-eclipose/src/test/java
+2019-12-21 22:53:01,150 [Worker-10: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for maven-helloworld-web-eclipose
+2019-12-21 22:53:01,177 [Worker-10: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 4 sec
+2019-12-21 22:53:01,482 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:01,483 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:01,487 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:01,487 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:01,488 [Worker-7: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:53:01,489 [Worker-7: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:53:01,504 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:18,431 [Worker-0: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11-sources.jar
+2019-12-21 22:53:19,073 [Worker-0: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for junit:junit:4.11
+2019-12-21 22:53:19,088 [Worker-0: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for junit:junit:4.11
+2019-12-21 22:53:19,096 [Worker-0: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for junit:junit:4.11
+2019-12-21 22:53:19,107 [Worker-0: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for junit:junit:4.11
+2019-12-21 22:53:19,383 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:19,383 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:19,387 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:19,388 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:25,283 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:25,285 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:25,289 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:25,289 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:38,137 [Worker-9: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:53:39,573 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:39,573 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:39,576 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:39,576 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:39,576 [Worker-9: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:53:39,576 [Worker-9: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:53:39,587 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:43,121 [Worker-10: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:53:44,523 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:44,523 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:44,525 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:44,526 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:44,526 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:53:44,526 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:53:44,535 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:48,291 [Worker-10: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:53:49,607 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:49,608 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:49,611 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:49,612 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:49,612 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:53:49,613 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:53:49,623 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:51,679 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:53:53,060 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:53,060 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:53,063 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:53,063 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:53:53,064 [Worker-0: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:53:53,064 [Worker-0: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:53:53,078 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:54,852 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:54,852 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:53:54,854 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:53:54,855 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:55:15,978 [Worker-12: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:55:17,596 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:17,596 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:55:17,599 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:17,599 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:55:17,599 [Worker-12: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:55:17,599 [Worker-12: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:55:17,607 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:19,421 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:19,421 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:55:19,425 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:19,425 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:55:21,169 [Worker-10: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:55:22,690 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:22,690 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:55:22,693 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:22,693 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:55:22,694 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:55:22,694 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:55:22,703 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:24,701 [Worker-7: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:55:25,990 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:25,991 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:55:25,993 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:55:25,993 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:55:25,994 [Worker-7: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:55:25,994 [Worker-7: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:55:26,002 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:17,707 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:17,707 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:56:17,713 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:17,713 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:56:23,841 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:23,842 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:56:23,844 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:23,844 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:56:32,004 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:32,004 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:56:32,006 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:32,006 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:56:45,761 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:45,761 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:56:45,764 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:45,764 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:56:47,914 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:47,914 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:56:47,915 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:56:47,916 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:57:23,891 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:23,892 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:57:23,894 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:23,894 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:57:26,102 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:26,102 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:57:26,104 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:26,104 [Worker-5: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:57:34,662 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:34,663 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:57:34,666 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:34,666 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:57:46,591 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:46,591 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:57:46,593 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:46,593 [Worker-9: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:57:53,789 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:53,790 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:57:53,791 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:57:53,792 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:59:45,304 [Worker-12: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:59:46,871 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:59:46,872 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:59:46,875 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:59:46,876 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:59:46,876 [Worker-12: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:59:46,876 [Worker-12: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:59:46,884 [Worker-12: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:59:50,906 [Worker-10: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.bjlemon:maven-helloworld-web-eclipose:0.0.1-SNAPSHOT @ F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\pom.xml.
+2019-12-21 22:59:52,134 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:59:52,135 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\main\resources
+2019-12-21 22:59:52,137 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 22:59:52,137 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose\src\test\resources
+2019-12-21 22:59:52,137 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of maven-helloworld-web-eclipose
+2019-12-21 22:59:52,137 [Worker-10: Building workspace] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for maven-helloworld-web-eclipose
+2019-12-21 22:59:52,148 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2019-12-21 23:00:03,359 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
+2019-12-21 23:00:13,470 [Worker-9: Launching maven-helloworld-web-eclipose] INFO  o.e.m.i.launch.MavenLaunchDelegate - F:\Course Workspace\bjlemon\Workspace14\day1\code\maven-helloworld-web-eclipose
+2019-12-21 23:00:13,470 [Worker-9: Launching maven-helloworld-web-eclipose] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -gs "D:\Program Files\apache-maven-3.5.4\conf\settings.xml" tomcat7:run

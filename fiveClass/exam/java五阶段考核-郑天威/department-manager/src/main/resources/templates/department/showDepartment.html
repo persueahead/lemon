@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>show department</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!--jquery必须在bootstrap.min.js前引入，作为bootstrap中插件的依赖-->
+    <script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+    <!--用于弹窗、提示、下拉菜单，包含了 popper.min.js-->
+    <script th:src="@{/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+    <!--Bootstrap4 核心 JavaScript 文件-->
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <style type="text/css">
+        thead{
+            color: black;
+            font-weight: 900;
+        }
+        #id{
+            color: red;
+        }
+        .t{
+            color: blue;
+        }
+        strong{
+            color: red;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <strong th:text="${tip}"> 操作提示信息</strong>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>部门编号</th>
+        <th>部门名称</th>
+        <th>部门状态</th>
+        <th>部门备注</th>
+        <th>查询员工</th>
+    </tr>
+    </thead>
+    <tr th:each="dep:${baseDepartment}">
+        <td th:text="${dep.depId}" id="id">departmentId</td>
+        <td th:text="${dep.depName}" class="t">departmentName</td>
+        <td th:text="${dep.depState==0?'有效':'删除'}" class="t">departmentState</td>
+        <td th:text="${dep.depDesc}" class="t">DepartmentDescription</td>
+        <td><a th:href="@{/department/selectUser(depId=${dep.depId})}">查找</a></td>
+    </tr>
+</table>
+</body>
+</html>

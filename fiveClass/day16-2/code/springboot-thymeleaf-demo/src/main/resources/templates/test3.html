@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf第一个案例</title>
+</head>
+<body>
+<!--    <a href="${pageContext.request.contextPath}/xxx"></a>-->
+<!--    <a th:href="@{#request.contextPath}/user/{id}/delete(id=${id})"></a>-->
+    <a th:href="@{/user/{id}/delete(id=${id})}">链接</a>
+</body>
+</html>

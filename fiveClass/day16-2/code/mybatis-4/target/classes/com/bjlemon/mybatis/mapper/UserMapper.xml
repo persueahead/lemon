@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.UserMapper">
+
+
+    <select id="findUsersByQueryVO" resultType="User">
+
+        SELECT
+        user_id id,
+        user_name name,
+        user_password password,
+        user_salary salary,
+        user_birthday birthday
+        FROM mybatis_user
+        <where>
+            <if test="name != null and name != ''">
+                user_name LIKE #{name}
+            </if>
+
+            <if test="password != null and password != ''">
+                and user_password LIKE #{password}
+            </if>
+
+            <if test="salary != null">
+                and user_salary = #{salary}
+            </if>
+
+            <if test="birthday != null">
+                and user_birthday = #{birthday}
+            </if>
+        </where>
+    </select>
+
+    <select id="findUsersByIds" resultType="User">
+        SELECT
+        user_id id,
+        user_name name,
+        user_password password,
+        user_salary salary,
+        user_birthday birthday
+        FROM mybatis_user
+        WHERE user_id IN
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="findUsersByIdList" resultType="User">
+        SELECT
+        user_id id,
+        user_name name,
+        user_password password,
+        user_salary salary,
+        user_birthday birthday
+        FROM mybatis_user
+        WHERE user_id IN
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

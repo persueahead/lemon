@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb868ad8-7058-4c14-b5f7-1b7c7f217969" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/maven/apache-maven-3.6.3-bin/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx1024m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarcheTypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1XfH2u860NTUXa6d1cNrMxn1EYy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../springsecurity-demo" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day14\code\springsecurity-demo-1\src\main\resources" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day14\code\springsecurity-demo-1\src\main\java" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day14\code\springsecurity-demo-1\src\main" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb868ad8-7058-4c14-b5f7-1b7c7f217969" name="Default Changelist" comment="" />
+      <created>1581430024132</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581430024132</updated>
+      <workItem from="1581430027334" duration="3023000" />
+      <workItem from="1581507980661" duration="56000" />
+      <workItem from="1581508413854" duration="238000" />
+      <workItem from="1581508685155" duration="13000" />
+      <workItem from="1581508869542" duration="80000" />
+      <workItem from="1581512298644" duration="678000" />
+      <workItem from="1581513077920" duration="90000" />
+      <workItem from="1581594876691" duration="3768000" />
+      <workItem from="1581681264450" duration="263000" />
+      <workItem from="1581681575680" duration="665000" />
+      <workItem from="1581767829462" duration="6545000" />
+      <workItem from="1582038870538" duration="431000" />
+      <workItem from="1585281816710" duration="6421000" />
+      <workItem from="1585302781236" duration="243000" />
+      <workItem from="1585886065580" duration="158000" />
+      <workItem from="1585894804921" duration="222000" />
+      <workItem from="1586167074614" duration="25000" />
+      <workItem from="1586169970775" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="769" y="271" key="#com.intellij.ide.util.MemberChooser" timestamp="1581773513645">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="769" y="271" key="#com.intellij.ide.util.MemberChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1581773513645" />
+    <state x="644" y="291" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581681387232">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="644" y="291" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1581681387232" />
+    <state x="339" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581430893528">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="339" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1581430893528" />
+    <state x="719" y="258" key="#xdebugger.evaluate" timestamp="1582039278490">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="719" y="258" key="#xdebugger.evaluate/0.24.1920.1056@0.24.1920.1056" timestamp="1582039278490" />
+    <state x="595" y="223" key="FileChooserDialogImpl" timestamp="1585895023679">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="595" y="223" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585895023679" />
+    <state x="744" y="310" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1582039301116" />
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom" timestamp="1585895026533">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585895026533" />
+    <state width="1878" height="260" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state width="1493" height="195" key="GridCell.Tab.0.center" timestamp="1585895026532">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585895026532" />
+    <state width="1878" height="260" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state width="1493" height="195" key="GridCell.Tab.0.left" timestamp="1585895026532">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585895026532" />
+    <state width="1878" height="260" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302266" />
+    <state width="1493" height="195" key="GridCell.Tab.0.right" timestamp="1585895026532">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585895026532" />
+    <state width="1878" height="260" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state width="1493" height="195" key="GridCell.Tab.1.bottom" timestamp="1585895026534">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585895026533" />
+    <state width="1878" height="260" key="GridCell.Tab.1.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state width="1493" height="195" key="GridCell.Tab.1.center" timestamp="1585895026533">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585895026533" />
+    <state width="1878" height="260" key="GridCell.Tab.1.center/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state width="1493" height="195" key="GridCell.Tab.1.left" timestamp="1585895026533">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585895026533" />
+    <state width="1878" height="260" key="GridCell.Tab.1.left/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state width="1493" height="195" key="GridCell.Tab.1.right" timestamp="1585895026533">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="195" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585895026533" />
+    <state width="1878" height="260" key="GridCell.Tab.1.right/0.24.1920.1056@0.24.1920.1056" timestamp="1582039302267" />
+    <state x="372" y="0" key="SettingsEditor" timestamp="1585886164787">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="372" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585886164787" />
+    <state x="465" y="187" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1581513036257" />
+    <state x="685" y="286" width="570" height="524" key="StructurePopup" timestamp="1582039122639">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="685" y="286" width="570" height="524" key="StructurePopup/0.24.1920.1056@0.24.1920.1056" timestamp="1582039122639" />
+    <state width="587" height="516" key="SwitcherDM" timestamp="1581773990285">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="587" height="516" key="SwitcherDM/0.24.1920.1056@0.24.1920.1056" timestamp="1581773990285" />
+    <state x="674" y="277" key="com.intellij.ide.util.TipDialog" timestamp="1585302994379">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="674" y="277" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585302994379" />
+    <state x="348" y="175" key="new project wizard" timestamp="1581774616876">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="348" y="175" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1581774616876" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1582039108882">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1582039108882" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/rememberme/PersistentTokenBasedRememberMeServices.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/rememberme/AbstractRememberMeServices.java</url>
+          <line>309</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/rememberme/RememberMeAuthenticationFilter.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/web/handler/CustomDeniedHandler.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/web/handler/CustomExceptionHandlerResolver.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/web/handler/CustomAuthenticationSuccessHandler.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/web/controller/IndexController.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/bjlemon/security/web/controller/IndexController.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.java</url>
+          <line>235</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.java</url>
+          <line>310</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

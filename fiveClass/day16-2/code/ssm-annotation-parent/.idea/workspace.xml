@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="dffc19f7-c80f-4139-b439-1b36ce034902" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ssm@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="ssm@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/Program Files/apache-maven-3.5.4" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1YwJvggpdPBRx5fcaQTBYW5GfWX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ssm-web-annotation/src/main/java/com/bjlemon/ssm/web/controller" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bjlemon.ssm.vo" />
+      <recent name="com.bjlemon.ssm.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day6\code\ssm-annotation-parent\ssm-web-annotation\src\main\java\com\bjlemon\ssm\web\controller" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day6\code\ssm-annotation-parent\ssm-service-annotation\src\main\java" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day6\code\ssm-annotation-parent\ssm-domain-annotation\src\main\java" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day6\code\ssm-annotation-parent\ssm-dao-annotation\src\main\java" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace15\day6\code\ssm-annotation-parent\ssm-common-annotation\src\main\java" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dffc19f7-c80f-4139-b439-1b36ce034902" name="Default Changelist" comment="" />
+      <created>1583847955865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583847955865</updated>
+      <workItem from="1583847961312" duration="4646000" />
+      <workItem from="1583906348719" duration="57000" />
+      <workItem from="1583925988148" duration="27000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583851987847">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1583851987847" />
+    <state x="769" y="271" key="#com.intellij.ide.util.MemberChooser" timestamp="1583851576871">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="769" y="271" key="#com.intellij.ide.util.MemberChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1583851576871" />
+    <state width="1878" height="860" key="GridCell.Tab.0.bottom" timestamp="1583852760548">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760548" />
+    <state width="1878" height="860" key="GridCell.Tab.0.center" timestamp="1583852760547">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760547" />
+    <state width="1878" height="860" key="GridCell.Tab.0.left" timestamp="1583852760547">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760547" />
+    <state width="1878" height="860" key="GridCell.Tab.0.right" timestamp="1583852760548">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760548" />
+    <state width="1878" height="860" key="GridCell.Tab.1.bottom" timestamp="1583852760548">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.1.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760548" />
+    <state width="1878" height="860" key="GridCell.Tab.1.center" timestamp="1583852760548">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.1.center/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760548" />
+    <state width="1878" height="860" key="GridCell.Tab.1.left" timestamp="1583852760548">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.1.left/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760548" />
+    <state width="1878" height="860" key="GridCell.Tab.1.right" timestamp="1583852760548">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1878" height="860" key="GridCell.Tab.1.right/0.24.1920.1056@0.24.1920.1056" timestamp="1583852760548" />
+    <state x="444" y="129" key="SettingsEditor" timestamp="1583851724820">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="444" y="129" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1583851724820" />
+    <state x="685" y="286" width="570" height="524" key="StructurePopup" timestamp="1583852564881">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="685" y="286" width="570" height="524" key="StructurePopup/0.24.1920.1056@0.24.1920.1056" timestamp="1583852564881" />
+    <state width="611" height="445" key="SwitcherDM" timestamp="1583851851546">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="611" height="445" key="SwitcherDM/0.24.1920.1056@0.24.1920.1056" timestamp="1583851851546" />
+    <state x="348" y="249" key="new project wizard" timestamp="1583848164638">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="348" y="249" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1583848164638" />
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1583850041785">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="623" y="255" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1583850041785" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssm-web-annotation/src/main/java/com/bjlemon/ssm/web/controller/EmployeeController.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ssm-web-annotation/src/main/java/com/bjlemon/ssm/web/controller/EmployeeController.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

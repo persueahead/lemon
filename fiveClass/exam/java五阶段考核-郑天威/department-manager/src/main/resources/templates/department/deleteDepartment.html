@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>delete department</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!--jquery必须在bootstrap.min.js前引入，作为bootstrap中插件的依赖-->
+    <script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+    <!--用于弹窗、提示、下拉菜单，包含了 popper.min.js-->
+    <script th:src="@{/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+    <!--Bootstrap4 核心 JavaScript 文件-->
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            //绑定全选按钮选中事件
+            $("#all").click(function () {
+                //获取所有多选框的checked属性
+                var allChecked = this.checked;
+                //获取所有name属性为ids的input标签
+                $("input[name=ids]").each(function () {
+                    this.checked = allChecked;
+                });
+            });
+
+            //绑定点击删除按钮事件
+            $("#del").click(function () {
+                //获取所有已经选中的name属性为ids的input标签
+                var cks = $("input[name=ids]:checked");
+
+                if (cks.length < 1) {
+                    alert("请选择要删除的用户");
+                    return;
+                }
+                //confirm(arg) 点击确定时返回true,点击取消返回false
+                if (confirm("确认要删除吗？")) {
+                    //jquery提交form表单  删除之后提交剩余信息
+                    $("#f1").submit();
+                }
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <form th:action="@{/department/deleteImpl}" method="post" id="f1">
+            <div class="row alert alert-info" style="margin: 0px; padding: 5px;">
+            <button type="button" id="del" class="btn btn-danger">删除</button>
+            </div>
+            <table id="one" class="table table-striped">
+                <caption>删除页</caption>
+                <thead>
+                <tr>
+                    <th><input type="checkbox" name="cb" id="all"></th>
+                    <th>部门编号</th>
+                    <th>部门名称</th>
+                    <th>部门描述</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="dep:${preDeleteDepartment}">
+<!--                    复选框-->
+                    <td><input type="checkbox" name="ids" th:value="${dep.depId}"></td>
+<!--                    属性列-->
+                    <td  th:text="${dep.depId}">depId</td>
+                    <td th:text="${dep.depName}">depName</td>
+                    <td  th:text="${dep.depState}">depState</td>
+                    <td><a th:href="@{/department/selectUser(depId=${dep.depId})}">查看</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

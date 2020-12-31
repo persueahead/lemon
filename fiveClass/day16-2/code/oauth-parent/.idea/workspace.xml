@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="243f2d3f-95df-433c-bb85-f1b7404b3301" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="oauth2@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="oauth2@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="oauth2@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="oauth2: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven\repository" />
+        <option name="mavenHome" value="D:/Program Files/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1Zz5cqHrEAjTHZCrTsiWOBrlDxs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../bjlemon/Workspace15/day16/code/springboot-springsecurity-demo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.38143176" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Course Workspace\guigu\1907JA\code\oauth-parent\oauth-authentication-server\src\main\java\com\bjlemon\oauth" />
+      <recent name="F:\Course Workspace\guigu\1907JA\code\oauth-parent\oauth-resource-server\src\main\java\com\bjlemon\oauth" />
+      <recent name="F:\Course Workspace\guigu\1907JA\code\oauth-parent\oauth-authentication-server\src\main\java\com\bjlemon\oauth\mapper" />
+      <recent name="F:\Course Workspace\guigu\1907JA\code\oauth-parent\oauth-authentication-server\src\main\java\com\bjlemon\oauth\service" />
+      <recent name="F:\Course Workspace\guigu\1907JA\code\oauth-parent\oauth-authentication-server\src\main\java\com\bjlemon\oauth\domain" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OauthResourceApplication">
+    <configuration name="OauthResourceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="oauth-resource-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.oauth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bjlemon.oauth.OauthResourceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OauthServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="oauth-authentication-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.oauth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bjlemon.oauth.OauthServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.OauthServerApplication" />
+        <item itemvalue="Spring Boot.OauthResourceApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.21254732" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="oauth2@localhost: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="243f2d3f-95df-433c-bb85-f1b7404b3301" name="Default Changelist" comment="" />
+      <created>1585829163710</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585829163710</updated>
+      <workItem from="1585829170889" duration="5867000" />
+      <workItem from="1585835103648" duration="59000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585829888531">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1585829888531" />
+    <state x="769" y="264" key="#com.intellij.ide.util.MemberChooser" timestamp="1585832322483">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="769" y="264" key="#com.intellij.ide.util.MemberChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1585832322483" />
+    <state x="744" y="310" key="FileChooserDialogImpl" timestamp="1585835139450">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="744" y="310" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1585835139450" />
+    <state width="1455" height="409" key="GridCell.Tab.0.bottom" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.0.center" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.0.left" timestamp="1585835061573">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061573" />
+    <state width="1455" height="409" key="GridCell.Tab.0.right" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.1.bottom" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.1.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.1.center" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.1.center/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.1.left" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.1.left/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.1.right" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.1.right/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.2.bottom" timestamp="1585835061575">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.2.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061575" />
+    <state width="1455" height="409" key="GridCell.Tab.2.center" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.2.center/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.2.left" timestamp="1585835061574">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.2.left/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061574" />
+    <state width="1455" height="409" key="GridCell.Tab.2.right" timestamp="1585835061575">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1455" height="409" key="GridCell.Tab.2.right/0.24.1920.1056@0.24.1920.1056" timestamp="1585835061575" />
+    <state x="444" y="129" key="SettingsEditor" timestamp="1585831421543">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="444" y="129" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1585831421543" />
+    <state x="685" y="286" width="570" height="524" key="StructurePopup" timestamp="1585831186568">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="685" y="286" width="570" height="524" key="StructurePopup/0.24.1920.1056@0.24.1920.1056" timestamp="1585831186568" />
+    <state width="570" height="556" key="SwitcherDM" timestamp="1585833348589">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="570" height="556" key="SwitcherDM/0.24.1920.1056@0.24.1920.1056" timestamp="1585833348589" />
+    <state x="348" y="249" key="new project wizard" timestamp="1585829553180">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="348" y="249" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1585829553180" />
+  </component>
+</project>

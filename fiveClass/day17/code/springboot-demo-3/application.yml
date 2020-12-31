@@ -1,0 +1,42 @@
+#server:
+#  port: 8888
+#
+#person:
+#  name: 'zhan \n gsan'
+#
+##user:
+##  name: zhangsan
+##  age: 23
+##  inters:
+##    - football
+##    - basketball
+##    - volleyball
+#
+#user:
+#  name: zhangsan
+#  age: 23
+#  inters: ["a","b","c"]
+#
+####\u884C\u5185\u5199\u6CD5
+##user: {userName: "zhangsan",age: 23}
+#
+#spring:
+#  profiles:
+#    active: dev
+
+#---
+#
+#server:
+#  port: 8888
+#spring:
+#  profiles: dev
+#
+#---
+#
+#server:
+#  port: 9999
+#spring:
+#  profiles: prod
+
+server:
+  port: 7777

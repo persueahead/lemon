@@ -1,0 +1,9 @@
+body{
+    background: url("/img/login.jpg") no-repeat fixed center;
+}
+label{
+    color: red;
+}
+input{
+    color: #0b6cbc;
+}

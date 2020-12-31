@@ -1,0 +1,9 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: springboot-thymeleaf-demo
+  thymeleaf:
+    enabled: true
+    encoding: UTF-8
+    cache: false

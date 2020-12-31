@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.DepartmentMapper">
+
+    <!--<insert id="save" useGeneratedKeys="true" keyProperty="id" keyColumn="department_id">
+        INSERT INTO mybatis_department (department_id, department_name, department_location)
+        VALUES (NULL,#{name},#{location})
+    </insert>-->
+    <!--<insert id="save">
+        <selectKey keyProperty="id" keyColumn="department_id" order="BEFORE" resultType="int">
+            SELECT MAX(department_id) + 1 AS id FROM mybatis_department;
+        </selectKey>
+        INSERT INTO mybatis_department (department_id, department_name, department_location)
+        VALUES (#{id},#{name},#{location})
+    </insert>-->
+
+    <insert id="save">
+        <selectKey keyProperty="id" keyColumn="department_id" order="AFTER" resultType="int">
+            SELECT last_insert_id() as id
+        </selectKey>
+        INSERT INTO mybatis_department (department_id, department_name, department_location)
+        VALUES (#{id},#{name},#{location})
+    </insert>
+
+</mapper>

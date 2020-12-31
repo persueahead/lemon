@@ -1,0 +1,23 @@
+#spring:
+#  profiles:
+#    active: prod
+
+#server:
+#  port: 9191
+#spring:
+#  profiles: prod
+#
+#---
+#
+#server:
+#  port: 8181
+#spring:
+#  profiles: dev
+
+server:
+  port: 8181
+logging:
+  level:
+    root: debug
+#  file:
+#    path: D:/springboot/

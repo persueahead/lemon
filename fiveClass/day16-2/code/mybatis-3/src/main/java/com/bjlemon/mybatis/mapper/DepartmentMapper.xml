@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.DepartmentMapper">
+
+    <select id="findEmployeesByDepartmentName" resultType="Employee">
+        SELECT
+            me.employee_id id,
+            me.employee_name name ,
+            me.employee_password password,
+            me.employee_salary salary,
+            me.employee_birthday birthday
+        FROM mybatis_employee me
+        LEFT JOIN mybatis_department md ON me.department_id = md.department_id
+        WHERE md.department_name = #{name}
+    </select>
+
+    <!--<resultMap id="DepartmentResultMap" type="Department">
+        <id property="id" column="department_id"/>
+        <result property="name" column="department_name"/>
+        <result property="location" column="department_location"/>
+        <collection property="employees" column="department_id" ofType="Employee"
+                    resultMap="com.bjlemon.mybatis.mapper.EmployeeMapper.EmployeeBaseResultMap"/>
+    </resultMap>-->
+
+    <resultMap id="DepartmentResultMap" type="Department">
+        <id property="id" column="department_id"/>
+        <result property="name" column="department_name"/>
+        <result property="location" column="department_location"/>
+        <collection property="employees" column="department_id" ofType="Employee">
+            <id property="id" column="employee_id"/>
+            <result property="name" column="employee_name"/>
+            <result property="password" column="employee_password"/>
+            <result property="salary" column="employee_salary"/>
+            <result property="birthday" column="employee_birthday"/>
+        </collection>
+    </resultMap>
+
+    <select id="findByDepartmentName" resultMap="DepartmentResultMap">
+        SELECT
+            me.employee_id,
+            me.employee_name,
+            me.employee_password,
+            me.employee_salary,
+            me.employee_birthday,
+            md.department_id,
+            md.department_name,
+            md.department_location
+        FROM mybatis_employee me
+        LEFT JOIN mybatis_department md ON me.department_id = md.department_id
+        WHERE md.department_name = #{name}
+    </select>
+
+    <resultMap id="DepartmentResultMap1" type="Department">
+        <id property="id" column="department_id"/>
+        <result property="name" column="department_name"/>
+        <result property="location" column="department_location"/>
+        <collection property="employees" column="department_id" ofType="Employee"
+                    select="com.bjlemon.mybatis.mapper.EmployeeMapper.findEmployeesByDepartmentId"/>
+    </resultMap>
+
+    <select id="findByName" resultMap="DepartmentResultMap1">
+        SELECT
+            department_id,
+            department_name,
+            department_location
+        FROM mybatis_department
+        WHERE department_name = #{name}
+    </select>
+</mapper>

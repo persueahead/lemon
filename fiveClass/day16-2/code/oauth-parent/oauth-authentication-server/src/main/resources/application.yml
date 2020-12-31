@@ -1,0 +1,17 @@
+server:
+  port: 9999
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///oauth2
+    username: root
+    password: root
+  main:
+    allow-bean-definition-overriding: true
+mybatis:
+  type-aliases-package: com.bjlemon.oauth.domain
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.hnguigu: debug

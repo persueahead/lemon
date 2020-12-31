@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>error page</title>
+    <!--链接bootstrap样式表-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bg.css}">
+    <!--jquery必须在bootstrap.min.js前引入，作为bootstrap中插件的依赖-->
+    <script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+    <!--用于弹窗、提示、下拉菜单，包含了 popper.min.js-->
+    <script th:src="@{/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+    <!--Bootstrap4 核心 JavaScript 文件-->
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="alert alert-warning" role="alert">
+<!--        session域对象用session调用-->
+        <strong class="text-warning" th:text="${session.errorMessage}"></strong>!请重试
+        <br>
+        <a th:href="@{/img/index.jpg}">
+            <button type="button" class="btn btn-warning">返回首页</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

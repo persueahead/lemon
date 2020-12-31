@@ -1,0 +1,31 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: springsecurity-jwt-rsa-auth
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///springboot_security_demo?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/views/
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.bjlemon.security.domain
+  configuration:
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    cache-enabled: true
+rsa:
+  key:
+    pubKeyFile: F:\Course Workspace\bjlemon\Workspace14\day17\code\springsecurity-jwt-rsa-parent\key_rsa.pub
+    priKeyFile: F:\Course Workspace\bjlemon\Workspace14\day17\code\springsecurity-jwt-rsa-parent\key_rsa

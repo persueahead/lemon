@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.EmployeeMapper">
+
+    <resultMap id="EmployeeBaseResultMap" type="Employee">
+        <id property="id" column="employee_id"/>
+        <result property="name" column="employee_name"/>
+        <result property="password" column="employee_password"/>
+        <result property="salary" column="employee_salary"/>
+        <result property="birthday" column="employee_birthday"/>
+    </resultMap>
+
+    <insert id="save" parameterType="Employee">
+        INSERT INTO
+            mybatis_employee (employee_id, employee_name, employee_password, employee_salary, employee_birthday, department_id)
+        VALUES (NULL,#{name},#{password},#{salary},#{birthday},#{department.id})
+    </insert>
+
+    <select id="findEmployeesByDepartmentId" resultMap="EmployeeBaseResultMap">
+        SELECT
+            employee_id,employee_name,employee_password,employee_salary,employee_birthday
+        FROM mybatis_employee
+        WHERE department_id = #{id}
+    </select>
+</mapper>

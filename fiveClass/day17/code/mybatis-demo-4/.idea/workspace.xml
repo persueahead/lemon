@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0ac80880-4e4f-41ad-9e3d-44460c4192b0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mybatis_demo_4@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mybatis_demo_4@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mybatis_demo_4@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="mybatis_demo_4: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mybatis_demo_4@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="mybatis_demo_4: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="mybatis_department: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mybatis_demo_4@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="mybatis_demo_4: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="mybatis_employee: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\Maven\repository" />
+        <option name="mavenHome" value="D:/Program Files/apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx1024m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-DarcheTypeCatalog=internal" />
+  </component>
+  <component name="ProjectId" id="1VkOs8p6kLB6ZNUMg4Yd0xQxCu1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="MyBatisLogPluginindexNum" value="62" />
+    <property name="MyBatisLogPluginparameters" value="Parameters:" />
+    <property name="MyBatisLogPluginpreparing" value="Preparing:" />
+    <property name="MyBatisLogPluginrunning" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bjlemon.mybatis.mapper" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day5\code\mybatis-demo-4\src\main\resources" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day5\code\mybatis-demo-4\src\main\java\com\bjlemon\mybatis\domain" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day5\code\mybatis-demo-4\src" />
+      <recent name="F:\Course Workspace\bjlemon\Workspace14\day5\code\mybatis-demo-4" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.EmployeMapperTest.testLazy1">
+    <configuration name="EmployeMapperTest.testLazy1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-demo-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.mybatis.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.mybatis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.mybatis.mapper.EmployeMapperTest" />
+      <option name="METHOD_NAME" value="testLazy1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstLevelCacheTest.testLazy2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-demo-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.mybatis.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.mybatis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.mybatis.mapper.FirstLevelCacheTest" />
+      <option name="METHOD_NAME" value="testLazy2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstLevelCacheTest.testLazy3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-demo-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.mybatis.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.mybatis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.mybatis.mapper.FirstLevelCacheTest" />
+      <option name="METHOD_NAME" value="testLazy3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstLevelCacheTest.testLazy4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-demo-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.mybatis.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.mybatis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.mybatis.mapper.FirstLevelCacheTest" />
+      <option name="METHOD_NAME" value="testLazy4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FirstLevelCacheTest.testLazy5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis-demo-4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bjlemon.mybatis.mapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bjlemon.mybatis.mapper" />
+      <option name="MAIN_CLASS_NAME" value="com.bjlemon.mybatis.mapper.FirstLevelCacheTest" />
+      <option name="METHOD_NAME" value="testLazy5" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.EmployeMapperTest.testLazy1" />
+        <item itemvalue="JUnit.FirstLevelCacheTest.testLazy5" />
+        <item itemvalue="JUnit.FirstLevelCacheTest.testLazy4" />
+        <item itemvalue="JUnit.FirstLevelCacheTest.testLazy3" />
+        <item itemvalue="JUnit.FirstLevelCacheTest.testLazy2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:mybatis_demo_4@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:mybatis_demo_4@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@63ce77e8" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ac80880-4e4f-41ad-9e3d-44460c4192b0" name="Default Changelist" comment="" />
+      <created>1577793829569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1577793829569</updated>
+      <workItem from="1577793833432" duration="50000" />
+      <workItem from="1577793918461" duration="5463000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577794177235">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="556" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1577794177235" />
+    <state x="694" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1577795700505">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="694" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1577795700505" />
+    <state x="719" y="258" key="#xdebugger.evaluate" timestamp="1577797175748">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="719" y="258" key="#xdebugger.evaluate/0.24.1920.1056@0.24.1920.1056" timestamp="1577797175748" />
+    <state x="744" y="256" key="FileChooserDialogImpl" timestamp="1577799393467">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="744" y="256" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1577799393467" />
+    <state width="1870" height="283" key="GridCell.Tab.0.bottom" timestamp="1577799416324">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416324" />
+    <state width="1870" height="283" key="GridCell.Tab.0.center" timestamp="1577799416324">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416324" />
+    <state width="1870" height="283" key="GridCell.Tab.0.left" timestamp="1577799416324">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416324" />
+    <state width="1870" height="283" key="GridCell.Tab.0.right" timestamp="1577799416324">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416324" />
+    <state width="1870" height="283" key="GridCell.Tab.1.bottom" timestamp="1577799416325">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.1.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416325" />
+    <state width="1870" height="283" key="GridCell.Tab.1.center" timestamp="1577799416325">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.1.center/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416325" />
+    <state width="1870" height="283" key="GridCell.Tab.1.left" timestamp="1577799416324">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.1.left/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416324" />
+    <state width="1870" height="283" key="GridCell.Tab.1.right" timestamp="1577799416325">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="1870" height="283" key="GridCell.Tab.1.right/0.24.1920.1056@0.24.1920.1056" timestamp="1577799416325" />
+    <state x="444" y="129" key="SettingsEditor" timestamp="1577794322081">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="444" y="129" key="SettingsEditor/0.24.1920.1056@0.24.1920.1056" timestamp="1577794322081" />
+    <state width="736" height="516" key="SwitcherDM" timestamp="1577799062139">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state width="736" height="516" key="SwitcherDM/0.24.1920.1056@0.24.1920.1056" timestamp="1577799062139" />
+    <state x="718" y="309" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1577796523831">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="718" y="309" key="com.intellij.database.run.ParametersPanel.Standalone/0.24.1920.1056@0.24.1920.1056" timestamp="1577796523831" />
+    <state x="348" y="249" key="new project wizard" timestamp="1577799414590">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="348" y="249" key="new project wizard/0.24.1920.1056@0.24.1920.1056" timestamp="1577799414590" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1577799057647">
+      <screen x="0" y="24" width="1920" height="1056" />
+    </state>
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1577799057647" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/EmployeMapperTest.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/bjlemon/mybatis/mapper/FirstLevelCacheTest.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

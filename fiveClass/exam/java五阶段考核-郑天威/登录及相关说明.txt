@@ -1,0 +1,5 @@
+登录用的security
+账号：joe  密码：123  角色:ROLE_ADMIN
+账号：jack 密码：jack 角色：ROLE_USER   该角色没做访问权限
+
+页面：功能按钮做在左侧功能区，不在基础列表上

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.PersonMapper">
+
+    <select id="findIdCardByName" resultType="IdCard">
+         SELECT
+            mic.id_card_id id, mic.id_card_number number
+         FROM mybatis_id_card mic
+         LEFT JOIN mybatis_person mp ON mic.id_card_id = mp.person_id
+         WHERE mp.person_name = #{name}
+    </select>
+
+</mapper>

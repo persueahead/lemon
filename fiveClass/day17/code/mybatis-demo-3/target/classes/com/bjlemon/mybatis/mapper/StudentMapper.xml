@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.StudentMapper">
+
+    <resultMap id="StudentBaseResultMap" type="Student">
+        <id property="id" column="student_id"/>
+        <result property="name" column="student_name"/>
+    </resultMap>
+
+    <select id="findStudentsByTeacherId" resultType="Student">
+        select
+            ms.student_id id,
+            ms.student_name name
+        from
+            mybatis_student ms
+        left join mybatis_teacher_student mts on ms.student_id = mts.student_id
+        where
+            mts.teacher_id = #{id}
+    </select>
+</mapper>

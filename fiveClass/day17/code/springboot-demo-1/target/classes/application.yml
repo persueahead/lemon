@@ -1,0 +1,11 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: springboot-demo-1
+  mvc:
+    servlet:
+      path: /demo
+    date-format: yyyy/MM/dd
+  jackson:
+    date-format: yyyy/MM/dd

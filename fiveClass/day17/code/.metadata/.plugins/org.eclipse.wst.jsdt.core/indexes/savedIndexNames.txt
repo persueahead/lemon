@@ -1,0 +1,4 @@
+INDEX VERSION 1.4+F:\Course Workspace\bjlemon\Workspace14\day1\code\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+294097263.index
+155153020.index
+3697704277.index

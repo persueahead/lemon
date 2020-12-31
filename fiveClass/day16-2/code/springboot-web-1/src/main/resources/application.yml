@@ -1,0 +1,10 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: springboot-web-1
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+

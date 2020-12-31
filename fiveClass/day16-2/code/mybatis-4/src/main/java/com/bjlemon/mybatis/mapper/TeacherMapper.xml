@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjlemon.mybatis.mapper.TeacherMapper">
+
+
+    <select id="findStudentsByName" resultMap="com.bjlemon.mybatis.mapper.StudentMapper.StudentBaseResultMap">
+        SELECT
+            ms.student_id, ms.student_name, ms.student_score
+        FROM mybatis_student ms
+        LEFT JOIN mybatis_teacher_student mts ON ms.student_id = mts.student_id
+        LEFT JOIN mybatis_teacher mt ON mts.teacher_id = mt.teacher_id
+        WHERE mt.teacher_name = #{name}
+    </select>
+
+    <resultMap id="TeacherResultMap" type="Teacher">
+        <id property="id" column="teacher_id"/>
+        <result property="name" column="teacher_name"/>
+        <result property="salary" column="teacher_salary"/>
+        <collection property="students" column="teacher_id" ofType="Student"
+                    resultMap="com.bjlemon.mybatis.mapper.StudentMapper.StudentBaseResultMap"/>
+    </resultMap>
+
+    <select id="findByName" resultMap="TeacherResultMap">
+        SELECT
+            mt.teacher_id,mt.teacher_name,mt.teacher_salary,
+            ms.student_id, ms.student_name, ms.student_score
+        FROM mybatis_student ms
+        LEFT JOIN mybatis_teacher_student mts ON ms.student_id = mts.student_id
+        LEFT JOIN mybatis_teacher mt ON mts.teacher_id = mt.teacher_id
+        WHERE mt.teacher_name = #{name}
+    </select>
+
+</mapper>

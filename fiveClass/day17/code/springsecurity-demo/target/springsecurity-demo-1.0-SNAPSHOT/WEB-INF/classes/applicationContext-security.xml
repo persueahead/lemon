@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <!--静态资源的放行-->
+    <security:http pattern="/js/**" security="none"/>
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/images/**" security="none"/>
+
+    <!--
+        auto-config="true"：自动配置Spring Security组件
+        use-expressions:true表示使用Spring EL表达式配置Spring Security
+    -->
+    <security:http auto-config="true" use-expressions="true">
+
+        <!--进入登录页面是可以匿名访问，登录的处理不用认证-->
+        <security:intercept-url pattern="/user/login" access="permitAll()"/>
+
+        <!--需要有ROLE_USER或ROLE_ADMIN角色就可以访问系统资源-->
+        <security:intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+
+        <!--指定自定义的认证页面-->
+        <!--
+            login-page：如何进入登录页面
+            login-processing-url：该值为"/login"。而且必须是这个值。因为该项目用到了Spring Security框架，认证处理的实现由该框架已经实现，那么我们不用再实现。
+            default-target-url：认证成功后的跳转"/index"
+            authentication-failure-forward-url：认证失败后交给哪一个URL来处理"/user/loginFailure"
+        -->
+        <security:form-login login-page="/user/login"
+                             login-processing-url="/login"
+                             authentication-success-handler-ref="customAuthenticationSuccessHandler"
+                             authentication-failure-handler-ref="customAuthenticationFailureHandler"/>
+
+        <!--禁止csrf防护-->
+        <security:csrf disabled="true"/>
+
+    </security:http>
+
+    <!--配置用户信息-->
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="zhangsan" authorities="ROLE_ADMIN" password="{noop}admin"/>
+                <security:user name="lisi" authorities="ROLE_USER" password="{noop}admin"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="customAuthenticationSuccessHandler"
+          class="com.bjlemon.security.web.handler.CustomAuthenticationSuccessHandler"/>
+
+    <bean id="customAuthenticationFailureHandler"
+          class="com.bjlemon.security.web.handler.CustomAuthenticationFailureHandler"/>
+</beans>

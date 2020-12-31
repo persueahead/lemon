@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <context:component-scan base-package="com.bjlemon.jpa"/>
+
+    <context:property-placeholder location="classpath*:druidconfig.properties"/>
+
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="${jdbc.maxActive}"/>
+        <!--        <property name="maxIdle" value="${jdbc.maxIdle}"/>-->
+        <property name="initialSize" value="${jdbc.initialSize}"/>
+        <property name="minIdle" value="${jdbc.minIdle}"/>
+        <property name="maxWait" value="${jdbc.maxWait}"/>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="generateDdl" value="true"/>
+            </bean>
+        </property>
+
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+        </property>
+
+        <!--
+            通过扫描领域对象上的注解（@Entity,@Table,@Id,@Column...）,从而生成表
+        -->
+        <property name="packagesToScan" value="com.bjlemon.jpa.domain"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <jpa:repositories base-package="com.bjlemon.jpa.repository"
+                      transaction-manager-ref="transactionManager"
+                      entity-manager-factory-ref="entityManagerFactory"/>
+
+</beans>
