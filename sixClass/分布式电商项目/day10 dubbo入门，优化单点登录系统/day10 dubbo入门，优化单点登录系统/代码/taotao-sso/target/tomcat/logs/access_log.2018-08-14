@@ -1,0 +1,5 @@
+127.0.0.1 - - [14/Aug/2018:22:44:28 +0800] "GET /user/login HTTP/1.0" 404 971 http-bio-8083-exec-1 46
+127.0.0.1 - - [14/Aug/2018:22:44:29 +0800] "GET /favicon.ico HTTP/1.0" 404 973 http-bio-8083-exec-2 2
+127.0.0.1 - - [14/Aug/2018:22:44:34 +0800] "GET /user/login.html HTTP/1.0" 200 12621 http-bio-8083-exec-3 313
+127.0.0.1 - - [14/Aug/2018:22:44:41 +0800] "POST /service/user/doLogin?r=0.150972671230599 HTTP/1.0" 200 14 http-bio-8083-exec-4 1835
+127.0.0.1 - - [14/Aug/2018:22:44:51 +0800] "GET /service/user/TAOTAO_3e510ae944e74fa312ff6b9e120c3849?callback=jsonp1534257889765&_=1534257890223 HTTP/1.0" 200 135 http-bio-8083-exec-5 361

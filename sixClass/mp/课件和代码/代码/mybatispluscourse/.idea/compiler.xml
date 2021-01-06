@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mp-01-helloworld" />
+        <module name="mp-02-simplecrud" />
+        <module name="mp-03-ar" />
+        <module name="mp-04-codegenerator" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mp-04-autoGenerator" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

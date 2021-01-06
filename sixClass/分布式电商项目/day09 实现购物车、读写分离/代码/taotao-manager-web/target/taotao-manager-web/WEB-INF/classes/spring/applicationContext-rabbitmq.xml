@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+	http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- 链接工厂对象 -->
+	<rabbit:connection-factory host="${rabbitmq.host}" port="${rabbitmq.port}" username="${rabbitmq.username}"
+	 password="${rabbitmq.password}" virtual-host="${rabbitmq.vhost}" id="connectionFactory"/>
+	 <!-- 声明交换机 -->
+	 <rabbit:topic-exchange name="lemon-topic-exchange" auto-declare="true" durable="true">
+	 </rabbit:topic-exchange>
+	 <!--  用于声明和创建交换机，队列-->
+	 <rabbit:admin connection-factory="connectionFactory"/>
+	 <!--声明一个rabbitmq的模板  -->
+	 <rabbit:template connection-factory="connectionFactory" exchange="lemon-topic-exchange" id="template"></rabbit:template>
+
+</beans>

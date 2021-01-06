@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>thymeleaf模版引擎</h1>
+	${hello}<br/>
+	<div th:text="${hello}" style="color: red;">thymeleaf模版引擎</div>	
+	<hr/>
+	<h3>学生信息</h3>
+	<hr>
+	学号:<span th:text="${stu.id}">1001</span><br/>
+	姓名:<span th:text="${stu.name}">张三</span><br/>
+	性别:<span th:text="${stu.sex}">男</span><br/>
+	年龄:<span th:text="${stu.age}">18</span><br/>
+	<hr/>
+	学号：<input type="text" th:value="${stu.id}" value="1001"/><br/>
+	姓名：<input type="text" th:value="${stu.name}" value="张三"/><br/>
+	性别：<input type="text" th:value="${stu.sex}" value="男"/><br/>
+	年龄：<input type="text" th:value="${stu.age}" value="18"/><br/>
+	
+</body>
+</html>

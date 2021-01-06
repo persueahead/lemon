@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://baike.baidu.com/item/RESTful/4406165?fr=aladdin -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./RESTful_百度百科_files/element.min.js.下载"></script><script async="" src="./RESTful_百度百科_files/monkey.min.js.下载"></script><script async="" src="./RESTful_百度百科_files/dp.min.js.下载"></script><script charset="utf-8" async="" src="./RESTful_百度百科_files/snippetcacher.php"></script><script type="text/javascript" async="" src="./RESTful_百度百科_files/pcym"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="referrer" content="always">
+<meta name="description" content="一种软件架构风格，设计风格而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。...">
+<title>RESTful_百度百科</title>
+<link rel="shortcut icon" href="https://baike.baidu.com/favicon.ico" type="image/x-icon">
+<link rel="icon" sizes="any" mask="" href="https://www.baidu.com/img/baidu.svg">
+
+<meta name="keywords" content="RESTful RESTful概述 RESTful实现 RESTfulRESTful的关键">
+<meta name="image" content="https://bkssl.bdimg.com/cms/static/baike.png">
+<script src="./RESTful_百度百科_files/hm.js.下载"></script><script async="" src="./RESTful_百度百科_files/alog.min.js.下载"></script><script type="text/javascript">
+  // 配置 PD 监控。
+  window.alogObjectConfig = {
+    product: '103',
+    page: '103_1',
+    speed: {
+      sample: '0.008'
+    },
+    monkey: {
+      sample: '1',
+      hid: '1533'
+    },
+    exception: { 
+      sample: '0.004'
+    },
+    feature: {
+      sample: '0.004'
+    },
+    csp: {
+      sample: '0.008',
+      'default-src': [
+        {match: '*.baidu.com,*.bdimg.com,localhost', target: 'Accept'},
+        {match: '*', target: 'Accept,Warn'}
+      ]
+    }
+  };
+
+  void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+  void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>
+<meta name="csrf-token" content="">
+
+<!--[if lte IE 9]>
+<script>
+    (function() {
+      var e = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(","),
+        i = e.length;
+      while (i--) {
+        document.createElement(e[i]);
+      }
+    })();
+  </script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/wiki-lemma_34e6799.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/wiki-common-base_1db6163.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/userbar-n_734279a.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/wiki-lemma-module_d0fe2e6.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/announcement_126f5e6.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/label_ca156c6.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/sideShare_2af1cbd.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/pageMask_ff9a193.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/mainContent_98e3702.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/lemmaRelation_ac86a59.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/zhixin_0aeccef.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/toolButtons-n_6e90fdd.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/userInfo-n_7e90184.css"><link rel="stylesheet" type="text/css" href="./RESTful_百度百科_files/searchHeader-n_8b1fc24.css">    
+<script type="text/javascript">
+    alog('speed.set', 'ht', +new Date);
+</script><script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?55b574651fcae74b0a9f1cf9c8d7c93a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script><script type="text/javascript" src="./RESTful_百度百科_files/lemmaReferenceTip_16a3e9d.js.下载"></script><link rel="stylesheet" href="./RESTful_百度百科_files/share_style0_16.css"><script src="./RESTful_百度百科_files/qc.php" type="text/javascript" charset="utf-8"></script></head>
+
+
+
+
+<body class="wiki-lemma normal"><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;"><iframe id="BAIDU_DUP_fp_iframe" src="./RESTful_百度百科_files/o.html" style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe></div>
+
+
+<div class="header-wrapper pc-header-new">
+<div class="topbar cmn-clearfix">
+<ul class="wgt-userbar" id="j-wgt-userbar"><li>
+<a href="http://www.baidu.com/" nslog="normal" nslog-type="10080109">百度首页</a>
+</li>
+<li>
+<a data-action="login" href="javascript:;" nslog="normal" nslog-type="10080110">登录</a>
+</li>
+<li>
+<a href="https://passport.baidu.com/v2/?reg&amp;regType=1&amp;tpl=wk" nslog="normal" nslog-type="10080111">注册</a><a>
+</a></li></ul>
+<div class="separator"></div>
+<div class="wiki-common-headTabBar">
+<a href="https://www.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://www.baidu.com/s?ie=utf-8&amp;fr=bks0000&amp;wd=">网页</a>
+<a href="http://news.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://news.baidu.com/ns?tn=news&amp;cl=2&amp;rn=20&amp;ct=1&amp;fr=bks0000&amp;ie=utf-8&amp;word=">新闻</a>
+<a href="https://tieba.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://tieba.baidu.com/f?ie=utf-8&amp;fr=bks0000&amp;kw=">贴吧</a>
+<a href="https://zhidao.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://zhidao.baidu.com/search?pn=0&amp;&amp;rn=10&amp;lm=0&amp;fr=bks0000&amp;word=">知道</a>
+<a href="http://music.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://music.baidu.com/search?f=ms&amp;ct=134217728&amp;ie=utf-8&amp;rn=&amp;lm=-1&amp;pn=30&amp;fr=bks0000&amp;key=">音乐</a>
+<a href="http://image.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://image.baidu.com/search/index?tn=baiduimage&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;nc=1&amp;ie=utf-8&amp;word=">图片</a>
+<a href="http://v.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://v.baidu.com/v?ct=301989888&amp;rn=20&amp;pn=0&amp;db=0&amp;s=22&amp;ie=utf-8&amp;fr=bks0000&amp;word=">视频</a>
+<a href="http://map.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://map.baidu.com/m?ie=utf-8&amp;fr=bks0000&amp;word=">地图</a>
+<a href="https://wenku.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://wenku.baidu.com/search?lm=0&amp;od=0&amp;ie=utf-8&amp;fr=bks0000&amp;word=">文库</a>
+<b class="baike">百科</b>
+</div>
+</div>
+<div class="header">
+<div class="layout">
+<div class="wgt-searchbar wgt-searchbar-new wgt-searchbar-main cmn-clearfix wgt-searchbar-large">
+<div class="logo-container">
+<a class="logo cmn-inline-block" title="到百科首页" href="https://baike.baidu.com/">
+<span class="cmn-baike-logo">
+<em class="cmn-icon cmn-icons cmn-icons_logo-bai"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-du"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-baike"></em>
+</span>
+</a>
+</div>
+<div class="search">
+<div class="form">
+<form id="searchForm" action="https://baike.baidu.com/search/word" method="GET" target="_self">
+<input id="query" nslog="normal" nslog-type="10080011" name="word" type="text" autocomplete="off" autocorrect="off" value="RESTful"><button id="search" nslog="normal" nslog-type="10080008" type="button">进入词条</button><button id="searchLemma" nslog="normal" nslog-type="10080009" type="button">全站搜索</button><a class="help" href="https://baike.baidu.com/help" nslog="normal" nslog-type="10080010" target="_blank">帮助</a>
+</form>
+<form id="searchLemmaForm" action="https://baike.baidu.com/search" method="GET" target="_self">
+<input id="searchLemmaQuery" name="word" type="hidden">
+<input name="pn" type="hidden" value="0">
+<input name="rn" type="hidden" value="0">
+<input name="enc" type="hidden" value="utf8">
+</form>
+<ul id="suggestion" class="suggestion" style="display: none;">
+<div class="sug"></div>
+<li class="extra">
+<span id="close" nslog="normal" nslog-type="10080012">关闭</span>
+</li>
+</ul>
+</div></div>
+</div>
+<div class="declare-wrap" id="J-declare-wrap" style="display: block;">
+<div class="declare" id="J-declare">声明：百科词条人人可编辑，词条创建和修改均免费，绝不存在官方及代理商付费代编，请勿上当受骗。<a class="declare-details" target="_blank" href="https://baike.baidu.com/common/declaration">详情&gt;&gt;</a>
+<div class="close-btn" id="J-declare-close">
+<em class="cmn-icon cmn-icons cmn-icons_close"></em>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="navbar-wrapper">
+<div class="wgt-navbar">
+<div class="navbar-bg">
+<div class="navbar-bg-top">
+<div class="navbar-content layout">
+<div class="navbar-content-box">
+<dl class="index ">
+<dt><a href="https://baike.baidu.com/">首页</a></dt>
+</dl>
+<dl class="cat ">
+<dt><a>分类</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/art" target="_blank" class="art">艺术</a></div>
+<div><a href="https://baike.baidu.com/science" target="_blank" class="technology">科学</a></div>
+<div><a href="https://baike.baidu.com/ziran" target="_blank">自然</a></div>
+<div><a href="https://baike.baidu.com/wenhua" target="_blank">文化</a></div>
+<div><a href="https://baike.baidu.com/dili" target="_blank">地理</a></div>
+<div><a href="https://baike.baidu.com/shenghuo" target="_blank">生活</a></div>
+<div><a href="https://baike.baidu.com/shehui" target="_blank">社会</a></div>
+<div><a href="https://baike.baidu.com/renwu" target="_blank">人物</a></div>
+<div><a href="https://baike.baidu.com/jingji" target="_blank">经济</a></div>
+<div><a href="https://baike.baidu.com/tiyu" target="_blank">体育</a></div>
+<div><a href="https://baike.baidu.com/lishi" target="_blank">历史</a></div>
+</dd>
+</dl>
+<dl class="special ">
+<dt><a>特色百科</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/calendar/" target="_blank">历史上的今天</a></div>
+<div><a href="https://baike.baidu.com/museum/" target="_blank">数字博物馆</a></div>
+<div><a href="https://baike.baidu.com/item/%E5%8F%B2%E8%AE%B0%C2%B72016?fr=navbar" target="_blank">史记·2016</a></div>
+<div><a href="https://baike.baidu.com/city/" target="_blank">城市百科</a></div>
+<div><a href="https://baike.baidu.com/operation/worldwar2" target="_blank">二战百科</a></div>
+<div><a href="https://baike.baidu.com/feiyi?fr=dhlfeiyi" target="_blank">非遗百科</a></div>
+</dd>
+</dl>
+<dl class="user">
+<dt><a>用户</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/kedou/" target="_blank">蝌蚪团</a></div>
+<div><a href="https://baike.baidu.com/event/ranmeng/" target="_blank">燃梦计划</a></div>
+<div><a href="https://baike.baidu.com/task/" target="_blank">百科任务</a></div>
+<div><a href="https://baike.baidu.com/mall/" target="_blank">百科商城</a></div>
+</dd>
+</dl>
+<dl class="cooperation">
+<dt><a>权威合作</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/operation/cooperation#joint" target="_blank">合作模式</a></div>
+<div><a href="https://baike.baidu.com/operation/cooperation#issue" target="_blank">常见问题</a></div>
+<div><a href="https://baike.baidu.com/operation/cooperation#connection" target="_blank">联系方式</a></div>
+</dd>
+</dl>
+<dl class="mobile">
+<dt><a>手机百科</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/m#wap" target="_blank">网页版</a></div>
+</dd>
+</dl>
+<div class="usercenter">
+<div><a href="https://baike.baidu.com/usercenter" target="_blank"><em class="cmn-icon cmn-icons cmn-icons_navbar-usercenter"></em>个人中心</a></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="body-wrapper">
+<div class="before-content">
+</div>
+<div class="content-wrapper">
+<div class="content">
+<div class="personal-content">
+</div>
+<div class="main-content">
+<div class="top-tool">
+<a class="add-sub-icon top-tool-icon" href="javascript:;" title="添加义项" nslog-type="50000101" style="display: inline-block;">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_add-subLemma-solid"></em>
+</a>
+<a href="https://baike.baidu.com/divideload/RESTful" title="拆分词条" target="_blank" class="split-icon top-tool-icon" style="display:none;" nslog-type="50000104">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_lemma-split"></em>
+</a>
+<div class="top-collect top-tool-icon" nslog="area" nslog-type="50000102">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_star-solid"></em>
+<span class="collect-text">收藏</span>
+<div class="collect-tip">查看<a href="https://baike.baidu.com/uc/favolemma" target="_blank">我的收藏</a></div>
+</div>
+<a href="javascript:void(0);" id="j-top-vote" class="top-vote top-tool-icon" nslog-type="10060801">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_zan-solid"></em>
+<span class="vote-count">334</span>
+<span class="vote-tip">有用+1</span>
+<span class="voted-tip">已投票</span>
+</a><div class="bksharebuttonbox top-share">
+<a class="top-share-icon top-tool-icon" nslog-type="9067">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_share"></em>
+<span class="share-count" id="j-topShareCount">132</span>
+</a>
+<div class="new-top-share" id="top-share">
+<ul class="top-share-list">
+<li class="top-share-item">
+<a class="share-link bds_qzone" href="javascript:void(0);" nslog-type="10060501">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qzone"></em>
+</a>
+</li>
+<li class="top-share-item">
+<a class="share-link bds_tsina" href="javascript:void(0);" nslog-type="10060701">
+<em class="cmn-icon cmn-icons cmn-icons_logo-sina-weibo"></em>
+</a>
+</li>
+<li class="top-share-item">
+<a class="bds_wechat" href="javascript:void(0);" nslog-type="10060401">
+<em class="cmn-icon cmn-icons cmn-icons_logo-wechat"></em>
+</a>
+</li>
+<li class="top-share-item">
+<a class="share-link bds_tqq" href="javascript:void(0);" nslog-type="10060601">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qq"></em>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="width:0;height:0;clear:both"></div><dl class="lemmaWgt-lemmaTitle lemmaWgt-lemmaTitle-">
+<dd class="lemmaWgt-lemmaTitle-title">
+<h1>RESTful</h1>
+<a href="javascript:;" class="edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link" style="display: inline-block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+<a class="lock-lemma" target="_blank" href="https://baike.baidu.com/view/10812319.htm" title="锁定"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_lock-lemma"></em>锁定</a>
+</dd>
+</dl><div class="promotion-declaration">
+</div><div class="lemma-summary" label-module="lemmaSummary">
+<div class="para" label-module="para">一种软件架构风格，设计风格而<b>不是</b>标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</div>
+</div>
+<div class="configModuleBanner">
+</div><div class="basic-info cmn-clearfix">
+<dl class="basicInfo-block basicInfo-left">
+<dt class="basicInfo-item name">中文名</dt>
+<dd class="basicInfo-item value">
+RESTful
+</dd>
+<dt class="basicInfo-item name">外文名</dt>
+<dd class="basicInfo-item value">
+Representational State Transfer
+</dd>
+</dl><dl class="basicInfo-block basicInfo-right">
+<dt class="basicInfo-item name">简&nbsp;&nbsp;&nbsp;&nbsp;称</dt>
+<dd class="basicInfo-item value">
+REST
+</dd>
+<dt class="basicInfo-item name">创始人</dt>
+<dd class="basicInfo-item value">
+Roy Fielding
+</dd>
+</dl></div>
+<div class="lemmaWgt-lemmaCatalog">
+<div class="lemma-catalog">
+<h2 class="block-title">目录</h2>
+<div class="catalog-list column-1">
+<ol>
+<li class="level1">
+<span class="index">1</span>
+<span class="text"><a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#1">概述</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#1_1">原则条件</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#1_2">分层系统</a></span>
+</li>
+<li class="level1">
+<span class="index">2</span>
+<span class="text"><a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#2">实现</a></span>
+</li>
+<li class="level1">
+<span class="index">3</span>
+<span class="text"><a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#3">RESTful的关键</a></span>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="anchor-list">
+<a name="1" class="lemma-anchor para-title"></a>
+<a name="sub5853566_1" class="lemma-anchor "></a>
+<a name="概述" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">RESTful</span>概述</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="1" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para"><div class="lemma-picture text-pic layout-right" style="width:250px; float: right;">
+<a class="image-link" nslog-type="9317" href="https://baike.baidu.com/pic/RESTful/4406165/0/0eb30f2442a7d93307dbc744a94bd11373f00191?fr=lemma&amp;ct=single" target="_blank" title="" style="width:250px;height:114px;">
+<img class="" src="./RESTful_百度百科_files/0eb30f2442a7d93307dbc744a94bd11373f00191.jpg" alt="" style="width:250px;height:114px;">
+</a>
+</div>REST（英文：<b>Representational State Transfer</b>，简称<b>REST</b>）描述了一个架构样式的网络系统，比如 web 应用程序。它首次出现在 2000 年 Roy Fielding 的博士论文中，他是 HTTP 规范的主要编写者之一。在目前主流的三种Web服务交互方案中，REST相比于SOAP（Simple Object Access protocol，简单对象访问协议）以及XML-RPC更加简单明了，无论是对URL的处理还是对Payload的编码，REST都倾向于用更加简单轻量的方法设计和实现。值得注意的是REST并没有一个明确的标准，而更像是一种设计的风格。</div><div class="anchor-list">
+<a name="1_1" class="lemma-anchor para-title"></a>
+<a name="sub5853566_1_1" class="lemma-anchor "></a>
+<a name="原则条件" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">RESTful</span>原则条件</h3>
+</div>
+<div class="para" label-module="para">REST 指的是一组架构<a target="_blank" href="https://baike.baidu.com/item/%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6">约束条件</a>和原则。满足这些约束条件和原则的应用程序或设计就是 RESTful。</div>
+<div class="para" label-module="para">Web 应用程序最重要的 REST 原则是，客户端和服务器之间的交互在请求之间是无状态的。从客户端到服务器的每个请求都必须包含理解请求所必需的信息。如果服务器在请求之间的任何时间点重启，客户端不会得到通知。此外，无状态请求可以由任何可用服务器回答，这十分适合<a target="_blank" href="https://baike.baidu.com/item/%E4%BA%91%E8%AE%A1%E7%AE%97">云计算</a>之类的环境。客户端可以缓存数据以改进性能。</div>
+<div class="para" label-module="para">在服务器端，应用程序状态和功能可以分为各种资源。资源是一个有趣的概念实体，它向客户端公开。资源的例子有：应用程序对象、数据库记录、算法等等。每个资源都使用 URI (Universal Resource Identifier) 得到一个唯一的地址。所有资源都共享统一的接口，以便在客户端和服务器之间传输状态。使用的是标准的 HTTP 方法，比如 GET、PUT、<a target="_blank" href="https://baike.baidu.com/item/POST">POST</a> 和 <a target="_blank" href="https://baike.baidu.com/item/DELETE">DELETE</a>。<a target="_blank" href="https://baike.baidu.com/item/Hypermedia">Hypermedia</a> 是应用程序状态的<a target="_blank" href="https://baike.baidu.com/item/%E5%BC%95%E6%93%8E/2874935" data-lemmaid="2874935">引擎</a>，资源表示通过<a target="_blank" href="https://baike.baidu.com/item/%E8%B6%85%E9%93%BE%E6%8E%A5">超链接</a>互联。</div><div class="anchor-list">
+<a name="1_2" class="lemma-anchor para-title"></a>
+<a name="sub5853566_1_2" class="lemma-anchor "></a>
+<a name="分层系统" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">RESTful</span>分层系统</h3>
+</div>
+<div class="para" label-module="para">另一个重要的 REST 原则是分层系统，这表示组件无法了解它与之交互的中间层以外的组件。通过将系统知识限制在单个层，可以限制整个系统的复杂性，促进了底层的独立性。</div>
+<div class="para" label-module="para">当 REST 架构的约束条件作为一个整体应用时，将生成一个可以扩展到大量客户端的应用程序。它还降低了客户端和服务器之间的交互延迟。统一界面简化了整个系统架构，改进了子系统之间交互的可见性。REST 简化了客户端和服务器的实现。</div><div class="anchor-list">
+<a name="2" class="lemma-anchor para-title"></a>
+<a name="sub5853566_2" class="lemma-anchor "></a>
+<a name="实现" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">RESTful</span>实现</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="2" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para"><b>RESTful的实现：RESTful Web 服务与 RPC 样式的 Web 服务</b></div>
+<div class="para" label-module="para">了解了什么是REST，我们再看看RESTful的实现。使用 RPC 样式架构构建的基于 SOAP 的 Web 服务成为实现 SOA 最常用的方法。RPC 样式的 Web 服务客户端将一个装满数据的信封（包括方法和参数信息）通过 HTTP 发送到服务器。服务器打开信封并使用传入参数执行指定的方法。方法的结果打包到一个信封并作为响应发回客户端。客户端收到响应并打开信封。每个对象都有自己独特的方法以及仅公开一个 URI 的 RPC 样式 Web 服务，URI 表示单个端点。它忽略 HTTP 的大部分特性且仅支持 POST 方法。</div>
+<div class="para" label-module="para">由于轻量级以及通过 HTTP 直接传输数据的特性，Web 服务的 RESTful 方法已经成为最常见的替代方法。可以使用各种语言（比如 Java 程序、Perl、Ruby、Python、PHP 和 Javascript[包括 Ajax]）实现客户端。RESTful Web 服务通常可以通过自动客户端或代表用户的应用程序访问。但是，这种服务的简便性让用户能够与之直接交互，使用它们的 Web 浏览器构建一个 GET URL 并读取返回的内容。</div>
+<div class="para" label-module="para">在 REST 样式的 Web 服务中，每个资源都有一个地址。资源本身都是方法调用的目标，方法列表对所有资源都是一样的。这些方法都是标准方法，包括 HTTP GET、POST、PUT、DELETE，还可能包括 HEADER 和 OPTIONS。</div>
+<div class="para" label-module="para">在 RPC 样式的架构中，关注点在于方法，而在 REST 样式的架构中，关注点在于资源 —— 将使用标准方法检索并操作信息片段（使用表示的形式）。资源表示形式在表示形式中使用<a target="_blank" href="https://baike.baidu.com/item/%E8%B6%85%E9%93%BE%E6%8E%A5">超链接</a>互联。</div>
+<div class="para" label-module="para">Leonard Richardson 和 Sam Ruby 在他们的著作 RESTful Web Services 中引入了术语 REST-RPC 混合架构。REST-RPC 混合 Web 服务不使用信封包装方法、参数和数据，而是直接通过 HTTP 传输数据，这与 REST 样式的 Web 服务是类似的。但是它不使用标准的 HTTP 方法操作资源。它在 HTTP 请求的 URI 部分存储方法信息。好几个知名的 Web 服务，比如 Yahoo 的 Flickr API 和 Delicious API 都使用这种混合架构。</div>
+<div class="para" label-module="para"><b>RESTful的实现：RESTful Web 服务的 Java 框架</b></div>
+<div class="para" label-module="para">有两个 Java 框架可以帮助构建 RESTful Web 服务。erome Louvel 和 Dave Pawson 开发的 Restlet（见 参考资料）是轻量级的。它实现针对各种 RESTful 系统的资源、表示、连接器和媒体类型之类的概念，包括 Web 服务。在 Restlet 框架中，客户端和服务器都是组件。组件通过连接器互相通信。该框架最重要的类是<a target="_blank" href="https://baike.baidu.com/item/%E6%8A%BD%E8%B1%A1%E7%B1%BB">抽象类</a> Uniform 及其具体的子类 Restlet，该类的子类是专用类，比如 Application、Filter、Finder、Router 和 Route。这些子类能够一起处理验证、过滤、安全、数据转换以及将传入请求路由到相应资源等操作。Resource 类生成客户端的表示形式。</div>
+<div class="para" label-module="para">JSR-311是 Sun Microsystems 的规范，可以为开发 RESTful Web 服务定义一组 Java API。Jersey是对 JSR-311 的参考实现。</div>
+<div class="para" label-module="para">JSR-311 提供一组注解，相关类和接口都可以用来将 Java 对象作为 Web 资源展示。该规范假定 HTTP 是底层网络协议。它使用注释提供 URI 和相应资源类之间的清晰映射，以及 HTTP 方法与 Java 对象方法之间的映射。API 支持广泛的 HTTP 实体内容类型，包括 HTML、XML、JSON、GIF、JPG 等。它还将提供所需的<a target="_blank" href="https://baike.baidu.com/item/%E6%8F%92%E4%BB%B6">插件</a>功能，以允许使用标准方法通过应用程序添加其他类型。</div>
+<div class="para" label-module="para"><b>RESTful的实现：构建 RESTful Web 服务的多层架构</b></div>
+<div class="para" label-module="para">RESTful Web 服务和动态 Web 应用程序在许多方面都是类似的。有时它们提供相同或非常类似的数据和函数，尽管客户端的种类不同。例如，在线电子商务分类网站为用户提供一个浏览器界面，用于搜索、查看和订购产品。如果还提供 Web 服务供公司、零售商甚至个人能够自动订购产品，它将非常有用。与大部分动态 Web 应用程序一样，Web 服务可以从多层架构的<a target="_blank" href="https://baike.baidu.com/item/%E5%85%B3%E6%B3%A8%E7%82%B9%E5%88%86%E7%A6%BB">关注点分离</a>中受益。业务逻辑和数据可以由自动客户端和 GUI 客户端共享。惟一的不同点在于客户端的本质和中间层的<a target="_blank" href="https://baike.baidu.com/item/%E8%A1%A8%E7%A4%BA%E5%B1%82">表示层</a>。此外，从数据访问中分离业务逻辑可实现数据库独立性，并为各种类型的<a target="_blank" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8">数据存储</a>提供<a target="_blank" href="https://baike.baidu.com/item/%E6%8F%92%E4%BB%B6">插件</a>能力。</div>
+<div class="para" label-module="para">图 1 展示了<a target="_blank" href="https://baike.baidu.com/item/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%A2%E6%88%B7%E7%AB%AF">自动化客户端</a>，包括 Java 和各种语言编写的脚本，这些语言包括 Python、Perl、Ruby、PHP 或命令行工具，比如 curl。在浏览器中运行且作为 RESTful Web<div class="lemma-picture text-pic layout-right" style="width:220px; float: right;">
+<a class="image-link" nslog-type="9317" href="https://baike.baidu.com/pic/RESTful/4406165/0/14ce36d3d539b6005cb8cbeced50352ac65cb773?fr=lemma&amp;ct=single" target="_blank" title="" style="width:220px;height:151px;">
+<img class="" src="./RESTful_百度百科_files/14ce36d3d539b6005cb8cbeced50352ac65cb773.jpg" alt="" style="width:220px;height:151px;">
+</a>
+</div>服务消费者运行的 Ajax、Flash、JavaFX、GWT、博客和 wiki 都属于此列，因为它们都代表用户以自动化样式运行。自动化 Web 服务客户端在 Web 层向 Resource Request Handler 发送 HTTP 响应。客户端的无状态请求在头部包含方法信息，即 POST、GET、PUT 和 DELETE，这又将映射到 Resource Request Handler 中资源的相应操作。每个请求都包含所有必需的信息，包括 Resource Request Handler 用来处理请求的凭据。</div>
+<div class="para" label-module="para">从 Web 服务客户端收到请求之后，Resource Request Handler 从<a target="_blank" href="https://baike.baidu.com/item/%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E5%B1%82">业务逻辑层</a>请求服务。Resource Request Handler 确定所有概念性的实体，系统将这些实体作为资源公开，并为每个资源分配一个惟一的 URI。但是，概念性的实体在该层是不存在的。它们存在于业务逻辑层。可以使用 Jersey 或其他框架（比如 Restlet）实现 Resource Request Handler，它应该是轻量级的，将大量职责工作委托给业务层。</div>
+<div class="para" label-module="para">Ajax 和 RESTful Web 服务本质上是互为补充的。它们都可以利用大量 Web 技术和标准，比如 HTML、JavaScript、浏览器对象、XML/JSON 和 HTTP。当然也不需要购买、安装或配置任何主要组件来支持 Ajax 前端和 RESTful Web 服务之间的交互。RESTful Web 服务为 Ajax 提供了非常简单的 API 来处理服务器上资源之间的交互。</div>
+<div class="para" label-module="para">图 1 中的 Web 浏览器客户端作为 GUI 的前端，使用<a target="_blank" href="https://baike.baidu.com/item/%E8%A1%A8%E7%A4%BA%E5%B1%82">表示层</a>中的 Browser Request Handler 生成的 HTML 提供显示功能。Browser Requester Handler 可以使用 MVC 模型（JSF、Struts 或 Spring 都是 Java 的例子）。它从浏览器接受请求，从业务逻辑层请求服务，生成表示并对浏览器做出响应。表示供用户在浏览器中显示使用。表示不仅包含内容，还包含显示的属性，比如 HTML 和 CSS。</div>
+<div class="para" label-module="para">业务规则可以集中到<a target="_blank" href="https://baike.baidu.com/item/%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E5%B1%82">业务逻辑层</a>，该层充当表示层和<a target="_blank" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE%E5%B1%82">数据访问层</a>之间的数据交换的中间层。数据以<a target="_blank" href="https://baike.baidu.com/item/%E5%9F%9F%E5%AF%B9%E8%B1%A1">域对象</a>或值对象的形式提供给表示层。从业务逻辑层中解耦 Browser Request Handler 和 Resource Request Handler 有助于促进代码重用，并能实现灵活和可扩展的架构。此外，由于将来可以使用新的 REST 和 MVC 框架，实现它们变得更加容易，无需重写业务逻辑层。</div>
+<div class="para" label-module="para">数据访问层提供与<a target="_blank" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8">数据存储</a>层的交互，可以使用 DAO 设计模式或者对象-关系映射解决方案（如 Hibernate、OJB 或 iBatis（随着开发团队转投Google Code旗下，ibatis3.x正式更名为Mybatis））实现。作为替代方案，业务层和数据访问层中的组件可以实现为 EJB 组件，并取得 EJB 容器的支持，该容器可以为组件生命周期提供便利，管理持久性、事务和资源配置。但是，这需要一个遵从 Java EE 的<a target="_blank" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8">应用服务器</a>（比如 JBoss），并且可能无法处理 Tomcat。该层的作用在于针对不同的数据存储技术，从业务逻辑中分离数据访问代码。数据访问层还可以作为连接其他系统的集成点，可以成为其他 Web 服务的客户端。</div>
+<div class="para" label-module="para">数据存储层包括<a target="_blank" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F">数据库系统</a>、LDAP 服务器、文件系统和<a target="_blank" href="https://baike.baidu.com/item/%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F">企业信息系统</a>（包括遗留系统、<a target="_blank" href="https://baike.baidu.com/item/%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F">事务处理系统</a>和<a target="_blank" href="https://baike.baidu.com/item/%E4%BC%81%E4%B8%9A%E8%B5%84%E6%BA%90%E8%A7%84%E5%88%92">企业资源规划</a>系统）。使用该架构，您可以开始看到 RESTful Web 服务的力量，它可以灵活地成为任何企业数据存储的统一 API，从而向以用户为中心的 Web 应用程序公开垂直数据，并自动化批量报告脚本。</div>
+<div class="para" label-module="para"><b>什么是REST：结束语</b></div>
+<div class="para" label-module="para">REST 描述了一个架构样式的互联系统（如 Web 应用程序）。REST 约束条件作为一个整体应用时，将生成一个简单、可扩展、有效、安全、可靠的架构。由于它简便、轻量级以及通过 HTTP 直接传输数据的特性，RESTful Web 服务成为基于 SOAP 服务的一个最有前途的替代方案。用于 web 服务和动态 Web 应用程序的多层架构可以实现可重用性、简单性、可扩展性和组件可响应性的清晰分离。开发人员可以轻松使用 Ajax 和 RESTful Web 服务一起创建丰富的界面。</div><div class="anchor-list">
+<a name="3" class="lemma-anchor para-title"></a>
+<a name="sub5853566_3" class="lemma-anchor "></a>
+<a name="RESTful的关键" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">RESTful</span>RESTful的关键</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="3" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para">RESTful的关键是定义可表示流程元素/资源的对象。在REST中，每一个对象都是通过URL来表示的，对象用户负责将状态信息打包进每一条消息内，以便对象的处理总是无状态的。</div>
+<div class="para" label-module="para">RESTful的第二大问题是组合管理及流程绑定。企业对正规的（基于SOAP）SOA最大的反对声之一便是，这种等级的发现和绑定灵活性不足以适应复杂性。<sup>[1]</sup><a class="sup-anchor" name="ref_[1]_5853566">&nbsp;</a>
+</div>
+<dl class="lemma-reference collapse nslog-area log-set-param" data-nslog-type="2" log-set-param="ext_reference">
+<dt class="reference-title">参考资料</dt>
+<dd class="reference-list-wrap">
+<ul class="reference-list">
+<li class="reference-item " id="reference-[1]-5853566-wrap">
+<span class="index">1.</span>
+<a class="gotop anchor" name="refIndex_1_5853566" id="refIndex_1_5853566" title="向上跳转" href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#ref_[1]_5853566">&nbsp;&nbsp;</a>
+<a rel="nofollow" href="https://baike.baidu.com/redirect/1a12SAjphIPlaSeFZGBuORU2G3khfH-C4f0xXaGPkAdULx0vLqJAtVo5yxxmhazKVZC8mWjZSs7Q2gZ9tfK9PvVD59EgCSvb6H8vRrmp" target="_blank" class="text">为何要结合SOA和Restful接口？<span class="linkout">&nbsp;</span></a>
+<span class="site">．TechTarget</span><span>[引用日期2015-10-12]</span></li></ul>
+</dd>
+</dl>
+<div id="open-tag">
+<div class="open-tag-title">词条标签：</div>
+<dd id="open-tag-item">
+<span class="taglist">
+通信技术
+</span>
+，<span class="taglist">
+互联网
+</span>
+</dd>
+<div class="open-tag-collapse" id="open-tag-collapse" style="display: none;"></div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="side-content">
+<div class="summary-pic">
+<a href="https://baike.baidu.com/pic/RESTful/4406165/0/c8177f3e6709c93d0961007c953df8dcd00054ad?fr=lemma&amp;ct=single" target="_blank" nslog-type="10002401">
+<img src="./RESTful_百度百科_files/c8177f3e6709c93d0961007c953df8dcd00054ad.jpg">
+<button class="picAlbumBtn"><em></em><span>图集</span></button>
+<div>RESTful图册</div>
+</a>
+</div>
+<div class="lemmaWgt-promotion-vbaike" style="display: block;">
+<div class="promotion_title">V百科<a href="https://baike.baidu.com/vbaike#gallary" target="_blank">往期回顾</a></div>
+<div class="promotion_viewport">
+<dl style="position: absolute; width: 536px; height: 152px; left: 0px;"><dd class="wgt_carousel_aniUnit" style="float: left;">
+<a href="http://click.hm.baidu.com/clk?8ebbc76ec6a57f9641ffaf04f02a02ec" target="_blank" title="" nslog-type="10002202" nslog-params="{&quot;adId&quot;:&quot;2703&quot;, &quot;adTitle&quot;:&quot;旅行攻略乌镇篇&quot;, &quot;adPos&quot;: 1}">
+<img src="./RESTful_百度百科_files/d439b6003af33a8751a0af6dcd5c10385243b5fc.jpg">
+</a>
+</dd></dl>
+<div class="promotion_viewport_pager wgt_horPager">
+<span class="pTagBox">
+<a href="javascript:;" class="pTag prev" p-index="1"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-left"></em></a>
+<a href="javascript:;" class="pTag next" p-index="2"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-right"></em></a>
+</span>
+</div>
+</div>
+</div><div class="lemmaWgt-promotion-rightPreciseAd" data-lemmaid="4406165" data-lemmatitle="RESTful"></div><div class="lemmaWgt-sideRecommend" style="display: block;">
+<a name="zhixinWrap" class="qnAnchor"></a>
+<div class="zhixin-box" id="zhixinWrap" data-source="aladdin" data-newlemmaid="4406165"><div class="zhixin-group js-group" data-datatype="async">
+<h6 class="js-cardTitle">
+<span>计算机类书籍</span>
+</h6>
+<div class="zhixin-fixBtn js-fixBtn">
+<div class="openFix" title="若推荐内容有误，请点击纠错进行反馈">纠错</div>
+<div class="closeFix">关闭纠错</div>
+</div>
+<div class="zhixin-list">
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/RESTful%20Web%20Services%20Cookbook%E4%B8%AD%E6%96%87%E7%89%88/7333602&quot;,&quot;targetId&quot;:&quot;7333602&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/RESTful%20Web%20Services%20Cookbook%E4%B8%AD%E6%96%87%E7%89%88/7333602" target="_blank">
+<img src="./RESTful_百度百科_files/359b033b5bb5c9ea99b5f0edd039b6003af3b37e.jpg" alt="restful web services cookbook中文版">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/RESTful%20Web%20Services%20Cookbook%E4%B8%AD%E6%96%87%E7%89%88/7333602" target="_blank" title="restful web services cookbook中文版">restful web services cookbook中文版</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="7333602">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/REST%E5%AE%9E%E6%88%98/1707214&quot;,&quot;targetId&quot;:&quot;1707214&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/REST%E5%AE%9E%E6%88%98/1707214" target="_blank">
+<img src="./RESTful_百度百科_files/b90e7bec54e736d19a5b75409b504fc2d562692a.jpg" alt="rest实战">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/REST%E5%AE%9E%E6%88%98/1707214" target="_blank" title="rest实战">rest实战</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="1707214">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/Redis%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/12342404&quot;,&quot;targetId&quot;:&quot;12342404&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/Redis%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/12342404" target="_blank">
+<img src="./RESTful_百度百科_files/4d086e061d950a7b68dbced308d162d9f2d3c93f.jpg" alt="redis入门指南">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/Redis%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/12342404" target="_blank" title="redis入门指南">redis入门指南</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="12342404">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E6%9E%B6%E6%9E%84%E4%B9%8B%E7%BE%8E/3296200&quot;,&quot;targetId&quot;:&quot;3296200&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E6%9E%B6%E6%9E%84%E4%B9%8B%E7%BE%8E/3296200" target="_blank">
+<img src="./RESTful_百度百科_files/203fb80e7bec54e7ab31f19ebc389b504ec26a55.jpg" alt="架构之美">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E6%9E%B6%E6%9E%84%E4%B9%8B%E7%BE%8E/3296200" target="_blank" title="架构之美">架构之美</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="3296200">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90Spring%20MVC%E4%B8%8EWeb%20Flow/3557529&quot;,&quot;targetId&quot;:&quot;3557529&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90Spring%20MVC%E4%B8%8EWeb%20Flow/3557529" target="_blank">
+<img src="./RESTful_百度百科_files/f9dcd100baa1cd11ea996b60b812c8fcc3ce2d46.jpg" alt="深入解析spring mvc与web flow">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90Spring%20MVC%E4%B8%8EWeb%20Flow/3557529" target="_blank" title="深入解析spring mvc与web flow">深入解析spring mvc与web flow</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="3557529">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E7%94%A8AngularJS%E5%BC%80%E5%8F%91%E4%B8%8B%E4%B8%80%E4%BB%A3Web%E5%BA%94%E7%94%A8/12806501&quot;,&quot;targetId&quot;:&quot;12806501&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E7%94%A8AngularJS%E5%BC%80%E5%8F%91%E4%B8%8B%E4%B8%80%E4%BB%A3Web%E5%BA%94%E7%94%A8/12806501" target="_blank">
+<img src="./RESTful_百度百科_files/267f9e2f070828385d633c72ba99a9014c08f16e.jpg" alt="用angularjs开发下一代web应用">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E7%94%A8AngularJS%E5%BC%80%E5%8F%91%E4%B8%8B%E4%B8%80%E4%BB%A3Web%E5%BA%94%E7%94%A8/12806501" target="_blank" title="用angularjs开发下一代web应用">用angularjs开发下一代web应用</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="12806501">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/3012317&quot;,&quot;targetId&quot;:&quot;3012317&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/3012317" target="_blank">
+<img src="./RESTful_百度百科_files/cf1b9d16fdfaaf5134070b56865494eef11f7a77.jpg" alt="http权威指南">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/3012317" target="_blank" title="http权威指南">http权威指南</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="3012317">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E4%B8%80%E7%BA%BF%E6%9E%B6%E6%9E%84%E5%B8%88%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/2779012&quot;,&quot;targetId&quot;:&quot;2779012&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E4%B8%80%E7%BA%BF%E6%9E%B6%E6%9E%84%E5%B8%88%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/2779012" target="_blank">
+<img src="./RESTful_百度百科_files/9e3df8dcd100baa1aeec13a54710b912c9fc2eef.jpg" alt="一线架构师实践指南">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E4%B8%80%E7%BA%BF%E6%9E%B6%E6%9E%84%E5%B8%88%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/2779012" target="_blank" title="一线架构师实践指南">一线架构师实践指南</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="2779012">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/Java%20Web%20%E6%9C%8D%E5%8A%A1/12422390&quot;,&quot;targetId&quot;:&quot;12422390&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/Java%20Web%20%E6%9C%8D%E5%8A%A1/12422390" target="_blank">
+<img src="./RESTful_百度百科_files/4afbfbedab64034f853e0111adc379310a551d32.jpg" alt="java web 服务">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/Java%20Web%20%E6%9C%8D%E5%8A%A1/12422390" target="_blank" title="java web 服务">java web 服务</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="12422390">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+</div>
+</div>
+<div class="zhixin-group js-group" data-datatype="async">
+<h6 class="js-cardTitle">
+<span>计算机术语</span>
+</h6>
+<div class="zhixin-fixBtn js-fixBtn">
+<div class="openFix" title="若推荐内容有误，请点击纠错进行反馈">纠错</div>
+<div class="closeFix">关闭纠错</div>
+</div>
+<div class="zhixin-list">
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/log4j/480673&quot;,&quot;targetId&quot;:&quot;480673&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/log4j/480673" target="_blank">
+<img src="./RESTful_百度百科_files/0e2442a7d933c8959a943050d31373f082020036.jpg" alt="log4j">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/log4j/480673" target="_blank" title="log4j">log4j</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="480673">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/SOA/2140650&quot;,&quot;targetId&quot;:&quot;2140650&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/SOA/2140650" target="_blank">
+<img src="./RESTful_百度百科_files/09fa513d269759ee8ab32de6b6fb43166d22df38.jpg" alt="soa">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/SOA/2140650" target="_blank" title="soa">soa</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="2140650">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/Redis/6549233&quot;,&quot;targetId&quot;:&quot;6549233&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/Redis/6549233" target="_blank">
+<img src="./RESTful_百度百科_files/aec379310a55b319139cb67141a98226cffc1748.jpg" alt="redis">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/Redis/6549233" target="_blank" title="redis">redis</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="6549233">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/jdbc/485214&quot;,&quot;targetId&quot;:&quot;485214&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/jdbc/485214" target="_blank">
+<img src="./RESTful_百度百科_files/6c224f4a20a44623052ebd449a22720e0cf3d72b.jpg" alt="jdbc">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/jdbc/485214" target="_blank" title="jdbc">jdbc</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="485214">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/97996&quot;,&quot;targetId&quot;:&quot;97996&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/97996" target="_blank">
+<img src="./RESTful_百度百科_files/f2deb48f8c5494eec738617b2ff5e0fe99257ebd.jpg" alt="代理服务器">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/97996" target="_blank" title="代理服务器">代理服务器</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="97996">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/hive/67986&quot;,&quot;targetId&quot;:&quot;67986&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/hive/67986" target="_blank">
+<img src="./RESTful_百度百科_files/d009b3de9c82d1588c7d09f9830a19d8bd3e42fe.jpg" alt="hive">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/hive/67986" target="_blank" title="hive">hive</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="67986">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<form id="zhixinErrorForm" class="hidden" action="https://sp2.baidu.com/-uV1bjeh1BF3odCf/index.php/feedback/zx/getData" target="zhixinSubErr" method="post">
+<input class="js-url" name="fb_html_url" type="hidden">
+<input class="js-query" name="fb_query" type="hidden">
+<input class="js-title" name="fb_card_title" type="hidden">
+<input class="js-content" name="fb_content" type="hidden">
+<input class="js-souceId" name="fb_source_id" type="hidden">
+</form>
+<iframe id="zhixinSubErr" name="zhixinSubErr" style="display:none" frameborder="0" src="./RESTful_百度百科_files/saved_resource.html"></iframe>
+</div>
+<div class="lemmaWgt-promotion-slide" style="display: block;">
+<div class="promotion_viewport">
+<dl style="position: absolute; width: 540px; height: 260px; left: 0px;"><dd class="wgt_carousel_aniUnit" style="float: left;">
+<a href="https://baike.baidu.com/museum/lishuishi?qq-pf-to=pcqq.c2c" target="_blank" title="" nslog-type="10002202" nslog-params="{&quot;adId&quot;:&quot;2658&quot;, &quot;adTitle&quot;:&quot;数字博物馆-yhy 10.9-15&quot;, &quot;adPos&quot;: 2}">
+<img src="./RESTful_百度百科_files/丽水市博物馆.jpg">
+</a>
+</dd></dl>
+<div class="promotion_viewport_pager wgt_horPager"><span class="pTagBox">
+<a href="javascript:;" class="pTag prev" p-index="1"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-left"></em></a><span><a href="javascript:;" class="dot pTag cur"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a><a href="javascript:;" class="dot pTag" p-index="2"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a></span><a href="javascript:;" class="pTag next" p-index="2"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-right"></em></a>
+</span></div>
+</div>
+</div><div class="lemmaWgt-promotion-rightBigAd">
+</div><dl class="side-box lemma-statistics">
+<dt class="title">词条统计</dt>
+<dd class="description">
+<ul>
+<li>浏览次数：<span id="j-lemmaStatistics-pv">829269</span>次</li>
+<li>编辑次数：28次<a href="https://baike.baidu.com/historylist/RESTful/4406165" class="nslog:1021" target="_blank">历史版本</a></li>
+<li>最近更新：<span class="j-modified-time" style="">2017-09-13</span></li>
+<li>创建者：<a class="show-userCard" data-uid="84497629" title="查看此用户资料" target="_blank" href="http://www.baidu.com/p/499737410" nslog-type="1022">499737410</a></li>
+</ul>
+</dd>
+</dl>
+<div class="side-catalog" style="visibility: hidden; bottom: 10px;">
+<div class="side-bar">
+<em class="circle start"></em>
+<em class="circle end"></em>
+</div>
+<div class="catalog-scroller">
+<dl class="catalog-list">
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#1" class="title-link">
+<span class="text">
+<span class="title-index">1</span>
+<span class="title-link" nslog-type="10002802">概述</span>
+</span>
+</a>
+</dt>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#1_1" class="title-link">
+<span class="text">
+<span class="title-index">1.1</span>
+<span class="title-link" nslog-type="10002802">原则条件</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#1_2" class="title-link">
+<span class="text">
+<span class="title-index">1.2</span>
+<span class="title-link" nslog-type="10002802">分层系统</span>
+</span>
+</a>
+</dd>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#2" class="title-link">
+<span class="text">
+<span class="title-index">2</span>
+<span class="title-link" nslog-type="10002802">实现</span>
+</span>
+</a>
+</dt>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/RESTful/4406165?fr=aladdin#3" class="title-link">
+<span class="text">
+<span class="title-index">3</span>
+<span class="title-link" nslog-type="10002802">RESTful的关键</span>
+</span>
+</a>
+</dt>
+<a class="arrow" href="javascript:void(0);" style="top: 58px;"></a>
+</dl>
+</div>
+<div class="right-wrap" style="display: none;">
+<a class="go-up disable" href="javascript:void(0);"></a>
+<a class="go-down disable" href="javascript:void(0);"></a>
+</div>
+<div class="bottom-wrap">
+<a class="toggle-button" href="javascript:void(0);"></a>
+<a class="gotop-button" href="javascript:void(0);"></a>
+</div>
+</div>
+
+<div id="side_box_unionAd" class="unionAd side-box union" style="display: block;">
+<div class="union-content" id="cpro_u1997633"><iframe id="iframeu1997633_0" name="iframeu1997633_0" src="./RESTful_百度百科_files/pcym.html" width="250" height="250" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:250px;height:250px" allowtransparency="true"></iframe></div>
+</div>
+</div>
+</div>
+</div>
+<div class="after-content">
+<div class="fc-guess-like new" id="fc_guess_like_new" style="display: block;">
+<span class="logo-du">
+<em class="cmn-icon cmn-icons cmn-icons_logo-du"></em>
+</span>
+<h6>猜你喜欢</h6>
+<ul class="cmn-clearfix"><li><a href="https://www.baidu.com/s?wd=%D4%D0%BC%EC%D1%AA%B3%A3%B9%E6%B5%C4%BC%EC%B2%E9%CF%EE%C4%BF%BC%B0%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">孕检血常规的检查项目及作用</a></li>
+<li><a href="https://www.baidu.com/s?wd=%CB%AE%B9%E2%D5%EB%BB%E1%D3%D0%B8%BA%D7%F7%D3%C3%C2%F0&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">水光针会有负作用吗</a></li>
+<li><a href="https://www.baidu.com/s?wd=%BD%F8%C6%F8%D1%B9%C1%A6%B4%AB%B8%D0%C6%F7%B5%C4%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">进气压力传感器的作用</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C0%AD%C4%A6%C1%A6%C0%AD%C5%C6%C2%EA%BF%A8%C6%AC%D3%D0%CA%B2%C3%B4%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">拉摩力拉牌玛卡片有什么作用</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C2%A1%B1%C7%D3%D0%BA%CE%B8%B1%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">隆鼻有何副作用</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C8%A5%B4%BD%C3%AB%D3%D0%B8%B1%D7%F7%D3%C3%C2%F0&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">去唇毛有副作用吗</a></li>
+<li><a href="https://www.baidu.com/s?wd=%CA%E4%C5%AF%B9%DC%D4%EC%D3%B0%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">输暖管造影作用</a></li>
+<li><a href="https://www.baidu.com/s?wd=%B3%AC%C9%F9%B5%B6%B5%C4%D7%F7%D3%C3%CA%C7%CA%B2%C3%B4&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">超声刀的作用是什么</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C1%F4%D1%A7%BB%FA%B9%B9%B5%C4%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">留学机构的作用</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C4%C4%D6%D6%C5%A3%C4%CC%D3%D0%B7%E1%D0%D8%B5%C4%D7%F7%D3%C3&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=f784ed5a2fcecd45" target="_blank">哪种牛奶有丰胸的作用</a></li>
+</ul>
+</div>
+<div class="bottom-promotion" id="bottom-promotion" style="display: block;">
+<div id="BOTTOM_PRO_AD"><iframe id="iframe1120393_0" name="iframe1120393_0" onload="BAIDU_SSP_cacheRequest(&#39;0bd0327306e755b1&#39;, this);" src="./RESTful_百度百科_files/pcym(1).html" width="960" height="90" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:960px;height:90px" allowtransparency="true"></iframe></div>
+</div>
+</div>
+</div>
+
+<div class="wgt-footer-main">
+<div class="content">
+<dl class="fresh">
+<dt><em class="cmn-icon cmn-icons cmn-icons_footer-fresh"></em>新手上路</dt>
+<dd>
+<div><a target="_blank" href="https://baike.baidu.com/usercenter/tasks#guide">成长任务</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/help#main01">编辑入门</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/help#main06">编辑规则</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/help#main05">百科术语</a></div>
+</dd>
+</dl>
+<dl class="question">
+<dt><em class="cmn-icon cmn-icons cmn-icons_footer-question"></em>我有疑问</dt>
+<dd>
+<div><a target="_blank" href="https://baike.baidu.com/wikiui/doubt?lemmaId=4406165&amp;fr=lemma" nslog-type="10070001">我要质疑</a></div>
+<div><a target="_blank" href="https://aikefu.baidu.com/?product=bk001" nslog-type="10000003">在线客服</a></div>
+<div><a target="_blank" href="http://tieba.baidu.com/f?ie=utf-8&amp;fr=bks0000&amp;kw=%E7%99%BE%E5%BA%A6%E7%99%BE%E7%A7%91">参加讨论</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/feedback">意见反馈</a></div>
+</dd>
+</dl>
+<dl class="suggestion">
+<dt><em class="cmn-icon cmn-icons cmn-icons_footer-suggestion"></em>投诉建议</dt>
+<dd>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=RESTful&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FRESTful%2F4406165%3Ffr%3Daladdin#1">举报不良信息</a></div>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=RESTful&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FRESTful%2F4406165%3Ffr%3Daladdin#2">未通过词条申诉</a></div>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=RESTful&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FRESTful%2F4406165%3Ffr%3Daladdin#4">投诉侵权信息</a></div>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=RESTful&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FRESTful%2F4406165%3Ffr%3Daladdin#3">封禁查询与解封</a></div>
+</dd>
+</dl>
+</div>
+<div class="copyright">©2017&nbsp;Baidu&nbsp;<a href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>&nbsp;|&nbsp;<a href="http://help.baidu.com/question?prod_en=baike&amp;class=159&amp;id=1047" target="_blank">百科协议</a>&nbsp;|&nbsp;<a href="https://baike.baidu.com/operation/cooperation" target="_blank">百度百科合作平台</a>&nbsp;|&nbsp;<span>京ICP证030173号&nbsp;</span><img class="copyright-img" width="13" height="16" src="./RESTful_百度百科_files/copy_rignt_24.png"></div>
+<p class="recordcode"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001" target="_blank"><i class="icon-police"></i>京公网安备11000002000001号</a></p>
+</div>
+
+<div class="lemmaWgt-searchHeader" style="display: block; opacity: 1;">
+<div class="layout cmn-clearfix">
+<div class="wgt-searchbar wgt-searchbar-new wgt-searchbar-simple cmn-clearfix ">
+<div class="logo-container">
+<a class="logo cmn-inline-block" title="到百科首页" href="https://baike.baidu.com/">
+<span class="cmn-baike-logo">
+<em class="cmn-icon cmn-icons cmn-icons_logo-bai"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-du"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-baike"></em>
+</span>
+</a>
+</div>
+<div class="search">
+<div class="form">
+<form id="searchForm" action="https://baike.baidu.com/search/word" method="GET" target="_self">
+<input id="query" nslog="normal" nslog-type="10080015" name="word" type="text" autocomplete="off" autocorrect="off" value="RESTful"><button id="search" nslog="normal" nslog-type="10080013" type="button">进入词条</button>
+</form>
+<form id="searchLemmaForm" action="https://baike.baidu.com/search" method="GET" target="_self">
+<input id="searchLemmaQuery" name="word" type="hidden">
+<input name="pn" type="hidden" value="0">
+<input name="rn" type="hidden" value="0">
+<input name="enc" type="hidden" value="utf8">
+</form>
+<ul id="suggestion" class="suggestion" style="display: none;">
+<div class="sug"></div>
+<li class="extra">
+<span id="close" nslog="normal" nslog-type="10080016">关闭</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tool-buttons">
+<a class="toolButtons-edit button j-edit-link" href="javascript:;" nslog-type="10010001"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-hollow"></em>编辑</a>
+<a class="toolButtons-collect button" href="javascript:;" nslog-type="10010002"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_star-hollow"></em><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_star-solid"></em>收藏</a>
+<a class="toolButtons-vote button top-vote" href="javascript:;" nslog-type="10010003"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_zan-hollow"></em><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_zan-solid"></em><span class="j-tool-btn-vote-num">赞</span></a>
+</div>
+<div class="user-info">
+<a class="user-link unlogin" href="javascript:;" nslog-type="10010008" target="_blank">登录</a>
+</div>
+</div></div>
+<div class="new-bdsharebuttonbox new-side-share" id="side-share">
+<span class="title">分享</span>
+<div class="side-border">
+<div class="triangle"></div>
+<a class="share-link bds_qzone" href="javascript:void(0);" nslog-type="10060101">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qzone"></em>
+</a>
+<a class="share-link bds_tsina" href="javascript:void(0);" nslog-type="10060301">
+<em class="cmn-icon cmn-icons cmn-icons_logo-sina-weibo"></em>
+</a>
+<a class="bds_wechat" href="javascript:void(0);" nslog-type="10060001">
+<em class="cmn-icon cmn-icons cmn-icons_logo-wechat"></em>
+</a>
+<a class="share-link bds_tqq" href="javascript:void(0);" nslog-type="10060201">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qq"></em>
+</a>
+</div>
+</div>
+<div class="qrcode-wrapper" id="layer" style="display: none">
+<div class="bd_weixin_popup_header">
+<em class="cmn-icon cmn-icons cmn-icons_close"></em>
+<span>分享到微信朋友圈</span>
+</div>
+<div id="wechat-qrcode-img"></div>
+<div class="bd_weixin_popup_footer">打开微信“扫一扫”即可将网页分享至朋友圈</div>
+</div>
+<div></div><div></div>
+
+<script type="text/javascript" src="./RESTful_百度百科_files/mod_4302fe0.js.下载"></script>
+<script type="text/javascript">require.resourceMap({"res":{"wiki-lemma:widget/lemma_content/mainContent/lemmaRelation/lemmaInsert.js":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaRelation/lemmaInsert_8f518c5.js","pkg":"wiki-lemma:p5","deps":["wiki-common:widget/component/nslog/nslog.js"]},"wiki-lemma:widget/lemma_content/mainContent/lemmaRelation/tangram.js":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaRelation/tangram_459492a.js","pkg":"wiki-lemma:p5"},"wiki-lemma:widget/lemma_content/mainContent/lemmaReference/lemmaReferenceTip/lemmaReferenceTip.js":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaReference/lemmaReferenceTip/lemmaReferenceTip_16a3e9d.js","deps":["wiki-common:widget/lib/jquery/jquery.js","wiki-common:widget/util/string.js"]}},"pkg":{"wiki-lemma:p5":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/pkg/wiki-lemma-module-lemmaRelation_0aebd7b.js"}}});</script><script type="text/javascript" src="./RESTful_百度百科_files/jquery_1.11.1_dfce600.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/jquery.mousewheel_4fde694.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/jquery_2d56800.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/PHPJS_2406ddf.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/jsmart_a7d06a5.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/sparkMD5_a5502a8.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/swfObject_00526c3.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/cyberplayer_b1ca478.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/letvPlayer_f923883.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/wiki-common-base_94cd79a.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/userbar-n_8f86b7d.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/wiki-lemma_c332f2e.js.下载"></script>
+<script type="text/javascript" src="./RESTful_百度百科_files/zhixin_58e6342.js.下载"></script>
+<script type="text/javascript">!function(){  var $ = require('wiki-common:widget/lib/jquery/jquery'),
+    userbar = require('wiki-common:widget/component/userbar-n/userbar-n');
+    
+  userbar.buildUserbar($('#j-wgt-userbar'), null);
+}();
+!function(){  require('wiki-common:widget/component/headTabBar/headTabBar');
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery'),
+      initSearchbar = require('wiki-common:widget/component/searchbar-n/searchbar');  
+    initSearchbar($('.wgt-searchbar-main'));
+  }();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var cookie = require('wiki-common:widget/util/cookie');
+    if (!cookie.get('baikedeclare')) {
+        $('#J-declare-wrap').css('display', 'block');
+    }
+    $('#J-declare-close').on('click', function () {
+        // 用户关闭后，不再显示，这里暂设过期时间为1年
+        cookie.set('baikedeclare', 'showed', {
+            expires: 365 * 60 * 60 * 24 * 1000,
+            path: '/'
+        });
+        $('#J-declare-wrap').css('display', 'none');
+    });
+}();
+!function(){  var $ = require('wiki-common:widget/lib/jquery/jquery');
+
+  var timer = '';
+
+  $('.wgt-navbar').on('mouseenter', 'dl', function() {
+  clearTimeout(timer);
+  timer = setTimeout(function() {
+  $('.wgt-navbar').addClass('wgt-navbar-hover');
+}, 300);
+}).on('mouseleave', function() {
+clearTimeout(timer);
+$('.wgt-navbar').removeClass('wgt-navbar-hover');
+}).on('click', 'a', function() {
+clearTimeout(timer);
+$('.wgt-navbar').removeClass('wgt-navbar-hover');
+});
+}();
+!function(){                var $ = require('wiki-common:widget/lib/jquery/jquery');
+                var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+                // 展现策略
+                rightCheck.editView('4406165', function(res) {
+                    if (!res.errno) {
+                        if (res.data.edit) {
+                            $('.lemmaWgt-lemmaTitle .add-subLemma').css('display', 'inline-block');
+                            $('.top-tool .add-sub-icon').css('display', 'inline-block');
+                        }
+                    } else {
+                        if ('1') {
+                            $('.lemmaWgt-lemmaTitle .add-subLemma').css('display', 'inline-block');
+                            $('.top-tool .add-sub-icon').css('display', 'inline-block');
+                        }
+                    }
+                });
+                require('wiki-lemma:widget/basicElement/addSub/addSub.js')({                    lemmaId: '4406165',                    lemmaTitle: 'RESTful',                    lemmaDesc: '',                    versionId: '122481317',                    subLemmaId: '5853566'                });
+            }();
+!function(){        var $ = require('wiki-common:widget/lib/jquery/jquery');
+        var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+        // 展现策略
+        rightCheck.editView('4406165', function(res) {
+            if (!res.errno) {
+                if (res.data.divide) {
+                    $('.top-tool .split-icon').css('display', 'block');
+                }
+            }
+        });
+    }();
+!function(){    var nslog = require('wiki-common:widget/component/nslog/nslog');
+	require.async(["wiki-lemma:widget/basicElement/collect/collect"],function(collect){
+		collect({
+            newLemmaId:"4406165",
+			lemmaId:"5798116",
+			subLemmaId:"5853566"
+		});
+	});
+}();
+!function(){    require.async(["wiki-lemma:widget/basicElement/topShare/topShare"],function(topShare){
+        topShare({
+            newLemmaId: '4406165'
+        });
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+    // 展现策略
+    rightCheck.editView('4406165', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.lemmaWgt-lemmaTitle .edit-lemma').css('display', 'inline-block');
+                // 编辑和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .edit-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .edit-lemma').before('<br/><br/>');
+                  }
+                }
+            } else {
+                $('.lemmaWgt-lemmaTitle .lock-lemma').show();
+                // 锁定和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .lock-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .lock-lemma').before('<br/><br/>');
+                  }
+                }
+            }
+        } else {
+            if ('1') {
+                $('.lemmaWgt-lemmaTitle .edit-lemma').css('display', 'inline-block');
+                // 编辑和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .edit-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .edit-lemma').before('<br/><br/>');
+                  }
+                }
+            } else {
+                $('.lemmaWgt-lemmaTitle .lock-lemma').show();
+                // 锁定和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .lock-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .lock-lemma').before('<br/><br/>');
+                  }
+                }
+            }
+        }
+    });
+}();
+!function(){	require('wiki-lemma:widget/lemma_content/mainContent/basicInfo/basicInfo')();
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var nslog = require('wiki-common:widget/component/nslog/nslog');
+    nslog(10002701);
+    $('.lemmaWgt-lemmaCatalog a').on('click', function () {
+           nslog(10002702);
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+    // 展现策略
+    rightCheck.editView('4406165', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+    // 展现策略
+    rightCheck.editView('4406165', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+    // 展现策略
+    rightCheck.editView('4406165', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+    // 展现策略
+    rightCheck.editView('4406165', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+    // 展现策略
+    rightCheck.editView('4406165', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){		require.async(["wiki-lemma:widget/lemma_content/mainContent/lemmaReference/lemmaReference","wiki-lemma:widget/lemma_content/mainContent/lemmaReference/lemmaReferenceTip/lemmaReferenceTip"],function(Reference,ReferenceTip){
+			new Reference({
+				subLemmaId:"5853566"
+			});
+			new ReferenceTip({
+				subLemmaId:"5853566"
+			});
+		});
+	}();
+!function(){        require.async(["wiki-common:widget/lib/jquery/jquery"],function($){
+            function openTagToggle(node) {
+                if ($(node).hasClass("collapse")) {
+                    $(node).removeClass("collapse");
+                    $("#open-tag").css("height", '22px');
+                } else {
+                    $(node).addClass("collapse");
+                    $("#open-tag").css("height", $("#open-tag-item").css("height"));
+                }
+            }
+            if (parseInt($("#open-tag-item").css("height")) <= 30) {
+                $('#open-tag-collapse').hide();
+            }
+            $("#open-tag-collapse").on("click", function () {
+                openTagToggle($("#open-tag")[0]);
+            });
+        });
+    }();
+!function(){        require('wiki-lemma:widget/lemma_content/configModule/zhixin/zhixin')(
+            4406165,
+            'RESTful'
+        );
+    }();
+!function(){    require.async(["wiki-lemma:widget/lemma_content/mainContent/lemmaStatistics/lemmaStatistics"],function(init){
+        init({
+            newLemmaIdEnc:"06a4e94fbb2b0f81ede88418"
+        });
+    });
+}();
+!function(){	require.async(["wiki-lemma:widget/lemma_content/mainContent/sideCatalog/sideCatalog"],function(SideCatalog){
+		new SideCatalog();
+	});
+}();
+!function(){        require.async(["wiki-lemma:widget/promotion/fengchao/fengchao","wiki-lemma:widget/promotion/unionAd/unionAd"], function (init, unionAd) {
+            init({
+                newLemmaId: "4406165",
+                lemmaTitle: "RESTful",
+                encodeLemmaTitle: "RESTful",
+                adManager: {"wapRelatedBusiness":1}
+            }, {
+                errFn: unionAd,
+                dom: $('#side_box_unionAd')
+            });
+        });
+    }();
+!function(){        require.async(['wiki-lemma:widget/promotion/guessLike/guessLike'], function (app) {
+            app.init({
+                lemmaTitle: 'RESTful',
+                adManager: {"wapRelatedBusiness":1}
+            });
+        });
+    }();
+!function(){            require.async(['wiki-lemma:widget/promotion/bottomAd/bottomAd'], function (init) {
+                init({
+                    sId: 'BOTTOM_PRO_AD',
+                    adManager: {"wapRelatedBusiness":1}
+                });
+            });
+        }();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var Dialog = require("wiki-common:widget/ui/dialog/dialog");
+    var userLogin = require('wiki-common:widget/component/userLogin/userLogin');
+    var unameFiller = require('wiki-common:widget/component/unameFiller/unameFiller');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck');
+
+            var isEnterprise = false;
+        var enterpriseOwnerUserId = 0;
+    
+    var userId = 0;
+    var editUrl = '/edit/' + encodeURIComponent('RESTful') + '/' + '4406165';
+    var pgcUrl = '/enterprise/editpgc?lemmaId=4406165';
+
+    userLogin.regist({
+        onLogin: function(user) {
+            userId = user ? user.uid : 0;
+        }
+    });
+
+    function gotoEdit(url, isMidNight) {
+        if (isMidNight) {
+            Dialog.alert({
+                title: '编辑提示',
+                subMsg: '晚23:00至次日8:00，因审核系统例行维护，您提交的版本可能需要较长时间才能通过，望您谅解。',
+                onConfirm: function() {
+                    window.location.href = url;
+                }
+            });
+        } else {
+            window.location.href = url;
+        }    
+    }
+
+    function showChoseEditDialog(pgcCallback, ugcCallback) {
+        new Dialog({
+            title: '编辑提示',
+            subMsg: '<p>您已开通企业百科服务，推荐您直接编辑“官方资料”，官方资料仅限企业百科绑定的百科账号修改，其他用户账号不可修改。</p><p>如果您想修改其他网友编辑的普通词条内容，请注意遵守百科百科编辑规则。<p>',
+            btns: [{
+            key: 'pgc',
+            text: '编辑官方资料'
+            }, {
+            style: 'white',
+            text: '修改普通词条',
+            key: 'ugc'
+            }],
+            onBtnClick: function(btnKey){
+                if (btnKey === 'pgc') {
+                    pgcCallback && pgcCallback();
+                } else if (btnKey === 'ugc') {
+                    ugcCallback && ugcCallback();
+                }
+            }
+        }).show();
+    }
+
+    function checkUserLegal(res) {
+        var legal = false;
+        switch (res.errno) {
+            case 100001:
+                userLogin.showLoginPop();
+                break;
+            case 100006:
+                unameFiller.show();
+                break;
+            default:
+                legal = true;
+        }
+        return true;
+    }
+
+    function checkUgc(res, url) {
+        if (res.errno) {
+            switch (res.errno) {
+                case 100005:
+                    alert('对不起，您目前被封禁');
+                    break;
+                case 110001:
+                    alert('对不起，该词条被锁定');
+                    break;
+                case 110007:
+                    alert('对不起，消歧页无法编辑');
+                    break;
+                case 110005:
+                    Dialog.alert({
+                    title: '编辑提示',
+                    mainMsg: '对不起，您暂时没有权限编辑该词条。',
+                    subMsg: '<p>您好，该词条内容已较丰富，现仅对百科等级达到<b>四级</b>且通过率达到<b>85%</b>的科友开放编辑。</p><p>当您通过努力达到以上要求，就可以参与编辑该词条了。</p><p><img src="https://bkssl.bdimg.com/img/baike/usercenter/growuptask/star.gif" class="star" />参加<a target="_blank" href="/usercenter#guide">成长任务</a>，更快掌握百科编辑技巧，加速升级！</p>'
+                    });
+                    break;
+                case 110008:
+                    Dialog.alert({
+                    title: '编辑提示',
+                    mainMsg: '对不起，您暂时没有权限编辑该词条。',
+                    subMsg: '<p>您好，该词条内容已较丰富，现仅对百科等级达到<b>六级</b>且通过率达到<b>85%</b>的科友开放编辑。</p><p>当您通过努力达到以上要求，就可以参与编辑该词条了。</p><p><img src="https://bkssl.bdimg.com/img/baike/usercenter/growuptask/star.gif" class="star" />参加<a target="_blank" href="/usercenter#guide">成长任务</a>，更快掌握百科编辑技巧，加速升级！</p>'
+                    });
+                    break;
+                case 470001:
+                    alert('系统错误，请刷新重试');
+                    break;
+            }
+        } else {
+            if (!res.data.right.noAudit) {
+                Dialog.alert({
+                    title: '编辑提示',
+                    subMsg: '很抱歉，该词条有其他用户编辑的版本正在提交，您暂时无法编辑。<br/>百科建议您晚些时候再编辑该词条，或者尝试编辑其他的词条。'
+                });
+                return;
+            }
+            gotoEdit(url, res.data.notice.isMidNight);
+        }
+    }
+
+    $(document.body).on('click', '.j-edit-link', function() {
+        var dl = $(this).attr('data-edit-dl');
+        if (dl) {
+            var url = editUrl + '?dl=' + dl;
+        } else {
+            var url = editUrl;
+        }
+
+        rightCheck.preeditCheck('4406165', 'RESTful', 'RESTful', '122481317', function(res) {
+            if (!checkUserLegal(res)) {
+                return;
+            }
+            if (isEnterprise && enterpriseOwnerUserId === userId) {
+                showChoseEditDialog(function() {
+                    location.href = pgcUrl;
+                }, function() {
+                    checkUgc(res, url);
+                });
+            } else {
+                checkUgc(res, url);
+            }
+        });
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery'),
+      initSearchbar = require('wiki-common:widget/component/searchbar-n/searchbar');  
+    initSearchbar($('.wgt-searchbar-simple'));
+  }();
+!function(){    require.async(["wiki-lemma:widget/tools/searchHeader/toolButtons-n/toolButtons"],function(init){
+        init({
+            lemmaId:"5798116",
+            subLemmaId:"5853566",
+            newLemmaId:"4406165"
+        });
+    });
+}();
+!function(){    require('wiki-lemma:widget/tools/searchHeader/toolButtons-n/userInfo')();
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery'),
+      animation = require('wiki-common:widget/util/animation'),
+      nslog = require('wiki-common:widget/component/nslog/nslog'),
+      initSearchbar = require('wiki-common:widget/component/searchbar/searchbar');
+
+    var isFadeIn = false,
+        isFadeOut = false;
+
+    var fadeInAni, fadeOutAni;
+
+    $(window).on('scroll', function(e) {
+        var scrollTop = $(this).scrollTop();
+
+        if (scrollTop > 200 && !isFadeIn && $('.lemmaWgt-searchHeader').css('display') == 'none') {
+            fadeOutAni && fadeOutAni.stop();
+            fadeInAni = animation({
+                duration: 200,
+                easing: 'linear',
+                onStart: function() {
+                    isFadeOut = false;
+                    isFadeIn = true;
+                    $('.lemmaWgt-searchHeader').css('display', 'block');
+                },
+                onStep: function(progress) {
+                    $('.lemmaWgt-searchHeader').css('opacity', progress)
+                },
+                onComplete: function(progress) {
+                    isFadeIn = false;
+                    nslog(10010007);
+                }
+            });
+        } else if (scrollTop <= 200 && !isFadeOut && $('.lemmaWgt-searchHeader').css('display') == 'block') {
+            fadeInAni && fadeInAni.stop();
+            fadeOutAni = animation({
+                duration: 300,
+                easing: 'linear',
+                onStart: function() {
+                    $('.lemmaWgt-searchHeader #suggestion').hide();
+                    isFadeIn = false;
+                    isFadeOut = true;
+                },
+                onStep: function(progress) {
+                    $('.lemmaWgt-searchHeader').css('opacity', 1 - progress);
+                },
+                onComplete: function(progress) {
+                    isFadeOut = false;
+                    $('.lemmaWgt-searchHeader').css('display', 'none');
+                }
+            });
+        }
+    });
+}();
+!function(){    require('wiki-lemma:widget/tools/newSideShare/qzopensl');
+    require.async(["wiki-lemma:widget/tools/newSideShare/taskSideShare"],function(taskShare){
+        taskShare.init({
+            title: 'RESTful',
+            desc: "\u4e00\u79cd\u8f6f\u4ef6\u67b6\u6784\u98ce\u683c\uff0c\u8bbe\u8ba1\u98ce\u683c\u800c\u4e0d\u662f\u6807\u51c6\uff0c\u53ea\u662f\u63d0\u4f9b\u4e86\u4e00\u7ec4\u8bbe\u8ba1\u539f\u5219\u548c\u7ea6\u675f\u6761\u4ef6\u3002\u5b83\u4e3b\u8981\u7528\u4e8e\u5ba2\u6237\u7aef\u548c\u670d\u52a1\u5668\u4ea4\u4e92\u7c7b\u7684\u8f6f\u4ef6\u3002\u57fa\u4e8e\u8fd9\u4e2a\u98ce\u683c\u8bbe\u8ba1\u7684\u8f6f\u4ef6\u53ef\u4ee5\u66f4\u7b80\u6d01\uff0c\u66f4\u6709\u5c42\u6b21\uff0c\u66f4\u6613\u4e8e\u5b9e\u73b0\u7f13\u5b58\u7b49\u673a\u5236\u3002",
+            pic: 'https:\/\/gss1.bdstatic.com\/9vo3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268\/sign=9950a29eb6315c6043956ce9b5b0cbe6\/c8177f3e6709c93d0961007c953df8dcd00054ad.jpg',
+            url: '',
+            qqPic: 'https:\/\/gss1.bdstatic.com\/9vo3dSag_xI4khGkpoWK1HF6hhy\/baike\/whfpf%3D407%2C407%2C50\/sign=57ddb06fb91c8701d6e3e1a64142aa1f\/c8177f3e6709c93d0961007c953df8dcd00054ad.jpg',
+            newLemmaId: '4406165',
+            lemmaTitle: 'RESTful'
+        });
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery');
+    var nslog = require("wiki-common:widget/component/nslog/nslog");
+    var testElem = require('wiki-common:widget/component/testElem/testElem');
+    var cmsModuleLoader = require('wiki-common:widget/component/cmsModuleLoader/cmsModuleLoader');
+
+    function requireAsync() {
+        require.async(['wiki-lemma:widget/tools/announcement/announcement']);
+    }
+
+    cmsModuleLoader('/api/wikiui/getlemmaconfig', [{
+        name: 'announcement',
+        script: 'wiki-lemma:widget/tools/announcement/announcement.js'
+    }]);
+
+    require.async(["wiki-lemma:widget/tools/lazyLoad/lazyLoad"], function(LazyLoad) {
+        new LazyLoad();
+    });
+
+    require.async(['wiki-common:widget/component/nslog/nslog','wiki-common:widget/lib/jquery/jquery'], function(nslog, $) {
+        nslog().setGlobal({
+            lemmaId: "5798116",
+            newLemmaId: "4406165",
+            subLemmaId: "5853566",
+            lemmaTitle: "RESTful"
+        });
+
+        // 词条页 pv
+        nslog(9322);
+
+        // 新版头部pv（小流量）
+        if ($('.pc-header-new').length > 0) {
+            nslog(9069);
+        }
+
+        // 链接点击 pv
+        var lemmaPageRegExp = new RegExp(/\/subview\/\d+|\/view\/\d+|\/item\//i);
+        $('body').on('mousedown', 'a', function() {
+            var href = $(this).attr('href');
+            if (href && href.indexOf('/') >= 0 && href.indexOf('#') !== 0) {
+                // 链接点击 pv
+                nslog(10000001);
+                if (lemmaPageRegExp.test(href)) {
+                    // 词条页链接点击 pv
+                    nslog(10000002, window.location.href, {
+                        targetTitle: $(this).text()
+                    });
+                }
+            }
+        });
+
+        /****** 词条页站内流转需求统计 start ******/
+        (function () {
+            // 各种统计配置
+            var circulationLinkCfg = {
+                innerLink: [ // 内链
+                    '.para',
+                    '.lemmaWgt-baseInfo-simple-largeMovie',
+                    '.lemmaWgt-baseInfo-simple-largeStar',
+                    '.basic-info .basicInfo-block',
+                    '.lemma-summary',
+                    '.lemmaWgt-lemmaSummary',
+                    '.view-tip-panel',
+                    '.horizontal-module',
+                    '.lemmaWgt-roleIntroduction',
+                    '.dramaSeries .dramaSerialList',
+                    '.module-music',
+                    '.table-view',
+                    '[log-set-param="table_view"]',
+                    '.list-module',
+                    '.cell-module',
+                    '.baseBox .dl-baseinfo', // 配置后台字段
+                    '.pvBtn-box .leadPVBtnWrapper',
+                    '.drama-actor',
+                    '#staffList',
+                    '.starMovieAndTvplay',
+                    '.main_tab:not(.main_tab-defaultTab)' // 除去词条tab外的tab
+                ],
+                relationTable: '.rs-container-foot', // 关系表
+                peopleRelation: '.star-info-block.relations, .lemmaWgt-focusAndRelation', // 人物关系（明星+普通）
+                moduleActors: '.featureBaseInfo .actors, .lemmaWgt-majorActors', // 主要演员、嘉宾、主持人
+                moduleWorks: '.featureBaseInfo .works, .large-feature .works', // 代表作品
+                moduleQuarterly: '.featureBaseInfo .po_quarterly, .mian_quarterly', // 分季介绍
+                rankStar: '.rank-list.stars-rank', // 明星榜
+                rankDrama: '.drama-rank-list', // 电视剧榜
+                specialTopic: '.special-topic', // 专题模块
+                modDetailTable: '#modDetailTable', // 关系表出图
+                chuizhitu: '.chuizhitu', // 垂直化模块
+                polysemantList: '.polysemantList-wrapper' // 义项切换
+            };
+            /****** 连接统计 ******/
+            function clickNslogFn() {
+                for (var k in circulationLinkCfg) {
+                    if (k === 'innerLink') {
+                        // 词条内链到词条页
+                        var tempArr = circulationLinkCfg[k];
+                        for (var i = 0, l = tempArr.length; i < l; i++) {
+                            tempArr[i] += ' a';
+                        }
+                        var sSelector = tempArr.join(', ');
+
+                        $('body').on('mousedown', sSelector, {key: k},function(e) {
+                            var key = e.data.key;
+                            var href = $(this).attr('href');
+                            var tar = $(this).attr('target') || '';
+                            if (href && href.indexOf('/') >= 0 && href.indexOf('#') !== 0
+                            && tar === '_blank' && lemmaPageRegExp.test(href)) {
+                                // 词条页普通内链点击 pv
+                                nslog(10000004, null ,{division: key});
+                            }
+                        });
+                    } else {
+                        // 模块到词条页链接
+                        $(circulationLinkCfg[k]).on('mousedown', 'a', {key: k}, function (e) {
+                            var key = e.data.key;
+                            var href = $(this).attr('href');
+                            if (href && href.indexOf('#') !== 0 && lemmaPageRegExp.test(href)) {
+                                // 词条页配置模块链接点击 pv
+                                nslog(10000004, null, {division: key});
+                            }
+                        });
+                    }
+                }
+            }
+            // 发起统计请求
+            clickNslogFn();
+
+            /****** 各模块展现量pv ******/
+            function checkModuleIsShow() {
+                var result = [];
+                for (var k in circulationLinkCfg) {
+                    if (k !== 'innerLink' && k !== 'relationTable') {
+                        !!$(circulationLinkCfg[k]).html() && result.push(k);
+                    }
+                }
+                if (result.length > 0) {
+                    nslog(10000005, null, {showModules: result.join(',')});
+                }
+            }
+            checkModuleIsShow();
+
+        })();
+        /****** 词条页站内流转需求统计 end ******/
+
+    });
+
+    // 广告接入 wikiad 统一加载
+    // log 词条页广告被拦截情况（此处 log 请求行为）
+    nslog(70000101, window.location.href, {
+        api: 'lemma-ad',
+        action: 'request'
+    });
+    $.ajax({
+        type: 'GET',
+        url: '/api/wikiad/getsquirrels',
+        data: {
+            lemmaId: 4406165
+        },
+        cache: false,
+        dataType: 'JSON',
+        success: function (res) {
+            // log 词条页广告被拦截情况（此处 log 请求成功）
+            nslog(70000101, window.location.href, {
+                api: 'lemma-ad',
+                action: 'success'
+            });
+
+            if (!res.errno) {
+                if (res.data[5]) {
+                    require.async(['wiki-lemma:widget/promotion/rightPreciseAd/rightPreciseAd'], function(rightPreciseAd) {
+                        rightPreciseAd(res.data[5]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[5][0].adId,
+                            adTitle: res.data[5][0].name,
+                            adPos: 5
+                        });
+                    });
+                } else if (res.data[1]) {
+                                        require.async(['wiki-lemma:widget/promotion/vbaike/vbaike'], function(vbaike) {
+                        vbaike(res.data[1]);
+                        for(var i in res.data[1]) {
+                            nslog(10002201, location.href, {
+                                adId: res.data[1][i].adId,
+                                adTitle: res.data[1][i].name,
+                                adPos: 1
+                            });
+                        }
+                    });
+                                    }
+                if (res.data[9]) {
+                                        require.async(['wiki-lemma:widget/promotion/rightBigAd/rightBigAd'], function(rightBigAd) {
+                        rightBigAd(res.data[9]);
+                            nslog(10002201, location.href, {
+                                adId: res.data[9][0].adId,
+                                adTitle: res.data[9][0].name,
+                                adPos: 9
+                            });
+                    });
+                                    } else if(res.data[2]) {
+                    require.async(['wiki-lemma:widget/promotion/slide/slide'], function(slide) {
+                        slide(res.data[2]);
+                        for(var i in res.data[2]) {
+                            nslog(10002201, location.href, {
+                                adId: res.data[2][i].adId,
+                                adTitle: res.data[2][i].name,
+                                adPos: 2
+                            });
+                        }
+                    });
+                }
+                if (res.data[3]) {
+                                        require.async(['wiki-lemma:widget/promotion/topAd/topAd'], function(topAd) {
+                        topAd(res.data[3]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[3][0].adId,
+                            adTitle: res.data[3][0].name,
+                            adPos: 3
+                        });
+                    });
+                                    }
+                if (res.data[4]) {
+                                        require.async(['wiki-lemma:widget/promotion/rightAd/rightAd'], function(rightAd) {
+                        rightAd(res.data[4]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[4][0].adId,
+                            adTitle: res.data[4][0].name,
+                            adPos: 4
+                        });
+                    });
+                                    }
+                if (res.data[15]) {
+                    require.async(['wiki-lemma:widget/promotion/banner/banner'], function(banner) {
+                        banner(res.data[15]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[15][0].adId,
+                            adTitle: res.data[15][0].name,
+                            adPos: 15
+                        });
+                    });
+                }
+                if (res.data[16]) {
+                    require.async(['wiki-lemma:widget/promotion/declaration/declaration'], function(declaration) {
+                        declaration(res.data[16]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[16][0].adId,
+                            adTitle: res.data[16][0].name,
+                            adPos: 16
+                        });
+                    })
+                }
+            } else {
+                return;
+            }
+
+            setTimeout(function () {
+                var elemArr = {};
+                res.data[1] && res.data[1].length > 0 && (elemArr['lemma-vbaike-ad'] = $('.lemmaWgt-promotion-vbaike .promotion_viewport a:eq(0) img').get(0));
+                res.data[2] && res.data[2].length > 0 && (elemArr['lemma-slide-ad'] = $('.lemmaWgt-promotion-slide .promotion_viewport a:eq(0) img').get(0));
+                res.data[3] && res.data[3].length > 0 && (elemArr['lemma-navbar-ad'] = {
+                    node: $('.header [nslog-type="10002202"]').get(0),
+                    validations: {
+                        'noBackgroundImage': function() {
+                            return $('.header [nslog-type="10002202"]').css('background-image').indexOf(res.data[3][0].picUrl) < 0
+                        }
+                    }
+                });
+                res.data[4] && res.data[4].length > 0 && (elemArr['lemma-side-ad'] = {
+                    node: $('.right-ad img').get(0),
+                    validations: {
+                        'noBackgroundImage': function() {
+                            return $('.right-ad img').attr('src').indexOf(res.data[4][0].picUrl) < 0
+                        }
+                    }
+                });
+                res.data[15] && res.data[15].length > 0 && (elemArr['lemma-configModule-banner'] = $('.configModuleBanner').get(0));
+                res.data[16] && res.data[16].length > 0 && (elemArr['lemma-configModule-declaration'] = $('.lemmaWgt-declaration').get(0));
+
+                testElem.log(elemArr, 70000102);
+            }, 1000);
+        },
+        error: function () {
+            // log 词条页广告被拦截情况（此处 log 请求失败）
+            nslog(70000101, window.location.href, {
+                api: 'lemma-ad',
+                action: 'error'
+            });
+        }
+    });
+
+    // 设置分享内容
+    window.BKShare.setCommon({
+        bdText: "\u3010RESTful_\u767e\u5ea6\u767e\u79d1\u3011\u4e00\u79cd\u8f6f\u4ef6\u67b6\u6784\u98ce\u683c\uff0c\u8bbe\u8ba1\u98ce\u683c\u800c\u4e0d\u662f\u6807\u51c6\uff0c\u53ea\u662f\u63d0\u4f9b\u4e86\u4e00\u7ec4\u8bbe\u8ba1\u539f\u5219\u548c\u7ea6\u675f\u6761\u4ef6\u3002\u5b83\u4e3b\u8981\u7528\u4e8e\u5ba2\u6237\u7aef\u548c\u670d\u52a1\u5668\u4ea4\u4e92\u7c7b\u7684\u8f6f\u4ef6\u3002\u57fa\u4e8e\u8fd9\u4e2a\u98ce\u683c\u8bbe\u8ba1\u7684\u8f6f\u4ef6\u53ef\u4ee5\u66f4\u7b80\u6d01\uff0c\u66f4\u6709\u5c42\u6b21\uff0c\u66f4\u6613\u4e8e\u5b9e\u73b0\u7f13\u5b58\u7b49\u673a\u5236\u3002.....\uff08\u5206\u4eab\u81ea@\u767e\u5ea6\u767e\u79d1\uff09",
+        bdDesc: '',
+        bdUrl: 'http:\/\/baike.baidu.com\/item\/RESTful\/4406165',
+        bdPic: '',
+        onBeforeClick: function (){
+            $('.bdshare_dialog_box').hide();
+        }
+    });
+
+    // 底部投诉带入当前页面 url
+    var map = [1, 2, 4, 3];
+    $('.wgt-footer-main .suggestion').find('a').each(function(i) {
+        $(this).attr('href', 'http://tousu.baidu.com/baike/add?word=RESTful' + '&&submit_link=' + encodeURIComponent(window.location.href) + '#' + map[i]);
+    });
+
+    // 为超出预设内容的表格添加table-responsive控制
+    $('.main-content').find('table').each(function(index) {
+        var $that = $(this);
+        if ($that.width() > 790) {
+            $that.wrap('<div class="table-responsive"></div>');
+        }
+    });
+}();
+!function(){      require('wiki-common:widget/component/psLink/psLink');
+    }();</script><div class="wgt_overlay" style="opacity: 0; position: fixed;"></div><dl class="wgt_dialog modal add-sub-dialog" style="display: none;">
+<dt>添加义项描述<a href="https://baike.baidu.com/view/10811633.htm" target="_blank">义项命名规则</a></dt>
+<dd class="close dialog-btn" title="关闭" btn-key="close"><em class="cmn-icon cmn-icons cmn-icons_close"></em></dd>
+<dd class="con no-icon no-sub-msg">
+<div class="add-sub">                          <div class="content-inner">                              <div class="tip">您需要给原有的义项和新增加的义项都写一个“义项描述”，让读者能分清楚同名的两个事物。</div>                              <div class="example">                                  <div class="example-tit">示例</div>                                  <div class="example-show">                                      <ul>                                          <li class="show-li clearfix"><div class="tit">词条名</div><div class="content">环太平洋</div></li>                                          <li class="show-li clearfix"><div class="tit">原有义项描述</div><div class="content">地理区域</div></li>                                          <li class="show-li clearfix"><div class="tit">新增义项描述</div><div class="content">2013年美国科幻电影</div></li>                                      </ul>                                  </div>                              </div>                              <form action="https://baike.baidu.com/createsub/RESTful" method="get">                                  <div class="form-item name-lemma clearfix"><label for="">词条名</label><input type="text" value="RESTful" disabled="disabled"></div>                                  <div class="form-item clearfix"><label for="">原有义项描述(不大于20字)</label><input type="text" value="" name="ori_desc"></div>                                  <div class="form-item clearfix"><label for="">新增义项描述(不大于20字)</label><input type="text" value="" name="desc"></div>                                  <div class="form-item form-notice"><strong>[注意]</strong>如果原义项中已经罗列了多个义项的内容，那么建议您不要直接添加义项，而是<a href="http://tieba.baidu.com/p/4152042379" target="_blank">报告未拆分多义词。</a></div>                                  <div class="add-sub-main-footer"><input type="submit" class="add-sub-main-button add-sub-main-accept" value="确定"><span class="add-sub-main-button add-sub-main-cancel">取消</span></div>                              </form>                          </div>                      </div>
+</dd>
+</dl>
+<script type="text/javascript">
+  var Hunter = window.Hunter || {};
+  Hunter.userConfig = Hunter.userConfig || [];
+  </script>
+<script type="text/javascript" src="./RESTful_百度百科_files/baike.js.下载" defer=""></script><script type="text/javascript">
+  // DOM Ready时，统计用户可操作时间。
+  alog('speed.set', 'drt', +new Date);
+
+  void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d,k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+</script>
+
+<div class="reference-tip"><table><tbody><tr><td class="content"></td><td class="title" valign="middle">参考资料</td></tr></tbody></table><em class="triangle-bg"></em><em class="triangle-border"></em></div></body></html>

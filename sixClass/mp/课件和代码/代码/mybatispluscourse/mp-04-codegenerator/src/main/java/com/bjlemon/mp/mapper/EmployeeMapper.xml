@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjlemon.mp.mapper.EmployeeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bjlemon.mp.beans.Employee">
+        <id column="id" property="id" />
+        <result column="emp_name" property="empName" />
+        <result column="emp_job" property="empJob" />
+        <result column="emp_salary" property="empSalary" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, emp_name, emp_job, emp_salary
+    </sql>
+
+
+    <delete id="deleteByName">
+
+        delete  from  tb_employee where emp_name=#{ename}
+
+    </delete>
+
+</mapper>

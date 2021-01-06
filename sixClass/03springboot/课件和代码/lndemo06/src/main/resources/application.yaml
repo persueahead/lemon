@@ -1,0 +1,40 @@
+
+
+
+
+server:
+  port: 8080
+
+spring:
+  profiles: 
+    active: test
+
+#dev---
+---
+spring:
+  profiles: dev
+server: 
+  port: 8081    
+  
+#test  
+---
+user:
+  userId: 1002
+  userName: chisi
+  userAge: 21
+spring:
+  profiles: test
+server: 
+  port: 8082  
+
+#pro
+---
+user:
+  userId: 1003
+  userName: shengcan
+  userAge: 23
+spring:
+  profiles: pro
+server: 
+  port: 8083    
+    

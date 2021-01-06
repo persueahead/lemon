@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://baike.baidu.com/item/SOA/2140650?fr=aladdin -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./SOA（面向服务的架构）_百度百科_files/element.min.js.下载"></script><script async="" src="./SOA（面向服务的架构）_百度百科_files/monkey.min.js.下载"></script><script async="" src="./SOA（面向服务的架构）_百度百科_files/dp.min.js.下载"></script><script charset="utf-8" async="" src="./SOA（面向服务的架构）_百度百科_files/snippetcacher.php"></script><script type="text/javascript" async="" src="./SOA（面向服务的架构）_百度百科_files/xctm"></script><script type="text/javascript" async="" src="./SOA（面向服务的架构）_百度百科_files/xctm(1)"></script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="referrer" content="always">
+<meta name="description" content="面向服务的架构（SOA）是一个组件模型，它将应用程序的不同功能单元（称为服务）通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在各种各样的系统中的服务可以以一种统一和通用的方式进...">
+<title>SOA（面向服务的架构）_百度百科</title>
+<link rel="shortcut icon" href="https://baike.baidu.com/favicon.ico" type="image/x-icon">
+<link rel="icon" sizes="any" mask="" href="https://www.baidu.com/img/baidu.svg">
+
+<meta name="keywords" content="SOA SOA定义介绍 SOA体系结构 SOA特性状况 SOA新兴变革 SOA为何选择SOA SOA优点">
+<meta name="image" content="https://bkssl.bdimg.com/cms/static/baike.png">
+<script src="./SOA（面向服务的架构）_百度百科_files/hm.js.下载"></script><script async="" src="./SOA（面向服务的架构）_百度百科_files/alog.min.js.下载"></script><script type="text/javascript">
+  // 配置 PD 监控。
+  window.alogObjectConfig = {
+    product: '103',
+    page: '103_1',
+    speed: {
+      sample: '0.008'
+    },
+    monkey: {
+      sample: '1',
+      hid: '1533'
+    },
+    exception: { 
+      sample: '0.004'
+    },
+    feature: {
+      sample: '0.004'
+    },
+    csp: {
+      sample: '0.008',
+      'default-src': [
+        {match: '*.baidu.com,*.bdimg.com,localhost', target: 'Accept'},
+        {match: '*', target: 'Accept,Warn'}
+      ]
+    }
+  };
+
+  void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+  void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>
+<meta name="csrf-token" content="">
+
+<!--[if lte IE 9]>
+<script>
+    (function() {
+      var e = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(","),
+        i = e.length;
+      while (i--) {
+        document.createElement(e[i]);
+      }
+    })();
+  </script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/wiki-lemma_7bb52c1.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/wiki-common-base_3bd3a2e.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/userbar_10e138c.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/userbar-n_bcd805f.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/headTabBar_c3a1b84.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/searchbar_a5024db.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/wiki-lemma-module_6fda5e3.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/navbar_0697c78.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/announcement_126f5e6.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/unameFiller_d631c34.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/label_ca156c6.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/sideShare_2af1cbd.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/pageMask_ff9a193.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/userCard_f83cf16.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/mainContent_98e3702.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/lemmaRelation_ac86a59.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/zhixin_0aeccef.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/footer_main_9d4d7ff.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/toolButtons-n_6e90fdd.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/userInfo-n_7e90184.css"><link rel="stylesheet" type="text/css" href="./SOA（面向服务的架构）_百度百科_files/searchHeader-n_8b1fc24.css"><script type="text/javascript">
+    alog('speed.set', 'ht', +new Date);
+</script><script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?55b574651fcae74b0a9f1cf9c8d7c93a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script><script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/lemmaReferenceTip_d50e02d.js.下载"></script><link rel="stylesheet" href="./SOA（面向服务的架构）_百度百科_files/share_style0_16.css"><script src="./SOA（面向服务的架构）_百度百科_files/qc.php" type="text/javascript" charset="utf-8"></script></head>
+
+
+
+
+<body class="wiki-lemma normal"><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;"><iframe id="BAIDU_DUP_fp_iframe" src="./SOA（面向服务的架构）_百度百科_files/o.html" style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe></div>
+
+
+<div class="header-wrapper pc-header-new">
+<div class="topbar cmn-clearfix">
+<ul class="wgt-userbar" id="j-wgt-userbar"><li>
+<a href="http://www.baidu.com/" nslog="normal" nslog-type="10080109">百度首页</a>
+</li>
+<li>
+<a data-action="login" href="javascript:;" nslog="normal" nslog-type="10080110">登录</a>
+</li>
+<li>
+<a href="https://passport.baidu.com/v2/?reg&amp;regType=1&amp;tpl=wk" nslog="normal" nslog-type="10080111">注册</a><a>
+</a></li></ul>
+<div class="separator"></div>
+<div class="wiki-common-headTabBar">
+<a href="https://www.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://www.baidu.com/s?ie=utf-8&amp;fr=bks0000&amp;wd=">网页</a>
+<a href="http://news.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://news.baidu.com/ns?tn=news&amp;cl=2&amp;rn=20&amp;ct=1&amp;fr=bks0000&amp;ie=utf-8&amp;word=">新闻</a>
+<a href="https://tieba.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://tieba.baidu.com/f?ie=utf-8&amp;fr=bks0000&amp;kw=">贴吧</a>
+<a href="https://zhidao.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://zhidao.baidu.com/search?pn=0&amp;&amp;rn=10&amp;lm=0&amp;fr=bks0000&amp;word=">知道</a>
+<a href="http://music.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://music.baidu.com/search?f=ms&amp;ct=134217728&amp;ie=utf-8&amp;rn=&amp;lm=-1&amp;pn=30&amp;fr=bks0000&amp;key=">音乐</a>
+<a href="http://image.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://image.baidu.com/search/index?tn=baiduimage&amp;ct=201326592&amp;lm=-1&amp;cl=2&amp;nc=1&amp;ie=utf-8&amp;word=">图片</a>
+<a href="http://v.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://v.baidu.com/v?ct=301989888&amp;rn=20&amp;pn=0&amp;db=0&amp;s=22&amp;ie=utf-8&amp;fr=bks0000&amp;word=">视频</a>
+<a href="http://map.baidu.com/" nslog="normal" nslog-type="10600112" data-href="http://map.baidu.com/m?ie=utf-8&amp;fr=bks0000&amp;word=">地图</a>
+<a href="https://wenku.baidu.com/" nslog="normal" nslog-type="10600112" data-href="https://wenku.baidu.com/search?lm=0&amp;od=0&amp;ie=utf-8&amp;fr=bks0000&amp;word=">文库</a>
+<b class="baike">百科</b>
+</div>
+</div>
+<div class="header">
+<div class="layout">
+<div class="wgt-searchbar wgt-searchbar-new wgt-searchbar-main cmn-clearfix wgt-searchbar-large">
+<div class="logo-container">
+<a class="logo cmn-inline-block" title="到百科首页" href="https://baike.baidu.com/">
+<span class="cmn-baike-logo">
+<em class="cmn-icon cmn-icons cmn-icons_logo-bai"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-du"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-baike"></em>
+</span>
+</a>
+</div>
+<div class="search">
+<div class="form">
+<form id="searchForm" action="https://baike.baidu.com/search/word" method="GET" target="_self">
+<input id="query" nslog="normal" nslog-type="10080011" name="word" type="text" autocomplete="off" autocorrect="off" value="SOA"><button id="search" nslog="normal" nslog-type="10080008" type="button">进入词条</button><button id="searchLemma" nslog="normal" nslog-type="10080009" type="button">全站搜索</button><a class="help" href="https://baike.baidu.com/help" nslog="normal" nslog-type="10080010" target="_blank">帮助</a>
+</form>
+<form id="searchLemmaForm" action="https://baike.baidu.com/search" method="GET" target="_self">
+<input id="searchLemmaQuery" name="word" type="hidden">
+<input name="pn" type="hidden" value="0">
+<input name="rn" type="hidden" value="0">
+<input name="enc" type="hidden" value="utf8">
+</form>
+<ul id="suggestion" class="suggestion">
+<div class="sug"></div>
+<li class="extra">
+<span id="close" nslog="normal" nslog-type="10080012">关闭</span>
+</li>
+</ul>
+</div></div>
+</div>
+<div class="declare-wrap" id="J-declare-wrap" style="display: block;">
+<div class="declare" id="J-declare">声明：百科词条人人可编辑，词条创建和修改均免费，绝不存在官方及代理商付费代编，请勿上当受骗。<a class="declare-details" target="_blank" href="https://baike.baidu.com/common/declaration">详情&gt;&gt;</a>
+<div class="close-btn" id="J-declare-close">
+<em class="cmn-icon cmn-icons cmn-icons_close"></em>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="navbar-wrapper">
+<div class="wgt-navbar">
+<div class="navbar-bg">
+<div class="navbar-bg-top">
+<div class="navbar-content layout">
+<div class="navbar-content-box">
+<dl class="index ">
+<dt><a href="https://baike.baidu.com/">首页</a></dt>
+</dl>
+<dl class="cat ">
+<dt><a>分类</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/art" target="_blank" class="art">艺术</a></div>
+<div><a href="https://baike.baidu.com/science" target="_blank" class="technology">科学</a></div>
+<div><a href="https://baike.baidu.com/ziran" target="_blank">自然</a></div>
+<div><a href="https://baike.baidu.com/wenhua" target="_blank">文化</a></div>
+<div><a href="https://baike.baidu.com/dili" target="_blank">地理</a></div>
+<div><a href="https://baike.baidu.com/shenghuo" target="_blank">生活</a></div>
+<div><a href="https://baike.baidu.com/shehui" target="_blank">社会</a></div>
+<div><a href="https://baike.baidu.com/renwu" target="_blank">人物</a></div>
+<div><a href="https://baike.baidu.com/jingji" target="_blank">经济</a></div>
+<div><a href="https://baike.baidu.com/tiyu" target="_blank">体育</a></div>
+<div><a href="https://baike.baidu.com/lishi" target="_blank">历史</a></div>
+</dd>
+</dl>
+<dl class="special ">
+<dt><a>特色百科</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/calendar/" target="_blank">历史上的今天</a></div>
+<div><a href="https://baike.baidu.com/museum/" target="_blank">数字博物馆</a></div>
+<div><a href="https://baike.baidu.com/item/%E5%8F%B2%E8%AE%B0%C2%B72016?fr=navbar" target="_blank">史记·2016</a></div>
+<div><a href="https://baike.baidu.com/city/" target="_blank">城市百科</a></div>
+<div><a href="https://baike.baidu.com/operation/worldwar2" target="_blank">二战百科</a></div>
+<div><a href="https://baike.baidu.com/feiyi?fr=dhlfeiyi" target="_blank">非遗百科</a></div>
+</dd>
+</dl>
+<dl class="user">
+<dt><a>用户</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/kedou/" target="_blank">蝌蚪团</a></div>
+<div><a href="https://baike.baidu.com/event/ranmeng/" target="_blank">燃梦计划</a></div>
+<div><a href="https://baike.baidu.com/task/" target="_blank">百科任务</a></div>
+<div><a href="https://baike.baidu.com/mall/" target="_blank">百科商城</a></div>
+</dd>
+</dl>
+<dl class="cooperation">
+<dt><a>权威合作</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/operation/cooperation#joint" target="_blank">合作模式</a></div>
+<div><a href="https://baike.baidu.com/operation/cooperation#issue" target="_blank">常见问题</a></div>
+<div><a href="https://baike.baidu.com/operation/cooperation#connection" target="_blank">联系方式</a></div>
+</dd>
+</dl>
+<dl class="mobile">
+<dt><a>手机百科</a></dt>
+<dd>
+<div><a href="https://baike.baidu.com/m#wap" target="_blank">网页版</a></div>
+</dd>
+</dl>
+<div class="usercenter">
+<div><a href="https://baike.baidu.com/usercenter" target="_blank"><em class="cmn-icon cmn-icons cmn-icons_navbar-usercenter"></em>个人中心</a></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="body-wrapper">
+<div class="before-content">
+<div class="polysemant-list polysemant-list-normal">
+<div class="polysemantList-header">
+<div class="polysemantList-header-title">
+<b>SOA</b>是一个<a href="https://baike.baidu.com/view/10812277.htm" target="_blank">多义词</a>，请在下列<a href="https://baike.baidu.com/view/340519.htm" target="_blank">义项</a>上选择浏览（<a href="https://baike.baidu.com/item/SOA?force=1" target="_blank">共7个义项</a>）</div>
+<a class="polysemantList-addButton" target="_blank" href="javascript:;" data-href="/createsub/SOA">添加义项</a>
+</div>
+<ul class="polysemantList-wrapper cmn-clearfix">
+<li class="item">▪<span class="selected">面向服务的架构</span></li>
+<li class="item">▪<a title="通信科技术语" href="https://baike.baidu.com/subview/21305/5033545.htm#viewPageContent">通信科技术语</a></li>
+<li class="item">▪<a title="化学术语" href="https://baike.baidu.com/subview/21305/5033543.htm#viewPageContent">化学术语</a></li>
+<li class="item">▪<a title="信息安全管理术语" href="https://baike.baidu.com/subview/21305/5033546.htm#viewPageContent">信息安全管理术语</a></li>
+<li class="item">▪<a title="Service Oriented Architecture" href="https://baike.baidu.com/subview/21305/5497538.htm#viewPageContent">Service Oriented Architecture</a></li>
+<li class="item">▪<a title="国家海洋局（State Oceanic Administration）" href="https://baike.baidu.com/subview/21305/5681143.htm#viewPageContent">国家海洋局（State Oceanic Administration）</a></li>
+<li class="item">▪<a title="心理学实验术语" href="https://baike.baidu.com/subview/21305/13360658.htm#viewPageContent">心理学实验术语</a></li>
+</ul>
+</div>
+</div>
+<div class="content-wrapper">
+<div class="content">
+<div class="personal-content">
+</div>
+<div class="main-content">
+<div class="top-tool">
+<a href="https://baike.baidu.com/divideload/SOA" title="拆分词条" target="_blank" class="split-icon top-tool-icon" style="display:none;" nslog-type="50000104">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_lemma-split"></em>
+</a>
+<div class="top-collect top-tool-icon" nslog="area" nslog-type="50000102">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_star-solid"></em>
+<span class="collect-text">收藏</span>
+<div class="collect-tip">查看<a href="https://baike.baidu.com/uc/favolemma" target="_blank">我的收藏</a></div>
+</div>
+<a href="javascript:void(0);" id="j-top-vote" class="top-vote top-tool-icon" nslog-type="10060801">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_zan-solid"></em>
+<span class="vote-count">1437</span>
+<span class="vote-tip">有用+1</span>
+<span class="voted-tip">已投票</span>
+</a><div class="bksharebuttonbox top-share">
+<a class="top-share-icon top-tool-icon" nslog-type="9067">
+<em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_share"></em>
+<span class="share-count" id="j-topShareCount">132</span>
+</a>
+<div class="new-top-share" id="top-share">
+<ul class="top-share-list">
+<li class="top-share-item">
+<a class="share-link bds_qzone" href="javascript:void(0);" nslog-type="10060501">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qzone"></em>
+</a>
+</li>
+<li class="top-share-item">
+<a class="share-link bds_tsina" href="javascript:void(0);" nslog-type="10060701">
+<em class="cmn-icon cmn-icons cmn-icons_logo-sina-weibo"></em>
+</a>
+</li>
+<li class="top-share-item">
+<a class="bds_wechat" href="javascript:void(0);" nslog-type="10060401">
+<em class="cmn-icon cmn-icons cmn-icons_logo-wechat"></em>
+</a>
+</li>
+<li class="top-share-item">
+<a class="share-link bds_tqq" href="javascript:void(0);" nslog-type="10060601">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qq"></em>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div style="width:0;height:0;clear:both"></div><dl class="lemmaWgt-lemmaTitle lemmaWgt-lemmaTitle-">
+<dd class="lemmaWgt-lemmaTitle-title">
+<h1>SOA</h1>
+<h2>（面向服务的架构）</h2>
+<a href="javascript:;" class="edit-lemma cmn-btn-hover-blue cmn-btn-28 j-edit-link" style="display: inline-block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+<a class="lock-lemma" target="_blank" href="https://baike.baidu.com/view/10812319.htm" title="锁定"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_lock-lemma"></em>锁定</a>
+</dd>
+</dl><div class="promotion-declaration">
+</div><div class="lemma-summary" label-module="lemmaSummary">
+<div class="para" label-module="para">面向服务的架构（SOA）是一个组件模型，它将应用程序的不同功能单元（称为服务）通过这些服务之间定义良好的接口和契约联系起来。接口是采用中立的方式进行定义的，它应该独立于实现服务的硬件平台、操作系统和编程语言。这使得构建在各种各样的系统中的服务可以以一种统一和通用的方式进行交互。</div>
+</div>
+<div class="configModuleBanner">
+</div><div class="basic-info cmn-clearfix">
+<dl class="basicInfo-block basicInfo-left">
+<dt class="basicInfo-item name">中文名</dt>
+<dd class="basicInfo-item value">
+面向服务的体系结构
+</dd>
+<dt class="basicInfo-item name">外文名</dt>
+<dd class="basicInfo-item value">
+Service-Oriented Architecture
+</dd>
+</dl><dl class="basicInfo-block basicInfo-right">
+<dt class="basicInfo-item name"><a target="_blank" href="https://baike.baidu.com/item/%E5%A4%96%E8%AF%AD">外语</a><a target="_blank" href="https://baike.baidu.com/item/%E7%BC%A9%E5%86%99">缩写</a></dt>
+<dd class="basicInfo-item value">
+SOA
+</dd>
+<dt class="basicInfo-item name">本&nbsp;&nbsp;&nbsp;&nbsp;质</dt>
+<dd class="basicInfo-item value">
+组件模型
+</dd>
+</dl></div>
+<div class="lemmaWgt-lemmaCatalog">
+<div class="lemma-catalog">
+<h2 class="block-title">目录</h2>
+<div class="catalog-list column-4">
+<ol>
+<li class="level1">
+<span class="index">1</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#1">定义介绍</a></span>
+</li>
+<li class="level1">
+<span class="index">2</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#2">体系结构</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#2_1">松耦合的系统</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#2_2">体系结构作用</a></span>
+</li>
+<li class="level1">
+<span class="index">3</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#3">特性状况</a></span>
+</li>
+</ol><ol><li class="level1">
+<span class="index">4</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#4">新兴变革</a></span>
+</li>
+<li class="level1">
+<span class="index">5</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5">为何选择SOA</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_1">简介介绍</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_2">服务架构</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_3">基础结构</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_4">服务品质</a></span>
+</li>
+</ol><ol><li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_5">安全质量</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_6">可靠信度</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_7">策略计划</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_8">控制能力</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_9">管理能力</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_10">Web服务</a></span>
+</li>
+</ol><ol><li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_11">SOA优势</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_12">发展效益</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_13">主要优势</a></span>
+</li>
+<li class="level2">
+<span class="index">▪</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_14">推动因素</a></span>
+</li>
+<li class="level1">
+<span class="index">6</span>
+<span class="text"><a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#6">优点</a></span>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="anchor-list">
+<a name="1" class="lemma-anchor para-title"></a>
+<a name="sub5033544_1" class="lemma-anchor "></a>
+<a name="定义介绍" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">SOA</span>定义介绍</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="1" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para">面向服务架构，它可以根据需求通过网络对松散耦合的粗粒度应用组件进行分布式部署、组合和使用。服务层是SOA的基础，可以直接被应用调用，从而有效控制系统中与软件代理交互的人为依赖性。</div>
+<div class="para" label-module="para">SOA是一种粗粒度、松耦合服务架构，服务之间通过简单、精确定义接口进行通讯，不涉及底层编程接口和通讯模型。SOA可以看作是B/S模型、<a target="_blank" href="https://baike.baidu.com/item/XML">XML</a>（<a target="_blank" href="https://baike.baidu.com/item/%E6%A0%87%E5%87%86%E9%80%9A%E7%94%A8%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80">标准通用标记语言</a>的子集）/Web Service技术之后的自然延伸。</div>
+<div class="para" label-module="para">SOA将能够帮助软件工程师们站在一个新的高度理解企业级架构中的各种组件的开发、部署形式，它将帮助企业系统架构者以更迅速、更可靠、更具重用性架构整个业务系统。较之以往，以SOA架构的系统能够更加从容地面对业务的急剧变化。</div><div class="anchor-list">
+<a name="2" class="lemma-anchor para-title"></a>
+<a name="sub5033544_2" class="lemma-anchor "></a>
+<a name="体系结构" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">SOA</span>体系结构</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="2" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="anchor-list">
+<a name="2_1" class="lemma-anchor para-title"></a>
+<a name="sub5033544_2_1" class="lemma-anchor "></a>
+<a name="松耦合的系统" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>松耦合的系统</h3>
+</div>
+<div class="para" label-module="para">这种具有中立的接口定义（没有强制绑定到特定的实现上）的特征称为服务之间的松耦合。松耦合系统的好处有两点，一点是它的灵活性，另一点是，当组成整个应用程序的每个服务的内部结构和实现逐渐地发生改变时，它能够继续存在。与之相反，紧耦合意味着应用程序的不同组件之间的接口与其功能和结构是紧密相连的，因而当需要对部分或整个应用程序进行某种形式的更改时，它们就显得非常脆弱。</div>
+<div class="para" label-module="para">对松耦合的系统的需要来源于业务应用程序需要根据业务的需要变得更加灵活，以适应不断变化的环境，比如经常改变的政策、业务级别、业务重点、合作伙伴关系、行业地位以及其他与业务有关的因素，这些因素甚至会影响业务的性质。我们称能够灵活地适应环境变化的业务为按需（On demand）业务，在按需业务中，一旦需要，就可以对完成或执行任务的方式进行必要的更改。</div>
+<div class="para" label-module="para">虽然面向服务的体系结构不是一个新鲜事物，但它却是更传统的<a target="_blank" href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">面向对象</a>的模型的替代模型，面向对象的模型是紧耦合的，已经存在二十多年了。虽然基于 SOA 的系统并不排除使用面向对象的设计来构建单个服务，但是其整体设计却是面向服务的。由于它考虑到了系统内的对象，所以虽然 SOA 是基于对象的，但是作为一个整体，它却不是面向对象的。不同之处在于接口本身。SOA 系统原型的一个典型例子是通用<a target="_blank" href="https://baike.baidu.com/item/%E5%AF%B9%E8%B1%A1%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%90%86">对象请求代理</a>体系结构（Common Object Request Broker Architecture，CORBA），它已经出现很长时间了，其定义的概念与 SOA 相似。</div>
+<div class="para" label-module="para">然而， SOA 已经有所不同了，因为它依赖于一些更新的进展，这些进展是以<a target="_blank" href="https://baike.baidu.com/item/%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80">可扩展标记语言</a>（eXtensible Markup Language，XML）为基础的。通过使用基于<a target="_blank" href="https://baike.baidu.com/item/XML">XML</a>（<a target="_blank" href="https://baike.baidu.com/item/%E6%A0%87%E5%87%86%E9%80%9A%E7%94%A8%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80">标准通用标记语言</a>的子集） 的语言（称为 Web 服务描述语言（<a target="_blank" href="https://baike.baidu.com/item/Web%20Service">Web Service</a>s Definition Language，WSDL））来描述接口，服务已经转到更动态且更灵活的接口系统中，非以前 CORBA 中的接口描述语言（Interface Definition Language，IDL）可比了。</div>
+<div class="para" label-module="para">Web 服务并不是实现 SOA 的惟一方式。前面刚讲的 CORBA 是另一种方式，这样就有了面向消息的<a target="_blank" href="https://baike.baidu.com/item/%E4%B8%AD%E9%97%B4%E4%BB%B6">中间件</a>（Message-Oriented Middleware）系统，比如 IBM 的 MQseries。但是为了建立体系结构模型，您所需要的并不只是服务描述。您需要定义整个应用程序如何在服务之间执行其工作流。您尤其需要找到业务的操作和业务中所使用的软件的操作之间的转换点。因此，SOA 应该能够将业务的商业流程与它们的技术流程联系起来，并且映射这两者之间的关系。例如，给供应商付款的操作是商业流程，而更新您的零件数据库，以包括进新供应的货物却是技术流程。因而，工作流还可以在 SOA 的设计中扮演重要的角色。</div>
+<div class="para" label-module="para">此外，动态业务的工作流不仅可以包括部门之间的操作，甚至还可以包括与不为您控制的外部合作伙伴进行的操作。因此，为了提高效率，您需要定义应该如何得知服务之间的关系的策略，这种策略常常采用服务级协定和操作策略的形式。</div>
+<div class="para" label-module="para">最后，所有这些都必须处于一个信任和可靠的环境之中，以同预期的一样根据约定的条款来执行流程。因此，安全、信任和可靠的消息传递应该在任何 SOA 中都起着重要的作用。</div><div class="anchor-list">
+<a name="2_2" class="lemma-anchor para-title"></a>
+<a name="sub5033544_2_2" class="lemma-anchor "></a>
+<a name="体系结构作用" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>体系结构作用</h3>
+</div>
+<div class="para" label-module="para">我可以用面向服务的体系结构做什么？</div>
+<div class="para" label-module="para">对 SOA 的需要来源于需要使业务 IT 系统变得更加灵活，以适应业务中的改变。通过允许强定义的关系和依然灵活的特定实现，IT 系统既可以利用现有系统的功能，又可以准备在以后做一些改变来满足它们之间交互的需要。</div>
+<div class="para" label-module="para">下面举一个具体的例子。一个服装零售组织拥有 500 家国际连锁店，它们常常需要更改设计来赶上时尚的潮流。这可能意味着不仅需要更改样式和颜色，甚至还可能需要更换布料、制造商和可交付的产品。如果零售商和制造商之间的系统不兼容，那么从一个供应商到另一个供应商的更换可能就是一个非常复杂的软件流程。通过利用 WSDL 接口在操作方面的灵活性，每个公司都可以将它们的现有系统保持现状，而仅仅匹配 WSDL 接口并制订新的服务级协定，这样就不必完全重构它们的软件系统了。这是业务的水平改变，也就是说，它们改变的是合作伙伴，而所有的业务操作基本上都保持不变。这里，业务接口可以作少许改变，而内部操作却不需要改变，之所以这样做，仅仅是为了能够与外部合作伙伴一起工作。</div>
+<div class="para" label-module="para">另一种形式是内部改变，在这种改变中，零售组织决定它还将把连锁零售商店内的一些地方出租给专卖流行衣服的小商店，这可以看作是采用店中店（store-in-store）的业务模型。这里，虽然公司的大多数业务操作都保持不变，但是它们需要新的内部软件来处理这样的出租安排。尽管在内部软件系统可以承受全面的检修，但是它们需要在这样做的同时不会对与现有的供应商系统的交互产生大的影响。在这种情况下，SOA 模型保持原封不动，而内部实现却发生了变化。虽然可以将新的方面添加到 SOA 模型中来加入新的出租安排的职责，但是正常的零售管理系统继续如往常一样。</div>
+<div class="para" label-module="para">为了延续内部改变的观念，IT 经理可能会发现，软件的新配置还可以以另外的一种方式加以使用，比如出租粘贴海报的地方以供广告之用。这里，新的业务提议是通过在新的设计中重用灵活的 SOA 模型得出的。这是来自 SOA 模型的新成果，并且还是一个新的机会，而这样的新机会在以前可能是不会有的。</div>
+<div class="para" label-module="para">垂直改变也是可能的，在这种改变中，零售商从销售他们自己的服装完全转变到专门通过店中店模型出租地方。如果垂直改变完全从最底层开始的话，就会带来 SOA 模型结构的显著改变，与之一起改变的还可能有新的系统、软件、流程以及关系。在这种情况下，SOA 模型的好处是它从业务操作和流程的角度考虑问题而不是从应用程序和程序的角度考虑问题，这使得业务管理可以根据业务的操作清楚地确定什么需要添加、修改或删除。然后可以将软件系统构造为适合业务处理的方式，而不是在许多现有的软件平台上常常看到的其他方式。</div>
+<div class="para" label-module="para">正如您可以看到的，在这里，改变和 SOA 系统适应改变的能力是最重要的部分。对于开发人员来说，这样的改变无论是在他们工作的范围之内还是在他们工作的范围之外都有可能发生，这取决于是否有改变需要知道接口是如何定义的以及它们相互之间如何进行交互。与开发人员不同的是，架构师的作用就是引起对 SOA 模型大的改变。这种分工，就是让开发人员集中精力于创建作为服务定义的功能单元，而让架构师和建模人员集中精力于如何将这些单元适当地组织在一起，它已经有十多年的历史了，通常用<a target="_blank" href="https://baike.baidu.com/item/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80">统一建模语言</a>（Unified Modeling Language，UML），并且描述成<a target="_blank" href="https://baike.baidu.com/item/%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8">模型驱动</a>的体系结构（Model-Driven Architecture，MDA）。</div>
+<div class="para" label-module="para">对于面向同步和异步应用的，基于请求/响应模式的<a target="_blank" href="https://baike.baidu.com/item/%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97">分布式计算</a>来说，SOA是一场革命。一个应用程序的业务逻辑（business logic）或某些单独的功能被模块化并作为服务呈现给消费者或客户端。这些服务的关键是他们的松耦合特性。例如，服务的接口和实现相独立。应用开发人员或者系统集成者可以通过组合一个或多个服务来构建应用，而无须理解服务的底层实现。举例来说，一个服务可以用.NET或J2EE来实现，而使用该服务的应用程序可以在不同的平台之上，使用的语言也可以不同。.</div><div class="anchor-list">
+<a name="3" class="lemma-anchor para-title"></a>
+<a name="sub5033544_3" class="lemma-anchor "></a>
+<a name="特性状况" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">SOA</span>特性状况</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="3" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para"><b>基本特征</b></div>
+<div class="para" label-module="para">SOA的实施具有几个鲜明的基本特征。实施SOA的关键目标是实现企业IT资产的最大化作用。要实现这一目标，就要在实施SOA的过程中牢记以下特征：</div>
+<div class="para" label-module="para">可从企业外部访问</div>
+<div class="para" label-module="para">随时可用</div>
+<div class="para" label-module="para">粗粒度的服务接口分级</div>
+<div class="para" label-module="para">松散耦合</div>
+<div class="para" label-module="para">可重用的服务</div>
+<div class="para" label-module="para">服务接口设计管理</div>
+<div class="para" label-module="para">标准化的服务接口</div>
+<div class="para" label-module="para">支持各种消息模式</div>
+<div class="para" label-module="para">精确定义的服务契约</div>
+<div class="para" label-module="para">SOA服务具有平台独立的自我描述XML文档。<a target="_blank" href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1%E6%8F%8F%E8%BF%B0%E8%AF%AD%E8%A8%80">Web服务描述语言</a>（WSDL， Web S<div class="lemma-picture text-pic layout-right" style="width:220px; float: right;">
+<a class="image-link" nslog-type="9317" href="https://baike.baidu.com/pic/SOA/2140650/0/f29faa8f63f61bc8f11f366e?fr=lemma&amp;ct=single" target="_blank" title="SOA蓝图" style="width:220px;height:156px;">
+<img class="lazy-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF9fX1AAAA0VQI3QAAAAxJREFUeNpiYAAIMAAAAgABT21Z4QAAAABJRU5ErkJggg==" data-src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=f5eede29d9f9d72a1364171fe42b282a/00e93901213fb80e944edbc136d12f2eb938940d.jpg" alt="SOA蓝图" style="width:220px;height:156px;">
+</a>
+<span class="description">
+SOA蓝图
+</span>
+</div>ervices Description Language）是用于描述服务的标准语言。</div>
+<div class="para" label-module="para">SOA 服务用消息进行通信，该消息通常使用XML Schema来定义（也叫做XSD， XML Schema Definition）。消费者和提供者或消费者和服务之间的通信多见于不知道提供者的环境中。服务间的通讯也可以看作企业内部处理的关键商业文档。</div>
+<div class="para" label-module="para">在一个企业内部，SOA服务通过一个扮演目录列表（directory listing）角色的登记处（Registry）来进行维护。应用程序在登记处（Registry）寻找并调用某项服务。统一描述，定义和集成（UDDI， Universal Description， Definition， and Integration）是服务登记的标准。</div>
+<div class="para" label-module="para">每项SOA服务都有一个与之相关的服务品质（QoS， quality of service）。QoS的一些关键元素有安全需求（例如认证和授权），可靠通信（译注：可靠消息是指，确保消息“仅且仅仅”发送一次，从而过滤重复信息。），以及谁能调用服务的策略。</div><div class="anchor-list">
+<a name="4" class="lemma-anchor para-title"></a>
+<a name="sub5033544_4" class="lemma-anchor "></a>
+<a name="新兴变革" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">SOA</span>新兴变革</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="4" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para"><b><sup>[2]</sup><a class="sup-anchor" name="ref_[2]_5033544">&nbsp;</a>
+随着全球信息化的浪潮，信息化产业不断发展、延伸，已经深入了众多的企业及个人，SOA系统架构的出现，将给信息化带来一场新的革命。</b><sup>[3]</sup><a class="sup-anchor" name="ref_[3]_5033544">&nbsp;</a>
+</div>
+<div class="para" label-module="para">纵观信息化建设与应用的历程，尽管出现过<a target="_blank" href="https://baike.baidu.com/item/XML">XML</a>（<a target="_blank" href="https://baike.baidu.com/item/%E6%A0%87%E5%87%86%E9%80%9A%E7%94%A8%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80">标准通用标记语言</a>的子集）、Unicode、UML等众多信息标准，但是许多异构系统之间的数据源仍然使用各自独立的数据格式、元数据以及元模型，这是信息产品提供商一直以来形成的习惯。各个相对独立的源数据集成一起，往往通过构建一定的数据获取与计算程序来实现，这样的做法需要花费大量工作。信息孤岛大量存在的事实，使信息化建设的ROI（投资回报率）大大降低，ETL成为集中这些异构数据的有效工具。 ETL常用于从源系统中提取数据，将数据转换为与目标系统相兼容的格式，然后将其装载到目标系统中。数据经过获取、转换、装载后，要产生应用价值，还需另外的数据展现工具予以实现，如此复杂的数据应用过程，必定产生高昂的应用成本。</div>
+<div class="para" label-module="para">结构化的数据管理尚可通过以上方法，予以实现其集成应用。在非结构化的内容方面，这些具有挑战性的问题令人生畏。内容管理的应用方案基于不同的信息化应用系统，而且大部分是纵向的以组织部门为界限的。在内容管理市场中，经常使用来自不同厂商的产品来提供这些解决方案。即使是同一个厂商的产品，相互之间的功能也是经常重叠，并且无法集成。</div>
+<div class="para" label-module="para">随着信息化建设的深入，不同应用系统之间的功能界限已趋于模糊。同时<a target="_blank" href="https://baike.baidu.com/item/%E4%BC%81%E4%B8%9A%E8%B5%84%E6%BA%90%E8%AE%A1%E5%88%92%E7%B3%BB%E7%BB%9F">企业资源计划系统</a>和协同商务系统，又需要商业智能的分析展现数据提供用户操作依据。</div>
+<div class="para" label-module="para">在激烈竞争且多变的市场环境下，企业的管理模式很难固化，应用传统的信息化软件，当企业要做出一些改动时需要面对巨大的挑战。</div>
+<div class="para" label-module="para"><b>SOA系统架构的出现，信息化变革</b></div>
+<div class="para" label-module="para">微软大中华区服务部总经理辛儿伦介绍说，从上世纪60年代应用于主机的大型<a target="_blank" href="https://baike.baidu.com/item/%E4%B8%BB%E6%9C%BA%E7%B3%BB%E7%BB%9F">主机系统</a>，到80年代应用于PC的CS 架构，一直到90年代互联网的出现，系统越来越朝小型化和分布式发展。2000年WebService出现后，SOA被誉为下一代Web服务的基础框架，已经成为计算机信息领域的一个新的发展方向。</div>
+<div class="para" label-module="para">SOA的出现给传统的信息化产业带来新的概念，不再是各自独立的架构形式，能够轻松的互相联系组合共享信息。</div>
+<div class="para" label-module="para">可复用以往的信息化软件。基于SOA的<a target="_blank" href="https://baike.baidu.com/item/%E5%8D%8F%E5%90%8C%E8%BD%AF%E4%BB%B6">协同软件</a>提供了应用集成功能，能够将ERP、CRM、HR等异构系统的数据集成。</div>
+<div class="para" label-module="para">松散耦合方式，只要充分了解业务的进程，就可以不用编写一行代码，通过流程图实现一套我们自己的信息系统。就像已经给你准备好了砖瓦和水泥，只需要想好盖什么样的房子就可以轻松的盖起。加快开发速度，并且减少了开发和维护的费用。软件将所有的管理提炼成表单和流程，以记录管理的内容，指定过程的流转方向。</div>
+<div class="para" label-module="para">更简便的信息和数据集成。信息集成功能可以将散落在广域网和局域网上的文档、目录、网页轻松集成，加强了信息的协同相关性。同时，复杂、成本高昂的数据集成，也变成了可以简单且低成本实现的参数设定。创建了完全集成的信息化应用新领域。</div>
+<div class="para" label-module="para">在具体的功能实现上，SOA<a target="_blank" href="https://baike.baidu.com/item/%E5%8D%8F%E5%90%8C%E8%BD%AF%E4%BB%B6">协同软件</a>所实现的功能包括了知识管理、流程管理、人事管理、客户管理、项目管理、应用集成等，从部门角度看涉及了行政、后勤、营销、物流、生产等。从应用思想上看，SOA协同软件中的信息管理功能，全面兼顾了贯穿整个企业组织的信息化软硬件投入。尽管各种IT技术可以用于不同的用途，但是信息管理并没有任意地将信息分为结构化或者非结构化的部分，因此ERP等结构化管理系统并不是信息化建设的全部；同时，信息管理也没有将信息化解决方案划分为部门的视图，因此仅仅以部分为界限去构建软件应用功能的思想未必是不可撼动的。基于SOA的协同软件与 ERP、CRM等传统应用软件相比，关键的不同在于它可以在合适的时间、合适的地点并且有正当理由向需要它提供服务的任何用户提供服务。</div><div class="anchor-list">
+<a name="5" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5" class="lemma-anchor "></a>
+<a name="为何选择SOA" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">SOA</span>为何选择SOA</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="5" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="anchor-list">
+<a name="5_1" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_1" class="lemma-anchor "></a>
+<a name="简介介绍" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>简介介绍</h3>
+</div>
+<div class="para" label-module="para">不同种类的操作系统，应用软件，系统软件和应用基础结构（application infrastructure）相互交织，这便是IT企业的现状。一些现存的应用程序被用来处理当前的业务流程（business processes），因此从头建立一个新的基础环境是不可能的。企业应该能对业务的变化做出快速的反应，利用对现有的应用程序和应用基础结构（application infrastructure）的投资来解决新的业务需求，为客户，商业伙伴以及供应商提供新的互动渠道，并呈现一个可以支持有机业务（organic business）的构架。SOA凭借其松耦合的特性，使得企业可以按照模块化的方式来添加新服务或更新现有服务，以解决新的业务需要，提供选择从而可以通过不同的渠道提供服务，并可以把企业现有的或已有的应用作为服务， 从而保护了现有的IT基础建设投资。</div>
+<div class="para" label-module="para">如图1的例子所示，一个使用SOA的企业，可以使用一组现有的应用来创建一个供应链复合应用（supply chain composite application），这些现有的应用通过标准接口来提供功能。</div>
+<div class="para" label-module="para"><div class="lemma-picture text-pic layout-left" style="width:250px; float: left;">
+<a class="image-link" nslog-type="9317" href="https://baike.baidu.com/pic/SOA/2140650/0/a6c7d7172820371ec93d6d12?fr=lemma&amp;ct=single" target="_blank" title="服务架构" style="width:250px;height:94px;">
+<img class="lazy-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF9fX1AAAA0VQI3QAAAAxJREFUeNpiYAAIMAAAAgABT21Z4QAAAABJRU5ErkJggg==" data-src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D250/sign=1c28fcb82edda3cc0fe4bf2531e93905/9358d109b3de9c8286469ca86c81800a19d843f1.jpg" alt="服务架构" style="width:250px;height:94px;">
+</a>
+<span class="description">
+服务架构
+</span>
+</div></div><div class="anchor-list">
+<a name="5_2" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_2" class="lemma-anchor "></a>
+<a name="服务架构" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>服务架构</h3>
+</div>
+<div class="para" label-module="para">为了实现SOA，企业需要一个服务架构，图2显示了一个例子：</div>
+<div class="para" label-module="para"><div class="lemma-picture text-pic layout-left" style="width:220px; float: left;">
+<a class="image-link" nslog-type="9317" href="https://baike.baidu.com/pic/SOA/2140650/0/61183b2d39067823349bf7e1?fr=lemma&amp;ct=single" target="_blank" title="图2" style="width:220px;height:124px;">
+<img class="lazy-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF9fX1AAAA0VQI3QAAAAxJREFUeNpiYAAIMAAAAgABT21Z4QAAAABJRU5ErkJggg==" data-src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=1535d60f367adab439d01c41bbd4b36b/21a4462309f79052750e22190cf3d7ca7bcbd580.jpg" alt="图2" style="width:220px;height:124px;">
+</a>
+<span class="description">
+图2
+</span>
+</div>在图2中， 服务消费者（service consumer）可以通过发送消息来调用服务。这些消息由一个服务总线（service bus）转换后发送给适当的服务实现。这种服务架构可以提供一个业务规则引擎（business rules engine），该引擎容许业务规则被合并在一个服务里或多个服务里。这种架构也提供了一个服务管理基础（service management infrastructure），用来管理服务，类似审核，列表（billing），日志等功能。此外，该架构给企业提供了灵活的业务流程，更好地处理控制请求（regulatory requirement），例如Sarbanes Oxley（SOX），并且可以在不影响其他服务的情况下更改某项服务。</div><div class="anchor-list">
+<a name="5_3" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_3" class="lemma-anchor "></a>
+<a name="基础结构" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>基础结构</h3>
+</div>
+<div class="para" label-module="para">要运行，管理SOA应用程序，企业需要SOA基础，这是SOA平台的一个部分。SOA基础必须支持所有的相关标准，和需要的运行时容器。图3所示的是一个典型的SOA基础结构。<div class="lemma-picture text-pic layout-right" style="width:220px; float: right;">
+<a class="image-link" nslog-type="9317" href="https://baike.baidu.com/pic/SOA/2140650/0/d439b6003af33a8775b6f49dc65c10385243b55a?fr=lemma&amp;ct=single" target="_blank" title="" style="width:220px;height:188px;">
+<img class="lazy-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF9fX1AAAA0VQI3QAAAAxJREFUeNpiYAAIMAAAAgABT21Z4QAAAABJRU5ErkJggg==" data-src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=ffc1a367f703918fd3d13ac8613f264b/d439b6003af33a8775b6f49dc65c10385243b55a.jpg" alt="" style="width:220px;height:188px;">
+</a>
+</div></div>
+<div class="para" label-module="para">SOAP， WSDL， UDDI</div>
+<div class="para" label-module="para">WSDL，UDDI和SOAP是SOA基础的基础部件。WSDL用来描述服务；UDDI用来注册和查找服务；而SOAP，作为传输层，用来在消费者和服务提供者之间传送消息。SOAP是Web服务的默认机制，其他的技术为可以服务实现其他类型的绑定。一个消费者可以在UDDI注册表（registry）查找服务，取得服务的WSDL描述，然后通过SOAP来调用服务。</div>
+<div class="para" label-module="para">WS-I Basic Profile</div>
+<div class="para" label-module="para">WS-I Basic Profile，由Web服务互用性组织（Web Services Interoperability Organization）提供，是SOA服务测试与互用性所需要的核心构件。服务提供者可以使用Basic Profile测试程序来测试服务在不同平台和技术上的互用性。</div>
+<div class="para" label-module="para">J2EE 和 .Net</div>
+<div class="para" label-module="para">尽管J2EE和.NET平台是开发SOA应用程序常用的平台，但SOA不仅限于此。像J2EE这类平台，不仅为开发者自然而然地参与到SOA中来提供了一个平台，还通过他们内在的特性，将可扩展性，可靠性，可用性以及性能引入了SOA世界。新的规范，例如 JAXB（Java API for XML Binding），用于将XML文档定位到Java类；JAXR（Java API for XML Registry）用来规范对UDDI注册表（registry）的操作；<a target="_blank" href="https://baike.baidu.com/item/XML-RPC">XML-RPC</a>（Java API for XML-based Remote Procedure Call）在J2EE1.4中用来调用远程服务，这使得开发和部署可移植于标准J2EE容器的Web服务变得容易，与此同时，实现了跨平台（如。NET）的服务互用。</div><div class="anchor-list">
+<a name="5_4" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_4" class="lemma-anchor "></a>
+<a name="服务品质" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>服务品质</h3>
+</div>
+<div class="para" label-module="para">在企业中，关键任务系统（mission-critical system，译注：关键任务系统是指如果一个<a target="_blank" href="https://baike.baidu.com/item/%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7">系统的可靠性</a>对于一个组织是至关重要的，那么该系统就是该企业的关键任务系统。比如，电话系统对于一个电话促销企业来说就是关键任务系统，而文字处理系统就不那么关键了。）用来解决高级需求，例如安全性，可靠性，事物。当一个企业开始采用服务架构作为工具来进行开发和部署应用的时候，基本的Web服务规范，像WSDL，SOAP，以及UDDI就不能满足这些高级需求。正如前面所提到的，这些需求也称作服务品质（QoS，quality of services）。与QoS相关的众多规范已经由一些标准化组织（standards bodies）提出，像W3C（World Wide Web Consortium）和OASIS（the Organization for the Advancement of Structured Information Standards）。下面的部分将会讨论一些QoS服务和相关标准。</div><div class="anchor-list">
+<a name="5_5" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_5" class="lemma-anchor "></a>
+<a name="安全质量" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>安全质量</h3>
+</div>
+<div class="para" label-module="para"><a target="_blank" href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1%E5%AE%89%E5%85%A8">Web服务安全</a>规范用来保证消息的安全性。该规范主要包括认证交换， 消息完整性和消息保密。该规范吸引人的地方在于它借助现有的安全标准，例如，SAML（as Security Assertion Markup Language）来实现web服务消息的安全。OASIS正致力于Web服务安全规范的制定。</div><div class="anchor-list">
+<a name="5_6" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_6" class="lemma-anchor "></a>
+<a name="可靠信度" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>可靠信度</h3>
+</div>
+<div class="para" label-module="para">在典型的SOA 环境中，服务消费者和服务提供者之间会有几种不同的文档在进行交换。具有诸如“仅且仅仅传送一次”（ once-and-only-once delivery），“最多传送一次”（ at-most-once delivery），“重复消息过滤”（duplicate message elimination），“保证消息传送”（guaranteed message delivery）等特性消息的发送和确认，在关键任务系统（mission-critical systems）中变得十分重要。WS-Reliability 和 WS-ReliableMessaging是两个用来解决此类问题的标准。这些标准都由OASIS负责。</div><div class="anchor-list">
+<a name="5_7" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_7" class="lemma-anchor "></a>
+<a name="策略计划" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>策略计划</h3>
+</div>
+<div class="para" label-module="para">服务提供者有时候会要求服务消费者与某种策略通信。比如，服务提供商可能会要求消费者提供Kerberos安全标示，才能取得某项服务。这些要求被定义为策略断言（policy assertions）。一项策略可能会包含多个断言。WS-Policy用来标准化服务消费者和服务提供者之间的策略通信。</div><div class="anchor-list">
+<a name="5_8" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_8" class="lemma-anchor "></a>
+<a name="控制能力" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>控制能力</h3>
+</div>
+<div class="para" label-module="para">当企业着手于服务架构时，服务可以用来整合数据仓库（silos of data），应用程序，以及组件。整合应用意味着例如异步通信，并行处理，数据转换，以及校正等进程请求必须被标准化。在SOA中，进程是使用一组离散的服务创建的。BPEL4WS 或者 WSBPEL（Web Service Business Process Execution Language）是用来控制这些服务的语言。WSBPEL也由OASIS负责。</div><div class="anchor-list">
+<a name="5_9" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_9" class="lemma-anchor "></a>
+<a name="管理能力" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>管理能力</h3>
+</div>
+<div class="para" label-module="para">随着企业服务的增长，所使用的服务和业务进程的数量也随之增加，一个用来让系统管理员管理所有运行在多相环境下的服务的管理系统就显得尤为重要。WSDM（Web Services for Distributed Management）规定了任何根据WSDM实现的服务都可以由一个WSDM适应（WSDM-compliant）的管理方案来管理。</div>
+<div class="para" label-module="para">其它的qos特性，比如合作方之间的沟通和通讯，多个服务之间的事务处理，都在WS-Coordination 和 WS-Transaction 标准中描述， 这些都是OASIS 的工作。</div><div class="anchor-list">
+<a name="5_10" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_10" class="lemma-anchor "></a>
+<a name="Web服务" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>Web服务</h3>
+</div>
+<div class="para" label-module="para">在理解SOA和Web服务的关系上，经常发生混淆。根据2003年4月的Gartner报道，Yefim V. Natis就这个问题是这样解释的：“Web服务是技术规范，而SOA是设计原则。特别是Web服务中的WSDL，是一个SOA配套的接口定义标准：这是Web服务和SOA的根本联系。”从本质上来说，SOA是一种架构模式，而Web服务是利用一组标准实现的服务。Web服务是实现SOA的方式之一。用Web服务来实现SOA的好处是你可以实现一个中立平台，来获得服务，而且随着越来越多的软件商支持越来越多的Web服务规范，你会取得更好的通用性。</div><div class="anchor-list">
+<a name="5_11" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_11" class="lemma-anchor "></a>
+<a name="SOA优势" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>SOA优势</h3>
+</div>
+<div class="para" label-module="para">SOA的概念并非什么新东西，SOA不同于现有的<a target="_blank" href="https://baike.baidu.com/item/%E5%88%86%E5%B8%83%E5%BC%8F%E6%8A%80%E6%9C%AF">分布式技术</a>之处在于大多数软件商接受它并有可以实现SOA的平台或应用程序。SOA伴随着无处不在的标准，为企业的现有资产或投资带来了更好的重用性。SOA能够在最新的和现有的应用之上创建应用；SOA能够使客户或服务消费者免予服务实现的改变所带来的影响；SOA能够升级单个服务或服务消费者而无需重写整个应用，也无需保留已经不再适用于新需求的现有系统。总而言之，SOA以借助现有的应用来组合产生新服务的敏捷方式，提供给企业更好的灵活性来构建应用程序和业务流程。</div><div class="anchor-list">
+<a name="5_12" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_12" class="lemma-anchor "></a>
+<a name="发展效益" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>发展效益</h3>
+</div>
+<div class="para" label-module="para">A. 平衡最初的旧系统投资(Leverage initial investment)：</div>
+<div class="para" label-module="para">组织过去所投资的系统、软硬体，如果能再利用等于赋予其新的价值，这也替组织降低成本并增加竞争力。</div>
+<div class="para" label-module="para">B. 基础建设的便利性(Infrastructure Commoditization)：</div>
+<div class="para" label-module="para">让所有的应用程式能相互沟通(互通性)。</div>
+<div class="para" label-module="para">C. 快速的接近市场(Faster time-to-market)：</div>
+<div class="para" label-module="para">服务的重复使用(再利用)，来缩短过去的组织流程，更快速的提供服务来接近市场。</div>
+<div class="para" label-module="para">D. 减少支出(Reduce Cost)：</div>
+<div class="para" label-module="para">服务的重复使用，可降低开发成本。因为开发新系统的成本，大部份比更新旧有系统来的花费大。</div>
+<div class="para" label-module="para">E. 减低风险(Risk mitigation)：</div>
+<div class="para" label-module="para">开发新系统的风险远大于更新旧系统。</div>
+<div class="para" label-module="para">F. 持续改善商业流程的循环(Continuous improvement cycle for business process)</div>
+<div class="para" label-module="para">G. 中心流程处理(Process-centric processing)</div><div class="anchor-list">
+<a name="5_13" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_13" class="lemma-anchor "></a>
+<a name="主要优势" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>主要优势</h3>
+</div>
+<div class="para" label-module="para">一，SOA可通过互联网服务器发布，从而突破企业内网的限制，实现与供应链上下游伙伴业务的紧密结合。通过SOA架构，企业可以与其业务伙伴直接建立新渠道，建立新伙伴的成本得以降低。</div>
+<div class="para" label-module="para">二，SOA与平台无关，减少了业务应用实现的限制。要将企业的业务伙伴整合到企业的“大”业务系统中，对其业务伙伴具体采用什么技术没有限制。</div>
+<div class="para" label-module="para">三， SOA具有低耦合性特点，业务伙伴对整个业务系统的影响较低。在企业与各业务伙伴关系不断发生变化的情况下，节省的费用会越来越多。</div>
+<div class="para" label-module="para">四， SOA具有可按模块分阶段进行实施的优势。可以成功一步再做下一步，将实施对企业的冲击减少到最小。</div>
+<div class="para" label-module="para">五， SOA的实施可能并不具有成本显著性。这要分三种情况加以讨论：</div>
+<div class="para" label-module="para">(1) 当企业<a target="_blank" href="https://baike.baidu.com/item/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B">从零开始</a>构建业务系统时，采用SOA架构与不采用SOA架构成本可看做是相同的。</div>
+<div class="para" label-module="para">(2) 当企业业务发展或发生企业重组等变化而原有系统不能满足需要，而需要重构业务系统时，采用SOA架构与不采用SOA架构成本可看做是相同的。</div>
+<div class="para" label-module="para">(3) 当企业业务发生缓慢变化并可预见到将来需要重构业务系统时，由于可以按模块分阶段逐步实施SOA以适应变化的需要，这样企业不需一下投入一大笔经费进行系统改造，而是根据企业业务发展情况和资金情况逐步投入，缓解了信息投入的压力。</div><div class="anchor-list">
+<a name="5_14" class="lemma-anchor para-title"></a>
+<a name="sub5033544_5_14" class="lemma-anchor "></a>
+<a name="推动因素" class="lemma-anchor "></a>
+</div><div class="para-title level-3" label-module="para-title">
+<h3 class="title-text"><span class="title-prefix">SOA</span>推动因素</h3>
+</div>
+<div class="para" label-module="para">IDC负责企业平台研究的副总裁Michelle Bailey说，最近的IDC的研究表明，到2011年，18%以上的全部新服务器都将采用虚拟化技术，对于服务器硬件供应商来说，这是一个年收入达220亿美元的市场机会。</div>
+<div class="para" label-module="para">对于企业来说，日益增长的挑战是如何管理和保证<a target="_blank" href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83">虚拟环境</a>的安全，因为随着机构采用虚拟化技术，传统的管理物理服务器蔓延的挑战正在转向管理<a target="_blank" href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E6%9C%BA">虚拟机</a>蔓延的挑战。机构将需要可靠的、稳定的、安全的和可管理的虚拟化解决方案。</div>
+<div class="para" label-module="para">绿色IT一直被列为头号的战略技术和2008年大多数机构的趋势。据IDC称，虚拟化的绿色的好处不仅是减少服务器占地面积，而是还包括减少碳排放量和耗电量。这些好处正在成为重要的好处。</div>
+<div class="para" label-module="para">据IDC对亚太地区绿色IT的调查，75%的受访者对于IT部门没有绿色IT政策。然而，80%以上的受访者认为他们的IT供应商的“绿色”在未来几年将更加重要。</div>
+<div class="para" label-module="para">虚拟化在这方面将发挥重要作用，一些企业将采用更环保的方法经营业务以便赢得政府部门的合同。其它机构正在采用虚拟化技术以便得到节省电源的好处和减少碳排放量的奖励。</div>
+<div class="para" label-module="para">同时，一些企业管理者和市场研究人士也对虚拟化的未来发展发表了看法：</div>
+<div class="para" label-module="para">Avnet公司营销经理Michael Costigan：</div>
+<div class="para" label-module="para">尽管虚拟化有巨大的潜力，许多转销商不知道这种有潜力的新技术的实际状况。机构能够获得显著的能量和计算效率，同时提高技术的应用率和灵活性。</div>
+<div class="para" label-module="para">为了帮助你的客户认识到这些好处并且为你的企业建立强大的市场占有率，你需要了解这个强大的新技术的细节，了解需要采取什么有效手段识别和利用虚拟化的真正机会。</div>
+<div class="para" label-module="para">虚拟化正在用来解决范围日益广泛的商业目标和挑战，如服务器整合/保留、业务持续性、测试/开发优化、软件开发与发布以及桌面管理和安全。</div>
+<div class="para" label-module="para">人们对于虚拟化的未来显然非常感兴趣。但是，还有许多言过其实的宣传。第一波x86<a target="_blank" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%99%9A%E6%8B%9F%E5%8C%96">服务器虚拟化</a>的应用一直集中在服务器整合方面，重点是减少资本开支 (也就是服务器开支)以及电源和冷却等运营开支。在未来的五年里，机构将超越服务器整合寻求如何利用虚拟化技术得到其它的好处，如重点减少运营成本(也就是物理管理成本)和让基础设施更有活力和更灵活，以便改善IT对于不断变化的商业需求的反应能力。</div>
+<div class="para" label-module="para">分析师认为，虚拟化的下一个大事将是高可用性和灾难恢复工具。灾难恢复在历史上一直是非常难管理的。虚拟化将提供一个节省成本的和容易管理的灾难恢复解决方案。</div>
+<div class="para" label-module="para"><a target="_blank" href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E6%A1%8C%E9%9D%A2">虚拟桌面</a>基础设施、资源平衡和应用程序级高可用性可能是其它的未来应用实例。这些解决方案有一些技术的和经济的障碍。这些障碍必须要在虚拟化广泛应用前克服。但是，考虑到虚拟化的重点，这些障碍已经在开始克服。虚拟化还将成为SOA(面向服务的架构)技术应用的推动因素。<sup>[4]</sup><a class="sup-anchor" name="ref_[4]_5033544">&nbsp;</a>
+面向服务的体系结构基于这些实际活动或业务服务进行组织，而不是形成公司所维护的不同的信息竖井 (Silo)。通过实现 SOA，可以带来大量好处，包括以下各个方面： 　*更高的业务和 IT 一致性</div>
+<div class="para" label-module="para">*基于组件的系统</div>
+<div class="para" label-module="para">*松散耦合的组件和系统</div>
+<div class="para" label-module="para">*基于网络的基础设施，允许分散于各地且采用不同技术的资源协同工作</div>
+<div class="para" label-module="para">*动态构建的按需应用程序</div>
+<div class="para" label-module="para">*更高的代码重用率</div>
+<div class="para" label-module="para">*更好地标准化整个企业内的流程</div>
+<div class="para" label-module="para">*更易于集中企业控制</div><div class="anchor-list">
+<a name="6" class="lemma-anchor para-title"></a>
+<a name="sub5033544_6" class="lemma-anchor "></a>
+<a name="优点" class="lemma-anchor "></a>
+</div><div class="para-title level-2" label-module="para-title">
+<h2 class="title-text"><span class="title-prefix">SOA</span>优点</h2>
+<a class="edit-icon j-edit-link" data-edit-dl="6" href="javascript:;" style="display: block;"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-lemma"></em>编辑</a>
+</div>
+<div class="para" label-module="para">服务导向架构并不是一种全新的解决方案；相反，SOA是技术与架构的自然进化。系统架构一直在不断进步，与商业保持高度一致。系统设计师与商家很早就认识到将技术与商业流程相协调的重要性，包括充分应用并合理化技术资源，以及为商业提供更好的支持。</div>
+<div class="para" label-module="para">SOA也在一定程度上源于早已有之的企业架构理论。企业架构对技术进行评估，但是更重要的是，它关注整个企业和全部的商业流程并提供了做出技术决策的背景信息。SOA工具则融合了互联网技术，如HTTP和XML，以及综合技术，如消息总线、转译技术和连接技术。<sup>[5]</sup><a class="sup-anchor" name="ref_[5]_5033544">&nbsp;</a>
+</div>
+<div class="anchor-list">
+<a name="a" class="lemma-anchor a"></a>
+</div><div class="album-list">
+<div class="header">
+<span class="title">词条图册</span>
+<a class="more-link" href="https://baike.baidu.com/pic/SOA/2140650?fr=lemma" target="_blank" nslog-type="10000204">更多图册<em></em></a>
+</div>
+<div class="scroller">
+<div class="list">
+</div>
+</div>
+<div class="footer">
+</div>
+</div>
+<dl class="lemma-reference collapse nslog-area log-set-param" data-nslog-type="2" log-set-param="ext_reference">
+<dt class="reference-title">参考资料</dt>
+<dd class="reference-list-wrap">
+<ul class="reference-list">
+<li class="reference-item " id="reference-[1]-5033544-wrap">
+<span class="index">1.</span>
+<a class="gotop anchor" name="refIndex_1_5033544" id="refIndex_1_5033544" title="向上跳转" href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#ref_[1]_5033544">&nbsp;&nbsp;</a>
+<a rel="nofollow" href="https://baike.baidu.com/redirect/ee46_OYxMI9yTA61XFCGKzQ-tfTIZk9umHp4IYS2a1QPk-BVaB3lL6m725Zsg63AfkAfMQqBHsvbG76qPqMHmslVe21F8ljqaTfMpe9YngB3xf4H577bBK3MgA" target="_blank" class="text">复旦协达推出我国首套SOA协同软件<span class="linkout">&nbsp;</span></a>
+<span class="site">．eNet硅谷动力</span><span>[引用日期2013-06-17]</span></li><li class="reference-item " id="reference-[2]-5033544-wrap">
+<span class="index">2.</span>
+<a class="gotop anchor" name="refIndex_2_5033544" id="refIndex_2_5033544" title="向上跳转" href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#ref_[2]_5033544">&nbsp;&nbsp;</a>
+<a rel="nofollow" href="https://baike.baidu.com/redirect/1f39dM0CmBpSII6mK8pVxh_VM7WaCxjHDMxII4aXDrMyRRxLsBOUeROsBBOaBA_fvAzPr-RUCKyhREcxKlqCuoH4jL0KHXaAmA" target="_blank" class="text">SOA架构将给信息化带来的新变革<span class="linkout">&nbsp;</span></a>
+</li><li class="reference-item " id="reference-[3]-5033544-wrap">
+<span class="index">3.</span>
+<a class="gotop anchor" name="refIndex_3_5033544" id="refIndex_3_5033544" title="向上跳转" href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#ref_[3]_5033544">&nbsp;&nbsp;</a>
+<a rel="nofollow" href="https://baike.baidu.com/redirect/b428MK-lJyeZUQlYMImb0jggX-yqgdTUowsrDbrK40SmapEl7r_ZUdoWChaDHjHHK137dxlTR4ASpE66NF70G-m8wCZHIIfACGeFDWp8-GgOmQs" target="_blank" class="text">协达获电子商务软件第一品牌，称不学SAP<span class="linkout">&nbsp;</span></a>
+<span class="site">．techweb</span><span>[引用日期2013-06-17]</span></li><li class="reference-item " id="reference-[4]-5033544-wrap">
+<span class="index">4.</span>
+<a class="gotop anchor" name="refIndex_4_5033544" id="refIndex_4_5033544" title="向上跳转" href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#ref_[4]_5033544">&nbsp;&nbsp;</a>
+<a rel="nofollow" href="https://baike.baidu.com/redirect/fd62iH-paOqSmCIKD0Zk5OmbmjLTUyZNXqMG34btpn3saYfEnBYBZ3pRULjy94ibVqGpMfpiItpXf2fKOx9rn-TqGqE" target="_blank" class="text">虚拟化术将成为SOA应用推动因素<span class="linkout">&nbsp;</span></a>
+</li><li class="reference-item " id="reference-[5]-5033544-wrap">
+<span class="index">5.</span>
+<a class="gotop anchor" name="refIndex_5_5033544" id="refIndex_5_5033544" title="向上跳转" href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#ref_[5]_5033544">&nbsp;&nbsp;</a>
+<a rel="nofollow" href="https://baike.baidu.com/redirect/5cae71Olxkb1qp4gFpGWktQ4-pQm50nOe12DndYe4I07LJQjIM13-wVyYQgSkauk8e6c71foPixiM0ITeUNxOsloQZnIsM0u" target="_blank" class="text">深入理解SOA概念及其潜在优点<span class="linkout">&nbsp;</span></a>
+<span class="site">．TechTarget</span><span>[引用日期2015-10-12]</span></li></ul>
+</dd>
+</dl>
+</div>
+<div class="side-content">
+<div class="summary-pic">
+<a href="https://baike.baidu.com/pic/SOA/2140650/0/09fa513d269759ee8ab32de6b6fb43166d22df38?fr=lemma&amp;ct=single" target="_blank" nslog-type="10002401">
+<img src="./SOA（面向服务的架构）_百度百科_files/09fa513d269759ee8ab32de6b6fb43166d22df38.jpg">
+<button class="picAlbumBtn"><em></em><span>图集</span></button>
+<div>SOA图册</div>
+</a>
+</div>
+<div id="promotion_xunke"></div>
+<div class="lemmaWgt-promotion-vbaike" style="display: block;">
+<div class="promotion_title">V百科<a href="https://baike.baidu.com/vbaike#gallary" target="_blank">往期回顾</a></div>
+<div class="promotion_viewport">
+<dl style="position: absolute; width: 536px; height: 152px; left: 0px;"><dd class="wgt_carousel_aniUnit" style="float: left;">
+<a href="http://click.hm.baidu.com/clk?d2bb040d4fd2ad7e4a6d5c00b852ed69" target="_blank" title="" nslog-type="10002202" nslog-params="{&quot;adId&quot;:&quot;2157&quot;, &quot;adTitle&quot;:&quot;盘点高校奇葩毕业礼&quot;, &quot;adPos&quot;: 1}">
+<img src="./SOA（面向服务的架构）_百度百科_files/f9dcd100baa1cd11bc29aabab312c8fcc2ce2d89.jpg">
+</a>
+</dd></dl>
+<div class="promotion_viewport_pager wgt_horPager">
+<span class="pTagBox">
+<a href="javascript:;" class="pTag prev" p-index="4"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-left"></em></a>
+<a href="javascript:;" class="pTag next" p-index="5"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-right"></em></a>
+</span>
+</div>
+</div>
+</div><div class="lemmaWgt-promotion-rightPreciseAd" data-lemmaid="2140650" data-lemmatitle="SOA"></div><div class="lemmaWgt-sideRecommend" style="display: block;">
+<a name="zhixinWrap" class="qnAnchor"></a>
+<div class="zhixin-box" id="zhixinWrap" data-source="aladdin" data-newlemmaid="2140650"><div class="zhixin-group js-group" data-datatype="async">
+<h6 class="js-cardTitle">
+<span>相关人物</span>
+</h6>
+<div class="zhixin-fixBtn js-fixBtn">
+<div class="openFix" title="若推荐内容有误，请点击纠错进行反馈">纠错</div>
+<div class="closeFix">关闭纠错</div>
+</div>
+<div class="zhixin-list">
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E9%BB%8E%E6%B4%BB%E6%98%8E/8362599&quot;,&quot;targetId&quot;:&quot;8362599&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E9%BB%8E%E6%B4%BB%E6%98%8E/8362599" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/d53f8794a4c27d1e126b04d713d5ad6eddc43857.jpg" alt="黎活明">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E9%BB%8E%E6%B4%BB%E6%98%8E/8362599" target="_blank" title="黎活明">黎活明</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="8362599">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E5%BC%A0%E5%AE%B4/6541945&quot;,&quot;targetId&quot;:&quot;6541945&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E5%BC%A0%E5%AE%B4/6541945" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/77094b36acaf2edd92ac4073871001e9380193ce.jpg" alt="张宴">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E5%BC%A0%E5%AE%B4/6541945" target="_blank" title="张宴">张宴</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="6541945">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E7%AB%A0%E6%96%87%E5%B5%A9/6689425&quot;,&quot;targetId&quot;:&quot;6689425&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E7%AB%A0%E6%96%87%E5%B5%A9/6689425" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/b151f8198618367a14637de726738bd4b31ce526.jpg" alt="章文嵩">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E7%AB%A0%E6%96%87%E5%B5%A9/6689425" target="_blank" title="章文嵩">章文嵩</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="6689425">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E9%99%88%E5%90%89%E5%B9%B3/60950&quot;,&quot;targetId&quot;:&quot;60950&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E9%99%88%E5%90%89%E5%B9%B3/60950" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/c75c10385343fbf2fc528318b57eca8065388f8a.jpg" alt="陈吉平">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E9%99%88%E5%90%89%E5%B9%B3/60950" target="_blank" title="陈吉平">陈吉平</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="60950">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E5%BC%A0%E5%AD%9D%E7%A5%A5/3553202&quot;,&quot;targetId&quot;:&quot;3553202&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E5%BC%A0%E5%AD%9D%E7%A5%A5/3553202" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/3b87e950352ac65c9aae853efbf2b21192138ad0.jpg" alt="张孝祥">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E5%BC%A0%E5%AD%9D%E7%A5%A5/3553202" target="_blank" title="张孝祥">张孝祥</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="3553202">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+</div>
+</div>
+<div class="zhixin-group js-group" data-datatype="async">
+<h6 class="js-cardTitle">
+<span>计算机类书籍</span>
+</h6>
+<div class="zhixin-fixBtn js-fixBtn">
+<div class="openFix" title="若推荐内容有误，请点击纠错进行反馈">纠错</div>
+<div class="closeFix">关闭纠错</div>
+</div>
+<div class="zhixin-list">
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/Java%20SOA%20Cookbook%E4%B8%AD%E6%96%87%E7%89%88/3000469&quot;,&quot;targetId&quot;:&quot;3000469&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/Java%20SOA%20Cookbook%E4%B8%AD%E6%96%87%E7%89%88/3000469" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/fc1f4134970a304ecf7759a6d1c8a786c9175c11.jpg" alt="java soa cookbook中文版">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/Java%20SOA%20Cookbook%E4%B8%AD%E6%96%87%E7%89%88/3000469" target="_blank" title="java soa cookbook中文版">java soa cookbook中文版</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="3000469">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/SOA%E8%BE%BE%E4%BA%BA%E8%BF%B7/12255912&quot;,&quot;targetId&quot;:&quot;12255912&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/SOA%E8%BE%BE%E4%BA%BA%E8%BF%B7/12255912" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/472309f7905298225ef91cd5d5ca7bcb0b46d4d9.jpg" alt="soa达人迷">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/SOA%E8%BE%BE%E4%BA%BA%E8%BF%B7/12255912" target="_blank" title="soa达人迷">soa达人迷</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="12255912">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%8412%E9%A1%B9%E4%BF%AE%E7%82%BC/2298767&quot;,&quot;targetId&quot;:&quot;2298767&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%8412%E9%A1%B9%E4%BF%AE%E7%82%BC/2298767" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/4ec2d5628535e5ddd7c6c6a074c6a7efcf1b62e2.jpg" alt="软件架构师的12项修炼">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%8412%E9%A1%B9%E4%BF%AE%E7%82%BC/2298767" target="_blank" title="软件架构师的12项修炼">软件架构师的12项修炼</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="2298767">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E5%A4%A7%E8%A7%84%E6%A8%A1Web%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/661354&quot;,&quot;targetId&quot;:&quot;661354&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E5%A4%A7%E8%A7%84%E6%A8%A1Web%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/661354" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/b151f8198618367a93598e852e738bd4b21ce592.jpg" alt="大规模web服务开发技术">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E5%A4%A7%E8%A7%84%E6%A8%A1Web%E6%9C%8D%E5%8A%A1%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF/661354" target="_blank" title="大规模web服务开发技术">大规模web服务开发技术</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="661354">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/%E4%BD%BF%E7%94%A8Java%20Web%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BASOA/12393282&quot;,&quot;targetId&quot;:&quot;12393282&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/%E4%BD%BF%E7%94%A8Java%20Web%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BASOA/12393282" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/c8177f3e6709c93d9607ede09d3df8dcd1005434.jpg" alt="使用java web服务构建soa">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/%E4%BD%BF%E7%94%A8Java%20Web%E6%9C%8D%E5%8A%A1%E6%9E%84%E5%BB%BASOA/12393282" target="_blank" title="使用java web服务构建soa">使用java web服务构建soa</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="12393282">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+<div class="zhixin-item" nslog="area" nslog-type="10000101" nslog-params="{&quot;source&quot;:&quot;aladdin&quot;,&quot;url&quot;:&quot;https://baike.baidu.com/item/SOA%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/6321880&quot;,&quot;targetId&quot;:&quot;6321880&quot;}">
+<div class="portraitbox">
+<a href="https://baike.baidu.com/item/SOA%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/6321880" target="_blank">
+<img src="./SOA（面向服务的架构）_百度百科_files/4e4a20a4462309f774dcc04c720e0cf3d7cad639.jpg" alt="soa实践指南">
+</a>
+</div>
+<p class="item-title js-name"><a href="https://baike.baidu.com/item/SOA%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/6321880" target="_blank" title="soa实践指南">soa实践指南</a></p>
+<div class="zhixinErrorBox js-fixBox hidden" data-lemma-id="6321880">
+<a class="submit-trigger" href="javascript:;">有错误</a>
+<span class="js-text hidden">已反馈</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<form id="zhixinErrorForm" class="hidden" action="https://gsp0.baidu.com/-uV1bjeh1BF3odCf/index.php/feedback/zx/baikeJC" target="zhixinSubErr" method="post">
+<input class="js-url" name="fb_html_url" type="hidden">
+<input class="js-query" name="fb_query" type="hidden">
+<input class="js-title" name="fb_card_title" type="hidden">
+<input class="js-content" name="fb_content" type="hidden">
+<input class="js-souceId" name="fb_source_id" type="hidden">
+</form>
+<iframe id="zhixinSubErr" name="zhixinSubErr" style="display:none" frameborder="0" src="./SOA（面向服务的架构）_百度百科_files/saved_resource.html"></iframe>
+</div><div class="lemmaWgt-promotion-slide" style="display: block;">
+<div class="promotion_viewport">
+<dl style="position: absolute; width: 540px; height: 260px; left: 0px;"><dd class="wgt_carousel_aniUnit" style="float: left;">
+<a href="http://t.cn/RK0hQcq" target="_blank" title="" nslog-type="10002202" nslog-params="{&quot;adId&quot;:&quot;2168&quot;, &quot;adTitle&quot;:&quot;7.22-26&quot;, &quot;adPos&quot;: 2}">
+<img src="./SOA（面向服务的架构）_百度百科_files/11385343fbf2b21183affad5c08065380dd78ea3.jpg">
+</a>
+</dd></dl>
+<div class="promotion_viewport_pager wgt_horPager"><span class="pTagBox">
+<a href="javascript:;" class="pTag prev" p-index="4"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-left"></em></a><span><a href="javascript:;" class="dot pTag" p-index="1"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a><a href="javascript:;" class="dot pTag" p-index="2"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a><a href="javascript:;" class="dot pTag" p-index="3"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a><a href="javascript:;" class="dot pTag" p-index="4"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a><a href="javascript:;" class="dot pTag cur"><em class="cmn-icon cmn-icons cmn-icons_userbar-new"></em></a></span><a href="javascript:;" class="pTag next" p-index="5"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_arrow-right"></em></a>
+</span></div>
+</div>
+</div><div class="lemmaWgt-promotion-rightBigAd">
+</div><dl class="side-box lemma-statistics">
+<dt class="title">词条统计</dt>
+<dd class="description">
+<ul>
+<li>浏览次数：<span id="j-lemmaStatistics-pv">1363686</span>次</li>
+<li>编辑次数：43次<a href="https://baike.baidu.com/historylist/SOA/2140650" class="nslog:1021" target="_blank">历史版本</a></li>
+<li>最近更新：<span class="j-modified-time" style="">2017-05-23</span></li>
+<li>创建者：<a class="show-userCard" data-uid="12165658" title="查看此用户资料" target="_blank" href="http://www.baidu.com/p/lixiaonuohao" nslog-type="1022">lixiaonuohao</a></li>
+</ul>
+</dd>
+</dl>
+<div class="side-catalog" style="visibility: hidden; bottom: 10px;">
+<div class="side-bar">
+<em class="circle start"></em>
+<em class="circle end"></em>
+</div>
+<div class="catalog-scroller">
+<dl class="catalog-list">
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#1" class="title-link">
+<span class="text">
+<span class="title-index">1</span>
+<span class="title-link" nslog-type="10002802">定义介绍</span>
+</span>
+</a>
+</dt>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#2" class="title-link">
+<span class="text">
+<span class="title-index">2</span>
+<span class="title-link" nslog-type="10002802">体系结构</span>
+</span>
+</a>
+</dt>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#2_1" class="title-link">
+<span class="text">
+<span class="title-index">2.1</span>
+<span class="title-link" nslog-type="10002802">松耦合的系统</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#2_2" class="title-link">
+<span class="text">
+<span class="title-index">2.2</span>
+<span class="title-link" nslog-type="10002802">体系结构作用</span>
+</span>
+</a>
+</dd>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#3" class="title-link">
+<span class="text">
+<span class="title-index">3</span>
+<span class="title-link" nslog-type="10002802">特性状况</span>
+</span>
+</a>
+</dt>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#4" class="title-link">
+<span class="text">
+<span class="title-index">4</span>
+<span class="title-link" nslog-type="10002802">新兴变革</span>
+</span>
+</a>
+</dt>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5" class="title-link">
+<span class="text">
+<span class="title-index">5</span>
+<span class="title-link" nslog-type="10002802">为何选择SOA</span>
+</span>
+</a>
+</dt>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_1" class="title-link">
+<span class="text">
+<span class="title-index">5.1</span>
+<span class="title-link" nslog-type="10002802">简介介绍</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_2" class="title-link">
+<span class="text">
+<span class="title-index">5.2</span>
+<span class="title-link" nslog-type="10002802">服务架构</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_3" class="title-link">
+<span class="text">
+<span class="title-index">5.3</span>
+<span class="title-link" nslog-type="10002802">基础结构</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_4" class="title-link">
+<span class="text">
+<span class="title-index">5.4</span>
+<span class="title-link" nslog-type="10002802">服务品质</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_5" class="title-link">
+<span class="text">
+<span class="title-index">5.5</span>
+<span class="title-link" nslog-type="10002802">安全质量</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_6" class="title-link">
+<span class="text">
+<span class="title-index">5.6</span>
+<span class="title-link" nslog-type="10002802">可靠信度</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_7" class="title-link">
+<span class="text">
+<span class="title-index">5.7</span>
+<span class="title-link" nslog-type="10002802">策略计划</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_8" class="title-link">
+<span class="text">
+<span class="title-index">5.8</span>
+<span class="title-link" nslog-type="10002802">控制能力</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_9" class="title-link">
+<span class="text">
+<span class="title-index">5.9</span>
+<span class="title-link" nslog-type="10002802">管理能力</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_10" class="title-link">
+<span class="text">
+<span class="title-index">5.10</span>
+<span class="title-link" nslog-type="10002802">Web服务</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_11" class="title-link">
+<span class="text">
+<span class="title-index">5.11</span>
+<span class="title-link" nslog-type="10002802">SOA优势</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_12" class="title-link">
+<span class="text">
+<span class="title-index">5.12</span>
+<span class="title-link" nslog-type="10002802">发展效益</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_13" class="title-link">
+<span class="text">
+<span class="title-index">5.13</span>
+<span class="title-link" nslog-type="10002802">主要优势</span>
+</span>
+</a>
+</dd>
+<dd class="catalog-title level2">
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#5_14" class="title-link">
+<span class="text">
+<span class="title-index">5.14</span>
+<span class="title-link" nslog-type="10002802">推动因素</span>
+</span>
+</a>
+</dd>
+<dt class="catalog-title level1">
+<em class="pointer"></em>
+<a href="https://baike.baidu.com/item/SOA/2140650?fr=aladdin#6" class="title-link">
+<span class="text">
+<span class="title-index">6</span>
+<span class="title-link" nslog-type="10002802">优点</span>
+</span>
+</a>
+</dt>
+<a class="arrow" href="javascript:void(0);" style="top: 5px;"></a>
+</dl>
+</div>
+<div class="right-wrap">
+<a class="go-up disable" href="javascript:void(0);"></a>
+<a class="go-down" href="javascript:void(0);"></a>
+</div>
+<div class="bottom-wrap">
+<a class="toggle-button" href="javascript:void(0);"></a>
+<a class="gotop-button" href="javascript:void(0);"></a>
+</div>
+</div>
+
+<div id="side_box_unionAd" class="unionAd side-box union" style="display: block;">
+<div class="union-content" id="cpro_u1997633"><iframe id="iframeu1997633_0" src="./SOA（面向服务的架构）_百度百科_files/xctm.html" width="250" height="250" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:250px;height:250px" allowtransparency="true"></iframe></div>
+</div>
+</div>
+</div>
+</div>
+<div class="after-content">
+<div class="fc-guess-like new" id="fc_guess_like_new" style="display: block;">
+<span class="logo-du">
+<em class="cmn-icon cmn-icons cmn-icons_logo-du"></em>
+</span>
+<h6>猜你喜欢</h6>
+<ul class="cmn-clearfix"><li><a href="https://www.baidu.com/s?wd=soa%CC%E5%CF%B5%BC%DC%B9%B9&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=-1&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">soa体系架构</a></li>
+<li><a href="https://www.baidu.com/s?wd=soa%CA%C7%CA%B2%C3%B4%D2%E2%CB%BC&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=-1&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">soa是什么意思</a></li>
+<li><a href="https://www.baidu.com/s?wd=soa%BC%DC%B9%B9%CA%C7%CA%B2%C3%B4&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=-1&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">soa架构是什么</a></li>
+<li><a href="https://www.baidu.com/s?wd=%B5%E7%C4%D4%C6%C1%C4%BB%CE%AC%D0%DE&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=-1&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">电脑屏幕维修</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C8%AB%D7%D4%B6%AF%B5%E7%C4%D4%B6%A4%D6%E9%BB%FA&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">全自动电脑钉珠机</a></li>
+<li><a href="https://www.baidu.com/s?wd=%D4%F5%C3%B4%D6%CE%C1%C6%B5%E7%C4%D4%BF%F1%D4%EA%D6%A2&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">怎么治疗电脑狂躁症</a></li>
+<li><a href="https://www.baidu.com/s?wd=%C8%E7%BA%CE%D1%A7%CF%B0%CA%B9%D3%C3%B5%E7%C4%D4&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">如何学习使用电脑</a></li>
+<li><a href="https://www.baidu.com/s?wd=%B9%A6%C4%DC%BA%C3%B5%C4%B1%CA%BC%C7%B1%BE%B5%E7%C4%D4&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">功能好的笔记本电脑</a></li>
+<li><a href="https://www.baidu.com/s?wd=%B1%CA%BC%C7%B1%BE%B5%E7%C4%D4%BC%FC%C5%CC%CE%AC%D0%DE%B6%E0%C9%D9%C7%AE&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">笔记本电脑键盘维修多少钱</a></li>
+<li><a href="https://www.baidu.com/s?wd=dell%B5%E7%C4%D4%CC%D8%D4%BC%CE%AC%D0%DE&amp;tn=SE_baikepcxf02_fcetbk02&amp;lqsource=2&amp;dmaseid=dmaseid202&amp;qid=fbe746133cd1fb3c" target="_blank">dell电脑特约维修</a></li>
+</ul>
+</div>
+<div class="bottom-promotion" id="bottom-promotion" style="display: block;">
+<div id="BOTTOM_PRO_AD"><iframe id="iframe1120393_0" onload="BAIDU_SSP_cacheRequest(&#39;09ba97e87b1c8d7e&#39;, this);" src="./SOA（面向服务的架构）_百度百科_files/xctm(2).html" width="960" height="90" align="center,center" vspace="0" hspace="0" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" style="border:0;vertical-align:bottom;margin:0;width:960px;height:90px" allowtransparency="true"></iframe></div>
+</div>
+</div>
+</div>
+
+<div class="wgt-footer-main">
+<div class="content">
+<dl class="fresh">
+<dt><em class="cmn-icon cmn-icons cmn-icons_footer-fresh"></em>新手上路</dt>
+<dd>
+<div><a target="_blank" href="https://baike.baidu.com/usercenter/tasks#guide">成长任务</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/help#main01">编辑入门</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/help#main06">编辑规则</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/help#main05">百科术语</a></div>
+</dd>
+</dl>
+<dl class="question">
+<dt><em class="cmn-icon cmn-icons cmn-icons_footer-question"></em>我有疑问</dt>
+<dd>
+<div><a target="_blank" href="https://baike.baidu.com/wikiui/doubt?lemmaId=2140650&amp;fr=lemma" nslog-type="10070001">我要质疑</a></div>
+<div><a target="_blank" href="https://ikefu.baidu.com/web/baike" nslog-type="10000003">在线客服</a></div>
+<div><a target="_blank" href="http://tieba.baidu.com/f?ie=utf-8&amp;fr=bks0000&amp;kw=%E7%99%BE%E5%BA%A6%E7%99%BE%E7%A7%91">参加讨论</a></div>
+<div><a target="_blank" href="https://baike.baidu.com/feedback">意见反馈</a></div>
+</dd>
+</dl>
+<dl class="suggestion">
+<dt><em class="cmn-icon cmn-icons cmn-icons_footer-suggestion"></em>投诉建议</dt>
+<dd>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=SOA&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FSOA%2F2140650%3Ffr%3Daladdin#1">举报不良信息</a></div>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=SOA&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FSOA%2F2140650%3Ffr%3Daladdin#2">未通过词条申诉</a></div>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=SOA&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FSOA%2F2140650%3Ffr%3Daladdin#4">投诉侵权信息</a></div>
+<div><a target="_blank" href="http://tousu.baidu.com/baike/add?word=SOA&amp;&amp;submit_link=https%3A%2F%2Fbaike.baidu.com%2Fitem%2FSOA%2F2140650%3Ffr%3Daladdin#3">封禁查询与解封</a></div>
+</dd>
+</dl>
+</div>
+<div class="copyright">©2017&nbsp;Baidu&nbsp;<a href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>&nbsp;|&nbsp;<a href="http://help.baidu.com/question?prod_en=baike&amp;class=159&amp;id=1047" target="_blank">百科协议</a>&nbsp;|&nbsp;<a href="https://baike.baidu.com/operation/cooperation" target="_blank">百度百科合作平台</a>&nbsp;|&nbsp;<span>京ICP证030173号&nbsp;</span><img class="copyright-img" width="13" height="16" src="./SOA（面向服务的架构）_百度百科_files/copy_rignt_24.png"></div>
+<p class="recordcode"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001" target="_blank"><i class="icon-police"></i>京公网安备11000002000001号</a></p>
+</div>
+
+<div class="lemmaWgt-searchHeader" style="display: block; opacity: 1;">
+<div class="layout cmn-clearfix">
+<div class="wgt-searchbar wgt-searchbar-new wgt-searchbar-simple cmn-clearfix ">
+<div class="logo-container">
+<a class="logo cmn-inline-block" title="到百科首页" href="https://baike.baidu.com/">
+<span class="cmn-baike-logo">
+<em class="cmn-icon cmn-icons cmn-icons_logo-bai"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-du"></em>
+<em class="cmn-icon cmn-icons cmn-icons_logo-baike"></em>
+</span>
+</a>
+</div>
+<div class="search">
+<div class="form">
+<form id="searchForm" action="https://baike.baidu.com/search/word" method="GET" target="_self">
+<input id="query" nslog="normal" nslog-type="10080015" name="word" type="text" autocomplete="off" autocorrect="off" value="SOA"><button id="search" nslog="normal" nslog-type="10080013" type="button">进入词条</button>
+</form>
+<form id="searchLemmaForm" action="https://baike.baidu.com/search" method="GET" target="_self">
+<input id="searchLemmaQuery" name="word" type="hidden">
+<input name="pn" type="hidden" value="0">
+<input name="rn" type="hidden" value="0">
+<input name="enc" type="hidden" value="utf8">
+</form>
+<ul id="suggestion" class="suggestion">
+<div class="sug"></div>
+<li class="extra">
+<span id="close" nslog="normal" nslog-type="10080016">关闭</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tool-buttons">
+<a class="toolButtons-edit button j-edit-link" href="javascript:;" nslog-type="10010001"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_edit-hollow"></em>编辑</a>
+<a class="toolButtons-collect button" href="javascript:;" nslog-type="10010002"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_star-hollow"></em><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_star-solid"></em>收藏</a>
+<a class="toolButtons-vote button top-vote" href="javascript:;" nslog-type="10010003"><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_zan-hollow"></em><em class="cmn-icon wiki-lemma-icons wiki-lemma-icons_zan-solid"></em><span class="j-tool-btn-vote-num">赞</span></a>
+</div>
+<div class="user-info">
+<a class="user-link unlogin" href="javascript:;" nslog-type="10010008" target="_blank">登录</a>
+</div>
+</div></div>
+<div class="new-bdsharebuttonbox new-side-share" id="side-share">
+<span class="title">分享</span>
+<div class="side-border">
+<div class="triangle"></div>
+<a class="share-link bds_qzone" href="javascript:void(0);" nslog-type="10060101">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qzone"></em>
+</a>
+<a class="share-link bds_tsina" href="javascript:void(0);" nslog-type="10060301">
+<em class="cmn-icon cmn-icons cmn-icons_logo-sina-weibo"></em>
+</a>
+<a class="bds_wechat" href="javascript:void(0);" nslog-type="10060001">
+<em class="cmn-icon cmn-icons cmn-icons_logo-wechat"></em>
+</a>
+<a class="share-link bds_tqq" href="javascript:void(0);" nslog-type="10060201">
+<em class="cmn-icon cmn-icons cmn-icons_logo-qq"></em>
+</a>
+</div>
+</div>
+<div class="qrcode-wrapper" id="layer" style="display: none">
+<div class="bd_weixin_popup_header">
+<em class="cmn-icon cmn-icons cmn-icons_close"></em>
+<span>分享到微信朋友圈</span>
+</div>
+<div id="wechat-qrcode-img"></div>
+<div class="bd_weixin_popup_footer">打开微信“扫一扫”即可将网页分享至朋友圈</div>
+</div>
+<div></div><div></div>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/wiki-common_sync_js_0_6be349d.js.下载"></script>
+<script type="text/javascript">require.resourceMap({"res":{"wiki-lemma:widget/lemma_content/mainContent/lemmaRelation/lemmaInsert.js":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaRelation/lemmaInsert_17d225d.js","pkg":"wiki-lemma:p5","deps":["wiki-common:widget/component/nslog/nslog.js"]},"wiki-lemma:widget/lemma_content/mainContent/lemmaRelation/tangram.js":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaRelation/tangram_1e4b3aa.js","pkg":"wiki-lemma:p5"},"wiki-lemma:widget/lemma_content/mainContent/lemmaReference/lemmaReferenceTip/lemmaReferenceTip.js":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaReference/lemmaReferenceTip/lemmaReferenceTip_d50e02d.js","deps":["wiki-common:widget/lib/jquery/jquery.js","wiki-common:widget/util/string.js"]}},"pkg":{"wiki-lemma:p5":{"url":"https://bkssl.bdimg.com/static/wiki-lemma/pkg/wiki-lemma-module-lemmaRelation_15cc52d.js"}}});</script><script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/PHPJS_3347e0a.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/wiki-common_sync_js_1_803df13.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/userbar-n_d15fcff.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/headTabBar_523bfd9.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/searchbar_ff0ea9e.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/wiki-common_sync_js_2_06fd176.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/wiki-common_sync_js_5_62d9343.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/wiki-lemma_bb2e658.js.下载"></script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/zhixin_e6ca52b.js.下载"></script>
+<script type="text/javascript">!function(){  var $ = require('wiki-common:widget/lib/jquery/jquery.js'),
+    userbar = require('wiki-common:widget/component/userbar-n/userbar-n.js');
+    
+  userbar.buildUserbar($('#j-wgt-userbar'), null);
+}();
+!function(){  require('wiki-common:widget/component/headTabBar/headTabBar.js');
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js'),
+      initSearchbar = require('wiki-common:widget/component/searchbar-n/searchbar.js');  
+    initSearchbar($('.wgt-searchbar-main'));
+  }();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var cookie = require('wiki-common:widget/util/cookie.js');
+    if (!cookie.get('baikedeclare')) {
+        $('#J-declare-wrap').css('display', 'block');
+    }
+    $('#J-declare-close').on('click', function () {
+        // 用户关闭后，不再显示，这里暂设过期时间为1年
+        cookie.set('baikedeclare', 'showed', {
+            expires: 365 * 60 * 60 * 24 * 1000,
+            path: '/'
+        });
+        $('#J-declare-wrap').css('display', 'none');
+    });
+}();
+!function(){  var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+
+  var timer = '';
+
+  $('.wgt-navbar').on('mouseenter', 'dl', function() {
+  clearTimeout(timer);
+  timer = setTimeout(function() {
+  $('.wgt-navbar').addClass('wgt-navbar-hover');
+}, 300);
+}).on('mouseleave', function() {
+clearTimeout(timer);
+$('.wgt-navbar').removeClass('wgt-navbar-hover');
+}).on('click', 'a', function() {
+clearTimeout(timer);
+$('.wgt-navbar').removeClass('wgt-navbar-hover');
+});
+}();
+!function(){        require('wiki-lemma:widget/lemma_content/mainContent/polysemantList/polysemantList.js')('SOA');
+    }();
+!function(){        var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+        var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+        // 展现策略
+        rightCheck.editView('2140650', function(res) {
+            if (!res.errno) {
+                if (res.data.divide) {
+                    $('.top-tool .split-icon').css('display', 'block');
+                }
+            }
+        });
+    }();
+!function(){    var nslog = require('wiki-common:widget/component/nslog/nslog.js');
+	require.async("wiki-lemma:widget/basicElement/collect/collect.js",function(collect){
+		collect({
+            newLemmaId:"2140650",
+			lemmaId:"21305",
+			subLemmaId:"5033544"
+		});
+	});
+}();
+!function(){    require.async("wiki-lemma:widget/basicElement/topShare/topShare.js",function(topShare){
+        topShare({
+            newLemmaId: '2140650'
+        });
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.lemmaWgt-lemmaTitle .edit-lemma').css('display', 'inline-block');
+                // 编辑和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .edit-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .edit-lemma').before('<br/><br/>');
+                  }
+                }
+            } else {
+                $('.lemmaWgt-lemmaTitle .lock-lemma').show();
+                // 锁定和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .lock-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .lock-lemma').before('<br/><br/>');
+                  }
+                }
+            }
+        } else {
+            if ('1') {
+                $('.lemmaWgt-lemmaTitle .edit-lemma').css('display', 'inline-block');
+                // 编辑和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .edit-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .edit-lemma').before('<br/><br/>');
+                  }
+                }
+            } else {
+                $('.lemmaWgt-lemmaTitle .lock-lemma').show();
+                // 锁定和申请本人实名验证保证同一行展示
+                if ($('.lemmaWgt-lemmaTitle .personal').length > 0) {
+                  if ($('.lemmaWgt-lemmaTitle .lock-lemma').offset().left > $('.lemmaWgt-lemmaTitle .personal').offset().left) {
+                    $('.lemmaWgt-lemmaTitle .lock-lemma').before('<br/><br/>');
+                  }
+                }
+            }
+        }
+    });
+}();
+!function(){	require('wiki-lemma:widget/lemma_content/mainContent/basicInfo/basicInfo.js')();
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var nslog = require('wiki-common:widget/component/nslog/nslog.js');
+    nslog(10002701);
+    $('.lemmaWgt-lemmaCatalog a').on('click', function () {
+           nslog(10002702);
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+    // 展现策略
+    rightCheck.editView('2140650', function(res) {
+        if (!res.errno) {
+            if (res.data.edit) {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        } else {
+            if ('1') {
+                $('.para-title .edit-icon').css('display', 'block');
+            }
+        }
+    });
+}();
+!function(){	require.async(["wiki-common:widget/lib/jquery/jquery.js", "wiki-lemma:widget/lemma_content/mainContent/albumList/albumList.js", "wiki-common:widget/component/nslog/nslog.js"],function($,AlbumList,nslog){
+		var list=new AlbumList({
+			newLemmaId:"2140650",
+			lemmaTitle:"SOA",
+			lemmaId:"21305",
+			subLemmaId:"5033544",
+			data:[{"coverpic":"09fa513d269759ee8ab32de6b6fb43166d22df38","width":521,"height":294,"desc":"\u8bcd\u6761\u56fe\u7247","total":5,"coverurl":"https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/s%3D235\/sign=c453d16a3d12b31bc36cca2ab3193674\/09fa513d269759ee8ab32de6b6fb43166d22df38.jpg"}]
+		});
+		!!window.ScriptLazyLoad && window.ScriptLazyLoad.regist({
+			dom:$('.album-list'),
+			loadFunc:function(){
+				list.load();
+				nslog(1258);
+			},
+			distance:500
+		});
+	});
+}();
+!function(){		require.async(["wiki-lemma:widget/lemma_content/mainContent/lemmaReference/lemmaReference.js", "wiki-lemma:widget/lemma_content/mainContent/lemmaReference/lemmaReferenceTip/lemmaReferenceTip.js"],function(Reference,ReferenceTip){
+			new Reference({
+				subLemmaId:"5033544"
+			});
+			new ReferenceTip({
+				subLemmaId:"5033544"
+			});
+		});
+	}();
+!function(){        require.async('wiki-lemma:widget/promotion/xunke/xunke.js', function (app) {
+            app.init({
+                lemmaTitle: 'SOA',
+                adManager: null
+            });
+        });
+    }();
+!function(){        require('wiki-lemma:widget/lemma_content/configModule/zhixin/zhixin.js')(
+            2140650,
+            'SOA'
+        );
+    }();
+!function(){    require.async("wiki-lemma:widget/lemma_content/mainContent/lemmaStatistics/lemmaStatistics.js",function(init){
+        init({
+            newLemmaIdEnc:"9a720ebd52451ac5236a5a8f"
+        });
+    });
+}();
+!function(){	require.async("wiki-lemma:widget/lemma_content/mainContent/sideCatalog/sideCatalog.js",function(SideCatalog){
+		new SideCatalog();
+	});
+}();
+!function(){        require.async(["wiki-lemma:widget/promotion/fengchao/fengchao.js", "wiki-lemma:widget/promotion/unionAd/unionAd.js"], function (init, unionAd) {
+            init({
+                newLemmaId: "2140650",
+                lemmaTitle: "SOA",
+                encodeLemmaTitle: "SOA",
+                adManager: null
+            }, {
+                errFn: unionAd,
+                dom: $('#side_box_unionAd')
+            });
+        });
+    }();
+!function(){        require.async('wiki-lemma:widget/promotion/guessLike/guessLike.js', function (app) {
+            app.init({
+                lemmaTitle: 'SOA',
+                adManager: null
+            });
+        });
+    }();
+!function(){            require.async('wiki-lemma:widget/promotion/bottomAd/bottomAd.js', function (init) {
+                init({
+                    sId: 'BOTTOM_PRO_AD',
+                    adManager: null
+                });
+            });
+        }();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var Dialog = require("wiki-common:widget/ui/dialog/dialog.js");
+    var userLogin = require('wiki-common:widget/component/userLogin/userLogin.js');
+    var unameFiller = require('wiki-common:widget/component/unameFiller/unameFiller.js');
+    var rightCheck = require('wiki-lemma:widget/tools/rightCheck/rightCheck.js');
+
+            var isEnterprise = false;
+        var enterpriseOwnerUserId = 0;
+    
+    var userId = 0;
+    var editUrl = '/edit/' + encodeURIComponent('SOA') + '/' + '2140650';
+    var pgcUrl = '/enterprise/editpgc?lemmaId=2140650';
+
+    userLogin.regist({
+        onLogin: function(user) {
+            userId = user ? user.uid : 0;
+        }
+    });
+
+    function gotoEdit(url, isMidNight) {
+        if (isMidNight) {
+            Dialog.alert({
+                title: '编辑提示',
+                subMsg: '晚23:00至次日8:00，因审核系统例行维护，您提交的版本可能需要较长时间才能通过，望您谅解。',
+                onConfirm: function() {
+                    window.location.href = url;
+                }
+            });
+        } else {
+            window.location.href = url;
+        }    
+    }
+
+    function showChoseEditDialog(pgcCallback, ugcCallback) {
+        new Dialog({
+            title: '编辑提示',
+            subMsg: '<p>您已开通企业百科服务，推荐您直接编辑“官方资料”，官方资料仅限企业百科绑定的百科账号修改，其他用户账号不可修改。</p><p>如果您想修改其他网友编辑的普通词条内容，请注意遵守百科百科编辑规则。<p>',
+            btns: [{
+            key: 'pgc',
+            text: '编辑官方资料'
+            }, {
+            style: 'white',
+            text: '修改普通词条',
+            key: 'ugc'
+            }],
+            onBtnClick: function(btnKey){
+                if (btnKey === 'pgc') {
+                    pgcCallback && pgcCallback();
+                } else if (btnKey === 'ugc') {
+                    ugcCallback && ugcCallback();
+                }
+            }
+        }).show();
+    }
+
+    function checkUserLegal(res) {
+        var legal = false;
+        switch (res.errno) {
+            case 100001:
+                userLogin.showLoginPop();
+                break;
+            case 100006:
+                unameFiller.show();
+                break;
+            default:
+                legal = true;
+        }
+        return true;
+    }
+
+    function checkUgc(res, url) {
+        if (res.errno) {
+            switch (res.errno) {
+                case 100005:
+                    alert('对不起，您目前被封禁');
+                    break;
+                case 110001:
+                    alert('对不起，该词条被锁定');
+                    break;
+                case 110007:
+                    alert('对不起，消歧页无法编辑');
+                    break;
+                case 110005:
+                    Dialog.alert({
+                    title: '编辑提示',
+                    mainMsg: '对不起，您暂时没有权限编辑该词条。',
+                    subMsg: '<p>您好，该词条内容已较丰富，现仅对百科等级达到<b>四级</b>且通过率达到<b>85%</b>的科友开放编辑。</p><p>当您通过努力达到以上要求，就可以参与编辑该词条了。</p><p><img src="https://bkssl.bdimg.com/img/baike/usercenter/growuptask/star.gif" class="star" />参加<a target="_blank" href="/usercenter#guide">成长任务</a>，更快掌握百科编辑技巧，加速升级！</p>'
+                    });
+                    break;
+                case 110008:
+                    Dialog.alert({
+                    title: '编辑提示',
+                    mainMsg: '对不起，您暂时没有权限编辑该词条。',
+                    subMsg: '<p>您好，该词条内容已较丰富，现仅对百科等级达到<b>六级</b>且通过率达到<b>85%</b>的科友开放编辑。</p><p>当您通过努力达到以上要求，就可以参与编辑该词条了。</p><p><img src="https://bkssl.bdimg.com/img/baike/usercenter/growuptask/star.gif" class="star" />参加<a target="_blank" href="/usercenter#guide">成长任务</a>，更快掌握百科编辑技巧，加速升级！</p>'
+                    });
+                    break;
+                case 470001:
+                    alert('系统错误，请刷新重试');
+                    break;
+            }
+        } else {
+            if (!res.data.right.noAudit) {
+                Dialog.alert({
+                    title: '编辑提示',
+                    subMsg: '很抱歉，该词条有其他用户编辑的版本正在提交，您暂时无法编辑。<br/>百科建议您晚些时候再编辑该词条，或者尝试编辑其他的词条。'
+                });
+                return;
+            }
+            gotoEdit(url, res.data.notice.isMidNight);
+        }
+    }
+
+    $(document.body).on('click', '.j-edit-link', function() {
+        var dl = $(this).attr('data-edit-dl');
+        if (dl) {
+            var url = editUrl + '?dl=' + dl;
+        } else {
+            var url = editUrl;
+        }
+
+        rightCheck.preeditCheck('2140650', 'SOA', '面向服务的架构', '118791596', function(res) {
+            if (!checkUserLegal(res)) {
+                return;
+            }
+            if (isEnterprise && enterpriseOwnerUserId === userId) {
+                showChoseEditDialog(function() {
+                    location.href = pgcUrl;
+                }, function() {
+                    checkUgc(res, url);
+                });
+            } else {
+                checkUgc(res, url);
+            }
+        });
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js'),
+      initSearchbar = require('wiki-common:widget/component/searchbar-n/searchbar.js');  
+    initSearchbar($('.wgt-searchbar-simple'));
+  }();
+!function(){    require.async("wiki-lemma:widget/tools/searchHeader/toolButtons-n/toolButtons.js",function(init){
+        init({
+            lemmaId:"21305",
+            subLemmaId:"5033544",
+            newLemmaId:"2140650"
+        });
+    });
+}();
+!function(){    require('wiki-lemma:widget/tools/searchHeader/toolButtons-n/userInfo.js')();
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js'),
+      animation = require('wiki-common:widget/util/animation.js'),
+      nslog = require('wiki-common:widget/component/nslog/nslog.js'),
+      initSearchbar = require('wiki-common:widget/component/searchbar/searchbar.js');
+
+    var isFadeIn = false,
+        isFadeOut = false;
+
+    var fadeInAni, fadeOutAni;
+
+    $(window).on('scroll', function(e) {
+        var scrollTop = $(this).scrollTop();
+
+        if (scrollTop > 200 && !isFadeIn && $('.lemmaWgt-searchHeader').css('display') == 'none') {
+            fadeOutAni && fadeOutAni.stop();
+            fadeInAni = animation({
+                duration: 200,
+                easing: 'linear',
+                onStart: function() {
+                    isFadeOut = false;
+                    isFadeIn = true;
+                    $('.lemmaWgt-searchHeader').css('display', 'block');
+                },
+                onStep: function(progress) {
+                    $('.lemmaWgt-searchHeader').css('opacity', progress)
+                },
+                onComplete: function(progress) {
+                    isFadeIn = false;
+                    nslog(10010007);
+                }
+            });
+        } else if (scrollTop <= 200 && !isFadeOut && $('.lemmaWgt-searchHeader').css('display') == 'block') {
+            fadeInAni && fadeInAni.stop();
+            fadeOutAni = animation({
+                duration: 300,
+                easing: 'linear',
+                onStart: function() {
+                    $('.lemmaWgt-searchHeader #suggestion').hide();
+                    isFadeIn = false;
+                    isFadeOut = true;
+                },
+                onStep: function(progress) {
+                    $('.lemmaWgt-searchHeader').css('opacity', 1 - progress);
+                },
+                onComplete: function(progress) {
+                    isFadeOut = false;
+                    $('.lemmaWgt-searchHeader').css('display', 'none');
+                }
+            });
+        }
+    });
+}();
+!function(){    require('wiki-lemma:widget/tools/newSideShare/qzopensl.js');
+    require.async("wiki-lemma:widget/tools/newSideShare/taskSideShare.js",function(taskShare){
+        taskShare.init({
+            title: 'SOA',
+            desc: "\u9762\u5411\u670d\u52a1\u7684\u67b6\u6784\uff08SOA\uff09\u662f\u4e00\u4e2a\u7ec4\u4ef6\u6a21\u578b\uff0c\u5b83\u5c06\u5e94\u7528\u7a0b\u5e8f\u7684\u4e0d\u540c\u529f\u80fd\u5355\u5143\uff08\u79f0\u4e3a\u670d\u52a1\uff09\u901a\u8fc7\u8fd9\u4e9b\u670d\u52a1\u4e4b\u95f4\u5b9a\u4e49\u826f\u597d\u7684\u63a5\u53e3\u548c\u5951\u7ea6\u8054\u7cfb\u8d77\u6765\u3002\u63a5\u53e3\u662f\u91c7\u7528\u4e2d\u7acb\u7684\u65b9\u5f0f\u8fdb\u884c\u5b9a\u4e49\u7684\uff0c\u5b83\u5e94\u8be5\u72ec\u7acb\u4e8e\u5b9e\u73b0\u670d\u52a1\u7684\u786c\u4ef6\u5e73\u53f0\u3001\u64cd\u4f5c\u7cfb\u7edf\u548c\u7f16\u7a0b\u8bed\u8a00\u3002\u8fd9\u4f7f\u5f97\u6784\u5efa\u5728\u5404\u79cd\u5404\u6837\u7684\u7cfb\u7edf\u4e2d\u7684\u670d\u52a1\u53ef\u4ee5\u4ee5\u4e00\u79cd\u7edf\u4e00\u548c\u901a\u7528\u7684\u65b9\u5f0f\u8fdb",
+            pic: 'https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/w%3D268\/sign=81a4a2a94eed2e73fce9812abf00a16d\/09fa513d269759ee8ab32de6b6fb43166d22df38.jpg',
+            url: '',
+            qqPic: 'https:\/\/gss3.bdstatic.com\/7Po3dSag_xI4khGkpoWK1HF6hhy\/baike\/whfpf%3D294%2C294%2C50\/sign=b637411c253fb80e0c84329750ec1d17\/09fa513d269759ee8ab32de6b6fb43166d22df38.jpg',
+            newLemmaId: '2140650',
+            lemmaTitle: 'SOA'
+        });
+    });
+}();
+!function(){    var $ = require('wiki-common:widget/lib/jquery/jquery.js');
+    var nslog = require("wiki-common:widget/component/nslog/nslog.js");
+    var testElem = require('wiki-common:widget/component/testElem/testElem.js');
+    var cmsModuleLoader = require('wiki-common:widget/component/cmsModuleLoader/cmsModuleLoader.js');
+
+    function requireAsync() {
+        require.async('wiki-lemma:widget/tools/announcement/announcement.js');
+    }
+
+    cmsModuleLoader('/api/wikiui/getlemmaconfig', [{
+        name: 'announcement',
+        script: 'wiki-lemma:widget/tools/announcement/announcement.js'
+    }]);
+
+    require.async("wiki-lemma:widget/tools/lazyLoad/lazyLoad.js", function(LazyLoad) {
+        new LazyLoad();
+    });
+
+    require.async(['wiki-common:widget/component/nslog/nslog.js', 'wiki-common:widget/lib/jquery/jquery.js'], function(nslog, $) {
+        nslog().setGlobal({
+            lemmaId: "21305",
+            newLemmaId: "2140650",
+            subLemmaId: "5033544",
+            lemmaTitle: "SOA"
+        });
+
+        // 词条页 pv
+        nslog(9322);
+
+        // 新版头部pv（小流量）
+        if ($('.pc-header-new').length > 0) {
+            nslog(9069);
+        }
+
+        // 链接点击 pv
+        var lemmaPageRegExp = new RegExp(/\/subview\/\d+|\/view\/\d+|\/item\//i);
+        $('body').on('mousedown', 'a', function() {
+            var href = $(this).attr('href');
+            if (href && href.indexOf('/') >= 0 && href.indexOf('#') !== 0) {
+                // 链接点击 pv
+                nslog(10000001);
+                if (lemmaPageRegExp.test(href)) {
+                    // 词条页链接点击 pv
+                    nslog(10000002, window.location.href, {
+                        targetTitle: $(this).text()
+                    });
+                }
+            }
+        });
+
+        /****** 词条页站内流转需求统计 start ******/
+        (function () {
+            // 各种统计配置
+            var circulationLinkCfg = {
+                innerLink: [ // 内链
+                    '.para',
+                    '.lemmaWgt-baseInfo-simple-largeMovie',
+                    '.lemmaWgt-baseInfo-simple-largeStar',
+                    '.basic-info .basicInfo-block',
+                    '.lemma-summary',
+                    '.lemmaWgt-lemmaSummary',
+                    '.view-tip-panel',
+                    '.horizontal-module',
+                    '.lemmaWgt-roleIntroduction',
+                    '.dramaSeries .dramaSerialList',
+                    '.module-music',
+                    '.table-view',
+                    '[log-set-param="table_view"]',
+                    '.list-module',
+                    '.cell-module',
+                    '.baseBox .dl-baseinfo', // 配置后台字段
+                    '.pvBtn-box .leadPVBtnWrapper',
+                    '.drama-actor',
+                    '#staffList',
+                    '.starMovieAndTvplay',
+                    '.main_tab:not(.main_tab-defaultTab)' // 除去词条tab外的tab
+                ],
+                relationTable: '.rs-container-foot', // 关系表
+                peopleRelation: '.star-info-block.relations, .lemmaWgt-focusAndRelation', // 人物关系（明星+普通）
+                moduleActors: '.featureBaseInfo .actors, .lemmaWgt-majorActors', // 主要演员、嘉宾、主持人
+                moduleWorks: '.featureBaseInfo .works, .large-feature .works', // 代表作品
+                moduleQuarterly: '.featureBaseInfo .po_quarterly, .mian_quarterly', // 分季介绍
+                rankStar: '.rank-list.stars-rank', // 明星榜
+                rankDrama: '.drama-rank-list', // 电视剧榜
+                specialTopic: '.special-topic', // 专题模块
+                modDetailTable: '#modDetailTable', // 关系表出图
+                chuizhitu: '.chuizhitu', // 垂直化模块
+                polysemantList: '.polysemantList-wrapper' // 义项切换
+            };
+            /****** 连接统计 ******/
+            function clickNslogFn() {
+                for (var k in circulationLinkCfg) {
+                    if (k === 'innerLink') {
+                        // 词条内链到词条页
+                        var tempArr = circulationLinkCfg[k];
+                        for (var i = 0, l = tempArr.length; i < l; i++) {
+                            tempArr[i] += ' a';
+                        }
+                        var sSelector = tempArr.join(', ');
+
+                        $('body').on('mousedown', sSelector, {key: k},function(e) {
+                            var key = e.data.key;
+                            var href = $(this).attr('href');
+                            var tar = $(this).attr('target') || '';
+                            if (href && href.indexOf('/') >= 0 && href.indexOf('#') !== 0
+                            && tar === '_blank' && lemmaPageRegExp.test(href)) {
+                                // 词条页普通内链点击 pv
+                                nslog(10000004, null ,{division: key});
+                            }
+                        });
+                    } else {
+                        // 模块到词条页链接
+                        $(circulationLinkCfg[k]).on('mousedown', 'a', {key: k}, function (e) {
+                            var key = e.data.key;
+                            var href = $(this).attr('href');
+                            if (href && href.indexOf('#') !== 0 && lemmaPageRegExp.test(href)) {
+                                // 词条页配置模块链接点击 pv
+                                nslog(10000004, null, {division: key});
+                            }
+                        });
+                    }
+                }
+            }
+            // 发起统计请求
+            clickNslogFn();
+
+            /****** 各模块展现量pv ******/
+            function checkModuleIsShow() {
+                var result = [];
+                for (var k in circulationLinkCfg) {
+                    if (k !== 'innerLink' && k !== 'relationTable') {
+                        !!$(circulationLinkCfg[k]).html() && result.push(k);
+                    }
+                }
+                if (result.length > 0) {
+                    nslog(10000005, null, {showModules: result.join(',')});
+                }
+            }
+            checkModuleIsShow();
+
+        })();
+        /****** 词条页站内流转需求统计 end ******/
+
+    });
+
+    // 广告接入 wikiad 统一加载
+    // log 词条页广告被拦截情况（此处 log 请求行为）
+    nslog(70000101, window.location.href, {
+        api: 'lemma-ad',
+        action: 'request'
+    });
+    $.ajax({
+        type: 'GET',
+        url: '/api/wikiad/getsquirrels',
+        data: {
+            lemmaId: 2140650
+        },
+        cache: false,
+        dataType: 'JSON',
+        success: function (res) {
+            // log 词条页广告被拦截情况（此处 log 请求成功）
+            nslog(70000101, window.location.href, {
+                api: 'lemma-ad',
+                action: 'success'
+            });
+
+            if (!res.errno) {
+                if (res.data[5]) {
+                    require.async(['wiki-lemma:widget/promotion/rightPreciseAd/rightPreciseAd.js'], function(rightPreciseAd) {
+                        rightPreciseAd(res.data[5]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[5][0].adId,
+                            adTitle: res.data[5][0].name,
+                            adPos: 5
+                        });
+                    });
+                } else if (res.data[1]) {
+                                        require.async(['wiki-lemma:widget/promotion/vbaike/vbaike.js'], function(vbaike) {
+                        vbaike(res.data[1]);
+                        for(var i in res.data[1]) {
+                            nslog(10002201, location.href, {
+                                adId: res.data[1][i].adId,
+                                adTitle: res.data[1][i].name,
+                                adPos: 1
+                            });
+                        }
+                    });
+                                    }
+                if (res.data[9]) {
+                                        require.async(['wiki-lemma:widget/promotion/rightBigAd/rightBigAd.js'], function(rightBigAd) {
+                        rightBigAd(res.data[9]);
+                            nslog(10002201, location.href, {
+                                adId: res.data[9][0].adId,
+                                adTitle: res.data[9][0].name,
+                                adPos: 9
+                            });
+                    });
+                                    } else if(res.data[2]) {
+                    require.async(['wiki-lemma:widget/promotion/slide/slide.js'], function(slide) {
+                        slide(res.data[2]);
+                        for(var i in res.data[2]) {
+                            nslog(10002201, location.href, {
+                                adId: res.data[2][i].adId,
+                                adTitle: res.data[2][i].name,
+                                adPos: 2
+                            });
+                        }
+                    });
+                }
+                if (res.data[3]) {
+                                        require.async(['wiki-lemma:widget/promotion/topAd/topAd.js'], function(topAd) {
+                        topAd(res.data[3]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[3][0].adId,
+                            adTitle: res.data[3][0].name,
+                            adPos: 3
+                        });
+                    });
+                                    }
+                if (res.data[4]) {
+                                        require.async(['wiki-lemma:widget/promotion/rightAd/rightAd.js'], function(rightAd) {
+                        rightAd(res.data[4]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[4][0].adId,
+                            adTitle: res.data[4][0].name,
+                            adPos: 4
+                        });
+                    });
+                                    }
+                if (res.data[15]) {
+                    require.async(['wiki-lemma:widget/promotion/banner/banner.js'], function(banner) {
+                        banner(res.data[15]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[15][0].adId,
+                            adTitle: res.data[15][0].name,
+                            adPos: 15
+                        });
+                    });
+                }
+                if (res.data[16]) {
+                    require.async(['wiki-lemma:widget/promotion/declaration/declaration.js'], function(declaration) {
+                        declaration(res.data[16]);
+                        nslog(10002201, location.href, {
+                            adId: res.data[16][0].adId,
+                            adTitle: res.data[16][0].name,
+                            adPos: 16
+                        });
+                    })
+                }
+            } else {
+                return;
+            }
+
+            setTimeout(function () {
+                var elemArr = {};
+                res.data[1] && res.data[1].length > 0 && (elemArr['lemma-vbaike-ad'] = $('.lemmaWgt-promotion-vbaike .promotion_viewport a:eq(0) img').get(0));
+                res.data[2] && res.data[2].length > 0 && (elemArr['lemma-slide-ad'] = $('.lemmaWgt-promotion-slide .promotion_viewport a:eq(0) img').get(0));
+                res.data[3] && res.data[3].length > 0 && (elemArr['lemma-navbar-ad'] = {
+                    node: $('.header [nslog-type="10002202"]').get(0),
+                    validations: {
+                        'noBackgroundImage': function() {
+                            return $('.header [nslog-type="10002202"]').css('background-image').indexOf(res.data[3][0].picUrl) < 0
+                        }
+                    }
+                });
+                res.data[4] && res.data[4].length > 0 && (elemArr['lemma-side-ad'] = {
+                    node: $('.right-ad img').get(0),
+                    validations: {
+                        'noBackgroundImage': function() {
+                            return $('.right-ad img').attr('src').indexOf(res.data[4][0].picUrl) < 0
+                        }
+                    }
+                });
+                res.data[15] && res.data[15].length > 0 && (elemArr['lemma-configModule-banner'] = $('.configModuleBanner').get(0));
+                res.data[16] && res.data[16].length > 0 && (elemArr['lemma-configModule-declaration'] = $('.lemmaWgt-declaration').get(0));
+
+                testElem.log(elemArr, 70000102);
+            }, 1000);
+        },
+        error: function () {
+            // log 词条页广告被拦截情况（此处 log 请求失败）
+            nslog(70000101, window.location.href, {
+                api: 'lemma-ad',
+                action: 'error'
+            });
+        }
+    });
+
+    // 设置分享内容
+    window.BKShare.setCommon({
+        bdText: "\u3010SOA_\u767e\u5ea6\u767e\u79d1\u3011\u9762\u5411\u670d\u52a1\u7684\u67b6\u6784\uff08SOA\uff09\u662f\u4e00\u4e2a\u7ec4\u4ef6\u6a21\u578b\uff0c\u5b83\u5c06\u5e94\u7528\u7a0b\u5e8f\u7684\u4e0d\u540c\u529f\u80fd\u5355\u5143\uff08\u79f0\u4e3a\u670d\u52a1\uff09\u901a\u8fc7\u8fd9\u4e9b\u670d\u52a1\u4e4b\u95f4\u5b9a\u4e49\u826f\u597d\u7684\u63a5\u53e3\u548c\u5951\u7ea6\u8054\u7cfb\u8d77\u6765\u3002\u63a5\u53e3\u662f\u91c7\u7528\u4e2d\u7acb\u7684\u65b9\u5f0f\u8fdb\u884c\u5b9a\u4e49\u7684\uff0c\u5b83\u5e94\u8be5\u72ec\u7acb\u4e8e\u5b9e\u73b0\u670d\u52a1\u7684\u786c\u4ef6\u5e73\u53f0\u3001\u64cd\u4f5c\u7cfb\u7edf\u548c\u7f16\u7a0b\u8bed\u8a00\u3002\u8fd9\u4f7f\u5f97\u6784\u5efa\u5728\u5404\u79cd\u5404\u6837\u7684\u7cfb\u7edf\u4e2d\u7684\u670d\u52a1\u53ef\u4ee5\u4ee5\u4e00\u79cd\u7edf\u4e00\u548c\u901a\u7528\u7684\u65b9\u5f0f\u8fdb.....\uff08\u5206\u4eab\u81ea@\u767e\u5ea6\u767e\u79d1\uff09",
+        bdDesc: '',
+        bdUrl: 'http:\/\/baike.baidu.com\/subview\/21305\/5033544.htm',
+        bdPic: '',
+        onBeforeClick: function (){
+            $('.bdshare_dialog_box').hide();
+        }
+    });
+
+    // 底部投诉带入当前页面 url
+    var map = [1, 2, 4, 3];
+    $('.wgt-footer-main .suggestion').find('a').each(function(i) {
+        $(this).attr('href', 'http://tousu.baidu.com/baike/add?word=SOA' + '&&submit_link=' + encodeURIComponent(window.location.href) + '#' + map[i]);
+    });
+
+    // 为超出预设内容的表格添加table-responsive控制
+    $('.main-content').find('table').each(function(index) {
+        var $that = $(this);
+        if ($that.width() > 790) {
+            $that.wrap('<div class="table-responsive"></div>');
+        }
+    });
+}();
+!function(){      require('wiki-common:widget/component/psLink/psLink.js');
+    }();</script><div class="wgt_overlay" style="opacity: 0; position: fixed;"></div>
+<script type="text/javascript">
+  var Hunter = window.Hunter || {};
+  Hunter.userConfig = Hunter.userConfig || [];
+  </script>
+<script type="text/javascript" src="./SOA（面向服务的架构）_百度百科_files/baike.js.下载" defer=""></script><script type="text/javascript">
+  // DOM Ready时，统计用户可操作时间。
+  alog('speed.set', 'drt', +new Date);
+
+  void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d,k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+</script>
+
+<div class="reference-tip"><table><tbody><tr><td class="content"></td><td class="title" valign="middle">参考资料</td></tr></tbody></table><em class="triangle-bg"></em><em class="triangle-border"></em></div></body></html>

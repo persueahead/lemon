@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://www.cnblogs.com/imyalost/p/6792724.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>微服务架构 - 老_张 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="./微服务架构 - 老_张 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./微服务架构 - 老_张 - 博客园_files/bundle-coffee.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./微服务架构 - 老_张 - 博客园_files/bundle-coffee-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/imyalost/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/imyalost/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/imyalost/wlwmanifest.xml">
+<script async="" src="./微服务架构 - 老_张 - 博客园_files/analytics.js.下载"></script><script src="./微服务架构 - 老_张 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+<script type="text/javascript">var currentBlogApp = 'imyalost', cb_enable_mathjax=true;var isLogined=false;</script>
+<script type="text/x-mathjax-config;executed=true">
+    MathJax.Hub.Config({
+        tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processClass: 'blogpost-body', processEscapes: true },
+        TeX: { 
+            equationNumbers: { autoNumber: ['AMS'], useLabelIds: true }, extensions: ['extpfeil.js'] },
+            'HTML-CSS': { linebreaks: { automatic: true } },
+            SVG: { linebreaks: { automatic: true } }
+        });
+    </script><script src="./微服务架构 - 老_张 - 博客园_files/MathJax.js.下载"></script>
+<script src="./微服务架构 - 老_张 - 博客园_files/blog-common.js.下载" type="text/javascript"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/imyalost/"><img id="blogLogo" src="./微服务架构 - 老_张 - 博客园_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/imyalost/">老_张</a></h1>
+<h2>天与火，同人，君子以类族辨物。。。</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<ul id="navList">
+	<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+	<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/imyalost/">首页</a></li>
+	<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+	<li><a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E8%80%81_%E5%BC%A0">联系</a></li>
+	<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+	<li><a id="blog_nav_rss" class="menu" href="http://www.cnblogs.com/imyalost/rss">订阅</a>
+	<a id="blog_nav_rss_image" class="aHeaderXML" href="http://www.cnblogs.com/imyalost/rss"><img src="./微服务架构 - 老_张 - 博客园_files/xml.gif" alt="订阅"></a></li>
+</ul>
+
+
+			<div class="blogStats">
+				
+				<div id="blog_stats">
+<!--done-->
+随笔- 160&nbsp;
+文章- 0&nbsp;
+评论- 136&nbsp;
+</div>
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/imyalost/p/6792724.html">微服务架构</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p><span style="font-family: &quot;courier new&quot;, courier">资料来源：有架构给我的一些资料，以及自己百度和论坛、社区找来的一些资料，权当做一个总结式的简介。。。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">&nbsp;</span></p>
+<p><strong><span style="font-family: &quot;courier new&quot;, courier">目录如下：</span></strong></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">一、微服务架构介绍</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">二、出现和发展</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">三、传统开发模式和微服务的区别</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">四、微服务的具体特征</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">五、SOA和微服务的区别</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">六、如何具体实践微服务</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">七、常见的微服务设计模式和应用</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">八、微服务的优点和缺点</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">九、思考：意识的转变</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">十、参考资料和推荐阅读</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>一、微服务架构介绍</strong>&nbsp;&nbsp;</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline">微服务架构（Microservice Architecture）</span>是一种架构概念，旨在通过将功能分解到各个离散的服务中以</span><span style="font-family: &quot;courier new&quot;, courier">实现对解决方案的解耦。你可以将其看作是在架构层次而非获取服务的</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">类上应用很多SOLID原则。微服</span><span style="font-family: &quot;courier new&quot;, courier">务架构是个很有趣的概念，它的主要作用是将功能分解到离散的各个服务当中，从而降低系统的耦合性，</span><span style="font-family: &quot;courier new&quot;, courier">并提供更加灵活的服务支持。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>概念：</strong>把一个大型的单个应用程序和服务拆分为数个甚至数十个的支持微服务，它可扩展单个组件而不</span><span style="font-family: &quot;courier new&quot;, courier">是整个的应用程序堆栈，从而满足服务等级协议。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>定义：</strong>围绕业务领域组件来创建应用，这些应用可独立地进行开发、管理和迭代。在分散的组件中使用</span><span style="font-family: &quot;courier new&quot;, courier">云架构和平台式部署、管理和服务功能，使产品交付变得更加简单。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>本质：</strong>用一些功能比较明确、业务比较精练的服务去解决更大、更实际的问题。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>二、出现和发展</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline">微服务（Microservice）</span>这个概念是2012年出现的，作为加快Web和移动应用程序开发进程的一种方法，</span><span style="font-family: &quot;courier new&quot;, courier">2014年开始受到各方的关注，而2015年，可以说是微服务的元年；</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">越来越多的论坛、社区、blog以及互</span><span style="font-family: &quot;courier new&quot;, courier">联网行业巨头开始对微服务进行讨论、实践，可以说这样更近一步推动了微服务的发展和创新。</span><span style="font-family: &quot;courier new&quot;, courier">而微服务的流行，Martin Fowler功不可没。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这老头是个奇人，特别擅长抽象归纳和制造概念。特别是微</span><span style="font-family: &quot;courier new&quot;, courier">服务这种新生的名词，都有一个特点：<strong>一解释就懂，一问就不知，一讨论就打架。</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier; color: #333399">Martin Fowler是国际著名的OO专家，敏捷开发方法的创始人之一，现为ThoughtWorks公司的首</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier; color: #333399">席科学家。在面向对象分析设计、UML、模式、软件开发方法学、XP、重构等方面，都是世界顶</span><span style="font-family: &quot;courier new&quot;, courier; color: #333399">级的</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier; color: #333399">专家，现为Thought Works公司的首席科学家。Thought Works是一家从事企业应用开发和——集</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier; color: #333399">成的公司。早在20世纪80年代，Fowler就是使用对象技术构建多层企业应用的倡导者，他著有几</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier; color: #333399">本经典书籍： 《企业应用架构模式》、《UML精粹》和《重构》等。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier; color: #333399">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ———— 百度百科</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>三、传统开发模式和微服务的区别</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">先来看看传统的web开发方式，通过对比比较容易理解什么是Microservice Architecture。和Microservice相对应的，这种方式一般被称为Monolithic（单体式开发）。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">所有的功能打包在一个 WAR包里，基本没有外部依赖（除了容器），部署在一个JEE容器（Tomcat，JBoss，WebLogic）里，包含了 DO/DAO，Service，UI等所有逻辑。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501194151445-939262804.png" alt=""></span></p>
+<p><strong><span style="font-family: &quot;courier new&quot;, courier">优点：</span></strong></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">①开发简单，集中式管理</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">②基本不会重复开发</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">③功能都在本地，没有分布式的管理和调用消耗</span></p>
+<p><strong><span style="font-family: &quot;courier new&quot;, courier">缺点：</span></strong></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、效率低：开发都在同一个项目改代码，相互等待，冲突不断</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、维护难：代码功功能耦合在一起，新人不知道何从下手</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、不灵活：构建时间长，任何小修改都要重构整个项目，耗时</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">4、稳定性差：一个微小的问题，都可能导致整个应用挂掉</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">5、扩展性不够：无法满足高并发下的业务需求</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>常见的系统架构遵循的三个标准和业务驱动力：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、提高敏捷性：及时响应业务需求，促进企业发展</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、提升用户体验：提升用户体验，减少用户流失</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、降低成本：降低增加产品、客户或业务方案的成本</span><br>
+</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>基于微服务架构的设计：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>目的：</strong>有效的拆分应用，实现敏捷开发和部署</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501194607023-1194438149.png" alt="" width="640" height="358"></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>关于微服务的一个形象表达：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501194636867-1452154359.png" alt="" width="685" height="478"></strong></span></p>
+<p><strong>X轴：</strong>运行多个负载均衡器之后的运行实例</p>
+<p><strong>Y轴：</strong>将应用进一步分解为微服务（分库）</p>
+<p><strong>Z轴：</strong>大数据量时，将服务分区（分表）</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>四、微服务的具体特征</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>官方的定义：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、一些列的独立的服务共同组成系统</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、单独部署，跑在自己的进程中</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、每个服务为独立的业务开发</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">4、分布式管理</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">5、非常强调隔离性</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>大概的标准：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、分布式服务组成的系统</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、按照业务，而不是技术来划分组织</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、做有生命的产品而不是项目</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">4、强服务个体和弱通信（ Smart endpoints and
+dumb pipes ）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">5、自动化运维（ DevOps ）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">6、高度容错性</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">7、快速演化和迭代</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">&nbsp;</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>五、</strong><strong>SOA</strong><strong>和微服务的区别</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>1</strong><strong>、</strong><strong>SOA</strong><strong>喜欢重用，微服务喜欢重写</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong><span style="text-decoration: underline">SOA</span></strong>的主要目的是为了企业各个系统更加容易地融合在一起。 说到SOA不得不说ESB(Enterprise</span><span style="font-family: &quot;courier new&quot;, courier">Service Bus)。
+ESB是什么? 可以把ESB想象成一个连接所有</span><span style="font-family: &quot;courier new&quot;, courier">企业级服务的脚手架。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"> 通过service broker，</span><span style="font-family: &quot;courier new&quot;, courier">它可以把不同数据格式或模型转成canonical格式，把XML的输入转成CSV传给legacy服务，把SOAP&nbsp;</span><span style="font-family: &quot;courier new&quot;, courier">1.1服务转成
+SOAP 1.2等等。 它还可以把一个服务</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">路由</span><span style="font-family: &quot;courier new&quot;, courier">到另一个服务上，也可以集中化管理业务逻辑，</span><span style="font-family: &quot;courier new&quot;, courier">规则和验证等等。 它还有一个重要功能是消息队列和事件驱动的消息传递，比如把JMS服务转化成</span><span style="font-family: &quot;courier new&quot;, courier">SOAP协议。 各服务间可能有</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">复杂的依赖关系。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><strong>微服务</strong></span>通常由重写一个模块开始。要把整个巨石型的应用重写是有很大的风险的，也不一定必要。</span><span style="font-family: &quot;courier new&quot;, courier">我们向微服务迁移的时候通常从耦合度最低的模块或对扩展性要求最高的模块开始，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">把它们一个一个</span><span style="font-family: &quot;courier new&quot;, courier">剥离出来用敏捷地重写，可以尝试最新的技术和语言和框架，然 后单独布署。 它通常不依赖其他服</span><span style="font-family: &quot;courier new&quot;, courier">务。微服务中常用的API Gateway的模式主要目的也不是重用代码</span><span style="font-family: &quot;courier new&quot;, courier">，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">而是减少客户端和服务间的往来。</span><span style="font-family: &quot;courier new&quot;, courier">API gateway模式不等同与Facade模式，我们可以使用如future之类的调用，甚至返回不完整数据。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier">
+<strong>2</strong><strong>、</strong><strong>SOA</strong><strong>喜欢水平服务，微服务喜欢垂直服务</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><strong>SOA</strong></span>设计喜欢给服务分层(如Service Layers模式)。 我们常常见到一个Entity服务层的设计，美其名曰</span><span style="font-family: &quot;courier new&quot;, courier">Data Access
+Layer。 这种设计要求所有的服务都通过这个Entity服务层</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">来获取数据。 这种设计非常不</span><span style="font-family: &quot;courier new&quot;, courier">灵活，比如每次数据层的改动都可能影响到所有业务层的服务。 而每个微服务通常有它自己独立的</span><span style="font-family: &quot;courier new&quot;, courier">data store。 我们在拆分数据库时可以适当的做些</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">去范式化(denormalization)，让它不需要依赖其他</span><span style="font-family: &quot;courier new&quot;, courier">服务的数据。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong><span style="text-decoration: underline">微服务</span></strong>通常是直接面对用户的，每个微服务通常直接为用户提供某个功能。 类似的功能可能针对手</span><span style="font-family: &quot;courier new&quot;, courier">机有一个服务，针对机顶盒是另外一个服务。 在SOA设计模式中这种情况通常会用到</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">Multi-Channel</span><span style="font-family: &quot;courier new&quot;, courier">Endpoint的模式返回一个大而全的结果兼顾到所有的客户端的需求。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier">
+<strong>3</strong><strong>、</strong><strong>SOA</strong><strong>喜欢自上而下，微服务喜欢自下而上</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><strong>SOA</strong></span>架构在设计开始时会先定义好服务合同(service contract)。 它喜欢集中管理所有的服务，包括集</span><span style="font-family: &quot;courier new&quot;, courier">中管理业务逻辑，数据，流程，schema，等等。 它使用Enterprise </span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">Inventory和Service
+Composition等</span><span style="font-family: &quot;courier new&quot;, courier">方法来集中管理服务。 SOA架构通常会预先把每个模块服务接口都定义好。 模块系统间的通讯必须</span><span style="font-family: &quot;courier new&quot;, courier">遵守这些接口，各服务是针对他们的调用者。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"> SOA架构适用于TOGAF之类的架构方法论。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><strong>微服务</strong></span>则敏捷得多。只要用户用得到，就先把这个服务挖出来。然后针对性的，快速确认业务需求，</span><span style="font-family: &quot;courier new&quot;, courier">快速开发迭代。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">&nbsp;</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>六、怎么具体实践微服务</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">要实际的应用微服务，需要解决一下<span style="text-decoration: underline">四点问题：</span></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、客户端如何访问这些服务</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、每个服务之间如何通信</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、如此多的服务，如何实现？</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">4、服务挂了，如何解决？（备份方案，应急处理机制）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>1</strong><strong>、客户端如何访问这些服务</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">原来的Monolithic方式开发，所有的服务都是本地的，UI可以直接调用，现在按功能拆分成独立的服</span><span style="font-family: &quot;courier new&quot;, courier">务，跑在独立的一般都在独立的虚拟机上的 Java进程了。客户端UI如何访问他的？</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">后台有N个服务，</span><span style="font-family: &quot;courier new&quot;, courier">前台就需要记住管理N个服务，一个服务下线/更新/升级，前台就要重新部署，这明显不服务我们
+拆</span><span style="font-family: &quot;courier new&quot;, courier">分的理念，特别当前台是移动应用的时候，通常业务变化的节奏更快。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">另外，N个小服务的调用也是</span><span style="font-family: &quot;courier new&quot;, courier">一个不小的网络开销。还有一般微服务在系统内部，通常是无 状态的，用户登录信息和权限管理最</span><span style="font-family: &quot;courier new&quot;, courier">好有一个统一的地方维护管理（OAuth）。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">所以，一般在后台N个服务和UI之间一般会一个代理或者叫API Gateway，他的作用包括：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">① 提供统一服务入口，让微服务对前台透明</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">② 聚合后台的服务，节省流量，提升性能</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">③ 提供安全，过滤，流控等API管理功能</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">
+其实这个API
+Gateway可以有很多广义的实现办法，可以是一个软硬一体的盒子，也可以是一个简单的MVC框架，甚至是一个Node.js的服务端。他们最重要的作
+用是为前台（通常是</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">移动应用）提供后台服务的聚合，提供一个统一的服务出口，解除他们之间的耦合，不过API Gateway也有可能成为单点故障点或者性能的瓶颈。</span><br>
+</p>
+<p><span style="font-family: &quot;courier new&quot;, courier">用过Taobao Open Platform（淘宝开放平台）的就能很容易的体会，TAO就是这个API Gateway。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501200100476-640600373.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>2</strong><strong>、每个服务之间如何通信</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">所有的微服务都是独立的Java进程跑在独立的虚拟机上，所以服务间的通信就是IPC（inter process communication），已经有很多成熟的方案。现在基本最通用的有两种方式：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">同步调用：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">①REST（JAX-RS，Spring Boot）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">②RPC（Thrift, Dubbo）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">异步消息调用(Kafka, Notify, MetaQ)</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501200246382-1413166815.png" alt=""></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>同步和异步的区别：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">一般同步调用比较简单，一致性强，但是容易出调用问题，性能体验上也会差些，特别是调用层次多</span><span style="font-family: &quot;courier new&quot;, courier">的时候。RESTful和RPC的比较也是一个很有意 思的话题。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">一般REST基于HTTP，更容易实现，更容易</span><span style="font-family: &quot;courier new&quot;, courier">被接受，服务端实现技术也更灵活些，各个语言都能支持，同时能跨客户端，对客户端没有特殊的要</span><span style="font-family: &quot;courier new&quot;, courier">求，只要封装了HTTP的</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">SDK就能调用，所以相对使用的广一些。RPC也有自己的优点，传输协议更高</span><span style="font-family: &quot;courier new&quot;, courier">效，安全更可控，特别在一个公司内部，如果有统一个 的开发规范和统一的服务框架时，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">他的开发</span><span style="font-family: &quot;courier new&quot;, courier">效率优势更明显些。就看各自的技术积累实际条件，自己的选择了。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">而异步消息的方式在分布式系统中有特别广泛的应用，他既能减低调用服务之间的耦合，又能成为调</span><span style="font-family: &quot;courier new&quot;, courier">用之间的缓冲，确保消息积压不会冲垮被调用方，同时能保证调用方的</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">服务体验，继续干自己该干</span><span style="font-family: &quot;courier new&quot;, courier">的活，不至于被后台性能拖慢。不过需要付出的代价是一致性的减弱，需要接受数据最终一致性；还</span><span style="font-family: &quot;courier new&quot;, courier">有就是后台服务一般要 实现幂等性，</span><span style="font-family: &quot;courier new&quot;, courier">因为消息</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">发送</span><span style="font-family: &quot;courier new&quot;, courier">出于性能的考虑一般会有重复（保证消息的被收</span><span style="font-family: &quot;courier new&quot;, courier">到且仅收到一次对性能是很大的考验）；最后就是必须引入一个独立的broker，如果公司内部没有技</span><span style="font-family: &quot;courier new&quot;, courier">术积累，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">对broker分布式管理也是一个很大的挑战。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>3</strong><strong>、如此多的服务，如何实现？</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">在微服务架构中，一般每一个服务都是有多个拷贝，来做负载均衡。一个服务随时可能下线，也可能</span><span style="font-family: &quot;courier new&quot;, courier">应对临时访问压力增加新的服务节点。服务之间如何相互感知？服务如何管理？</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这就是服务发现的问</span><span style="font-family: &quot;courier new&quot;, courier">题了。一般有两类做法，也各有优缺点。基本都是通过zookeeper等类似技术做服务注册信息的分布</span><span style="font-family: &quot;courier new&quot;, courier">式管理。当服务上线时，服务提供者将自己的服务信息</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">注册到ZK（或类似框架），并通过心跳维持</span><span style="font-family: &quot;courier new&quot;, courier">长链接，实时更新链接信息。服务调用者通过ZK寻址，根据可定制算法， 找到一个服务，还可以将</span><span style="font-family: &quot;courier new&quot;, courier">服务信息缓存在本地以提高性能。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">当服务下线时，ZK会发通知给服务客户端。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>客户端做：</strong>优点是架构简单，扩展灵活，只对服务注册器依赖。缺点是客户端要维护所有调用服务的</span><span style="font-family: &quot;courier new&quot;, courier">地址，有技术难度，一般大公司都有成熟的内部框架支持，比如Dubbo。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>服务端做：</strong>优点是简单，所有服务对于前台调用方透明，一般在小公司在云服务上部署的应用采用的</span><span style="font-family: &quot;courier new&quot;, courier">比较多。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501200704664-1368336541.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>4</strong><strong>、服务挂了，如何解决</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">前面提到，Monolithic方式开发一个很大的风险是，把所有鸡蛋放在一个篮子里，一荣俱荣，一损俱</span><span style="font-family: &quot;courier new&quot;, courier">损。而分布式最大的特性就是网络是不可靠的。通过微服务拆分能降低这个风险，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">不过如果没有特</span><span style="font-family: &quot;courier new&quot;, courier">别的保障，结局肯定是噩梦。所以当我们的系统是由一系列的服务调用链组成的时候，我们必须确</span><span style="font-family: &quot;courier new&quot;, courier">保任一环节出问题都不至于影响整体链路。<span style="text-decoration: underline"><strong>相应的手段有很多：</strong></span></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">①重试机制</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">②限流</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">③熔断机制</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">④负载均衡</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">⑤降级（本地缓存）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这些方法基本都很明确通用，比如Netflix的Hystrix：<span style="text-decoration: underline">https://github.com/Netflix/Hystrix</span></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501200841226-498596991.png" alt=""></span></span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>七、常见的设计模式和应用</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">有一个图非常好的总结微服务架构需要考虑的问题，包括：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、API Gateway</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、服务间调用</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、服务发现</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">4、服务容错</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">5、服务部署</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">6、数据调用</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501200932257-1866725509.png" alt=""></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>六种常见的微服务架构设计模式：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>1</strong><strong>、聚合器微服务设计模式</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这是一种最常见也最简单的设计模式：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501201000148-1677353522.png" alt=""><span style="font-family: &quot;courier new&quot;, courier">&nbsp;</span></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">聚合器调用多个服务实现应用程序所需的功能。它可以是一个简单的Web页面，将检索到的数据进行处理展示。它也可以是一个更高层次的组合微服务，对检索到的数据增加业务逻辑</span><span style="font-family: &quot;courier new&quot;, courier">后进一步</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">发布成一个新的微服务，这符合DRY原则。另外，每个服务都有自己的缓存和数据库。如果聚合器是一个组合服务，那么它也有自己的缓存和数据库。聚合器可以沿X轴和Z轴独立扩展。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>2</strong><strong>、代理微服务设计模式</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这是聚合模式的一个变种，如下图所示：</span></p>
+<p><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501201046898-281749162.png" alt="" width="811" height="369"></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">在这种情况下，客户端并不聚合数据，但会根据业务需求的差别调用不同的微服务。代理可以仅仅委派</span><span style="font-family: &quot;courier new&quot;, courier">请求，也可以进行数据转换工作。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>3</strong><strong>、链式微服务设计模式</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这种模式在接收到请求后会产生一个经过合并的响应，如下图所示：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501201150117-1722000003.png" alt="" width="799" height="346"></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">在这种情况下，服务A接收到请求后会与服务B进行通信，类似地，服务B会同服务C进行通信。所有服</span><span style="font-family: &quot;courier new&quot;, courier">务都使用同步消息传递。在整个链式调用完成之前，客户端会一直阻塞。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">因此，服务调用链不宜过长，</span><span style="font-family: &quot;courier new&quot;, courier">以免客户端长时间等待。</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="font-family: &quot;courier new&quot;, courier">4、分支微服务设计模式</span></strong></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">这种模式是聚合器模式的扩展，允许同时调用两个微服务链，如下图所示：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501201226507-2146929767.png" alt="" width="801" height="340"></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier">5、<strong>数据共享微服务设计模式</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">自治是微服务的设计原则之一，就是说微服务是全栈式服务。但在重构现有的“单体应用（monolithic application）”时，SQL数据库反规范化可能会导致数据重复和不一致。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">因此，在单体应用到微服务架构的过渡阶段，可以使用这种设计模式，如下图所示：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501201353945-1013665174.png" alt="" width="782" height="316"></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">在这种情况下，部分微服务可能会共享缓存和数据库存储。不过，这只有在两个服务之间存在强耦合关</span><span style="font-family: &quot;courier new&quot;, courier">系时才可以。对于基于微服务的新建应用程序而言，这是一种反模式。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>6</strong><strong>、异步消息传递微服务设计模式</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">虽然REST设计模式非常流行，但它是同步的，会造成阻塞。因此部分基于微服务的架构可能会选择使用消息队列代替REST请求/响应，如下图所示：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><img src="./微服务架构 - 老_张 - 博客园_files/983980-20170501201415054-327655979.png" alt="" width="757" height="355"></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>八、优点和缺点</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>1</strong><strong>、微服务的优点：</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><strong>关键点：</strong></span>复杂度可控，独立按需扩展，技术选型灵活，容错，可用性高</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>①</strong>它解决了复杂性的问题。它会将一种怪异的整体应用程序分解成一组服务。虽然功能总量 不变，但</span><span style="font-family: &quot;courier new&quot;, courier">应用程序已分解为可管理的块或服务。每个服务都以RPC或消息驱动的API的</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">形式定义了一个明确的边界；</span><span style="font-family: &quot;courier new&quot;, courier">Microservice架构模式实现了一个模块化水平。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>②</strong>这种架构使每个服务都能够由专注于该服务的团队独立开发。开发人员可以自由选择任何有用</span><span style="font-family: &quot;courier new&quot;, courier">的技术，只要该服务符合API合同。当然，大多数组织都希望避免完全无</span><span style="font-family: &quot;courier new&quot;, courier">政府状态并</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">限制技术选择。然</span><span style="font-family: &quot;courier new&quot;, courier">而，这种自由意味着开发人员不再有义务使用在新项目开始时存在的可能过时的技术。在编写新服务时，</span><span style="font-family: &quot;courier new&quot;, courier">他们可以选择使用当前的技术。此外，由于服务相对较小，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">因此使用当前技术重写旧服务变得可行。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>③</strong>Microservice架构模式使每个微服务都能独立部署。开发人员不需要协调部署本地服务的变更。</span><span style="font-family: &quot;courier new&quot;, courier">这些变化可以在测试后尽快部署。例如，UI团队可以执行A | B测试，并快速迭代</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">UI更改。Microservice架</span><span style="font-family: &quot;courier new&quot;, courier">构模式使连续部署成为可能。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>④</strong>Microservice架构模式使每个服务都可以独立调整。您可以仅部署满足其容量和可用性限制的</span><span style="font-family: &quot;courier new&quot;, courier">每个服务的实例数。此外，您可以使用最符合服务资源要求的硬件。</span></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>2</strong><strong>、微服务的缺点</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><span style="text-decoration: underline"><strong>关键点（挑战）：</strong></span>多服务运维难度，系统部署依赖，服务间通信成本，数据一致性，系统集成测试，重</span><span style="font-family: &quot;courier new&quot;, courier">复工作，性能监控等</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>①</strong>一个缺点是名称本身。术语microservice过度强调服务规模。但重要的是要记住，这是一种手段，而</span><span style="font-family: &quot;courier new&quot;, courier">不是主要目标。微服务的目标是充分分解应用程序，以便于敏捷应用程序开发和部署。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>②</strong>微服务器的另一个主要缺点是分布式系统而产生的复杂性。开发人员需要选择和实现基于消息传递或</span><span style="font-family: &quot;courier new&quot;, courier">RPC的进程间通信机制。此外，他们还必须编写代码来处理部分故障，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">因为请求的目的地可能很慢或不</span><span style="font-family: &quot;courier new&quot;, courier">可用。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>③</strong>微服务器的另一个挑战是分区数据库架构。更新多个业务实体的业务交易是相当普遍的。但是，在基</span><span style="font-family: &quot;courier new&quot;, courier">于微服务器的应用程序中，您需要更新不同服务所拥有的多个数据库。使用分布式事务</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">通常不是一个选</span><span style="font-family: &quot;courier new&quot;, courier">择，而不仅仅是因为<span style="text-decoration: underline">CAP</span><span style="text-decoration: underline">定理</span>。许多今天高度可扩展的NoSQL数据库都不支持它们。你最终不得不使用</span><span style="font-family: &quot;courier new&quot;, courier">最终的一致性方法，这对开发人员来说更具挑战性。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>④</strong>测试微服务应用程序也更复杂。服务类似的测试类将需要启动该服务及其所依赖的任何服务（或至少</span><span style="font-family: &quot;courier new&quot;, courier">为这些服务配置存根）。再次，重要的是不要低估这样做的复杂性。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>⑤</strong>Microservice架构模式的另一个主要挑战是实现跨越多个服务的更改。例如，我们假设您正在实施一</span><span style="font-family: &quot;courier new&quot;, courier">个需要更改服务A，B和C的故事，其中A取决于B和B取决于C.在单片应用程序中，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">您可以简单地更改相</span><span style="font-family: &quot;courier new&quot;, courier">应的模块，整合更改，并一次性部署。相比之下，在Microservice架构模式中，您需要仔细规划和协调</span><span style="font-family: &quot;courier new&quot;, courier">对每个服务的更改。例如，您需要更新服务C，然后更新服务B，</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">然后再维修A.幸运的是，大多数更改通</span><span style="font-family: &quot;courier new&quot;, courier">常仅影响一个服务，而需要协调的多服务变更相对较少。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>⑥</strong>部署基于微服务的应用程序也更复杂。单一应用程序简单地部署在传统负载平衡器后面的一组相同的</span><span style="font-family: &quot;courier new&quot;, courier">服务器上。每个应用程序实例都配置有基础架构服务（如数据库和消息代理）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">的位置（主机和端口）。</span><span style="font-family: &quot;courier new&quot;, courier">相比之下，微服务应用通常由大量服务组成。例如，每个服务将有多个运行时实例。更多的移动部件需</span><span style="font-family: &quot;courier new&quot;, courier">要进行配置，部署，扩展和监控。此外，您还需要实现服务</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">发现机制，使服务能够发现需要与之通信的</span><span style="font-family: &quot;courier new&quot;, courier">任何其他服务的位置（主机和端口）。传统的基于故障单和手动操作的方法无法扩展到这种复杂程度。</span><span style="font-family: &quot;courier new&quot;, courier">因此，成功部署微服务应用程序需要</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">开发人员更好地控制部署方法，并实现高水平的自动化。</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">&nbsp;</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>九、思考：意识的转变</strong></span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">微服务对我们的思考，更多的是思维上的转变。对于微服务架构：</span><strong><span style="font-family: &quot;courier new&quot;, courier; color: #0000ff">技术上不是问题，意识比工具重要。</span></strong></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">关于微服务的几点设计出发点：</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">1、应用程序的核心是业务逻辑，按照业务或客户需求组织资源（这是最难的）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">2、做有生命的产品，而不是项目</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">3、头狼战队，全栈化</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">4、后台服务贯彻Single Responsibility Principle（单一职责原则）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">5、VM-&gt;Docker （to PE）</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">6、DevOps (to PE)</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">同时，对于开发同学，有这么多的中间件和强大的PE支持固然是好事，我们也需要深入去了解这些中</span><span style="font-family: &quot;courier new&quot;, courier">间件背后的原理，知其然知其所以然，在有限的技术资源如何通过开源技术实施微服务？</span></p>
+<p><span style="font-family: &quot;courier new&quot;, courier">最后，一般提到微服务都离不开DevOps和Docker，理解<strong>微服务架构是核心，devops和docker是工具，</strong></span><strong><span style="font-family: &quot;courier new&quot;, courier">是手段。</span></strong></p>
+<p>&nbsp;</p>
+<p><span style="font-family: &quot;courier new&quot;, courier"><strong>十、参考资料和推荐阅读：</strong></span></p>
+<p><span style="color: #3366ff"><a href="http://kb.cnblogs.com/page/520922/" target="_blank"><span style="font-family: &quot;courier new&quot;, courier; color: #3366ff">http://kb.cnblogs.com/page/520922/</span></a></span></p>
+<p><span style="color: #3366ff"><a href="http://www.infoq.com/cn/articles/seven-uservices-antipatterns" target="_blank"><span style="font-family: &quot;courier new&quot;, courier; color: #3366ff">http://www.infoq.com/cn/articles/seven-uservices-antipatterns</span></a></span></p>
+<p><span style="color: #3366ff"><a href="http://www.csdn.net/article/2015-08-07/2825412" target="_blank"><span style="font-family: &quot;courier new&quot;, courier; color: #3366ff">http://www.csdn.net/article/2015-08-07/2825412</span></a></span></p>
+<p><span style="color: #3366ff"><a href="http://blog.csdn.net/mindfloating/article/details/45740573" target="_blank"><span style="font-family: &quot;courier new&quot;, courier; color: #3366ff">http://blog.csdn.net/mindfloating/article/details/45740573</span></a></span></p>
+<p><span style="color: #3366ff"><a href="http://blog.csdn.net/sunhuiliang85/article/details/52976210" target="_blank"><span style="font-family: &quot;courier new&quot;, courier; color: #3366ff">http://blog.csdn.net/sunhuiliang85/article/details/52976210</span></a></span></p>
+<p><span style="color: #3366ff"><a href="http://www.oschina.net/news/70121/microservice" target="_blank"><span style="font-family: &quot;courier new&quot;, courier; color: #3366ff">http://www.oschina.net/news/70121/microservice</span></a></span></p>
+<p>&nbsp;</p></div><div id="MySignature" style="display: block;">Has anything you've done made your life better?</div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/imyalost/category/994090.html" target="_blank">系统架构</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(6792724,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;319b44ef-cd3c-e611-9fc1-ac853d9f53cc&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./微服务架构 - 老_张 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./微服务架构 - 老_张 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/imyalost/" target="_blank"><img src="./微服务架构 - 老_张 - 博客园_files/20180301235250.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/imyalost/">老_张</a><br>
+            <a href="http://home.cnblogs.com/u/imyalost/followees">关注 - 17</a><br>
+            <a href="http://home.cnblogs.com/u/imyalost/followers">粉丝 - 512</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;319b44ef-cd3c-e611-9fc1-ac853d9f53cc&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(6792724,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">5</span>
+    </div>
+    <div class="buryit" onclick="votePost(6792724,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/imyalost/p/6756975.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/imyalost/p/6756975.html" title="发布于2017-05-01 01:45">MySQL（十四）管理维护及性能优化</a><br><a href="http://www.cnblogs.com/imyalost/p/6794427.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/imyalost/p/6794427.html" title="发布于2017-05-02 02:31">正则表达式：基础</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2017-05-01 20:50</span> <a href="http://www.cnblogs.com/imyalost/">老_张</a> 阅读(<span id="post_view_count">15595</span>) 评论(<span id="post_comment_count">4</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=6792724" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/imyalost/p/6792724.html#" onclick="AddToWz(6792724);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=291733,cb_entryId=6792724,cb_blogApp=currentBlogApp,cb_blogUserGuid='319b44ef-cd3c-e611-9fc1-ac853d9f53cc',cb_entryCreatedDate='2017/5/1 20:50:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<br>
+<div class="feedback_area_title">评论</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/imyalost/p/6792724.html#3865961" class="layer">#1楼</a><a name="3865961" id="comment_anchor_3865961"></a> <span class="comment_date">2017-12-14 17:03</span> | <a id="a_comment_author_3865961" href="http://www.cnblogs.com/FlyAway2013/" target="_blank">CanntBelieve</a> <a href="http://msg.cnblogs.com/send/CanntBelieve" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3865961" class="blog_comment_body">大神！膜拜！</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3865961,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3865961,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3865961_avatar" style="display:none;">http://pic.cnblogs.com/face/493842/20160218175622.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/imyalost/p/6792724.html#3865962" class="layer">#2楼</a><a name="3865962" id="comment_anchor_3865962"></a>[<span class="louzhu">楼主</span>] <span class="comment_date">2017-12-14 17:04</span> | <a id="a_comment_author_3865962" href="http://www.cnblogs.com/imyalost/" target="_blank">老_张</a> <a href="http://msg.cnblogs.com/send/%E8%80%81_%E5%BC%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3865962" class="blog_comment_body"><a href="https://www.cnblogs.com/imyalost/p/6792724.html#3865961" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3865961);">@</a>
+CanntBelieve<br>不是大神，只是自己整理出来的一些资料，分享记录一下</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3865962,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3865962,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3865962_avatar" style="display:none;">http://pic.cnblogs.com/face/983980/20180301235250.png</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/imyalost/p/6792724.html#3911214" class="layer">#3楼</a><a name="3911214" id="comment_anchor_3911214"></a> <span class="comment_date">2018-02-26 15:07</span> | <a id="a_comment_author_3911214" href="http://www.cnblogs.com/mecity/" target="_blank">小城岁月</a> <a href="http://msg.cnblogs.com/send/%E5%B0%8F%E5%9F%8E%E5%B2%81%E6%9C%88" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3911214" class="blog_comment_body">写的很好，涉及的概念用文字和图例表达的很清楚。优缺点也剖析的很到位，赞一下。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3911214,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3911214,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3911214_avatar" style="display:none;">http://pic.cnblogs.com/face/u131283.jpg?id=15165123</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<a href="https://www.cnblogs.com/imyalost/p/6792724.html#3911215" class="layer">#4楼</a><a name="3911215" id="comment_anchor_3911215"></a>[<span class="louzhu">楼主</span>]<span id="comment-maxId" style="display:none;">3911215</span><span id="comment-maxDate" style="display:none;">2018/2/26 15:13:09</span> <span class="comment_date">2018-02-26 15:13</span> | <a id="a_comment_author_3911215" href="http://www.cnblogs.com/imyalost/" target="_blank">老_张</a> <a href="http://msg.cnblogs.com/send/%E8%80%81_%E5%BC%A0" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_3911215" class="blog_comment_body"><a href="https://www.cnblogs.com/imyalost/p/6792724.html#3911214" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3911214);">@</a>
+小城岁月<br>谢谢夸奖。。。<br>只是参考了很多资料，整理出来的</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3911215,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3911215,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3911215_avatar" style="display:none;">http://pic.cnblogs.com/face/983980/20180301235250.png</span>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/imyalost/p/6792724.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/imyalost/p/6792724.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="https://www.cnblogs.com/cmt/p/8525042.html" target="_blank">【报名】2050 大会 - 博客园程序员团聚（5.25 杭州·云栖小镇）</a><br><a href="https://www.wodidashi.com/web/web3/spread/wb-recruit/pc/index.html?site=cnblogs&amp;pos=HomeB2&amp;type=Banner" target="_blank">【招聘】花大价钱找技术大牛我们是认真的！</a><br><a href="https://buy.cloud.tencent.com/domain?fromSource=gwzcw.882687.882687.882687" target="_blank">【腾讯云】买域名送解析+SSL证书+建站</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);" href="https://cloud.tencent.com/solution/la?fromSource=gwzcw.891967.891967.891967" target="_blank"><img width="300" height="250" src="./微服务架构 - 老_张 - 博客园_files/24442-20180402101833163-1165053275.jpg" alt="qcloud_C1_0402"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="https://news.cnblogs.com/n/593825/" target="_blank">让MacBook秒变触控屏，只需1美元就能办到</a><br> ·  <a href="https://news.cnblogs.com/n/593818/" target="_blank">坚果3发布：人脸识别、双摄、超大电池都有，就是CPU有点儿弱</a><br> ·  <a href="https://news.cnblogs.com/n/593799/" target="_blank">彭蕾：一年香，三年醇，五年陈 这就是对员工有情的回应</a><br> ·  <a href="https://news.cnblogs.com/n/593817/" target="_blank">Chrome正在悄悄读取你电脑中的文件？谷歌：这是bug</a><br> ·  <a href="https://news.cnblogs.com/n/593815/" target="_blank">苏宁给力活动：15年老冰箱洗衣机免费换新</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="cnblogs_c2" class="c_ad_block"><a onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C2&#39;);" href="http://click.aliyun.com/m/42835/" target="_blank"><img width="468" height="60" src="./微服务架构 - 老_张 - 博客园_files/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a><br> ·  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a><br> ·  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a><br> ·  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a><br> ·  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/imyalost/">老_张</a><br>园龄：<a href="https://home.cnblogs.com/u/imyalost/" title="入园时间：2016-06-28">1年9个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/imyalost/followers/">512</a><br>关注：<a href="https://home.cnblogs.com/u/imyalost/followees/">17</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;319b44ef-cd3c-e611-9fc1-ac853d9f53cc&#39;)">+加关注</a></div><script>getFollowStatus('319b44ef-cd3c-e611-9fc1-ac853d9f53cc')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/03/01&#39;);return false;">&lt;</a></td><td align="center">2018年4月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2018/05/01&#39;);return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" align="center" abbr="日" scope="col">日</th><th class="CalDayHeader" align="center" abbr="一" scope="col">一</th><th class="CalDayHeader" align="center" abbr="二" scope="col">二</th><th class="CalDayHeader" align="center" abbr="三" scope="col">三</th><th class="CalDayHeader" align="center" abbr="四" scope="col">四</th><th class="CalDayHeader" align="center" abbr="五" scope="col">五</th><th class="CalDayHeader" align="center" abbr="六" scope="col">六</th></tr><tr><td class="CalOtherMonthDay" align="center">25</td><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td></tr><tr><td class="CalWeekendDay" align="center">1</td><td align="center">2</td><td align="center"><a href="http://www.cnblogs.com/imyalost/archive/2018/04/03.html"><u>3</u></a></td><td align="center"><a href="http://www.cnblogs.com/imyalost/archive/2018/04/04.html"><u>4</u></a></td><td align="center">5</td><td align="center">6</td><td class="CalWeekendDay" align="center">7</td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/imyalost/archive/2018/04/08.html"><u>8</u></a></td><td align="center">9</td><td class="CalTodayDay" align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td class="CalWeekendDay" align="center">14</td></tr><tr><td class="CalWeekendDay" align="center">15</td><td align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td class="CalWeekendDay" align="center">21</td></tr><tr><td class="CalWeekendDay" align="center">22</td><td align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td class="CalWeekendDay" align="center">28</td></tr><tr><td class="CalWeekendDay" align="center">29</td><td align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/imyalost/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="http://www.cnblogs.com/imyalost/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="http://www.cnblogs.com/imyalost/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="http://www.cnblogs.com/imyalost/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="http://www.cnblogs.com/imyalost/tag/" title="我的博客的标签列表">我的标签</a></li>
+<li><a id="itemListLink" onclick="this.blur();WarpClass(&#39;itemListLink&#39;, &#39;itemListLin_con&#39;);return false;" href="https://www.cnblogs.com/imyalost/p/6792724.html#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_recentposts" class="sidebar-block">
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/imyalost/p/8746527.html">1. 自动化服务部署（五）：Linux下安装Gradle</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8745137.html">2. 自动化服务部署（四）：Linux下查看JDK安装路径</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8715688.html">3. 自动化服务部署（三）：Linux下安装Git</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8710933.html">4. 自动化服务部署（二）：Linux下安装jenkins</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8709578.html">5. 自动化服务部署（一）：Linux下安装JDK</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8677345.html">6. jenkins简单安装及配置（Windows环境）</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8642104.html">7. Python看这里：相关文章链接</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8641983.html">8. 性能测试看这里：相关文章链接</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8620579.html">9. 管理篇：测试Leader应该做哪些事</a></li><li><a href="http://www.cnblogs.com/imyalost/p/8613501.html">10. 进阶篇：软件测试工程师的岗位职责</a></li>
+</ul>
+</div>
+</div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(163)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/imyalost/category/1097534.html">Cache(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/imyalost/category/1170952.html">Django(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/imyalost/category/846921.html">HTTP协议(19)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/imyalost/category/846346.html">Jmeter(24)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/imyalost/category/942432.html">MySQL(17)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/imyalost/category/1168078.html">postman(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/imyalost/category/1032570.html">Python(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/imyalost/category/1040462.html">selenium(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/imyalost/category/912207.html">TCP/IP协议(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/imyalost/category/846344.html">Web/App测试(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/imyalost/category/1134021.html">安全测试(2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/imyalost/category/1006346.html">产品(9)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/imyalost/category/1189388.html">持续集成(6)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/imyalost/category/923003.html">读书(5)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/imyalost/category/876551.html">接口测试(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/imyalost/category/1093753.html">敏捷方法(3)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/imyalost/category/873684.html">软件测试(14)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/imyalost/category/994090.html">系统架构(4)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/imyalost/category/848600.html">性能测试(16)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/imyalost/category/870250.html">杂谈(11)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/imyalost/category/994394.html">正则表达式(1)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/imyalost/category/1185428.html">资料分享(2)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size:11px;font-weight:normal">(160)</span></h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/imyalost/archive/2018/04.html">2018年4月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/imyalost/archive/2018/03.html">2018年3月 (11)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/imyalost/archive/2018/02.html">2018年2月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/imyalost/archive/2018/01.html">2018年1月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/imyalost/archive/2017/12.html">2017年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/imyalost/archive/2017/11.html">2017年11月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/imyalost/archive/2017/10.html">2017年10月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/imyalost/archive/2017/09.html">2017年9月 (5)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/imyalost/archive/2017/08.html">2017年8月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/imyalost/archive/2017/07.html">2017年7月 (12)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/imyalost/archive/2017/06.html">2017年6月 (14)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/imyalost/archive/2017/05.html">2017年5月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/imyalost/archive/2017/04.html">2017年4月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/imyalost/archive/2017/03.html">2017年3月 (7)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/imyalost/archive/2017/02.html">2017年2月 (9)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/imyalost/archive/2017/01.html">2017年1月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/imyalost/archive/2016/12.html">2016年12月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/imyalost/archive/2016/11.html">2016年11月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/imyalost/archive/2016/10.html">2016年10月 (3)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/imyalost/archive/2016/09.html">2016年9月 (8)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/imyalost/archive/2016/08.html">2016年8月 (10)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/imyalost/archive/2016/07.html">2016年7月 (6)</a> </li>
+
+<li><a id="CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/imyalost/archive/2016/06.html">2016年6月 (5)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList常逛的一些较实用的技术论坛社区">
+<h3 class="catListTitle">论坛社区</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_2_Link_0" href="https://segmentfault.com/" rel="nofollow">SegmentFault</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_1" href="https://stackoverflow.com/" rel="nofollow">stackoverflow</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_2" href="http://www.aichengxu.com/" rel="nofollow">程序员之家</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_3" href="http://www.ha97.com/" rel="nofollow">服务器运维架构</a> </li>
+
+<li><a id="CatList_LinkList_2_Link_4" href="http://www.myexception.cn/" rel="nofollow">问题解决方案</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_scorerank" class="sidebar-block">
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	171857
+	</li><li class="liRank">
+		排名 -	1496
+	</li>
+</ul>
+</div>
+
+
+</div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/imyalost/p/6086808.html">1. TCP/IP协议（一）网络基础知识(45734)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/5630940.html">2. http协议（三）几种数据传输方式(26109)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/6792724.html">3. 微服务架构(15595)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/6004678.html">4. jmeter（七）定时器(12001)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/5832672.html">5. 接口测试简介(11883)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/6024306.html">6. jmeter（八）断言(11502)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/5622867.html">7. web端功能测试总结（一）(9061)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/6229355.html">8. jmeter（十）参数化(8426)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/6854479.html">9. 性能测试：一个完整的性能测试过程(8386)</a></li><li><a href="http://www.cnblogs.com/imyalost/p/5804359.html">10. jmeter（三）SOAP/XML-RPC Request(6418)</a></li></ul></div>
+</div>
+</div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2018 老_张
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body></html>

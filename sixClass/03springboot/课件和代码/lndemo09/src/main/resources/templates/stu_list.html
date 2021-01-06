@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>学生信息列表table</h3>
+	<hr/>
+	<table style="width: 50%" border="1">
+		<tr>
+			<th>编号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+		</tr>
+		<tr align="center" th:each="stu:${list}">
+			<td th:text="${stu.id}">1001</td>
+			<td th:text="${stu.name}">张三</td>
+			<td th:text="${stu.sex}">男</td>
+			<td th:text="${stu.age}">23</td>
+		</tr>
+	</table>
+	<hr/>
+	<h3>学生信息列表li</h3>
+	<hr/>
+	<ul>
+		 <li th:each="stu:${list}" th:text="|${stu.id} ${stu.name}|">张三</li> 
+	</ul>
+	<hr/>
+	<h3>条件求值</h3> <!--  th:if/th:unless
+	th:if  div标签只有在th:if中条件成立才显示
+	th:unless  只有在表达式中条件不成立，才会显示
+	
+	   -->
+		<hr/>
+		<div th:each="stu:${list}">
+			<div th:if="${stu.sex}=='男'"  >
+				男：<span th:text="${stu.name}"></span>
+			</div>
+		<div th:unless="${stu.sex}=='男'"  >
+				女：<span th:text="${stu.name}"></span>
+		</div>
+		
+		</div>
+</body>
+</html>

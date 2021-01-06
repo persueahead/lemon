@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div style="color: red">${(info)!}</div>
+	<form action="/fileupload" method="post" enctype="multipart/form-data">
+		<h1>文件上传</h1>
+		文件：<input  type="file" name="myfile"/>
+		<input type="submit" value="上传"/>
+	</form>
+	<hr/>
+	<h2>文件下载</h2>
+	<a href="/img/6f7243f0-5235-4766-bbab-7918af2e86ba.jpg">图片</a><br/>
+	<a href="/img/62ae0df5-7542-4802-aba2-c8f056fe24c8.rar">下载</a><br/>
+	<a href="/download">下载</a>
+</body>
+</html>

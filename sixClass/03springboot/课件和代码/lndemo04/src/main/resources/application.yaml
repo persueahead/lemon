@@ -1,0 +1,13 @@
+#自定义配置
+user: 
+  userId: 1001
+  userName: zhangsan
+  userAge: 18
+  url: http://www.baidu.com
+  
+
+#系统配置
+server:
+  port: 8088
+  servlet: 
+    path: /crm  

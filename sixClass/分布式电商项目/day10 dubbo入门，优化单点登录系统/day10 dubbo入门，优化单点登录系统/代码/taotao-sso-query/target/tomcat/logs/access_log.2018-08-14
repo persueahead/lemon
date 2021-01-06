@@ -1,0 +1,4 @@
+127.0.0.1 - - [14/Aug/2018:22:46:08 +0800] "GET /user/TAOTAO_3e510ae944e74fa312ff6b9e120c3849 HTTP/1.1" 200 141 http-bio-8087-exec-1 272
+127.0.0.1 - - [14/Aug/2018:22:46:09 +0800] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-8087-exec-3 5
+127.0.0.1 - - [14/Aug/2018:22:49:55 +0800] "GET /user/TAOTAO_3e510ae944e74fa312ff6b9e120c3849 HTTP/1.0" 200 130 http-bio-8087-exec-5 17
+127.0.0.1 - - [14/Aug/2018:22:49:55 +0800] "GET /favicon.ico HTTP/1.0" 404 949 http-bio-8087-exec-6 2
